@@ -1,5 +1,5 @@
-const CACHE = 'last-shuttle-v5';
-const ASSETS = ['./', './index.html', './style.css', './game.js', './manifest.webmanifest', './icon.svg', './icon-192.png', './icon-512.png', './alien-planet.webp'];
+const CACHE = 'last-shuttle-v6';
+const ASSETS = ['./', './index.html', './style.css', './game.js', './manifest.webmanifest', './icon.svg', './icon-192.png', './icon-512.png', './alien-planet.webp', ...['alien-nest','bridge','collapsed-bridge','cover','event','gravity-blue','gravity-red','lander','open-ground','shuttle','spore-field'].map(name => `./tiles/${name}.webp`)];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
 });
