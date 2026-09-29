@@ -1,5 +1,5 @@
-const CACHE = 'last-shuttle-v3';
-const ASSETS = ['./', './index.html', './style.css', './game.js', './manifest.webmanifest', './icon.svg', './icon-192.png', './icon-512.png'];
+const CACHE = 'last-shuttle-v4';
+const ASSETS = ['./', './index.html', './style.css', './game.js', './manifest.webmanifest', './icon.svg', './icon-192.png', './icon-512.png', './alien-planet.webp'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
 });
