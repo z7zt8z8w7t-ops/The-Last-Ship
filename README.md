@@ -10,7 +10,7 @@ A pass-and-play prototype for 4–6 people sharing one iPad. One player is secre
 4. Open the Pages URL in Safari on the iPad. Use **Share → Add to Home Screen** to install it.
 5. Open it once while online to cache the files for later offline play.
 
-Upload all `tile-*.png` files alongside `index.html` at the repository root. The board now draws terrain through a canvas layer rather than external SVG image references. If an image is missing, the board displays a clear upload warning and a labelled fallback tile.
+Terrain artwork is embedded in `game.js`. No `tile-*.png` files need to be uploaded. Older tile image files in the repository are unused and may be removed after verifying v13 on the iPad.
 
 The current game is saved on that iPad in browser storage. This artwork repair keeps games started with the previous illustrated-board build. Updating from an older rules build starts a new game.
 
@@ -28,8 +28,10 @@ Researching a specimen uses one action and consumes it. The result is private: 3
 
 The default Royal Space Marines recon team is SGT Xenia with MARINE Zander, Emma, and Jim; names can be changed and up to two more Marines added. The panel shows a personnel card with a unique Corporation number and barcode above an alien-proximity ECG. It also has angular action buttons, a prominent move counter, and an action status card. The panel flips over during handoff. The saboteur's disable scan, false distress signal, and creature redirect options remain private to the saboteur. Player pieces show initials. Equipment appears as an amber canister; distress signals animate outward; the alien appears as a pulsing green contact. Round, scientist, and scan counters form a compact vertical stack at the top right of the board. The hex grid fills the remaining board area with minimal edge padding. Players discuss who boards; the app records the selection but does not enforce a secret ballot. There are no AI players or network multiplayer.
 
-The small `v12` marker at the lower-left of the screen identifies this build after the iPad refreshes its cached files.
+The small `v13` marker at the lower-left of the screen identifies this build after the iPad refreshes its cached files.
 
 The player panel has a biosuit ECG display. It speeds up as the alien approaches in hex distance; the distance and direction remain hidden. Captured players show a critical pulse. Reduced-motion settings hold the trace still.
 
 Each player sees a private, alien-green “Corporation Executive Order” with their role and mission only before their first move.
+
+The ECG trace keeps a complete baseline across its window, with the main spike centred and a moving scan light.

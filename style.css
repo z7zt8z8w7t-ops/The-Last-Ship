@@ -87,3 +87,7 @@ body{background:#07140e;position:relative;isolation:isolate}body::before{content
 .board .terrain-canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:0;pointer-events:none}
 .art-warning{position:absolute;z-index:5;left:10px;bottom:10px;max-width:80%;padding:8px 10px;border:1px solid #ffc06d;border-radius:6px;background:#4b271be6;color:#fff4d5;font-size:.75rem;font-weight:800}
 .art-warning[hidden]{display:none}
+
+/* Full-width ECG trace with its main spike centred; the scan light moves across it. */
+.monitor-screen svg{left:0;width:100%!important;animation:none!important}
+.scan-line{background:linear-gradient(90deg,transparent 35%,#9fffc628 50%,transparent 65%);transform:translateX(-100%)}
