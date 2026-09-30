@@ -28,6 +28,8 @@ Scientist discovery no longer plays a scream; its unused voice recordings are re
 
 ## v33 title music
 
-**Cinematic horror — rising string ambience** — Tomas_Herudek, [Pixabay 443390](https://pixabay.com/sound-effects/horror-cinematic-horror-rising-string-ambience-443390/), Pixabay Content License. User-provided MP3. Original 00:16 through the end; volume reduced, 6-second fade-in and 3-second fade-out.
+**Cinematic horror — rising string ambience** — Tomas_Herudek, [Pixabay 443390](https://pixabay.com/sound-effects/horror-cinematic-horror-rising-string-ambience-443390/), Pixabay Content License. User-provided MP3. Original 00:16 through the end; volume reduced, 6-second fade-in, with no fade-out.
 
-The v34 title cue uses original 00:16 through end; fades in over six seconds and fades out from opening 00:34.3 to 00:35.75. Original pitch and speed retained.
+The v36 title cue uses original 00:16 through end; fades in over six seconds and finishes naturally over APC arrival. Original pitch and speed retained.
+
+Version 36: title starts at 2.5× and draws outward for most of its pullback; THE · LAST · SHIP uses centred dots. Title music starts at source 00:16 and ends naturally, overlapping APC arrival and wind (no fade-out). Standard crew orders are skipped after handover; classified orders remain. Private actions use dark red CRT controls. The mission briefing is centred within the board and says “Ensure no alien organism leaves the planet’s surface.”
