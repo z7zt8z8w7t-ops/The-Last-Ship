@@ -28,4 +28,6 @@ Scientist discovery no longer plays a scream; its unused voice recordings are re
 
 ## v33 title music
 
-**Cinematic horror — rising string ambience** — Tomas_Herudek, [Pixabay 443390](https://pixabay.com/sound-effects/horror-cinematic-horror-rising-string-ambience-443390/), Pixabay Content License. User-provided MP3. Original 00:20 through the end; volume reduced, 6-second fade-in and 3-second fade-out.
+**Cinematic horror — rising string ambience** — Tomas_Herudek, [Pixabay 443390](https://pixabay.com/sound-effects/horror-cinematic-horror-rising-string-ambience-443390/), Pixabay Content License. User-provided MP3. Original 00:15 through the end; volume reduced, 6-second fade-in and 3-second fade-out.
+
+The v34 title cue uses original 00:15 through end; fades in over six seconds and fades out from opening 00:35.3 to 00:36.75. Original pitch and speed retained.

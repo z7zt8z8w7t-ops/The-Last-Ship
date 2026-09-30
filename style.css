@@ -268,3 +268,14 @@ body.cinema-paused .title-screen,body.cinema-paused .title-screen *,body.cinema-
 body:has(.board-arrival-mask) .handoff-prompt{visibility:hidden}
 
 body[data-screen="openingBlack"]{background:#000}body[data-screen="openingBlack"] .build-marker{visibility:hidden}
+
+/* Approved blue crescendo preview. */
+.title-glow{position:fixed;z-index:3;pointer-events:none;border-radius:50%;opacity:0;background:radial-gradient(ellipse,rgba(205,242,255,.98) 0%,rgba(106,208,255,.78) 8%,rgba(25,130,255,.5) 27%,rgba(0,74,220,.2) 50%,transparent 72%);mix-blend-mode:screen;will-change:transform,opacity}
+.title-flash{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:0;background:radial-gradient(ellipse at var(--flash-x,45.5%) var(--flash-y,50%),#f4fcff 0%,#9adbff 35%,#388cff 100%)}
+.title-flash.blue-flash-on{animation:blueCrescendoFlash .7s linear forwards}
+@keyframes blueCrescendoFlash{0%{opacity:1}25%{opacity:.668}50%{opacity:.379}75%{opacity:.144}100%{opacity:0}}
+.title-screen.cinematic-flash-out{animation:titleFlashOut .65s linear forwards}
+@keyframes titleFlashOut{from{opacity:1}to{opacity:0}}
+body:has(.cinematic-title) .build-marker{visibility:hidden}
+body.cinema-paused .title-flash{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){.title-glow,.title-flash{display:none}.title-screen.cinematic-flash-out{animation:cinematicTitleOut .65s ease-out forwards}}
