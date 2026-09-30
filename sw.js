@@ -1,6 +1,6 @@
-const CACHE='the-last-ship-v42';
+const CACHE='the-last-ship-v46';
 const ROOT=self.registration.scope;
-const ASSETS=['./','./index.html','./style.css?v=42','./game.js?v=42','./artwork.js','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png','./alien-planet.webp','./sound-check.html'];
+const ASSETS=['./','./index.html','./style.css?v=46','./game.js?v=46','./artwork.js','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png','./alien-planet.webp','./sound-check.html'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('the-last-ship-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{

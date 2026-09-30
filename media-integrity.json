@@ -192,7 +192,7 @@
     }
   ],
   "audio": {
-    "wind": "0ede5bde3e46f36ea1a49ba384bbefb4e82c013c543e7281bcde99eee26122d2",
+    "wind": "e0792f4c5afe3cfa02e36a0a71660164eaed18ef594b899752757d4602d5e5ff",
     "crt": "8c87ce304a39cbc5c828f60797b18942b8b1414970795b65e6cf0c7e9b0a324c",
     "transition": "73fe3f39c17923e645cb2ef1fc7ef330c13c87cdfe9f548245791b90445761fa",
     "popup": "526028bd563d6d7960a0fb92365660eb4d308b2129caf2f4f0c6e6445b051a45",
@@ -209,7 +209,10 @@
     "trackerSting": "6a47a4f481d96c9e06043258e2018e5c1afd2faadaaca79d53758d00b011ab7e",
     "captureSwarm": "e712d412bbbd6708bc2c3cbc4e0ccd174ef198312da88538a94b5f0bc15afc5d",
     "titleDrone": "f0b6c22713e5d28751980d77b02e19e8d8d4495817dd923ac378c078c036ab1d",
-    "muthurLogin": "bdd701084b951dfed56ddc6e52ecd762f0550f128883b0db482401df8c584d6d"
+    "muthurLogin": "bdd701084b951dfed56ddc6e52ecd762f0550f128883b0db482401df8c584d6d",
+    "pulseRifle": "0e7959b9fac9760be213792fa02eb61dd605f47725a107df6a07c4a08ea04664",
+    "eventSpecimen": "7d1b658f4c149baedef105e472f8301f00c5abe305e8dc3d146698f3ec2f4471",
+    "rosterAmbience": "3528d26160c2bd1f287b953fb27b7236f24961acbb3721220f01eef2ebaf7ce7"
   },
-  "release": "v35"
+  "release": "v46"
 }

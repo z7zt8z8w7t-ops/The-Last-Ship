@@ -37,3 +37,19 @@ Version 36: title starts at 2.5× and draws outward for most of its pullback; TH
 ## v40 MU-TH-UR login
 
 The user-provided 16.74-second MP3 extracted from `RPReplay_Final1790781942.mp4` starts on LOGIN and stops on ACKNOWLEDGE. It is embedded under `muthurLogin` and plays at 0.72. Rights for third-party use of the source recording have not been established.
+
+
+### v43 capture addition
+User supplied pulse rifle recording from RPReplay_Final1790788076.mp4, trimmed to approximately 4.2 seconds with subtle reverb. Embedded for offline playback. Capture sequence layers the existing horror swarm, this pulse rifle, then the existing Launch Mission screech, with the marine voice retained.
+
+
+### v44 background wind replacement
+Active background wind replaced with user supplied RPReplay_Final1790790516.mp4 audio. Leading/trailing silence removed, end and beginning blended with a three-second circular crossfade, volume matched to previous wind. Embedded 122.7-second loop replaces the previous embedded wind recording.
+
+
+### v45 event and specimen effect
+User supplied RPReplay_Final1790791206.mp4 audio, leading and trailing silence trimmed with three-second ending fade. Plays for event reports and specimen/egg recovery; continues after the four-second popup closes.
+
+
+### v46 crew roster loop
+Separate looping edit of user supplied RPReplay_Final1790791206.mp4: silence trimmed and three-second circular crossfade. Plays on crew roster, stops on launch or leaving roster, follows sound toggle. Event/specimen effect keeps its ending fade.

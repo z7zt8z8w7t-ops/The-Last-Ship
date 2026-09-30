@@ -1,15 +1,5 @@
 [
   {
-    "usage": "Low wind ambience",
-    "creator": "fran_marenco",
-    "source": "https://freesound.org/people/fran_marenco/sounds/852881/",
-    "license": "CC0 1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "edits": "60-second excerpt; high-pass 35 Hz, low-pass 350 Hz, crossfaded loop, loudness adjusted. Playback level baked into MP3 for consistent iPad native-player loudness. v28: 1.1-second damped outdoor reverb, circular convolution preserves the loop; wind level retained.",
-    "embedded_key": "wind",
-    "container": "index.html #ship-audio-data"
-  },
-  {
     "usage": "MU-TH-UR power-up",
     "creator": "corkob",
     "source": "https://freesound.org/people/corkob/sounds/415594/",
@@ -183,6 +173,37 @@
     "source": "RPReplay_Final1790781942_audio(1).mp3, extracted from user-uploaded video",
     "license": "User-provided; third-party usage rights not established",
     "edits": "Original 16.74-second stereo MP3; playback at 0.72",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "embedded_key": "pulseRifle",
+    "usage": "Marine capture pulse rifle, 0.5 seconds after horror swarm",
+    "source": "User supplied RPReplay_Final1790788076.mp4",
+    "edits": "Leading and trailing silence trimmed; subtle reverb; 4.2 seconds.",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "embedded_key": "wind",
+    "key": "wind",
+    "usage": "Looping background wind",
+    "source": "User supplied RPReplay_Final1790790516.mp4",
+    "edits": "Trimmed 3.65s to 129.35s; three-second equal-power circular crossfade; loop 122.7s; volume matched to previous background wind.",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "embedded_key": "eventSpecimen",
+    "key": "eventSpecimen",
+    "usage": "Event popup and recovered research specimen or alien egg",
+    "source": "User supplied RPReplay_Final1790791206.mp4",
+    "edits": "Leading silence removed (4.16s); trailing silence trimmed; final three seconds fade out; 24.91s content.",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "embedded_key": "rosterAmbience",
+    "key": "rosterAmbience",
+    "usage": "Looping crew roster ambience",
+    "source": "User supplied RPReplay_Final1790791206.mp4",
+    "edits": "Trimmed silence; separate 21.91-second loop with three-second circular crossfade; no end fade; event version unchanged.",
     "container": "index.html #ship-audio-data"
   }
 ]

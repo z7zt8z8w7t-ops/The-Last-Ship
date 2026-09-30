@@ -1,14 +1,5 @@
 [
   {
-    "key": "wind",
-    "author": "fran_marenco",
-    "id": 852881,
-    "url": "https://freesound.org/people/fran_marenco/sounds/852881/",
-    "license": "CC0 1.0",
-    "title": "Freesound - Low wind in a desert canyon 2 by fran_marenco",
-    "source_description": "Gentle, low wind in a desert canyon\n\nLOM U\u0161i Pro + Zoom H6\nCatamarca, 10/25"
-  },
-  {
     "key": "crt",
     "author": "corkob",
     "id": 415594,
@@ -165,6 +156,30 @@
     "source": "User-uploaded RPReplay_Final1790781942_audio(1).mp3",
     "license": "Usage rights not documented",
     "edits": "16.74 seconds intact; playback level 0.72; stop on ACKNOWLEDGE",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "embedded_key": "wind",
+    "key": "wind",
+    "usage": "Looping background wind",
+    "source": "User supplied RPReplay_Final1790790516.mp4",
+    "edits": "Trimmed 3.65s to 129.35s; three-second equal-power circular crossfade; loop 122.7s; volume matched to previous background wind.",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "embedded_key": "eventSpecimen",
+    "key": "eventSpecimen",
+    "usage": "Event popup and recovered research specimen or alien egg",
+    "source": "User supplied RPReplay_Final1790791206.mp4",
+    "edits": "Leading silence removed (4.16s); trailing silence trimmed; final three seconds fade out; 24.91s content.",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "embedded_key": "rosterAmbience",
+    "key": "rosterAmbience",
+    "usage": "Looping crew roster ambience",
+    "source": "User supplied RPReplay_Final1790791206.mp4",
+    "edits": "Trimmed silence; separate 21.91-second loop with three-second circular crossfade; no end fade; event version unchanged.",
     "container": "index.html #ship-audio-data"
   }
 ]
