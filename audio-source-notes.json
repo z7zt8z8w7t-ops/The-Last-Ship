@@ -106,5 +106,28 @@
     "license": "CC0 1.0",
     "title": "Freesound - Female Scream by DigestContent",
     "source_description": "My friend (Sydney) screaming."
+  },
+  {
+    "key": "start",
+    "title": "Monster Screech",
+    "creator": "DRAGON-STUDIO",
+    "source": "https://pixabay.com/sound-effects/film-special-effects-monster-screech-368677/",
+    "license": "Pixabay Content License",
+    "acquisition": "User uploaded dragon-studio-monster-screech-368677.mp3",
+    "sha256": "b69300d656c27c4444a8c4c54e2161d9f253c351b146b4476b0f4a16a6e77038"
+  },
+  {
+    "key": "keyboard",
+    "title": "Keyboard Soundpack #1",
+    "creator": "unicaegames",
+    "source": "https://opengameart.org/content/keyboard-soundpack-1-typing-and-single-keystrokes",
+    "license": "CC0 1.0",
+    "used_files": [
+      "Single Keys/keypress-001.wav",
+      "Single Keys/keypress-002.wav",
+      "Single Keys/keypress-003.wav",
+      "Single Keys/keypress-004.wav"
+    ],
+    "recording": "Cherry KC 1000 recorded using Shure SM7B; generated typing files not used"
   }
 ]

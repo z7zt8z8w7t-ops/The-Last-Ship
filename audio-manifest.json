@@ -5,7 +5,7 @@
     "source": "https://freesound.org/people/fran_marenco/sounds/852881/",
     "license": "CC0 1.0",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "edits": "60-second excerpt; high-pass 35 Hz, low-pass 350 Hz, crossfaded loop, loudness adjusted. Playback level baked into MP3 for consistent iPad native-player loudness.",
+    "edits": "60-second excerpt; high-pass 35 Hz, low-pass 350 Hz, crossfaded loop, loudness adjusted. Playback level baked into MP3 for consistent iPad native-player loudness. v28: 1.1-second damped outdoor reverb, circular convolution preserves the loop; wind level retained.",
     "embedded_key": "wind",
     "container": "index.html #ship-audio-data"
   },
@@ -45,7 +45,7 @@
     "source": "https://freesound.org/people/samfk360/sounds/148897/",
     "license": "CC0 1.0",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "edits": "One beep cut from the supplied monitor sound effect. Played every 60,000/BPM milliseconds; no flatline. Playback level baked into MP3 for consistent iPad native-player loudness.",
+    "edits": "One beep cut from the supplied monitor sound effect. Played every 60,000/BPM milliseconds; no flatline. Playback level baked into MP3 for consistent iPad native-player loudness. v28: dry signal reduced to 45% of v27 (about 7 dB quieter), light 160 ms reverb; total sample 430 ms fits 132 BPM.",
     "embedded_key": "ecg",
     "container": "index.html #ship-audio-data"
   },
@@ -55,7 +55,7 @@
     "source": "https://freesound.org/people/colorsCrimsonTears/sounds/537883/",
     "license": "CC0 1.0",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "edits": "Trimmed and loudness adjusted. Playback level baked into MP3 for consistent iPad native-player loudness.",
+    "edits": "Trimmed and loudness adjusted. Playback level baked into MP3 for consistent iPad native-player loudness. v28: damped outdoor reverb, 1.15-second tail.",
     "embedded_key": "alien1",
     "container": "index.html #ship-audio-data"
   },
@@ -65,7 +65,7 @@
     "source": "https://freesound.org/people/zerokingfull/sounds/347410/",
     "license": "CC0 1.0",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "edits": "Creator processed a recorded human scream into a creature roar; trimmed. Playback level baked into MP3 for consistent iPad native-player loudness.",
+    "edits": "Creator processed a recorded human scream into a creature roar; trimmed. Playback level baked into MP3 for consistent iPad native-player loudness. v28: damped outdoor reverb, 1.15-second tail.",
     "embedded_key": "alien2",
     "container": "index.html #ship-audio-data"
   },
@@ -75,20 +75,17 @@
     "source": "https://freesound.org/people/999999990/sounds/320345/",
     "license": "CC0 1.0",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "edits": "Trimmed hiss/roar effect. Playback level baked into MP3 for consistent iPad native-player loudness.",
+    "edits": "Trimmed hiss/roar effect. Playback level baked into MP3 for consistent iPad native-player loudness. v28: damped outdoor reverb, 1.15-second tail.",
     "embedded_key": "alien3",
     "container": "index.html #ship-audio-data"
   },
   {
     "usage": "Start Game only",
-    "creator": "999999990 + colorsCrimsonTears",
-    "source": [
-      "https://freesound.org/people/999999990/sounds/320345/",
-      "https://freesound.org/people/colorsCrimsonTears/sounds/537883/"
-    ],
-    "license": "CC0 1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "edits": "Replacement composite: pitch-up shriek + low rasp from creature recordings; EQ, compression, short echo, loudness mastering. Original start sample removed.",
+    "creator": "DRAGON-STUDIO",
+    "source": "https://pixabay.com/sound-effects/film-special-effects-monster-screech-368677/",
+    "license": "Pixabay Content License",
+    "license_url": "https://pixabay.com/service/license-summary/",
+    "edits": "User-selected Monster Screech uploaded by the user. Original pitch preserved, 1.35-second damped stereo reverb tail. Replaces the rejected v27 composite completely.",
     "embedded_key": "start",
     "container": "index.html #ship-audio-data"
   },
@@ -98,7 +95,7 @@
     "source": "https://freesound.org/people/aldenroth2/sounds/272023/",
     "license": "CC0 1.0",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "edits": "Trimmed and loudness adjusted. Playback level baked into MP3 for consistent iPad native-player loudness.",
+    "edits": "Trimmed and loudness adjusted. Playback level baked into MP3 for consistent iPad native-player loudness. v28: damped outdoor reverb, 1-second tail.",
     "embedded_key": "male1",
     "container": "index.html #ship-audio-data"
   },
@@ -108,7 +105,7 @@
     "source": "https://freesound.org/people/JohnsonBrandEditing/sounds/243376/",
     "license": "CC0 1.0",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "edits": "Trimmed and loudness adjusted. Playback level baked into MP3 for consistent iPad native-player loudness.",
+    "edits": "Trimmed and loudness adjusted. Playback level baked into MP3 for consistent iPad native-player loudness. v28: damped outdoor reverb, 1-second tail.",
     "embedded_key": "male2",
     "container": "index.html #ship-audio-data"
   },
@@ -118,7 +115,7 @@
     "source": "https://freesound.org/people/missozzy/sounds/169810/",
     "license": "CC0 1.0",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "edits": "Trimmed and loudness adjusted. Playback level baked into MP3 for consistent iPad native-player loudness.",
+    "edits": "Trimmed and loudness adjusted. Playback level baked into MP3 for consistent iPad native-player loudness. v28: damped outdoor reverb, 1-second tail.",
     "embedded_key": "female1",
     "container": "index.html #ship-audio-data"
   },
@@ -128,7 +125,7 @@
     "source": "https://freesound.org/people/missozzy/sounds/169811/",
     "license": "CC0 1.0",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "edits": "Trimmed and loudness adjusted. Playback level baked into MP3 for consistent iPad native-player loudness.",
+    "edits": "Trimmed and loudness adjusted. Playback level baked into MP3 for consistent iPad native-player loudness. v28: damped outdoor reverb, 1-second tail.",
     "embedded_key": "female2",
     "container": "index.html #ship-audio-data"
   },
@@ -138,7 +135,7 @@
     "source": "https://freesound.org/people/DigestContent/sounds/449702/",
     "license": "CC0 1.0",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "edits": "Separate human voice recording. Playback level baked into MP3 for consistent iPad native-player loudness.",
+    "edits": "Separate human voice recording. Playback level baked into MP3 for consistent iPad native-player loudness. v28: damped outdoor reverb, 1-second tail.",
     "embedded_key": "scientistFemale",
     "container": "index.html #ship-audio-data"
   },
@@ -148,8 +145,48 @@
     "source": "https://freesound.org/people/vmgraw/sounds/257691/",
     "license": "CC0 1.0",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "edits": "Separate human voice recording. Playback level baked into MP3 for consistent iPad native-player loudness.",
+    "edits": "Separate human voice recording. Playback level baked into MP3 for consistent iPad native-player loudness. v28: damped outdoor reverb, 1-second tail.",
     "embedded_key": "scientistMale",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "usage": "Synchronized terminal typing keystroke 1",
+    "creator": "unicaegames",
+    "source": "https://opengameart.org/content/keyboard-soundpack-1-typing-and-single-keystrokes",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "edits": "Single Keys/keypress-001.wav from Cherry KC 1000 recorded using a Shure SM7B; trimmed to 65 ms attack, faded and quiet master. No generated-typing files used.",
+    "embedded_key": "key1",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "usage": "Synchronized terminal typing keystroke 2",
+    "creator": "unicaegames",
+    "source": "https://opengameart.org/content/keyboard-soundpack-1-typing-and-single-keystrokes",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "edits": "Single Keys/keypress-002.wav from Cherry KC 1000 recorded using a Shure SM7B; trimmed to 65 ms attack, faded and quiet master. No generated-typing files used.",
+    "embedded_key": "key2",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "usage": "Synchronized terminal typing keystroke 3",
+    "creator": "unicaegames",
+    "source": "https://opengameart.org/content/keyboard-soundpack-1-typing-and-single-keystrokes",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "edits": "Single Keys/keypress-003.wav from Cherry KC 1000 recorded using a Shure SM7B; trimmed to 65 ms attack, faded and quiet master. No generated-typing files used.",
+    "embedded_key": "key3",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "usage": "Synchronized terminal typing keystroke 4",
+    "creator": "unicaegames",
+    "source": "https://opengameart.org/content/keyboard-soundpack-1-typing-and-single-keystrokes",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "edits": "Single Keys/keypress-004.wav from Cherry KC 1000 recorded using a Shure SM7B; trimmed to 65 ms attack, faded and quiet master. No generated-typing files used.",
+    "embedded_key": "key4",
     "container": "index.html #ship-audio-data"
   }
 ]

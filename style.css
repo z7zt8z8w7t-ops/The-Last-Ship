@@ -186,3 +186,20 @@ body{background:#07140e;position:relative;isolation:isolate}body::before{content
 .voice-select{-webkit-appearance:none;appearance:none;background:#153928!important;color:#d8fbd3!important;cursor:pointer}
 
 .embedded-sound-check{max-width:900px;margin:auto;padding:24px;color:#d8fbd3}.embedded-sound-check article{padding:18px;margin:14px 0;border:1px solid #4c765b;border-radius:10px;background:#10291e}.embedded-sound-check audio{width:100%}.embedded-sound-check a{color:#afdfbd}
+
+/* v28 MU-TH-UR text shares one font, colour, glow and typing clock. */
+.muthur-copy{--terminal-font:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;color:#baf7a8;font:650 clamp(1rem,2.25vw,1.7rem) var(--terminal-font);letter-spacing:.075em;text-shadow:0 0 6px #a4ff928c;line-height:1.6;cursor:pointer}
+.muthur-copy p,.muthur-copy h1,.muthur-copy h2,.muthur-copy .muthur-line{font:inherit;color:inherit;letter-spacing:inherit;text-shadow:inherit;text-transform:none;line-height:inherit}
+.muthur-copy .order-classification{font-size:inherit;margin:0 0 22px}
+.muthur-copy h1,.muthur-copy h2{margin:0 0 24px}
+.muthur-copy p{margin:0 0 18px}
+.muthur-copy .terminal-line{position:relative;display:block;white-space:normal;overflow-wrap:break-word}
+.terminal-ghost{display:block;visibility:hidden}
+.terminal-visible{position:absolute;inset:0;white-space:inherit}
+.muthur-copy .boot-typed{clip-path:none;animation:none;width:100%;white-space:nowrap}
+.muthur-copy .typing-cursor{margin-left:.08em;opacity:1;animation:cursorBlink 1.05s steps(1,end) infinite}
+.muthur-mission{max-width:1000px;background:#020c07;color:#baf7a8;text-align:left;padding:36px 40px}
+.muthur-mission .order-directive{border-left:0;padding:0;margin:25px 0}
+.terminal-help{color:#baf7a8;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:.8rem;opacity:.65}
+@media(max-width:650px){.muthur-mission{padding:24px 20px}.muthur-copy{letter-spacing:.045em}}
+@media(prefers-reduced-motion:reduce){.muthur-copy .typing-cursor{animation:none}}
