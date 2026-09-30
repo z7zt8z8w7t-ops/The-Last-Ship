@@ -1,5 +1,5 @@
-const CACHE = 'the-last-ship-v15';
-const ASSETS = ['./', './index.html', './style.css', './game.js', './manifest.webmanifest', './icon.svg', './icon-192.png', './icon-512.png', './alien-planet.webp'];
+const CACHE = 'the-last-ship-v18';
+const ASSETS = ['./', './index.html', './style.css', './game.js', './manifest.webmanifest', './icon.svg', './icon-192.png', './icon-512.png', './alien-planet.webp', './wind-ambient.mp3', './wind-gust.mp3'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
 });
