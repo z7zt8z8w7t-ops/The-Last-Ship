@@ -1,0 +1,137 @@
+[
+  {
+    "file": "audio/wind-low.mp3",
+    "usage": "Low wind ambience",
+    "creator": "fran_marenco",
+    "source": "https://freesound.org/people/fran_marenco/sounds/852881/",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "edits": "60-second excerpt; high-pass 35 Hz, low-pass 350 Hz, crossfaded loop, loudness adjusted."
+  },
+  {
+    "file": "audio/crt-startup.mp3",
+    "usage": "MU-TH-UR power-up",
+    "creator": "corkob",
+    "source": "https://freesound.org/people/corkob/sounds/415594/",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "edits": "First four seconds; trimmed and loudness adjusted."
+  },
+  {
+    "file": "audio/crt-transition.mp3",
+    "usage": "Roster transition",
+    "creator": "corkob",
+    "source": "https://freesound.org/people/corkob/sounds/415594/",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "edits": "Short excerpt of the same recorded CRT."
+  },
+  {
+    "file": "audio/popup-snap.mp3",
+    "usage": "Popup electrical snap",
+    "creator": "corkob",
+    "source": "https://freesound.org/people/corkob/sounds/415594/",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "edits": "220 ms excerpt of CRT switch/static."
+  },
+  {
+    "file": "audio/ecg-beep.mp3",
+    "usage": "ECG single beep",
+    "creator": "samfk360",
+    "source": "https://freesound.org/people/samfk360/sounds/148897/",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "edits": "One beep cut from the supplied monitor sound effect. Played every 60,000/BPM milliseconds; no flatline."
+  },
+  {
+    "file": "audio/alien-call-1.mp3",
+    "usage": "Creature call 1",
+    "creator": "colorsCrimsonTears",
+    "source": "https://freesound.org/people/colorsCrimsonTears/sounds/537883/",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "edits": "Trimmed and loudness adjusted."
+  },
+  {
+    "file": "audio/alien-call-2.mp3",
+    "usage": "Creature call 2",
+    "creator": "zerokingfull",
+    "source": "https://freesound.org/people/zerokingfull/sounds/347410/",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "edits": "Creator processed a recorded human scream into a creature roar; trimmed."
+  },
+  {
+    "file": "audio/alien-call-3.mp3",
+    "usage": "Creature call 3",
+    "creator": "999999990",
+    "source": "https://freesound.org/people/999999990/sounds/320345/",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "edits": "Trimmed hiss/roar effect."
+  },
+  {
+    "file": "audio/start-screech.mp3",
+    "usage": "Start Game only",
+    "creator": "DavidJohnson2019",
+    "source": "https://freesound.org/people/DavidJohnson2019/sounds/794212/",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "edits": "Distinct recording, louder master; never used for ambient calls."
+  },
+  {
+    "file": "audio/marine-male-1.mp3",
+    "usage": "Male marine capture 1",
+    "creator": "aldenroth2",
+    "source": "https://freesound.org/people/aldenroth2/sounds/272023/",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "edits": "Trimmed and loudness adjusted."
+  },
+  {
+    "file": "audio/marine-male-2.mp3",
+    "usage": "Male marine capture 2",
+    "creator": "JohnsonBrandEditing",
+    "source": "https://freesound.org/people/JohnsonBrandEditing/sounds/243376/",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "edits": "Trimmed and loudness adjusted."
+  },
+  {
+    "file": "audio/marine-female-1.mp3",
+    "usage": "Female marine capture 1",
+    "creator": "missozzy",
+    "source": "https://freesound.org/people/missozzy/sounds/169810/",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "edits": "Trimmed and loudness adjusted."
+  },
+  {
+    "file": "audio/marine-female-2.mp3",
+    "usage": "Female marine capture 2",
+    "creator": "missozzy",
+    "source": "https://freesound.org/people/missozzy/sounds/169811/",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "edits": "Trimmed and loudness adjusted."
+  },
+  {
+    "file": "audio/scientist-female.mp3",
+    "usage": "Scientist 0 / female artwork",
+    "creator": "DigestContent",
+    "source": "https://freesound.org/people/DigestContent/sounds/449702/",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "edits": "Separate human voice recording."
+  },
+  {
+    "file": "audio/scientist-male.mp3",
+    "usage": "Scientist 1 / male artwork",
+    "creator": "vmgraw",
+    "source": "https://freesound.org/people/vmgraw/sounds/257691/",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "edits": "Separate human voice recording."
+  }
+]
