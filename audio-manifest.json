@@ -172,7 +172,17 @@
     "source": "https://pixabay.com/sound-effects/horror-cinematic-horror-rising-string-ambience-443390/",
     "license": "Pixabay Content License",
     "license_url": "https://pixabay.com/service/license-summary/",
-    "edits": "Original 00:17 through end, original pitch/speed; volume 0.5 and six-second fade-in. No fade-out. Crescendo/flash at opening 33.3 seconds; natural tail overlaps APC arrival from 34.75 seconds.",
+    "edits": "Original 00:15 through end, original pitch/speed; volume 0.5 and six-second fade-in. No fade-out. Blue flash at opening 36.3 seconds (about one second after the former musical cue); natural tail overlaps APC arrival from 37.75 seconds.",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "key": "muthurLogin",
+    "embedded_key": "muthurLogin",
+    "usage": "First MU-TH-UR screen, starts on LOGIN press and stops on ACKNOWLEDGE",
+    "creator": "User-provided recording",
+    "source": "RPReplay_Final1790781942_audio(1).mp3, extracted from user-uploaded video",
+    "license": "User-provided; third-party usage rights not established",
+    "edits": "Original 16.74-second stereo MP3; playback at 0.72",
     "container": "index.html #ship-audio-data"
   }
 ]

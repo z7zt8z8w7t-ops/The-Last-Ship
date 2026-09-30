@@ -1,19 +1,3 @@
-# v37 validation
+# v40 verification
 
-- Full touch-enabled WebKit opening: music starts on Launch Mission from original 00:17, five seconds of black, A-centred title pullback with letter reveal, crescendo flash at opening 33.3s, black/APC over wind with the title music ending naturally during APC arrival, board fade and mission briefing.
-- Title starts at 2.5x zoom; camera, glow and audio freeze during backgrounding and resume. Glow follows A during pullback. Reduced motion omits camera motion/glow/flash while retaining sound timing.
-- Roster and rules tested at 1536x1067, 768x1024 and 390x844. Matching CRT buttons, player-name retention after rules, six-player limit and disabled add button verified.
-- Field manual contains 11 sections covering implemented terrain, all items and specimen outcomes, all eight events, alien/capture/escape, scanning/transfers, Corporation actions, tracker and launch conditions.
-- Rules content scrolls inside the window with acknowledgement visible. Board and action panel remain inside viewport. Outer page cannot scroll; touchmove outside permitted scroll areas is cancelled.
-- Legacy mission state removed on load. Mission state is neither loaded nor saved, no continuation control/handler remains, and reload returns to setup. Sound preference still persists.
-- Offline reload, native audio recovery, board-centred mission briefing, standard crew handover skipping repeated orders, classified orders and red Private actions and tracker range checks pass; ECG/text/scientist discovery remain silent.
-- All 27 artwork payloads retain clean bytes and decode fully; all 17 audio hashes and FFmpeg decodes pass.
-- Game and inline JavaScript syntax pass; no browser exceptions.
-
-Physical iPad gesture/listening validation has not been performed here.
-
-- Mission briefing centred within the board and limited to 680 px, tested in landscape and portrait. Updated organism wording verified. Private actions tested with glowing valid lettering and dim disabled controls.
-- Title uses centred separators and delayed outer strokes, completing around title time 27.5 seconds while the camera pulls back over 26 seconds.
-
-- All 11 permitted random nest positions tested: one nest, alien starting at that nest, no sites placed there, connected routes to lander/Dropship, capture return, nearby rescue and safe-nest immunity. Escape roll verified at the random nest.
-- LAUNCH MISSION label and revised Priority two verified. Launch still requires two delivered scientists and an available action; an egg aboard still gives the operative the win. Voting and a final departure round are not implemented.
+Title music uses the licensed source from original 00:15 to end, with six-second fade-in and no fade-out. The title starts after five seconds of black, and the flash starts at opening 36.3 seconds. APC starts at 37.75 seconds; music overlaps the beginning of APC. MU-TH-UR, offline media and gameplay assets are inherited from v39.

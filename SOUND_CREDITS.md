@@ -28,8 +28,12 @@ Scientist discovery no longer plays a scream; its unused voice recordings are re
 
 ## v33 title music
 
-**Cinematic horror — rising string ambience** — Tomas_Herudek, [Pixabay 443390](https://pixabay.com/sound-effects/horror-cinematic-horror-rising-string-ambience-443390/), Pixabay Content License. User-provided MP3. Original 00:17 through the end; volume reduced, 6-second fade-in, with no fade-out.
+**Cinematic horror — rising string ambience** — Tomas_Herudek, [Pixabay 443390](https://pixabay.com/sound-effects/horror-cinematic-horror-rising-string-ambience-443390/), Pixabay Content License. User-provided MP3. Original 00:15 through the end; volume reduced, 6-second fade-in, with no fade-out.
 
-The v37 title cue uses original 00:17 through end; fades in over six seconds and finishes naturally over APC arrival. Original pitch and speed retained.
+The v40 title cue uses original 00:15 through end; fades in over six seconds and finishes naturally over APC arrival. Original pitch and speed retained.
 
-Version 36: title starts at 2.5× and draws outward for most of its pullback; THE · LAST · SHIP uses centred dots. Title music starts at source 00:17 and ends naturally, overlapping APC arrival and wind (no fade-out). Standard crew orders are skipped after handover; classified orders remain. Private actions use dark red CRT controls. The mission briefing is centred within the board and says “Ensure no alien organism leaves the planet’s surface.”
+Version 36: title starts at 2.5× and draws outward for most of its pullback; THE · LAST · SHIP uses centred dots. Title music starts at source 00:15 and ends naturally, overlapping APC arrival and wind (no fade-out). Standard crew orders are skipped after handover; classified orders remain. Private actions use dark red CRT controls. The mission briefing is centred within the board and says “Ensure no alien organism leaves the planet’s surface.”
+
+## v40 MU-TH-UR login
+
+The user-provided 16.74-second MP3 extracted from `RPReplay_Final1790781942.mp4` starts on LOGIN and stops on ACKNOWLEDGE. It is embedded under `muthurLogin` and plays at 0.72. Rights for third-party use of the source recording have not been established.
