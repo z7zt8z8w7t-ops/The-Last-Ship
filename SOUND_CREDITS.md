@@ -17,3 +17,15 @@ The other sound sources and their licences are retained in audio-source-notes.js
 Source: https://pixabay.com/sound-effects/city-diesel-truck-jake-brake-and-air-brake-63219/
 Downloaded source: https://creazilla.com/media/audio/15481566/diesel-truck-jake-brake-and-air-brake
 Excerpt: 00:11 to the end (15.51 seconds of source). Original pitch, 30 ms entry fade, level reduced to 65%, embedded in index.html under `apc`. Wind remains a separate continuous player throughout the arrival.
+
+## v32 additions
+
+- **Horror sting** — SamsterBirdies, [Freesound 522567](https://freesound.org/people/SamsterBirdies/sounds/522567/), CC0 1.0. Used on new tracker contact.
+- **Orchestral Horror Swarm — Chaotic String Jumpscare** — **Coghezzi - Freesound.org**, uploaded by TommasoMotteran, [Freesound 854154](https://freesound.org/people/TommasoMotteran/sounds/854154/), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Volume reduced and short fades added; used on marine capture.
+
+Scientist discovery no longer plays a scream; its unused voice recordings are removed.
+
+
+## v33 title music
+
+**Cinematic horror — rising string ambience** — Tomas_Herudek, [Pixabay 443390](https://pixabay.com/sound-effects/horror-cinematic-horror-rising-string-ambience-443390/), Pixabay Content License. User-provided MP3. Original 00:20 through the end; volume reduced, 6-second fade-in and 3-second fade-out.

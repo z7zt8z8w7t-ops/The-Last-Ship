@@ -123,5 +123,38 @@
     "key": "apc",
     "source": "https://creazilla.com/media/audio/15481566/diesel-truck-jake-brake-and-air-brake",
     "note": "Same selected recording/title and creator nuncaconoci; mirror lists CC0. Source duration 26.511385 seconds; excerpt begins at 11 seconds."
+  },
+  {
+    "embedded_key": "trackerSting",
+    "key": "trackerSting",
+    "usage": "New motion tracker contact",
+    "creator": "SamsterBirdies",
+    "source": "https://freesound.org/people/SamsterBirdies/sounds/522567/",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "edits": "Public high-quality MP3 preview, full recording; volume 0.28 and short edge fades.",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "embedded_key": "captureSwarm",
+    "key": "captureSwarm",
+    "usage": "Marine capture orchestral swarm",
+    "creator": "Coghezzi - Freesound.org (TommasoMotteran)",
+    "source": "https://freesound.org/people/TommasoMotteran/sounds/854154/",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "edits": "Public high-quality MP3 preview, full recording; volume 0.42 and short edge fades.",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "key": "titleDrone",
+    "embedded_key": "titleDrone",
+    "usage": "Title reveal crescendo",
+    "creator": "Tomas_Herudek",
+    "source": "https://pixabay.com/sound-effects/horror-cinematic-horror-rising-string-ambience-443390/",
+    "license": "Pixabay Content License",
+    "license_url": "https://pixabay.com/service/license-summary/",
+    "edits": "Original 00:20 through end; 6-second fade-in, final 3-second fade-out, volume 0.5. Starts on Start Game press, before 0.9-second roster fade and three-second black hold. Original speed and pitch retained.",
+    "container": "index.html #ship-audio-data"
   }
 ]

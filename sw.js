@@ -1,4 +1,4 @@
-const CACHE='the-last-ship-v31';
+const CACHE='the-last-ship-v33';
 const ROOT=self.registration.scope;
 const ASSETS=['./','./index.html','./style.css?v=31','./game.js?v=31','./artwork.js','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png','./alien-planet.webp','./sound-check.html'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));

@@ -266,3 +266,5 @@ body.cinema-paused .title-screen,body.cinema-paused .title-screen *,body.cinema-
 .classified-order .order-directive{background:#240a0ed9;border-left-color:#d66c71}
 .classified-order .typing-cursor{color:#ef9396;text-shadow:0 0 8px #ff696988}
 body:has(.board-arrival-mask) .handoff-prompt{visibility:hidden}
+
+body[data-screen="openingBlack"]{background:#000}body[data-screen="openingBlack"] .build-marker{visibility:hidden}

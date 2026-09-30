@@ -120,26 +120,6 @@
     "container": "index.html #ship-audio-data"
   },
   {
-    "usage": "Scientist 0 / female artwork",
-    "creator": "DigestContent",
-    "source": "https://freesound.org/people/DigestContent/sounds/449702/",
-    "license": "CC0 1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "edits": "Separate human voice recording. Playback level baked into MP3 for consistent iPad native-player loudness. v28: damped outdoor reverb, 1-second tail.",
-    "embedded_key": "scientistFemale",
-    "container": "index.html #ship-audio-data"
-  },
-  {
-    "usage": "Scientist 1 / male artwork",
-    "creator": "vmgraw",
-    "source": "https://freesound.org/people/vmgraw/sounds/257691/",
-    "license": "CC0 1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "edits": "Separate human voice recording. Playback level baked into MP3 for consistent iPad native-player loudness. v28: damped outdoor reverb, 1-second tail.",
-    "embedded_key": "scientistMale",
-    "container": "index.html #ship-audio-data"
-  },
-  {
     "usage": "Motion tracker within two hexes of current player; faster within one hex; independent of ECG",
     "embedded_key": "tracker",
     "key": "tracker",
@@ -160,6 +140,39 @@
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
     "edits": "From 11 seconds to the end, original pitch, 30 ms entry fade, volume 0.65. Layered over continuous wind.",
     "embedded_key": "apc",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "embedded_key": "trackerSting",
+    "key": "trackerSting",
+    "usage": "New motion tracker contact",
+    "creator": "SamsterBirdies",
+    "source": "https://freesound.org/people/SamsterBirdies/sounds/522567/",
+    "license": "CC0 1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "edits": "Public high-quality MP3 preview, full recording; volume 0.28 and short edge fades.",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "embedded_key": "captureSwarm",
+    "key": "captureSwarm",
+    "usage": "Marine capture orchestral swarm",
+    "creator": "Coghezzi - Freesound.org (TommasoMotteran)",
+    "source": "https://freesound.org/people/TommasoMotteran/sounds/854154/",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "edits": "Public high-quality MP3 preview, full recording; volume 0.42 and short edge fades.",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "key": "titleDrone",
+    "embedded_key": "titleDrone",
+    "usage": "Title reveal crescendo",
+    "creator": "Tomas_Herudek",
+    "source": "https://pixabay.com/sound-effects/horror-cinematic-horror-rising-string-ambience-443390/",
+    "license": "Pixabay Content License",
+    "license_url": "https://pixabay.com/service/license-summary/",
+    "edits": "Original 00:20 through end; 6-second fade-in, final 3-second fade-out, volume 0.5. Starts on Start Game press, before 0.9-second roster fade and three-second black hold. Original speed and pitch retained.",
     "container": "index.html #ship-audio-data"
   }
 ]
