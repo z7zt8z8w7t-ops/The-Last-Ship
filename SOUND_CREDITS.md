@@ -1,6 +1,6 @@
-# The Last Ship v25 — sound assets
+# The Last Ship v26 — sound assets
 
-All included audio is supplied as local MP3 assets under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The source links identify the creators. Downloaded HQ preview encodings were edited into game-ready samples. No film soundtrack or Alien/Aliens movie audio is used. No oscillators or random-noise generators remain in the game.
+All included audio is embedded as MP3 data inside `index.html` under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The source links identify the creators. Downloaded HQ preview encodings were edited into game-ready samples. No film soundtrack or Alien/Aliens movie audio is used. No oscillators or random-noise generators remain in the game.
 
 | File | Use | Original source / creator | Preparation |
 | --- | --- | --- | --- |

@@ -1,5 +1,6 @@
 (()=>{'use strict';
-window.ShipBuild='v25';document.querySelector('.build-marker').textContent='v25';
+window.ShipBuild='v26';document.querySelector('.build-marker').textContent='v26';
+if(new URLSearchParams(location.search).has('soundcheck')){ShipAudio.showSoundCheck();return}
 const KEY='last-shuttle-playtest-v6',R=3,HOME='0,0',DROPSHIP='3,-2',NEST='-3,3';
 const DIRS=[[1,0],[1,-1],[0,-1],[-1,0],[-1,1],[0,1]];
 const CELLS=[];for(let q=-R;q<=R;q++)for(let r=-R;r<=R;r++)if(Math.abs(q+r)<=R)CELLS.push({q,r,k:`${q},${r}`});
@@ -198,7 +199,7 @@ function render(){scheduleHeartbeat();if(ui.note&&!ui.mode&&ui.note!==ui.timedNo
 function voiceSelect(i,voice='male'){return `<select class="voice-select" aria-label="Player ${i+1} capture voice"><option value="male" ${voice==='male'?'selected':''}>Male voice</option><option value="female" ${voice==='female'?'selected':''}>Female voice</option></select>`}
 function bind(){
  let app=document.getElementById('app');
- if(app.dataset.bound==='v25')return;app.dataset.bound='v25';
+ if(app.dataset.bound==='v26')return;app.dataset.bound='v26';
  const fireAction=(el,e)=>{
   if(!el||el.disabled)return;
   if(e?.cancelable)e.preventDefault();e?.stopPropagation?.();

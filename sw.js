@@ -1,6 +1,6 @@
-const CACHE='the-last-ship-v25';
+const CACHE='the-last-ship-v26';
 const ROOT=self.registration.scope;
-const ASSETS=['./','./index.html','./style.css?v=25','./game.js?v=25','./audio.js?v=25','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png','./alien-planet.webp','./sound-check.html',...['wind-low','crt-startup','crt-transition','popup-snap','ecg-beep','alien-call-1','alien-call-2','alien-call-3','start-screech','marine-male-1','marine-male-2','marine-female-1','marine-female-2','scientist-male','scientist-female'].map(x=>`./audio/${x}.mp3`)];
+const ASSETS=['./','./index.html','./style.css?v=26','./game.js?v=26','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png','./alien-planet.webp','./sound-check.html'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('the-last-ship-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{

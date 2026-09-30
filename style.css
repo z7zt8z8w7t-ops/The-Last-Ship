@@ -184,3 +184,5 @@ body{background:#07140e;position:relative;isolation:isolate}body::before{content
 @media(prefers-reduced-motion:reduce){.boot-typed{clip-path:none;animation:none}.terminal-cursor{opacity:1;animation:none}.muthur-boot::before,.title-screen.title-fade-in,.title-screen::after,.title-screen::before,.title-cloud,.title-content p,.title-content>span{animation:none;opacity:1;filter:none}.title-seg{stroke-dashoffset:0;opacity:1;animation:none}}
 
 .voice-select{-webkit-appearance:none;appearance:none;background:#153928!important;color:#d8fbd3!important;cursor:pointer}
+
+.embedded-sound-check{max-width:900px;margin:auto;padding:24px;color:#d8fbd3}.embedded-sound-check article{padding:18px;margin:14px 0;border:1px solid #4c765b;border-radius:10px;background:#10291e}.embedded-sound-check audio{width:100%}.embedded-sound-check a{color:#afdfbd}
