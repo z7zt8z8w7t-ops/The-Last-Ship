@@ -17,3 +17,6 @@ Wind trim and circular crossfade validated in PCM; old embedded recording remove
 
 ## v46
 JavaScript syntax checked. Mock native audio checks confirm roster starts, stays continuous across renders, respects sound toggle and stops on exit. Physical iPad playback not verified.
+
+### v47 audio changes
+Verify POWER ON starts seamless theme loop; roster has no other loop; LAUNCH MISSION stops theme; gameplay event/specimen starts a one-shot without overlap or restart; button-press follow-on event is silent; louder wind remains present and other music is unchanged.

@@ -167,19 +167,12 @@
     "container": "index.html #ship-audio-data"
   },
   {
-    "embedded_key": "eventSpecimen",
-    "key": "eventSpecimen",
-    "usage": "Event popup and recovered research specimen or alien egg",
-    "source": "User supplied RPReplay_Final1790791206.mp4",
-    "edits": "Leading silence removed (4.16s); trailing silence trimmed; final three seconds fade out; 24.91s content.",
-    "container": "index.html #ship-audio-data"
-  },
-  {
-    "embedded_key": "rosterAmbience",
-    "key": "rosterAmbience",
-    "usage": "Looping crew roster ambience",
-    "source": "User supplied RPReplay_Final1790791206.mp4",
-    "edits": "Trimmed silence; separate 21.91-second loop with three-second circular crossfade; no end fade; event version unchanged.",
+    "usage": "Loop from POWER ON to LAUNCH MISSION; one-shot for gameplay events and specimens",
+    "creator": "User supplied",
+    "source": "Theme for the last ship.mp3",
+    "license": "User supplied",
+    "edits": "Used as supplied, without start/end fading. Independent intro loop and event one-shot players.",
+    "embedded_key": "shipTheme",
     "container": "index.html #ship-audio-data"
   }
 ]

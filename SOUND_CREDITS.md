@@ -53,3 +53,6 @@ User supplied RPReplay_Final1790791206.mp4 audio, leading and trailing silence t
 
 ### v46 crew roster loop
 Separate looping edit of user supplied RPReplay_Final1790791206.mp4: silence trimmed and three-second circular crossfade. Plays on crew roster, stops on launch or leaving roster, follows sound toggle. Event/specimen effect keeps its ending fade.
+
+### v47 audio changes
+User-supplied Theme for the last ship.mp3 replaces both event/specimen audio and crew roster ambience. It begins looping at POWER ON, continues through roster, and stops on LAUNCH MISSION. During gameplay it plays once per independent event/specimen, never restarts while playing, and a choice-dependent follow-on event does not replay it. The previous event/specimen effect and roster ambience are removed. Existing user-supplied seamless wind loop amplified by 13 dB in the audio asset because the original was quiet even at maximum HTML media volume.
