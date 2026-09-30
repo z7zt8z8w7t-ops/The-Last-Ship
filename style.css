@@ -120,3 +120,30 @@ body{background:#07140e;position:relative;isolation:isolate}body::before{content
 
 .roster{display:flex;flex-direction:column}.roster-footer{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:18px}.roster-footer .rules{margin:0;flex:0 1 auto}.roster-footer .rules summary{white-space:nowrap}.roster-actions{display:flex;justify-content:flex-end;align-items:center;gap:8px;flex-wrap:wrap}.roster-actions button{white-space:nowrap}@media(max-width:600px){.roster-footer{align-items:stretch;flex-direction:column}.roster-actions{justify-content:flex-end}}
 .roster-footer .rules{margin:0!important;padding:0!important;background:transparent!important;border:0!important}.roster-footer .rules summary{padding:0;color:#e7cf79}.roster-actions button{font-size:.85rem;padding:9px 11px;min-height:42px}
+
+/* v19 atmosphere, board-centred feedback and contextual controls */
+.board{position:relative}
+#app{transition:opacity .65s ease}
+#app.long-fade{transition-duration:2.15s}
+.title-screen.title-fade-in{animation:titleScreenFade 4s ease-out both}
+@keyframes titleScreenFade{0%{opacity:0;background-color:#000}100%{opacity:1}}
+.roster-flicker{animation:rosterPowerOn .72s steps(1,end) both}
+@keyframes rosterPowerOn{0%{opacity:0;filter:brightness(0)}9%{opacity:.82;filter:brightness(1.8)}15%{opacity:.12;filter:brightness(.4)}24%{opacity:1;filter:brightness(1.35)}31%{opacity:.34}42%{opacity:1;filter:brightness(1.08)}100%{opacity:1;filter:none}}
+.event-overlay,.board-overlay{position:absolute;inset:0;z-index:90;display:grid;place-items:center;padding:20px;background:#010b07ba}
+.board-overlay{z-index:89}
+.board-overlay .card{width:min(540px,88%)}
+.event-window{max-height:88%;overflow:auto}
+.board-message{left:50%;top:50%;bottom:auto;transform:translate(-50%,-50%);max-width:76%;box-shadow:0 0 28px #000d,0 0 12px #75d79c33}
+/* Available actions glow; unavailable choices remain deliberately flat. */
+.player-panel .actions button:not(:disabled),
+.inventory-panel button:not(:disabled),
+.target-panel button:not(:disabled),
+.panel .stack button:not(:disabled){border-color:#8eeab0;box-shadow:0 0 0 1px #72d99b55,0 0 10px #66e89b66,inset 0 0 8px #66e89b1f;transition:box-shadow .2s,border-color .2s,filter .2s}
+.player-panel .actions button:not(:disabled):active,
+.inventory-panel button:not(:disabled):active,
+.target-panel button:not(:disabled):active{box-shadow:0 0 0 1px #c7ffd6,0 0 17px #7affacaa,inset 0 0 10px #8affb533}
+.player-panel .actions button:disabled,.inventory-panel button:disabled,.target-panel button:disabled{box-shadow:none;filter:saturate(.55) brightness(.72)}
+/* Flare remains a static map marker: no pulsing/smoke animation. */
+.flare-aura,.flare-core,.flare-smoke{animation:none!important}
+.flare-smoke{display:none!important}
+@media(prefers-reduced-motion:reduce){.title-screen.title-fade-in,.roster-flicker{animation:none}}
