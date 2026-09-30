@@ -118,5 +118,10 @@
     "license": "Uploader labels CC0 1.0; underlying film provenance unverified",
     "edits": "Quiet playback level baked into MP3 (volume 0.30), short attack/fade.",
     "container": "index.html #ship-audio-data"
+  },
+  {
+    "key": "apc",
+    "source": "https://creazilla.com/media/audio/15481566/diesel-truck-jake-brake-and-air-brake",
+    "note": "Same selected recording/title and creator nuncaconoci; mirror lists CC0. Source duration 26.511385 seconds; excerpt begins at 11 seconds."
   }
 ]

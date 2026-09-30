@@ -150,5 +150,16 @@
     "license": "Uploader labels CC0 1.0; underlying film provenance unverified",
     "edits": "Quiet playback level baked into MP3 (volume 0.30), short attack/fade.",
     "container": "index.html #ship-audio-data"
+  },
+  {
+    "usage": "APC driving and stopping",
+    "creator": "nuncaconoci",
+    "source": "https://pixabay.com/sound-effects/city-diesel-truck-jake-brake-and-air-brake-63219/",
+    "download_source": "https://creazilla.com/media/audio/15481566/diesel-truck-jake-brake-and-air-brake",
+    "license": "CC0 1.0 (credited mirror)",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "edits": "From 11 seconds to the end, original pitch, 30 ms entry fade, volume 0.65. Layered over continuous wind.",
+    "embedded_key": "apc",
+    "container": "index.html #ship-audio-data"
   }
 ]
