@@ -1,4 +1,4 @@
-The Last Ship — v23
+The Last Ship — v24
 
 # The Last Ship — iPad playtest PWA (v18)
 

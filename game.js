@@ -23,12 +23,16 @@ if(s){let sid=0;for(let t of Object.values(s.tiles)){if(t.terrain==='shuttle')t.
 let ui={boot:'boot',selected:HOME,mode:'',note:'',private:false,privateKind:'',privateResult:'',scan:false,transfer:false,itemIndex:null,targetHex:null,escapeRoll:null,flipping:'',revealing:{}};
 let soundOn=localStorage.getItem('the-last-ship-sound')!=='off';
 let audioCtx=null,windSource=null,windGain=null,windFilter=null,windLfo=null,windLfoGain=null,heartTimer=null,alienTimer=null,lastBpm=0;
+let windMedia=null,windFadeFrame=0;
+function ensureWindMedia(){try{if(!windMedia){windMedia=new Audio('./wind-ambient.mp3');windMedia.loop=true;windMedia.preload='auto';windMedia.volume=0;windMedia.setAttribute('playsinline','');windMedia.setAttribute('webkit-playsinline','')}return windMedia}catch(e){return null}}
+function fadeWindMedia(target=.16,seconds=3.4){if(!soundOn)return;let a=ensureWindMedia();if(!a)return;try{let play=a.play();if(play&&play.catch)play.catch(()=>{})}catch(e){};cancelAnimationFrame(windFadeFrame);let start=performance.now(),from=Number.isFinite(a.volume)?a.volume:0,dur=Math.max(120,seconds*1000);let tick=now=>{let f=Math.min(1,(now-start)/dur);try{a.volume=Math.max(0,Math.min(1,from+(target-from)*f))}catch(e){}if(f<1)windFadeFrame=requestAnimationFrame(tick)};windFadeFrame=requestAnimationFrame(tick)}
+function safeAudioUnlock(startWindNow=false){if(!soundOn)return;try{let a=ensureWindMedia();if(startWindNow&&a){try{let pr=a.play();if(pr&&pr.catch)pr.catch(()=>{})}catch(e){}fadeWindMedia(.16,3.8)}}catch(e){}try{let ctx=audioContext();if(ctx&&ctx.state==='suspended'){let r=ctx.resume();if(r&&r.catch)r.catch(()=>{})}}catch(e){}try{scheduleHeartbeat();scheduleAlienAmbience()}catch(e){}}
 function audioContext(){if(!audioCtx){let C=window.AudioContext||window.webkitAudioContext;if(!C)return null;audioCtx=new C()}if(audioCtx.state==='suspended')audioCtx.resume().catch(()=>{});return audioCtx}
 function noiseBuffer(ctx,seconds=6){let b=ctx.createBuffer(1,Math.floor(ctx.sampleRate*seconds),ctx.sampleRate),d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*(.7+.3*Math.sin(i*.00013));return b}
 function ensureWind(){if(!soundOn||windSource)return;let ctx=audioContext();if(!ctx)return;windSource=ctx.createBufferSource();windSource.buffer=noiseBuffer(ctx,8);windSource.loop=true;windFilter=ctx.createBiquadFilter();windFilter.type='lowpass';windFilter.frequency.value=360;windFilter.Q.value=.25;let hp=ctx.createBiquadFilter();hp.type='highpass';hp.frequency.value=32;windGain=ctx.createGain();windGain.gain.value=0;windSource.connect(windFilter).connect(hp).connect(windGain).connect(ctx.destination);windLfo=ctx.createOscillator();windLfo.type='sine';windLfo.frequency.value=.075;windLfoGain=ctx.createGain();windLfoGain.gain.value=.018;windLfo.connect(windLfoGain).connect(windGain.gain);windSource.start();windLfo.start()}
-function fadeWind(target=.10,seconds=3.6){if(!soundOn)return;ensureWind();let ctx=audioContext();if(!ctx||!windGain)return;let t=ctx.currentTime;windGain.gain.cancelScheduledValues(t);windGain.gain.setValueAtTime(Math.max(0,windGain.gain.value),t);windGain.gain.linearRampToValueAtTime(target,t+seconds)}
+function fadeWind(target=.10,seconds=3.6){if(!soundOn)return;fadeWindMedia(Math.min(.22,Math.max(.03,target*1.65)),seconds);try{ensureWind();let ctx=audioContext();if(!ctx||!windGain)return;let t=ctx.currentTime;windGain.gain.cancelScheduledValues(t);windGain.gain.setValueAtTime(Math.max(0,windGain.gain.value),t);windGain.gain.linearRampToValueAtTime(Math.min(.035,target*.32),t+seconds)}catch(e){}}
 function startWind(){fadeWind(.095,2.8);scheduleAlienAmbience()}
-function stopSoundscape(){if(windGain&&audioCtx){let t=audioCtx.currentTime;windGain.gain.cancelScheduledValues(t);windGain.gain.setTargetAtTime(0,t,.08)}clearTimeout(heartTimer);heartTimer=null;clearTimeout(alienTimer);alienTimer=null}
+function stopSoundscape(){try{if(windMedia){windMedia.pause();windMedia.currentTime=0;windMedia.volume=0}}catch(e){}if(windGain&&audioCtx){try{let t=audioCtx.currentTime;windGain.gain.cancelScheduledValues(t);windGain.gain.setTargetAtTime(0,t,.08)}catch(e){}}clearTimeout(heartTimer);heartTimer=null;clearTimeout(alienTimer);alienTimer=null}
 function tone(freq,dur=.05,vol=.05,type='sine',when=0,endFreq=null){if(!soundOn)return;let ctx=audioContext();if(!ctx)return;let o=ctx.createOscillator(),g=ctx.createGain(),t=ctx.currentTime+when;o.type=type;o.frequency.setValueAtTime(freq,t);if(endFreq)o.frequency.exponentialRampToValueAtTime(Math.max(20,endFreq),t+dur);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(Math.max(.0001,vol),t+.008);g.gain.exponentialRampToValueAtTime(.0001,t+dur);o.connect(g).connect(ctx.destination);o.start(t);o.stop(t+dur+.02)}
 function noiseBurst(dur=.12,vol=.05,low=120,high=2400,when=0){if(!soundOn)return;let ctx=audioContext();if(!ctx)return;let src=ctx.createBufferSource(),bp=ctx.createBiquadFilter(),g=ctx.createGain(),t=ctx.currentTime+when;src.buffer=noiseBuffer(ctx,Math.max(.2,dur+.05));bp.type='bandpass';bp.frequency.value=Math.sqrt(low*high);bp.Q.value=.6;g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(vol,t+.012);g.gain.exponentialRampToValueAtTime(.0001,t+dur);src.connect(bp).connect(g).connect(ctx.destination);src.start(t);src.stop(t+dur+.03)}
 function playCrt(){noiseBurst(.09,.065,300,5000,0);tone(105,.05,.035,'square',.015,70);noiseBurst(.055,.04,700,6000,.12);tone(880,.035,.025,'square',.145,620)}
@@ -174,7 +178,20 @@ function handoffBoard(){let p=me();return `<main class="layout"><section class="
 function heartMonitor(){let p=me(),d=dist(p.pos,s.alien),level=p.captive||d<=1?'critical':d===2?'rapid':d===3?'elevated':'steady',info={steady:['STEADY',62],elevated:['ELEVATED',78],rapid:['RAPID',104],critical:['CRITICAL',132]}[level];
  let pulse='M0 40 L66 40 72 37 78 43 86 40 100 40 108 51 116 13 124 58 132 40 146 40 152 37 159 43 166 40 240 40';
  return `<div class="heart-monitor ${level}" style="--beat-time:${60/info[1]}s" role="img" aria-label="${esc(p.name)} heart rate ${info[1]} beats per minute, ${info[0].toLowerCase()} alien proximity"><div class="monitor-title"><span>BIOSUIT · HEART RATE</span><strong>${info[1]} <small>BPM</small></strong></div><div class="monitor-screen"><svg viewBox="0 0 240 80" preserveAspectRatio="none" aria-hidden="true"><path d="${pulse}"><animate attributeName="d" dur="${60/info[1]}s" repeatCount="indefinite" values="M0 40 L66 40 72 40 78 40 86 40 100 40 108 40 116 40 124 40 132 40 146 40 152 40 159 40 166 40 240 40;${pulse};${pulse};M0 40 L66 40 72 40 78 40 86 40 100 40 108 40 116 40 124 40 132 40 146 40 152 40 159 40 166 40 240 40" keyTimes="0;.15;.4;1"/></path></svg><span class="scan-line"></span></div><div class="monitor-foot"><span class="status-light"></span>${info[0]}<span class="monitor-foot-right">LIFE SIGNS</span></div></div>`}
-function render(){if(ui.note&&!ui.mode&&ui.note!==ui.timedNote){ui.timedNote=ui.note;let message=ui.note,game=s;setTimeout(()=>{if(s===game&&ui.note===message&&!ui.mode){ui.note='';render()}},5000)}let root=document.getElementById('app');if(ui.boot==='boot'){root.innerHTML=`<main class="muthur-boot" data-act="beginIntro" role="button" tabindex="0" aria-label="MU-TH-UR: Press to begin"><div class="muthur-terminal crt-boot"><div class="muthur-line"><span class="boot-typed">MU-TH-UR: PRESS TO BEGIN</span><span class="terminal-cursor" aria-hidden="true">█</span></div></div></main>`;bind();return}if(ui.boot==='title'){root.innerHTML=`<main class="title-screen title-fade-in" data-act="enterRoster" role="button" tabindex="0" aria-label="Tap anywhere to continue"><div class="title-cloud"></div><div class="title-content"><p>UKSS APATE · COLONIAL MARINES</p><svg class="alien-era-title" viewBox="0 0 1200 180" role="img" aria-label="THE LAST SHIP"><text class="title-stroke" x="600" y="126" text-anchor="middle">THE LAST SHIP</text><text class="title-fill" x="600" y="126" text-anchor="middle">THE LAST SHIP</text></svg><span>Tap anywhere to continue</span></div></main>`;bind();if(soundOn)fadeWind(.095,4);return}if(ui.boot==='roster'||!s){root.innerHTML=`<main class="screen terminal-screen roster-flicker"><div class="card crt roster"><p class="order-classification">PERSONNEL TERMINAL · CREW REGISTRATION</p><h1>Colonial Marines Crew Roster</h1><h2>Dropship: UKSS APATE</h2><button class="sound-switch setup-sound" data-act="toggleSound">${soundOn?'WIND ON':'WIND OFF'}</button><div id="names" class="stack">${[1,2,3,4].map(i=>`<div class="field"><span class="setup-rank">${rank(i-1)}</span><input aria-label="${rank(i-1)} player ${i} name" value="${['Xenia','Zander','Emma','Jim'][i-1]}"></div>`).join('')}</div><div class="roster-footer"><details class="rules"><summary>How to play</summary><p>Each turn has two moves and one action. Tap a neighbouring hex to move. Entering a Gravity Hole transports you to its matching pair. An event tile ends movement on first entry.</p><p>The alien moves two hexes at round end. On contact it drags a player to the nest. Roll an even number on the alien die to escape.</p></details><div class="roster-actions"><button data-act="add">Add player</button>${s?'<button data-act="continueGame">Continue saved game</button>':''}<button class="primary" data-act="start">Start game</button></div></div></div></main>`;bind();return}
+function render(){if(ui.note&&!ui.mode&&ui.note!==ui.timedNote){ui.timedNote=ui.note;let message=ui.note,game=s;setTimeout(()=>{if(s===game&&ui.note===message&&!ui.mode){ui.note='';render()}},5000)}let root=document.getElementById('app');if(ui.boot==='boot'){root.innerHTML=`<main class="muthur-boot" data-act="beginIntro" role="button" tabindex="0" aria-label="MU-TH-UR: Press to begin"><div class="muthur-terminal crt-boot"><div class="muthur-line"><span class="boot-typed">MU-TH-UR: PRESS TO BEGIN</span><span class="terminal-cursor" aria-hidden="true">█</span></div></div></main>`;bind();return}if(ui.boot==='title'){root.innerHTML=`<main class="title-screen title-fade-in" data-act="enterRoster" role="button" tabindex="0" aria-label="Tap anywhere to continue"><div class="title-cloud"></div><div class="title-content"><p>UKSS APATE · COLONIAL MARINES</p><svg class="alien-era-title" viewBox="0 0 1260 190" role="img" aria-label="THE LAST SHIP">
+<g class="title-geometry">
+<path class="title-seg" pathLength="1" style="--d:0" d="M55 35H145"/><path class="title-seg" pathLength="1" style="--d:.45" d="M100 35V155"/>
+<path class="title-seg" pathLength="1" style="--d:.9" d="M175 35V155"/><path class="title-seg" pathLength="1" style="--d:1.35" d="M255 35V155"/><path class="title-seg" pathLength="1" style="--d:1.8" d="M175 95H255"/>
+<path class="title-seg" pathLength="1" style="--d:2.25" d="M290 35V155"/><path class="title-seg" pathLength="1" style="--d:2.7" d="M290 35H375"/><path class="title-seg" pathLength="1" style="--d:3.15" d="M290 95H362"/><path class="title-seg" pathLength="1" style="--d:3.6" d="M290 155H375"/>
+<path class="title-seg" pathLength="1" style="--d:4.05" d="M425 35V155"/><path class="title-seg" pathLength="1" style="--d:4.5" d="M425 155H500"/>
+<path class="title-seg" pathLength="1" style="--d:4.95" d="M525 155L570 35L615 155"/><path class="title-seg" pathLength="1" style="--d:5.4" d="M544 107H596"/>
+<path class="title-seg" pathLength="1" style="--d:5.85" d="M720 48C700 28 640 28 640 65C640 92 714 88 714 126C714 164 650 168 630 143"/>
+<path class="title-seg" pathLength="1" style="--d:6.3" d="M742 35H832"/><path class="title-seg" pathLength="1" style="--d:6.75" d="M787 35V155"/>
+<path class="title-seg" pathLength="1" style="--d:7.2" d="M940 48C920 28 860 28 860 65C860 92 934 88 934 126C934 164 870 168 850 143"/>
+<path class="title-seg" pathLength="1" style="--d:7.65" d="M970 35V155"/><path class="title-seg" pathLength="1" style="--d:8.1" d="M1050 35V155"/><path class="title-seg" pathLength="1" style="--d:8.55" d="M970 95H1050"/>
+<path class="title-seg" pathLength="1" style="--d:9" d="M1090 35V155"/>
+<path class="title-seg" pathLength="1" style="--d:9.45" d="M1135 155V35"/><path class="title-seg" pathLength="1" style="--d:9.9" d="M1135 35H1180C1218 35 1222 94 1180 95H1135"/>
+</g></svg><span>Tap anywhere to continue</span></div></main>`;bind();if(soundOn)fadeWind(.095,4);return}if(ui.boot==='roster'||!s){root.innerHTML=`<main class="screen terminal-screen roster-flicker"><div class="card crt roster"><p class="order-classification">PERSONNEL TERMINAL · CREW REGISTRATION</p><h1>Colonial Marines Crew Roster</h1><h2>Dropship: UKSS APATE</h2><button class="sound-switch setup-sound" data-act="toggleSound">${soundOn?'WIND ON':'WIND OFF'}</button><div id="names" class="stack">${[1,2,3,4].map(i=>`<div class="field"><span class="setup-rank">${rank(i-1)}</span><input aria-label="${rank(i-1)} player ${i} name" value="${['Xenia','Zander','Emma','Jim'][i-1]}"></div>`).join('')}</div><div class="roster-footer"><details class="rules"><summary>How to play</summary><p>Each turn has two moves and one action. Tap a neighbouring hex to move. Entering a Gravity Hole transports you to its matching pair. An event tile ends movement on first entry.</p><p>The alien moves two hexes at round end. On contact it drags a player to the nest. Roll an even number on the alien die to escape.</p></details><div class="roster-actions"><button data-act="add">Add player</button>${s?'<button data-act="continueGame">Continue saved game</button>':''}<button class="primary" data-act="start">Start game</button></div></div></div></main>`;bind();return}
  if(s.phase==='briefing'){root.innerHTML=`<main class="screen terminal-screen"><div class="card crt shared-order"><p class="order-classification">UKSS APATE · MISSION PRIORITY: SCIENTIST EXTRACTION</p><h1>Colonial Marines Order 1592-B</h1><div class="order-directive"><p>Locate both scientists and escort them safely aboard the Dropship.</p><p>Under no circumstances is an Alien Egg to leave the planet.</p><p>The Dropship departs in 9 hours. Protect your team and complete the extraction before launch.</p></div><button class="primary" data-act="ackMission">Acknowledge</button></div></main>`;bind();return}
  if(s.phase==='handoff'){root.innerHTML=handoffBoard();drawTerrain();bind();return}
  if(s.phase==='over'){root.innerHTML=`<main class="screen"><div class="card"><h1>${s.winner==='crew'?'CREW ESCAPED':'SABOTEUR WINS'}</h1><p class="score">${esc(s.log[0])}</p><p>Saboteur: <strong>${esc(s.players.find(p=>p.role==='saboteur').name)}</strong>. Scientists delivered: ${s.delivered}/2. Egg ${s.eggDestroyed?'destroyed':'not destroyed'}.</p><button class="primary" data-act="reset">Play again</button><h3>Final events</h3><div class="log">${s.log.slice(0,12).map(x=>`<div>${esc(x)}</div>`).join('')}</div></div></main>`;bind();return}
@@ -184,55 +201,29 @@ function render(){if(ui.note&&!ui.mode&&ui.note!==ui.timedNote){ui.timedNote=ui.
  drawTerrain();bind();scheduleHeartbeat()}
 function bind(){
  let app=document.getElementById('app');
- const unlockAudio=()=>{
-  if(!soundOn)return;
-  let ctx=audioContext();
-  if(ctx&&ctx.state==='suspended')ctx.resume().catch(()=>{});
-  ensureWind();
-  if(windGain&&ctx){let t=ctx.currentTime;windGain.gain.cancelScheduledValues(t);windGain.gain.setValueAtTime(Math.max(.0001,windGain.gain.value),t);windGain.gain.linearRampToValueAtTime(.095,t+2.8)}
-  scheduleHeartbeat();scheduleAlienAmbience();
- };
  const fireAction=(el,e)=>{
   if(!el||el.disabled)return;
-  let now=performance.now(),last=+(el.dataset.lastFire||0);
-  if(now-last<520)return;
-  el.dataset.lastFire=String(now);
-  if(e?.cancelable)e.preventDefault();
-  e?.stopPropagation?.();
-  unlockAudio();
-  act(el.dataset.act);
+  let now=performance.now(),last=+(el.dataset.lastFire||0);if(now-last<420)return;el.dataset.lastFire=String(now);
+  if(e?.cancelable)e.preventDefault();e?.stopPropagation?.();
+  // State/UI action first. Audio is strictly best-effort and can never block it.
+  try{act(el.dataset.act)}catch(err){console.error('action failed',el.dataset.act,err)}
  };
- // iPad/PWA path: touchstart is the real user gesture. Fire immediately on it.
- app.ontouchstart=e=>{
-  let el=e.target.closest?.('[data-act]');
-  if(el){fireAction(el,e);return}
-  let hex=e.target.closest?.('[data-hex]');
-  if(hex){handleHex(hex,e)}
- };
- // Pointer and click remain fallbacks for desktop, keyboard/mouse, and newer browsers.
- app.onpointerup=e=>{
-  if(e.pointerType==='touch')return;
-  let el=e.target.closest?.('[data-act]');if(el){fireAction(el,e);return}
-  let hex=e.target.closest?.('[data-hex]');if(hex)handleHex(hex,e)
- };
- app.onclick=e=>{
-  let el=e.target.closest?.('[data-act]');if(el){fireAction(el,e);return}
-  let hex=e.target.closest?.('[data-hex]');if(hex)handleHex(hex,e)
- };
- app.onkeydown=e=>{
-  if(e.key!=='Enter'&&e.key!==' ')return;
-  let el=e.target.closest?.('[data-act]');
-  if(el&&e.target.tagName!=='INPUT')fireAction(el,e)
- };
+ const route=e=>{let el=e.target?.closest?.('[data-act]');if(el){fireAction(el,e);return true}let hex=e.target?.closest?.('[data-hex]');if(hex){handleHex(hex,e);return true}return false};
+ // Native iPad gesture path. Capture phase prevents overlays/children swallowing it.
+ app.addEventListener('touchstart',e=>{route(e)},{capture:true,passive:false,once:false});
+ app.addEventListener('pointerup',e=>{if(e.pointerType!=='touch')route(e)},{capture:true});
+ app.addEventListener('click',e=>{route(e)},{capture:true});
+ app.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target?.closest?.('[data-act]')&&e.target.tagName!=='INPUT')route(e)},{capture:true});
  function handleHex(el,e){
-  if(e?.cancelable)e.preventDefault();e?.stopPropagation?.();unlockAudio();
+  if(e?.cancelable)e.preventDefault();e?.stopPropagation?.();
+  try{safeAudioUnlock(false)}catch(err){}
   let k=el.dataset.hex;
   if(s.phase!=='play'||s.pendingEvent||ui.sequence||ui.popup||ui.flipping||ui.rolling||ui.private||ui.privateResult)return;
   if(ui.mode){if(targetValid(k)){ui.targetHex=k;ui.note=`Target ${k} selected. Confirm or cancel.`}else ui.note='Choose a glowing valid hex.';render();return}
   let p=me();if(s.moves>0&&!p.captive&&dist(p.pos,k)===1){move(k);return}ui.selected=k;render()
  }
 }
-function act(a){if(a!=='toggleSound'&&soundOn){audioContext();startWind();}if(a==='beginIntro'){if(ui.boot!=='boot'||ui.fading)return;ui.fading=true;playCrt();fadeWind(.095,3.2);document.getElementById('app').classList.add('boot-out');setTimeout(()=>{document.getElementById('app').classList.remove('boot-out');ui.boot='title';ui.fading=false;render()},520);return}if(a==='enterRoster'){if(ui.boot!=='title'||ui.fading)return;ui.fading=true;startWind();document.getElementById('app').classList.add('fade-black long-fade');fadeWind(.055,2.1);setTimeout(()=>{document.getElementById('app').classList.remove('fade-black','long-fade');ui.boot='roster';ui.fading=false;render();playCrt()},2200);return}if(a==='continueGame'){ui.boot='game';render();if(s.phase==='alien')runAlienTurn();return}if(a==='toggleSound'){toggleSound();return}if(ui.sequence||ui.popup||s?.phase==='alien')return;if(a==='abortMission'){fadeWind(.03,.5);save();ui.boot='title';ui.fading=false;ui.mode='';ui.private=false;ui.note='';render();return}if(a==='add'){let n=document.querySelectorAll('#names input').length;if(n>=6)return;document.querySelector('#names').insertAdjacentHTML('beforeend',`<div class="field"><span class="setup-rank">${rank(n)}</span><input aria-label="${rank(n)} player ${n+1} name" value="Player ${n+1}"></div>`);return}
+function act(a){if(a==='beginIntro'){if(ui.boot!=='boot'||ui.fading)return;ui.fading=true;let app=document.getElementById('app');app.classList.add('boot-out');setTimeout(()=>{app.classList.remove('boot-out');ui.boot='title';ui.fading=false;render()},700);try{safeAudioUnlock(true);playCrt()}catch(e){}return}if(a==='enterRoster'){if(ui.boot!=='title'||ui.fading)return;ui.fading=true;let app=document.getElementById('app');app.classList.add('fade-black','long-fade');setTimeout(()=>{app.classList.remove('fade-black','long-fade');ui.boot='roster';ui.fading=false;render();try{playCrt()}catch(e){}},2600);try{safeAudioUnlock(true);fadeWind(.055,2.1)}catch(e){}return}if(a!=='toggleSound'&&soundOn){try{safeAudioUnlock(false)}catch(e){}}if(a==='continueGame'){ui.boot='game';render();if(s.phase==='alien')runAlienTurn();return}if(a==='toggleSound'){toggleSound();return}if(ui.sequence||ui.popup||s?.phase==='alien')return;if(a==='abortMission'){fadeWind(.03,.5);save();ui.boot='title';ui.fading=false;ui.mode='';ui.private=false;ui.note='';render();return}if(a==='add'){let n=document.querySelectorAll('#names input').length;if(n>=6)return;document.querySelector('#names').insertAdjacentHTML('beforeend',`<div class="field"><span class="setup-rank">${rank(n)}</span><input aria-label="${rank(n)} player ${n+1} name" value="Player ${n+1}"></div>`);return}
  if(a==='start'){if(ui.fading)return;playAlienScreech(true);let names=[...document.querySelectorAll('#names input')].map(x=>x.value.trim()).filter(Boolean);if(names.length<4)return alert('Add at least four player names.');ui.fading=true;document.getElementById('app').classList.add('fade-black');setTimeout(()=>{document.getElementById('app').classList.remove('fade-black');newGame(names)},900);return}if(a==='reset'){if(confirm('Start a new game?')){localStorage.removeItem(KEY);s=null;render()}return}
  if(a==='ackMission'){if(s.phase!=='briefing')return;s.phase='handoff';finish();return}
  if(a==='reveal'||a==='startTurn'){if(s.phase!=='handoff')return;let first=!me().briefed;s.phase='play';ui.private=false;ui.privateKind='';ui.flipping='in';finish();setTimeout(()=>{ui.flipping='';if(first){ui.private=true;ui.privateKind='briefing'}finish()},1000);return}
