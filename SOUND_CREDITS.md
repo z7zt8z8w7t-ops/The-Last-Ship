@@ -1,4 +1,4 @@
-# The Last Ship v29 sound credits
+# The Last Ship v30 sound credits
 
 15 MP3 assets are embedded in index.html. Text effects are silent; keyboard and ECG audio have been removed. The wind, CRT, creature calls and human voice recordings, including the user-selected Monster Screech by DRAGON-STUDIO (Pixabay Content License), retain their v28 processing and reverb. Individual sources and edits are listed in audio-manifest.json.
 

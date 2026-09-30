@@ -231,3 +231,6 @@ body[data-screen="boot"] .build-marker{display:none}
 @keyframes trackerSweep{to{transform:rotate(360deg)}}@keyframes trackerPing{0%,15%{opacity:1}75%{opacity:.3}100%{opacity:.85}}
 @media(max-width:600px){.motion-tracker{width:110px;right:7px;bottom:7px;padding:5px}.board .motion-tracker svg{height:60px}.tracker-label{font-size:7px}.tracker-range,.tracker-readout{font-size:7px}}
 @media(prefers-reduced-motion:reduce){.tracker-sweep,.tracker-blip{animation:none}.tracker-blip{opacity:1}}
+
+/* Preserve complete event/equipment artwork instead of cropping tall objects. */
+.event-art img{object-fit:contain;padding:10px}

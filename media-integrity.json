@@ -1,0 +1,211 @@
+{
+  "artwork_file_sha256": "4321697f2f17b1680a33e16b48138b9a35b8edb5b6652f8dd105d555d5e7a48a",
+  "images": [
+    {
+      "index": 0,
+      "format": "jpeg",
+      "width": 1050,
+      "height": 700,
+      "sha256": "795ef9b963bb49fdbe930092eed10f8a8873cbaec17074f38f943db8a4ce026e"
+    },
+    {
+      "index": 1,
+      "format": "png",
+      "width": 300,
+      "height": 300,
+      "sha256": "efa2133f8487e4fc5ef829e895cafa204ba5e432660c0e4e7cd0e48dd5fff32b"
+    },
+    {
+      "index": 2,
+      "format": "png",
+      "width": 240,
+      "height": 240,
+      "sha256": "3d7647ee5529bb2a959719e336574366472a9e98767ab676908d78ed87421939"
+    },
+    {
+      "index": 3,
+      "format": "png",
+      "width": 300,
+      "height": 300,
+      "sha256": "efa2133f8487e4fc5ef829e895cafa204ba5e432660c0e4e7cd0e48dd5fff32b"
+    },
+    {
+      "index": 4,
+      "format": "png",
+      "width": 360,
+      "height": 301,
+      "sha256": "85834344ac201a81c64b87e050ed83c87bb3a4be854af680a7ddec4cf8e23e21"
+    },
+    {
+      "index": 5,
+      "format": "png",
+      "width": 360,
+      "height": 288,
+      "sha256": "b3261094cf9c8292601632c58aa4591d554cf67258a62d12cdf142220bcd7e68"
+    },
+    {
+      "index": 6,
+      "format": "png",
+      "width": 360,
+      "height": 240,
+      "sha256": "70107249a0ae6b488662bad6ddc9ac378d5285d65a2f178428446466d37817f1"
+    },
+    {
+      "index": 7,
+      "format": "png",
+      "width": 346,
+      "height": 360,
+      "sha256": "ce9500bee0982e13c4456b46bf3cba528530299de770319437d10063e6507ea8"
+    },
+    {
+      "index": 8,
+      "format": "png",
+      "width": 346,
+      "height": 360,
+      "sha256": "becf34062084eef3336730b7163df84f973e446476ebaa2de4ef8432efe4b7b5"
+    },
+    {
+      "index": 9,
+      "format": "jpeg",
+      "width": 1020,
+      "height": 574,
+      "sha256": "0b488569d1e4f0fa688d8759e6cef128e1f93866f22480c13d6ca6c37e763c25"
+    },
+    {
+      "index": 10,
+      "format": "jpeg",
+      "width": 1020,
+      "height": 574,
+      "sha256": "f597b18632074cd826983b4fea8db582e413947730c2e735596600411642b78e"
+    },
+    {
+      "index": 11,
+      "format": "jpeg",
+      "width": 990,
+      "height": 561,
+      "sha256": "71f2960ead76a312e8ffda66d5e29c107fd386cda61fbd9abe050d205f230cf0"
+    },
+    {
+      "index": 12,
+      "format": "jpeg",
+      "width": 990,
+      "height": 561,
+      "sha256": "7c147cf000af5babf8c3c846357a73b600670a611dfc8a488004d87e1fb32b24"
+    },
+    {
+      "index": 13,
+      "format": "jpeg",
+      "width": 975,
+      "height": 650,
+      "sha256": "301ae4054419e9b234e0d8c647237ccf9a6dc13ddbc07f8911e5dd2c953266f3"
+    },
+    {
+      "index": 14,
+      "format": "jpeg",
+      "width": 990,
+      "height": 557,
+      "sha256": "d61841381ef73789acca992bdfbdb403dcff324ec2f788047e2fc79de994a042"
+    },
+    {
+      "index": 15,
+      "format": "jpeg",
+      "width": 975,
+      "height": 650,
+      "sha256": "cf0cd96666970f0a4044acdbea6c1448de63d877c338ec25ee4cac0ca473a894"
+    },
+    {
+      "index": 16,
+      "format": "jpeg",
+      "width": 480,
+      "height": 416,
+      "sha256": "cf3bcffd86fb5e6a2832990b0e98e8e09abaac5119a1b4781cb34e4948cc56bc"
+    },
+    {
+      "index": 17,
+      "format": "jpeg",
+      "width": 480,
+      "height": 416,
+      "sha256": "85469cbdeb26705c6085f1e07d27b8c3ccd6dcaa965e923ec5a8b8bbb0b55563"
+    },
+    {
+      "index": 18,
+      "format": "jpeg",
+      "width": 480,
+      "height": 416,
+      "sha256": "3d6ba05d67efbb9069a3ffec8174c31b4dff969e86821b0ea9678f8eb0f6a16f"
+    },
+    {
+      "index": 19,
+      "format": "jpeg",
+      "width": 480,
+      "height": 416,
+      "sha256": "4864bc43c8234c57e914d2072d30cb5c6b9927626adb176292c2f80b4319feac"
+    },
+    {
+      "index": 20,
+      "format": "jpeg",
+      "width": 480,
+      "height": 416,
+      "sha256": "ac290d05564384cf291c46a7d76e23185dced4831d2cc6479f9c19ba859c957c"
+    },
+    {
+      "index": 21,
+      "format": "jpeg",
+      "width": 480,
+      "height": 416,
+      "sha256": "364622d843aeadc2f01cf4cef17e6a6f36d23f0a18e087704869ba0baf4efd42"
+    },
+    {
+      "index": 22,
+      "format": "jpeg",
+      "width": 480,
+      "height": 416,
+      "sha256": "2163a19c15a737ca6ee330c612478e8b5762cecbe0ac39a92668dc3f8d9d1133"
+    },
+    {
+      "index": 23,
+      "format": "png",
+      "width": 480,
+      "height": 536,
+      "sha256": "0b8e352acc40e584741abb72fd4da09b068c99626132792425a75bc286e068cf"
+    },
+    {
+      "index": 24,
+      "format": "jpeg",
+      "width": 480,
+      "height": 416,
+      "sha256": "58edafcba32416577359f9af8fb3f106c5daa45ccce4d408aeb07adf184ebe15"
+    },
+    {
+      "index": 25,
+      "format": "png",
+      "width": 480,
+      "height": 540,
+      "sha256": "1483c4252775c2bf5c22d6c86484a7b744b6f5f07389b191309f504bfe9b0f40"
+    },
+    {
+      "index": 26,
+      "format": "jpeg",
+      "width": 480,
+      "height": 416,
+      "sha256": "a5916b6764f708775091e76c9ffd84c918c0daf810fcf185232e795e46682228"
+    }
+  ],
+  "audio": {
+    "wind": "0ede5bde3e46f36ea1a49ba384bbefb4e82c013c543e7281bcde99eee26122d2",
+    "crt": "8c87ce304a39cbc5c828f60797b18942b8b1414970795b65e6cf0c7e9b0a324c",
+    "transition": "73fe3f39c17923e645cb2ef1fc7ef330c13c87cdfe9f548245791b90445761fa",
+    "popup": "526028bd563d6d7960a0fb92365660eb4d308b2129caf2f4f0c6e6445b051a45",
+    "alien1": "614725ad3bd384a72b80ecffe3562f738ee20e4ae46379998d13864b628ba668",
+    "alien2": "1a4b073da0fa1d79719ad7ea60e0def08e29d2b4a6095c5c041ba8417d300234",
+    "alien3": "2a73eeac457fb78fe2fc299cbbecf0ca37ee93abe41275b2f16d77aca02748ce",
+    "start": "68848cb1085ba11e8ee4ac33ec07a2f9fce351bd2cc5d8947e64089651bbe4da",
+    "male1": "11b75ab750ec6584547165e0cb25e765d274df84bb64a8dbfccf29d9b4f47c43",
+    "male2": "95200f310a7be4cab83ebe112b3b2034b9c5d844a61e735a2e7e843219017a65",
+    "female1": "f0f38b1dcc0a2dce22f11c6c0cf5f493fe6d6b6e2684e47e9328718fe90dea2e",
+    "female2": "8daa82fa21af2c56474f04b6020957026fd2b5b4b36accd0d28980e8d439827e",
+    "scientistMale": "52313e39edb56937aaf24f8e344cd775a5a5a20f8c9f71744f8a211f965fc38d",
+    "scientistFemale": "e9bc1b20f78ee1f971b06ad1a644a810b13555f3a288c8f1e5d5a560f96f916f",
+    "tracker": "f5c6bd555ef7134d0c5baff17baa45d5b67067f2a80441ceabd8b9aa6ebb9606"
+  }
+}
