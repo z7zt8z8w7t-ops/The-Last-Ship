@@ -279,3 +279,45 @@ body[data-screen="openingBlack"]{background:#000}body[data-screen="openingBlack"
 body:has(.cinematic-title) .build-marker{visibility:hidden}
 body.cinema-paused .title-flash{animation-play-state:paused!important}
 @media(prefers-reduced-motion:reduce){.title-glow,.title-flash{display:none}.title-screen.cinematic-flash-out{animation:cinematicTitleOut .65s ease-out forwards}}
+
+/* Fixed viewport; only window and panel contents can scroll. */
+html,body{width:100%;height:100%;min-height:0;overflow:hidden;overscroll-behavior:none}
+body{position:fixed;inset:0;height:100dvh}
+#app{width:100%;height:100%;overflow:hidden;touch-action:manipulation}
+.layout{width:100%;height:100%;min-height:0;overflow:hidden}
+.board{height:100%;min-height:0;aspect-ratio:auto;touch-action:manipulation}
+.side.player-flip,.flip-inner{height:100%;min-height:0;max-height:100%}
+.flip-front{position:absolute;max-height:100%;min-height:0;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y}
+.flip-back{min-height:0}
+.screen{height:100%;max-height:100%;min-height:0;margin:0 auto;display:grid;place-items:center;padding:20px}
+.screen>.card,.overlay>.card,.event-window{max-height:100%;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y}
+.title-screen,.muthur-boot{height:100%;min-height:0}
+.overlay{padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
+.terminal-screen{width:100%;max-width:none;background:transparent}
+.roster.card{width:min(100%,820px);padding:24px 28px;border-radius:14px;display:flex;max-height:100%;overflow:hidden;font:.95rem/1.5 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;letter-spacing:.045em;text-shadow:0 0 6px #a4ff9255}
+.roster-header{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;flex:none}
+.roster h1{font-size:1.24rem;line-height:1.4;letter-spacing:.07em;margin:0 0 8px}
+.roster .order-classification{font-size:.72rem;margin:0 0 12px}
+.roster-ship{color:#baf7a8!important;font-size:.9rem;margin:0 0 18px}
+.roster .roster-sound{font-size:.72rem;min-height:38px;padding:8px 10px;white-space:nowrap;flex:none}
+.roster-list{min-height:0;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;gap:12px;padding:2px 3px 4px}
+.roster .field{margin:0;gap:10px}
+.roster .setup-rank{flex:0 0 58px;border-radius:3px;padding:10px 4px;font-size:.8rem}
+.roster .field input{min-width:0;border-radius:3px;padding:10px 12px;font-size:1rem;text-shadow:0 0 5px #a4ff9240}
+.roster .voice-select{font:inherit;font-size:.8rem;background:#06190f;color:#c5f7ae;border:1px solid #649675;border-radius:3px;padding:10px 8px;max-width:145px}
+.roster-footer{margin-top:20px;flex:none;display:block}
+.roster-actions{justify-content:flex-end;gap:10px}
+.roster-actions .order-ack{font-size:.85rem;padding:11px 14px;min-height:46px}
+.rules-overlay{z-index:100;background:#020e09ec}
+.rules-window.card{width:min(100%,850px);height:min(88dvh,850px);display:flex;flex-direction:column;overflow:hidden;padding:24px;border-radius:14px}
+.rules-window header,.rules-window .order-footer{flex:none}
+.rules-window h2{font-size:1.2rem;letter-spacing:.07em;margin:0 0 16px}
+.rules-scroll{min-height:0;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;padding-right:14px;font:.94rem/1.6 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;color:#c5f7ae}
+.rules-scroll h3{color:#c5f7ae;font-size:.95rem;letter-spacing:.06em;margin:22px 0 10px;text-shadow:0 0 6px #a4ff9255}
+.rules-scroll section:first-child h3{margin-top:0}
+.rules-scroll p,.rules-scroll li{color:inherit;line-height:1.6}
+.rules-scroll ul{padding-left:22px}.rules-scroll li{margin-bottom:10px}
+.rules-window .order-footer{padding-top:16px;border-top:1px solid #64967566;margin-top:12px}
+.alien-era-title{will-change:transform}
+@media(max-width:900px){.layout{grid-template-columns:1fr;grid-template-rows:minmax(0,57%) minmax(0,1fr)}.board{height:100%;min-height:0;aspect-ratio:auto}.side.player-flip,.flip-inner,.flip-front,.flip-back{min-height:0;max-height:100%;height:100%}.flip-front{position:absolute}.roster-header{gap:10px}}
+@media(max-width:600px){.screen{padding:12px}.roster.card{padding:18px 14px}.roster-header{flex-direction:column;gap:0}.roster .roster-sound{align-self:flex-end;margin-bottom:12px}.roster h1{font-size:1.05rem}.roster .setup-rank{flex-basis:40px}.roster .field{gap:6px}.roster .voice-select{max-width:104px;font-size:.7rem;padding:10px 4px}.roster-actions{gap:6px}.roster-actions .order-ack{font-size:.7rem;padding:9px 8px}.rules-window.card{height:100%;padding:18px}.rules-scroll{font-size:.85rem}}

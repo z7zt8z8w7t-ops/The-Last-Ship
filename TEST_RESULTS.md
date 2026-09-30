@@ -1,11 +1,13 @@
-# v34 validation
+# v35 validation
 
-- Approved preview timing: Start Game launches music from original 00:15 immediately; five seconds of black, then 30.3 seconds of title reveal/hold. Blue flash hits at opening 00:35.3, fades to black by 00:36, and APC begins at 00:36.75 after music fade-out.
-- WebKit verifies glow position at the A centre, progressive brightness, flash and black transition, and title audio stopping before APC starts.
-- Backgrounding freezes music position, glow animation and cinematic clock; all resume without restarting.
-- Reduced-motion mode retains sound timing and replaces glow/flash with static title and gentle fade.
-- Complete touch-enabled WebKit opening, mission and player briefings, native audio recovery, portrait, tracker range and offline reload checked.
-- All 27 artwork images retain clean bytes and fully decode. All 17 embedded recordings match integrity hashes and fully decode with FFmpeg.
-- Game and inline JavaScript syntax passed; no browser exceptions.
+- Full touch-enabled WebKit opening: music starts on Start Game from original 00:16, five seconds of black, A-centred title pullback with letter reveal, crescendo flash at opening 34.3s, black/APC over wind, board fade and mission briefing.
+- Title starts at 5.5x zoom; camera, glow and audio freeze during backgrounding and resume. Glow follows A during pullback. Reduced motion omits camera motion/glow/flash while retaining sound timing.
+- Roster and rules tested at 1536x1067, 768x1024 and 390x844. Matching CRT buttons, player-name retention after rules, six-player limit and disabled add button verified.
+- Field manual contains 11 sections covering implemented terrain, all items and specimen outcomes, all eight events, alien/capture/escape, scanning/transfers, Corporation actions, tracker and launch conditions.
+- Rules content scrolls inside the window with acknowledgement visible. Board and action panel remain inside viewport. Outer page cannot scroll; touchmove outside permitted scroll areas is cancelled.
+- Legacy mission state removed on load. Mission state is neither loaded nor saved, no continuation control/handler remains, and reload returns to setup. Sound preference still persists.
+- Offline reload, native audio recovery, mission/player orders and tracker range checks pass; ECG/text/scientist discovery remain silent.
+- All 27 artwork payloads retain clean bytes and decode fully; all 17 audio hashes and FFmpeg decodes pass.
+- Game and inline JavaScript syntax pass; no browser exceptions.
 
-Physical iPad listening has not been performed here.
+Physical iPad gesture/listening validation has not been performed here.

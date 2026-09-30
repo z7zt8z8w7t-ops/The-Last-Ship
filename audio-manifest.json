@@ -172,7 +172,7 @@
     "source": "https://pixabay.com/sound-effects/horror-cinematic-horror-rising-string-ambience-443390/",
     "license": "Pixabay Content License",
     "license_url": "https://pixabay.com/service/license-summary/",
-    "edits": "Original 00:15 through end, original speed/pitch. Volume 0.5, 6-second fade-in; fades from opening 35.3s to 36.75s. Crescendo/blue flash at 35.3s, before APC.",
+    "edits": "Original 00:16 through end, original pitch/speed. Volume 0.5 and 6-second fade-in. Crescendo/flash at opening 34.3 seconds; fade ends at 35.75 seconds before APC.",
     "container": "index.html #ship-audio-data"
   }
 ]
