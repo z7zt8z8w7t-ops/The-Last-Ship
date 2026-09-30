@@ -1,15 +1,15 @@
-# The Last Ship — v26
+# The Last Ship — v27
 
-All 15 audio files and the audio playback engine are now embedded directly in `index.html`. No separate audio folder or audio.js is required. The recorded sound set, title and gameplay are otherwise retained from v25.
+All 15 audio recordings remain embedded in index.html. Game playback now uses native audio elements, the same playback method as the working sound-check page. No AudioContext or external MP3 requests are used.
 
-## Update
+The first MU-TH-UR tap unlocks the native players and starts the recorded wind. Each player's first gesture primes reusable effect players, allowing subsequent timed ECG and event sounds. SOUND ON/OFF controls all sounds. A playback rejection identifies the affected sound and offers tap-to-enable.
 
-Upload the ZIP contents to the same GitHub Pages root. Replace index.html, game.js, style.css and sw.js. Keep the supplied icons, background and manifest alongside them. Check the lower-left marker reads **v26**. An installed older version may reload once when the new service worker activates.
+The rejected Start Game recording has been removed. A replacement composite uses the sharpest roar section from the recorded Dino Hiss Dragon Roar with a lower rasp from Monster roar: pitch change, EQ, compression and short echo produce a sharper creature shriek. No Alien/Aliens movie audio is included.
 
-The old audio folder and audio.js are unused and may be removed. Saved games retain their storage key. Open the page online once to cache it; audio is now cached together with the page.
+Playback levels are baked into the embedded MP3s because iPad may ignore JavaScript media-element volume changes. The wind starts at its mastered quiet level; smooth Web Audio fades are no longer used.
 
-Tap MU-TH-UR to unlock audio. SOUND ON/OFF controls all effects. Roster capture-voice selections and scientist artwork/voice matching remain in place.
+Upload all files in this ZIP to the repository root, replacing the previous files. No audio folder is required. Check the build marker reads v27. The existing service worker may reload the app once during the update. Saved games are retained.
 
-Open sound-check.html (or index.html?soundcheck=1) to audition all 15 embedded files. SOUND_CREDITS.md lists their creators and licences.
+Open sound-check.html to audition all embedded audio, including the new start-screech. Sources and edits are listed in SOUND_CREDITS.md.
 
-WebKit touch tests check title drawing, audio decoding without any audio-file requests, mute/unmute, roster actions, mission start, ECG, abort and offline reload. Physical iPad speaker playback has not been tested.
+Browser testing uses WebKit at an iPad-sized touch viewport. Physical iPad playback and resemblance of the new screech to the requested film sound must still be judged on the user's device.

@@ -1,4 +1,4 @@
-# The Last Ship v26 — sound assets
+# The Last Ship v27 — sound assets
 
 All included audio is embedded as MP3 data inside `index.html` under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). The source links identify the creators. Downloaded HQ preview encodings were edited into game-ready samples. No film soundtrack or Alien/Aliens movie audio is used. No oscillators or random-noise generators remain in the game.
 
@@ -12,7 +12,7 @@ All included audio is embedded as MP3 data inside `index.html` under [CC0 1.0](h
 | `alien-call-1.mp3` | Creature call 1 | [Monster roar by colorsCrimsonTears](https://freesound.org/people/colorsCrimsonTears/sounds/537883/) | Trimmed and loudness adjusted. |
 | `alien-call-2.mp3` | Creature call 2 | [Monster Roar 02 by zerokingfull](https://freesound.org/people/zerokingfull/sounds/347410/) | Creator processed a recorded human scream into a creature roar; trimmed. |
 | `alien-call-3.mp3` | Creature call 3 | [Dino Hiss Dragon Roar by 999999990](https://freesound.org/people/999999990/sounds/320345/) | Trimmed hiss/roar effect. |
-| `start-screech.mp3` | Start Game only | [Monster Scream by DavidJohnson2019](https://freesound.org/people/DavidJohnson2019/sounds/794212/) | Distinct recording, louder master; never used for ambient calls. |
+| `start-screech.mp3` | Start Game only | [Dino Hiss Dragon Roar by 999999990](https://freesound.org/people/999999990/sounds/320345/) + [Monster roar by colorsCrimsonTears](https://freesound.org/people/colorsCrimsonTears/sounds/537883/) | New composite from recorded creature effects: raised-pitch main shriek, lower rasp, EQ, compression and short echo. The rejected v26 sample is removed. |
 | `marine-male-1.mp3` | Male marine capture 1 | [Male Scream by aldenroth2](https://freesound.org/people/aldenroth2/sounds/272023/) | Trimmed and loudness adjusted. |
 | `marine-male-2.mp3` | Male marine capture 2 | [human male scream 2 by JohnsonBrandEditing](https://freesound.org/people/JohnsonBrandEditing/sounds/243376/) | Trimmed and loudness adjusted. |
 | `marine-female-1.mp3` | Female marine capture 1 | [Female scream 01 by missozzy](https://freesound.org/people/missozzy/sounds/169810/) | Trimmed and loudness adjusted. |
@@ -23,3 +23,5 @@ All included audio is embedded as MP3 data inside `index.html` under [CC0 1.0](h
 The ECG source is a pre-existing monitor sound-effect sample; its creator describes it as a beep like a hospital monitor. It is not documented as a recording of a clinical device. Creature sounds are creator-produced vocal/processed effects; professional studio provenance has not been verified.
 
 Open `sound-check.html` to audition the exact packaged files individually.
+
+In v27 all playback levels are mastered into the embedded files. Native audio players replace Web Audio so game playback uses the same media channel as the sound checker. No sound is generated at runtime.
