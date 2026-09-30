@@ -1,6 +1,6 @@
-# v36 validation
+# v37 validation
 
-- Full touch-enabled WebKit opening: music starts on Start Game from original 00:16, five seconds of black, A-centred title pullback with letter reveal, crescendo flash at opening 34.3s, black/APC over wind with the title music ending naturally during APC arrival, board fade and mission briefing.
+- Full touch-enabled WebKit opening: music starts on Launch Mission from original 00:17, five seconds of black, A-centred title pullback with letter reveal, crescendo flash at opening 33.3s, black/APC over wind with the title music ending naturally during APC arrival, board fade and mission briefing.
 - Title starts at 2.5x zoom; camera, glow and audio freeze during backgrounding and resume. Glow follows A during pullback. Reduced motion omits camera motion/glow/flash while retaining sound timing.
 - Roster and rules tested at 1536x1067, 768x1024 and 390x844. Matching CRT buttons, player-name retention after rules, six-player limit and disabled add button verified.
 - Field manual contains 11 sections covering implemented terrain, all items and specimen outcomes, all eight events, alien/capture/escape, scanning/transfers, Corporation actions, tracker and launch conditions.
@@ -13,4 +13,7 @@
 Physical iPad gesture/listening validation has not been performed here.
 
 - Mission briefing centred within the board and limited to 680 px, tested in landscape and portrait. Updated organism wording verified. Private actions tested with glowing valid lettering and dim disabled controls.
-- Title uses centred separators and delayed outer strokes, completing around title time 28.2 seconds while the camera pulls back over 26 seconds.
+- Title uses centred separators and delayed outer strokes, completing around title time 27.5 seconds while the camera pulls back over 26 seconds.
+
+- All 11 permitted random nest positions tested: one nest, alien starting at that nest, no sites placed there, connected routes to lander/Dropship, capture return, nearby rescue and safe-nest immunity. Escape roll verified at the random nest.
+- LAUNCH MISSION label and revised Priority two verified. Launch still requires two delivered scientists and an available action; an egg aboard still gives the operative the win. Voting and a final departure round are not implemented.
