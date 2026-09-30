@@ -1,17 +1,16 @@
-# The Last Ship — v28
+# The Last Ship — v29
 
-Upload the contents of this ZIP into the repository root, replacing the previous files. Confirm the game shows v28. Saved games are retained. All 19 audio recordings are embedded in index.html; no separate audio folder is needed.
+Upload the contents of this ZIP into the repository root, replacing the previous files. Confirm v29 on the crew roster. Saved games are retained. All 15 sound assets are embedded in index.html; no audio folder is required.
 
-Changes:
-- Start Game: exact selected Monster Screech by DRAGON-STUDIO, with a damped outdoor reverb tail. Original pitch preserved; rejected screech removed.
-- Reverb added to wind, alien calls and marine/scientist screams.
-- ECG dry level about 7 dB quieter, with subtle short reverb, still matched to BPM.
-- Mission and private-order transmissions use the opening MU-TH-UR font, green colour and glow, typed character by character with a blinking cursor.
-- Real keyboard keystrokes are synchronized to appearing non-space characters on both the opening and mission screens.
-- Tap a transmission to reveal all text and stop typing audio. Acknowledge/Begin turn also reveals remaining text on the first tap, then proceeds on the next tap.
+- Blank black opening with LOGIN in the bottom right. LOGIN enables audio and triggers a CRT flicker and recorded CRT sound.
+- Each MU-TH-UR prefix appears immediately; the four messages type sequentially with a blinking square cursor. Text effects are silent.
+- ACKNOWLEDGE appears after the final message and takes you directly to the crew roster. The opening no longer repeats or advances automatically.
+- Initial mission and private crew briefings use smaller MU-TH-UR lettering and a much faster typing effect. Tap to reveal the remaining text.
+- ECG audio removed entirely. ECG visuals remain. The selected tracker beep is a separate proximity sound: the bottom-right tracker shows a blip only within two hexes of the current player. Pings start at two hexes (1.1-second interval) and accelerate to a 0.65-second interval within one hex. Outside this range, the blip and tracker audio stop. It pauses outside active play and during private briefings/popups.
+- The title draws from the A in LAST outwards in both directions, finishing in approximately 26 seconds. The earlier ACKNOWLEDGE-to-roster flow is retained; the title remains the abort-mission destination.
+- Wind, creature calls, capture/scientist screams and the selected Start Game screech retain their v28 reverb.
+- Native media pause/resume handling and audio priming on the next user gesture improve recovery after app suspension. Retry does not replay all the screams.
 
-On iPad, a user gesture is required to enable audio. The first MU-TH-UR tap activates the recorded sound and replays the opening text with audible keystrokes; it then proceeds to the title. Tap again during that sequence to skip ahead. Reduced-motion preference shows text immediately. SOUND ON/OFF includes keyboard sounds.
+Open sound-check.html to preview the exact 15 embedded assets. Tracker source and provenance are documented in SOUND_CREDITS.md and audio-manifest.json.
 
-The sound-check.html page auditions the exact embedded assets, including all keyboard variants. Sources, licences and processing are documented in SOUND_CREDITS.md and audio-manifest.json.
-
-Validation uses WebKit with a touch/iPad viewport, native media playback, sound toggle, mission typing/skip, saved-game flow, and offline reload. Physical iPad playback should still be verified on the user's device.
+Validated in WebKit with touch, landscape and portrait viewports, reduced motion, native media recovery, and offline loading. Physical iPad suspension/interruption behaviour still requires checking on your device.

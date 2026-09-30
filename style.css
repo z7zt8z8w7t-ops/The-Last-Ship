@@ -203,3 +203,31 @@ body{background:#07140e;position:relative;isolation:isolate}body::before{content
 .terminal-help{color:#baf7a8;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:.8rem;opacity:.65}
 @media(max-width:650px){.muthur-mission{padding:24px 20px}.muthur-copy{letter-spacing:.045em}}
 @media(prefers-reduced-motion:reduce){.muthur-copy .typing-cursor{animation:none}}
+
+/* v29 login, acknowledgement and rapid crew orders. */
+.muthur-boot{cursor:default}.muthur-boot.login-blank::before{display:none}
+.muthur-boot .muthur-line{margin:0 0 18px;white-space:normal}
+.crt-terminal-button{position:absolute;right:max(24px,env(safe-area-inset-right));bottom:max(24px,env(safe-area-inset-bottom));z-index:3;border:1px solid #baf7a8;border-radius:0;background:#020904;color:#baf7a8;font:650 1rem ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;letter-spacing:.09em;text-shadow:0 0 6px #a4ff928c;box-shadow:0 0 8px #a4ff9240,inset 0 0 8px #a4ff9220;padding:13px 20px;min-height:48px}
+.crt-terminal-button[hidden]{display:none!important}
+.login-crt-flicker{animation:loginCrt .65s steps(1,end)}
+@keyframes loginCrt{0%,22%,48%,78%{filter:brightness(3);background:#173c21;transform:translateY(2px)}12%,38%,66%,90%{filter:brightness(.15);transform:translateY(-1px)}100%{filter:none;transform:none}}
+.muthur-mission .muthur-copy,.executive-order .muthur-copy{font-size:clamp(.85rem,1.55vw,1.05rem);line-height:1.5;letter-spacing:.045em}
+.muthur-mission .muthur-copy h1,.muthur-mission .muthur-copy h2,.executive-order .muthur-copy h2{margin-bottom:14px}
+.muthur-mission .muthur-copy p,.executive-order .muthur-copy p{margin-bottom:12px}
+.title-seg{opacity:0;animation:titleSegmentDraw 5.8s ease-in-out calc(1s + var(--d,0s)) forwards}
+@keyframes titleSegmentDraw{0%{stroke-dashoffset:1;opacity:0}8%{opacity:.4}100%{stroke-dashoffset:0;opacity:1}}
+.title-content p{animation:titleAtmosphereReveal 3s ease-out 27s forwards}
+.title-content>span{animation:titleAtmosphereReveal 3s ease-out 28s forwards,titlePrompt 3.8s ease-in-out 31s infinite}
+@media(max-width:650px){.muthur-boot .muthur-copy{font-size:clamp(.8rem,2.8vw,1.1rem)}.crt-terminal-button{right:20px;bottom:20px}}
+@media(prefers-reduced-motion:reduce){.login-crt-flicker{animation:none}.title-seg{animation:none;opacity:1;stroke-dashoffset:0}.title-content p,.title-content>span{animation:none;opacity:1}}
+
+body[data-screen="boot"] .build-marker{display:none}
+
+/* Compact motion tracker in the board corner, clear of the playable hexes. */
+.motion-tracker{position:absolute;right:10px;bottom:10px;width:142px;z-index:2;padding:7px;border:2px solid #718d76;border-radius:9px;background:linear-gradient(145deg,#253e31,#0d1d15);box-shadow:0 3px 14px #000b,inset 0 0 0 1px #020904;pointer-events:none;font:700 9px ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;letter-spacing:.08em;color:#c4eac5}
+.tracker-label{text-align:center;margin-bottom:5px;font-size:9px}.tracker-display{position:relative;overflow:hidden;border:1px solid #487a5c;border-radius:4px;background:radial-gradient(ellipse at center,#0b3028,#01130f);box-shadow:inset 0 0 14px #000;isolation:isolate}
+.tracker-display::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,#0004 0 1px,transparent 1px 3px)}
+.board .motion-tracker svg{display:block;width:100%;height:82px;padding:0;position:static;z-index:auto;overflow:visible}.tracker-grid{stroke:#4ce2aa;stroke-width:.6;fill:none;opacity:.22}.tracker-ring{stroke:#59e8b8;stroke-width:.8;fill:none;opacity:.45}.tracker-origin{stroke:#a5ffe0;stroke-width:1.1;fill:none}.tracker-sweep{stroke:#78ffd0;stroke-width:1.2;opacity:.45;transform-origin:70px 46px;animation:trackerSweep 3s linear infinite}.tracker-blip{fill:#b7fff0;filter:drop-shadow(0 0 4px #7fffd4);animation:trackerPing var(--ping-period) ease-out var(--ping-offset) infinite}.tracker-readout{text-align:center;font-size:8px;letter-spacing:.1em;color:#6dc5a4;padding:0 0 4px}.motion-tracker.contact .tracker-readout{color:#c0ffe8}.tracker-range{text-align:center;font-size:8px;color:#a7c8ac;margin-top:5px}
+@keyframes trackerSweep{to{transform:rotate(360deg)}}@keyframes trackerPing{0%,15%{opacity:1}75%{opacity:.3}100%{opacity:.85}}
+@media(max-width:600px){.motion-tracker{width:110px;right:7px;bottom:7px;padding:5px}.board .motion-tracker svg{height:60px}.tracker-label{font-size:7px}.tracker-range,.tracker-readout{font-size:7px}}
+@media(prefers-reduced-motion:reduce){.tracker-sweep,.tracker-blip{animation:none}.tracker-blip{opacity:1}}

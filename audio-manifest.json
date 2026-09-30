@@ -40,16 +40,6 @@
     "container": "index.html #ship-audio-data"
   },
   {
-    "usage": "ECG single beep",
-    "creator": "samfk360",
-    "source": "https://freesound.org/people/samfk360/sounds/148897/",
-    "license": "CC0 1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "edits": "One beep cut from the supplied monitor sound effect. Played every 60,000/BPM milliseconds; no flatline. Playback level baked into MP3 for consistent iPad native-player loudness. v28: dry signal reduced to 45% of v27 (about 7 dB quieter), light 160 ms reverb; total sample 430 ms fits 132 BPM.",
-    "embedded_key": "ecg",
-    "container": "index.html #ship-audio-data"
-  },
-  {
     "usage": "Creature call 1",
     "creator": "colorsCrimsonTears",
     "source": "https://freesound.org/people/colorsCrimsonTears/sounds/537883/",
@@ -150,43 +140,15 @@
     "container": "index.html #ship-audio-data"
   },
   {
-    "usage": "Synchronized terminal typing keystroke 1",
-    "creator": "unicaegames",
-    "source": "https://opengameart.org/content/keyboard-soundpack-1-typing-and-single-keystrokes",
-    "license": "CC0 1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "edits": "Single Keys/keypress-001.wav from Cherry KC 1000 recorded using a Shure SM7B; trimmed to 65 ms attack, faded and quiet master. No generated-typing files used.",
-    "embedded_key": "key1",
-    "container": "index.html #ship-audio-data"
-  },
-  {
-    "usage": "Synchronized terminal typing keystroke 2",
-    "creator": "unicaegames",
-    "source": "https://opengameart.org/content/keyboard-soundpack-1-typing-and-single-keystrokes",
-    "license": "CC0 1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "edits": "Single Keys/keypress-002.wav from Cherry KC 1000 recorded using a Shure SM7B; trimmed to 65 ms attack, faded and quiet master. No generated-typing files used.",
-    "embedded_key": "key2",
-    "container": "index.html #ship-audio-data"
-  },
-  {
-    "usage": "Synchronized terminal typing keystroke 3",
-    "creator": "unicaegames",
-    "source": "https://opengameart.org/content/keyboard-soundpack-1-typing-and-single-keystrokes",
-    "license": "CC0 1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "edits": "Single Keys/keypress-003.wav from Cherry KC 1000 recorded using a Shure SM7B; trimmed to 65 ms attack, faded and quiet master. No generated-typing files used.",
-    "embedded_key": "key3",
-    "container": "index.html #ship-audio-data"
-  },
-  {
-    "usage": "Synchronized terminal typing keystroke 4",
-    "creator": "unicaegames",
-    "source": "https://opengameart.org/content/keyboard-soundpack-1-typing-and-single-keystrokes",
-    "license": "CC0 1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "edits": "Single Keys/keypress-004.wav from Cherry KC 1000 recorded using a Shure SM7B; trimmed to 65 ms attack, faded and quiet master. No generated-typing files used.",
-    "embedded_key": "key4",
+    "usage": "Motion tracker within two hexes of current player; faster within one hex; independent of ECG",
+    "embedded_key": "tracker",
+    "key": "tracker",
+    "creator": "Balcoran",
+    "source": "https://freesound.org/people/Balcoran/sounds/478186/",
+    "acquisition": "MT-return.mp3, an edited copy credited to the selected beep in FrunkQ/dynamic-map-renderer-v2",
+    "download": "https://raw.githubusercontent.com/FrunkQ/dynamic-map-renderer-v2/main/src/assets/MT-return.mp3",
+    "license": "Uploader labels CC0 1.0; underlying film provenance unverified",
+    "edits": "Quiet playback level baked into MP3 (volume 0.30), short attack/fade.",
     "container": "index.html #ship-audio-data"
   }
 ]
