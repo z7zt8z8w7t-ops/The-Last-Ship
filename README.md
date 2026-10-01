@@ -1,23 +1,22 @@
-# The Last Ship — v59
+# The Last Ship — v61
 
-Replace the existing game files with the contents of this ZIP. Keep all files together. Open the hosted game online once to refresh its offline cache and confirm the v59 marker.
+Replace the existing game files with this ZIP’s contents. Keep them together. Open the hosted game online once to refresh its offline cache and confirm the v61 marker.
 
-## New in v59
+## Changes
 
-All gameplay dialogs and the How to Play window use one fixed, centred CRT terminal frame. On the board, the frame is centred over the board. Normal dialogs are green; Company Representative private dialogs and egg instructions are red. Long content scrolls within the frame.
+- INITIALISE powers the MU-TH-UR screen on from point → horizontal line → full green CRT, with a brief flicker before text begins. The existing text, pauses, five final cursor flashes and malfunction sequence remain.
+- The seamless TLS drone begins on INITIALISE and stops when the MU-TH-UR screen starts collapsing. The newly supplied MU-TH-UR shutdown recording plays once at that point. The collapse lasts approximately 1.556 seconds before the roster appears.
+- Gameplay popup closure is silent. Its old shutdown recording, playback key and metadata are removed. The CRT closing animation remains. Startup and continuous drone across linked popups are retained.
+- Shared CRT frames are larger. Gameplay messages adapt text/artwork spacing to the available frame height. ACKNOWLEDGE is in a separate footer fixed at the bottom right. The longer field manual has Previous/Next pages instead of one long scrolling window. Choice buttons occupy the same footer area when acknowledgement is not the required action.
+- The Dropship hull, engine effects and hull beacon glows draw above fog and hex borders. Player and other board markers draw above the hull. Ground terrain, shadows and hazard sweeps stay beneath fog and borders. Oversized artwork, round-seven sweeps and the launch animation remain.
+- Startup paints independently of media preparation. Only intro recordings are prepared initially; gameplay recordings are prepared when Launch Mission is pressed. Failures during silent priming are recorded in diagnostics without advertising an unused effect as a startup failure. Actual playback errors still appear. Intro visuals advance even if audio setup fails. Missing startup scripts show a Retry option, and a service-worker update cannot automatically reload an active session.
 
-The supplied CRT startup plays once when a terminal session begins, followed immediately by the looping drone. Button presses that lead to another dialog keep the same session and drone, including event report → choice → outcome and first-turn handoff → private representative orders. Only the final close stops the drone and plays the supplied power-down once. Closing early cancels startup and prevents the drone starting afterwards. Automatic and manual closes use the same path. Muting stops terminal audio. The visual closing effect lasts approximately 2.25 seconds, matching the power-down recording.
+## Retained gameplay
 
-Company Man is renamed Company Representative throughout the game and its field manual. Existing capture and discovery sounds remain; their playback waits for terminal startup to finish.
+All v58–v60 gameplay changes are retained: Company Representative, CMC IDs, APC/Gravity Well/PDT terminology; free inventory use and research; restricted cache/PDT terrain; APC-only egg incineration; role-specific egg messages; two scientists required to launch; Company victory with egg aboard, Crew victory without it, Alien victory when everyone is captured, and mission failure after the ninth round. Standalone roar remains limited to non-capturing Alien Lunge. Discovery and combined capture recordings remain unchanged.
 
-## Retained from v58
-
-Searches, spores, jetpacks and incineration still generate gameplay noise but do not play a standalone alien roar. Alien Lunge plays a roar as movement begins unless it will capture a player; then the combined capture recording plays instead. Cache and false PDT searches retain their discovery sound; scientists retain their discovery sound.
-
-Inventory use and specimen research cost no action. Caches and PDTs cannot occupy Gravity Wells, the nest, APC or Dropship. The egg can only be destroyed at the APC. Both scientists must be aboard before launch. Egg aboard means Company victory, regardless of its carrier or the representative’s survival; no egg aboard means Crew victory, with others allowed to remain behind. Everyone captured means Alien victory. Missing the nine-round departure window means mission failure.
-
-The separate Dropship terrain and oversized ship artwork, round-seven yellow hazard sweeps, engine ignition and 6.2-second launch animation are retained unchanged. The roster music loop still stops at Launch Mission. No saved-game continuation is added.
+The drone retains v60’s contiguous PCM trim with no fades, crossfade or overlap. Roster music still stops at Launch Mission. No saved-game continuation is added.
 
 ## Checks
 
-Run `node verification/terminal-session.test.js` and `node verification/gameplay.test.js`. See TEST_RESULTS.md for the release checks and device-testing limitation.
+Run each `verification/*.test.js` with Node. See TEST_RESULTS.md for checks and the device-testing limitation.

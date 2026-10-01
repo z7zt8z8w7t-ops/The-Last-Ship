@@ -195,19 +195,19 @@
   {
     "usage": "Continuous terminal session drone",
     "creator": "User supplied",
-    "source": "TLS CRT drone(1).m4a",
+    "source": "TLS CRT drone(1).m4a \u2192 TLS_CRT_drone_seamless.wav",
     "license": "User supplied recording; no additional license asserted",
-    "edits": "Embedded original M4A without edits. Drone uses native audio looping.",
+    "edits": "v60: decoded to 44.1 kHz stereo PCM WAV; trimmed at matching waveform phases to 1.555692 seconds; no fades or overlap. Circular Web Audio loop.",
     "embedded_key": "wristDrone",
     "container": "index.html #ship-audio-data"
   },
   {
-    "usage": "Final terminal shutdown",
+    "usage": "MU-TH-UR intro shutdown only",
     "creator": "User supplied",
-    "source": "TLS power down.m4a",
+    "source": "TLS muthur pwr dwn .m4a",
     "license": "User supplied recording; no additional license asserted",
-    "edits": "Embedded original M4A without edits. Drone uses native audio looping.",
-    "embedded_key": "wristOff",
+    "edits": "Original M4A embedded unchanged. Plays once when MU-TH-UR screen collapse begins; not used by gameplay popups.",
+    "embedded_key": "muthurOff",
     "container": "index.html #ship-audio-data"
   }
 ]

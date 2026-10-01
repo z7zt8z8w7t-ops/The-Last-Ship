@@ -216,12 +216,12 @@
     "key": "wristDrone",
     "author": "User supplied",
     "title": "TLS CRT drone(1).m4a",
-    "source_description": "Continuous terminal session drone; original M4A embedded unchanged."
+    "source_description": "v60: source drone trimmed at matching waveform phases; embedded as PCM WAV and looped on the audio clock. No fades, crossfade or overlap."
   },
   {
-    "key": "wristOff",
+    "key": "muthurOff",
     "author": "User supplied",
-    "title": "TLS power down.m4a",
-    "source_description": "Final terminal shutdown; original M4A embedded unchanged."
+    "title": "TLS muthur pwr dwn .m4a",
+    "source_description": "MU-TH-UR intro shutdown only; original M4A embedded unchanged."
   }
 ]

@@ -422,8 +422,8 @@ body{position:fixed;inset:0;height:100dvh}
 
 /* v49: bright CRT raster collapses to a line, then a phosphor point. */
 #app.intro-crt-off{animation:none;opacity:1;transform:none;filter:none;background:#000}
-#app.intro-crt-off>.muthur-boot{animation:crtContentCollapse .75s linear forwards;transform-origin:center}
-.crt-shutdown-glow{position:absolute;z-index:100;pointer-events:none;left:50%;top:50%;width:100%;height:100%;background:#dfffe7;box-shadow:0 0 18px 5px #baffca;transform:translate(-50%,-50%);animation:crtRasterCollapse .75s linear forwards}
+#app.intro-crt-off>.muthur-boot{animation:crtContentCollapse 1.556s linear forwards;transform-origin:center}
+.crt-shutdown-glow{position:absolute;z-index:100;pointer-events:none;left:50%;top:50%;width:100%;height:100%;background:#dfffe7;box-shadow:0 0 18px 5px #baffca;transform:translate(-50%,-50%);animation:crtRasterCollapse 1.556s linear forwards}
 @keyframes crtContentCollapse{0%{transform:scaleY(1);opacity:1;filter:brightness(1.5)}40%{transform:scaleY(.008);opacity:1;filter:brightness(3)}55%,100%{transform:scaleY(0);opacity:0}}
 @keyframes crtRasterCollapse{0%{opacity:0;height:100%;width:100%}25%{opacity:.2;height:18%;width:100%}40%{opacity:1;height:3px;width:100%}58%{opacity:1;height:3px;width:100%}82%{opacity:1;height:5px;width:5px}91%{opacity:.8;height:4px;width:4px}100%{opacity:0;height:0;width:0}}
 @media(prefers-reduced-motion:reduce){#app.intro-crt-off>.muthur-boot{animation:none;opacity:0}.crt-shutdown-glow{display:none}}
@@ -431,7 +431,7 @@ body{position:fixed;inset:0;height:100dvh}
 /* Launch locks all mission decisions until the outcome is displayed. */
 .departure-lock{position:absolute;inset:0;z-index:80;display:flex;align-items:flex-end;justify-content:center;padding:26px;color:#b6e8ff;font:800 1rem monospace;letter-spacing:.1em;text-shadow:0 0 12px #72b9ff;pointer-events:all;background:transparent}.board:has(.departure-lock) .abort-mission{visibility:hidden}
 
-/* v59: every dialog shares the same centred wrist terminal. */
+/* v60: every dialog shares the same centred wrist terminal. */
 .wrist-overlay{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:#0008;isolation:isolate;touch-action:pan-y}
 .wrist-overlay.wrist-on-board{position:absolute}
 .wrist-frame{--wrist-ink:#c2f7ac;--wrist-glow:#76dd85;--wrist-delay:0ms;box-sizing:border-box;width:min(94%,600px);height:min(90%,440px);padding:10px;border:2px solid #52745c;border-radius:18px;background:#101914;box-shadow:0 0 0 5px #07100b,0 12px 36px #000b;animation:wrist-start .813s var(--wrist-delay) both;transform-origin:center;overflow:hidden}
@@ -458,3 +458,37 @@ body{position:fixed;inset:0;height:100dvh}
 
 .wrist-content button.primary{background:#123018;color:var(--wrist-ink);border-color:var(--wrist-glow)}
 .wrist-red .wrist-content button.primary{background:#381711}
+
+/* v61: hull above fog and perimeters, markers above the hull. */
+.board .dropship-canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:2;pointer-events:none}
+.board svg.piece-layer{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;padding:0}
+/* One larger terminal, with a fixed footer independent of message length. */
+.wrist-frame{width:min(96%,800px);height:min(96%,650px)}
+.wrist-content{--wrist-type-scale:1;overflow:hidden;padding:18px 22px;font-size:calc(17px * var(--wrist-type-scale))}
+.wrist-content .wrist-dialog{font-size:inherit!important}
+.wrist-content p,.wrist-content li,.wrist-content .notice,.wrist-content .order-classification{font-size:1em!important;line-height:1.4!important}
+.wrist-content h1,.wrist-content h2{font-size:1.18em!important;line-height:1.3;margin:0 0 .7em!important}
+.wrist-content p{margin:0 0 .7em!important;max-width:none!important}
+.wrist-content h3{font-size:1em;margin:.6em 0!important}
+.wrist-content ul{margin:.4em 0;padding-left:1.3em}
+.wrist-content .order-directive{padding:6px 12px!important;margin:12px 0!important}
+.wrist-content .private-content{margin-bottom:0}
+.wrist-content .capture-art,.wrist-content .equipment-art,.wrist-content .event-art{height:calc(185px * var(--wrist-type-scale));max-height:calc(185px * var(--wrist-type-scale));margin:0 0 .6em}
+.wrist-content img{max-height:100%}
+.wrist-content .order-footer:empty{display:none}
+.wrist-content .rules-window,.wrist-content .rules-scroll{height:auto!important;font-size:inherit;overflow:visible!important}
+.wrist-content .rules-scroll>section[hidden]{display:none!important}
+.wrist-footer{flex:none;display:flex;align-items:center;justify-content:flex-end;gap:12px;padding:12px 18px;border-top:1px solid var(--wrist-glow);min-height:68px}
+.wrist-footer .order-ack{margin:0!important;width:auto!important;min-width:150px;min-height:44px;color:var(--wrist-ink);border-color:var(--wrist-glow)}
+.wrist-footer .row{width:100%;justify-content:flex-end;align-items:center;gap:10px}
+.wrist-footer button{color:var(--wrist-ink);border-color:var(--wrist-glow);background:#11251a}
+.wrist-red .wrist-footer button{background:#30140f}
+.wrist-pages{display:flex;align-items:center;gap:8px;margin-right:auto;font-size:11px}
+.wrist-pages button{padding:7px;font-size:10px}
+.wrist-pages span{white-space:nowrap}
+.startup-fallback{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:#000;color:#baf7a8;font-family:ui-monospace,monospace}
+.startup-fallback button[hidden]{display:none}
+.muthur-boot.muthur-power-on{transform-origin:center;animation:muthurPowerOn 1s both;pointer-events:none}
+@keyframes muthurPowerOn{0%{transform:scale(.002,.002);filter:brightness(15)}18%{transform:scale(1,.003);filter:brightness(10)}54%{transform:scale(1);filter:brightness(3)}65%{filter:brightness(.45)}77%{filter:brightness(1.6)}86%{filter:brightness(.8)}100%{transform:scale(1);filter:brightness(1)}}
+@media(max-width:600px){.wrist-content{padding:12px;font-size:calc(15px * var(--wrist-type-scale))}.wrist-footer{padding:8px;gap:5px;min-height:60px}.wrist-footer .order-ack{min-width:112px;font-size:12px}.wrist-pages{gap:4px}.wrist-pages button{font-size:9px;padding:6px 4px}}
+@media(prefers-reduced-motion:reduce){.muthur-boot.muthur-power-on{animation:muthurSimpleOn 1s both}@keyframes muthurSimpleOn{from{opacity:0}to{opacity:1}}}
