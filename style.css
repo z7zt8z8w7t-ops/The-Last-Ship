@@ -512,3 +512,6 @@ body{position:fixed;inset:0;height:100dvh}
 .layout:has(.dropship-departing)>.side{position:relative;z-index:2}
 
 .infection-status{border:1px solid #e2ae55;border-radius:7px;padding:7px 9px;margin:8px 0;color:#efc67c;background:#352812}.infection-status strong,.infection-status small{display:block}.infection-status small{font-size:11px;line-height:1.3;margin-top:4px}
+
+/* v72 crew controls and map markers */
+.personnel-card{margin:8px 8px 7px}.heart-monitor{margin:0 8px 8px}.setup-rank{min-width:120px;font-size:.72rem}.hex,.hex.sel,.hex.danger,.hex.active-player{stroke:#a2dcb3!important;filter:none!important;animation:none!important}.hex.target,.hex.chosen{stroke:#bbffd0!important}.crew-token.active-turn .helmet-rim{animation:activeCrew 1s ease-in-out infinite}@keyframes activeCrew{50%{opacity:.35;filter:drop-shadow(0 0 5px #dcffe8)}}.sentry-flash{animation:sentryFire .09s steps(2) infinite}@keyframes sentryFire{50%{opacity:0}}@media(prefers-reduced-motion:reduce){.crew-token.active-turn .helmet-rim,.sentry-flash{animation:none}}

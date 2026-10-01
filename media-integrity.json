@@ -1,5 +1,5 @@
 {
-  "artwork_file_sha256": "759ecba1d56d64da7f6b5a15a67f7149521debe8dee59238a837b85b0e6b2635",
+  "artwork_file_sha256": "37f6f84ff8dbd4899df101ea6f39992b1fa634760cdf72b77e180775bf596e3c",
   "images": [
     {
       "index": 0,
@@ -196,6 +196,20 @@
       "width": 1000,
       "height": 667,
       "sha256": "d88153879107518cc7c06f255604f4408f87fca362d2020237ecea431f482b7a"
+    },
+    {
+      "index": 28,
+      "format": "webp",
+      "width": 1002,
+      "height": 887,
+      "sha256": "fa440c0750078c120a2d786ba1107ff4510658fde7fc60461b0ba5447c14c012"
+    },
+    {
+      "index": 29,
+      "format": "webp",
+      "width": 772,
+      "height": 887,
+      "sha256": "2fbc022d30ed15e47a7c9f8ddd321f712e1f318e11d77b35054820cde2bbe756"
     }
   ],
   "dropship_assets": [
@@ -224,6 +238,16 @@
     {
       "file": "facehugger-attack.webp",
       "sha256": "d88153879107518cc7c06f255604f4408f87fca362d2020237ecea431f482b7a"
+    }
+  ],
+  "sentry_assets": [
+    {
+      "file": "sentry-base.webp",
+      "sha256": "fa440c0750078c120a2d786ba1107ff4510658fde7fc60461b0ba5447c14c012"
+    },
+    {
+      "file": "sentry-turret.webp",
+      "sha256": "2fbc022d30ed15e47a7c9f8ddd321f712e1f318e11d77b35054820cde2bbe756"
     }
   ]
 }

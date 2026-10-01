@@ -10,14 +10,14 @@ function stopAudio(x){stopOpening(x);audio().stopEffect('wristDrone')}
 function cancel(){if(!session)return;const x=session;session=null;clearTimeout(x.closeTimer);stopAudio(x);x.overlay.remove()}
 function ready(x){if(session!==x||x.closing||x.ready)return;x.ready=true;clearTimeout(x.openTimer);x.cancelEnded?.();x.cancelEnded=null;if(enabled&&x.turnAudio&&!document.hidden)audio().play('wristDrone',.1);const jobs=x.jobs.splice(0);jobs.forEach(fn=>fn())}
 function startAudio(x){
- if(!x.turnAudio){if(!x.ready)x.openTimer=setTimeout(()=>ready(x),ON_MS);return}
- if(x.ready){if(!document.hidden)audio().play('wristDrone',.1);return}
+ if(!x.turnAudio&&!x.startupAudio){if(!x.ready)x.openTimer=setTimeout(()=>ready(x),ON_MS);return}
+ if(x.ready){if(x.turnAudio&&!document.hidden)audio().play('wristDrone',.1);return}
  x.cancelEnded=audio().onEnded('wristOn',()=>ready(x));
  audio().play('wristOn',.15);
  // Only use the fallback if playback never started (muted/blocked browser).
  x.openTimer=setTimeout(()=>{if(session===x&&!x.ready&&(!enabled||document.hidden||!audio().position('wristOn'))){audio().stopEffect('wristOn');ready(x)}},ON_MS+250);
 }
-function create(owner,turnAudio){
+function create(owner,turnAudio,startupAudio=false){
  const overlay=document.createElement('div');overlay.className='wrist-overlay';overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');
  const frame=document.createElement('div');frame.className='wrist-frame';
  const screen=document.createElement('div');screen.className='wrist-screen';
@@ -26,7 +26,7 @@ function create(owner,turnAudio){
  const content=document.createElement('div');content.className='wrist-content';
  const footer=document.createElement('div');footer.className='wrist-footer';
  screen.append(header,imagePanel,content,footer);frame.append(screen);overlay.append(frame);
- const x={owner,turnAudio,overlay,frame,screen,content,imagePanel,footer,header,opened:performance.now(),ready:false,closing:false,jobs:[]};session=x;
+ const x={owner,turnAudio,startupAudio,overlay,frame,screen,content,imagePanel,footer,header,opened:performance.now(),ready:false,closing:false,jobs:[]};session=x;
  if(enabled)startAudio(x);else x.openTimer=setTimeout(()=>ready(x),ON_MS);
  return x;
 }
@@ -48,8 +48,8 @@ function sync(ui,game,soundOn){
  if(!candidate&&!session)return;
  let x=session;
  if(candidate&&x?.closing){cancel();x=null}
- if(candidate&&!x)x=create(game,candidate.classList.contains('handoff-prompt'));
- if(candidate&&x){const turnAudio=candidate.classList.contains('handoff-prompt');if(x.turnAudio!==turnAudio){if(x.turnAudio)endTurnAudio(x);else stopAudio(x);x.turnAudio=turnAudio;if(turnAudio)x.ready=false;if(enabled)startAudio(x)}}
+ if(candidate&&!x)x=create(game,candidate.classList.contains('handoff-prompt'),candidate.classList.contains('initial-orders'));
+ if(candidate&&x){const turnAudio=candidate.classList.contains('handoff-prompt'),startupAudio=candidate.classList.contains('initial-orders');if(x.turnAudio!==turnAudio||x.startupAudio!==startupAudio){if(x.turnAudio)endTurnAudio(x);else stopAudio(x);x.turnAudio=turnAudio;x.startupAudio=startupAudio;if(turnAudio||startupAudio)x.ready=false;if(enabled)startAudio(x)}}
  if(!candidate&&x?.turnAudio)endTurnAudio(x);
  const host=root.querySelector('.board')||root;
  if(candidate){

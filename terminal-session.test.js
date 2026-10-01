@@ -20,13 +20,13 @@ function harness(){
  vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../wrist-terminal.js'),'utf8'),ctx);
  const api=ctx.window.WristTerminal,game={},ui={boot:'game'};
  function advance(ms){const end=now+ms;for(;;){let next=[...timers].filter(([,t])=>t.at<=end).sort((a,b)=>a[1].at-b[1].at)[0];if(!next)break;now=next[1].at;timers.delete(next[0]);next[1].fn()}now=end}
- function draw(kind='turn',red=false){root.replaceChildren();const board=new Element();board.className='board';root.append(board);if(kind){const wrap=new Element(),dialog=new Element();wrap.className=kind==='event'?'event-overlay':kind==='choice'?'board-overlay':'overlay';dialog.className=kind==='turn'?'handoff-prompt':kind==='event'?'event-window':kind==='choice'?'card':'private executive-order';if(red)dialog.classList.add('classified-order');const heading=new Element('h2');heading.textContent=kind;dialog.append(heading);board.append(wrap);wrap.append(dialog)}api.sync(ui,game,true)}
+ function draw(kind='turn',red=false){root.replaceChildren();const board=new Element();board.className='board';root.append(board);if(kind){const wrap=new Element(),dialog=new Element();wrap.className=kind==='event'?'event-overlay':kind==='choice'?'board-overlay':'overlay';dialog.className=kind==='turn'?'handoff-prompt':kind==='event'?'event-window':kind==='choice'?'card':'private executive-order';if(red)dialog.classList.add('classified-order');if(kind==='orders')dialog.classList.add('initial-orders');const heading=new Element('h2');heading.textContent=kind;dialog.append(heading);board.append(wrap);wrap.append(dialog)}api.sync(ui,game,true)}
  return {api,root,ui,game,calls,levels,advance,draw,ended,document,listeners};
 }
 {
  const h=harness();h.draw();h.draw();assert.equal(h.calls.filter(x=>x==='wristOn').length,1);let extra=0;h.api.afterOpen(()=>extra++);assert.equal(extra,0);h.ended.get('wristOn')();assert.equal(extra,1);assert.equal(h.calls.filter(x=>x==='wristDrone').length,1);
  h.ui.sequence=true;h.draw(null);assert.ok(h.calls.filter(x=>!x.startsWith('stop:')).every(x=>['wristOn','wristDrone','turnOff'].includes(x)));
- h.game.pendingEvent='Risky salvage';h.ui.sequence=false;h.draw('choice');h.game.pendingEvent=null;h.ui.sequence=true;h.draw('event');h.draw('private',true);
+ h.game.pendingEvent='PDT Locator';h.ui.sequence=false;h.draw('choice');h.game.pendingEvent=null;h.ui.sequence=true;h.draw('event');h.draw('private',true);
  assert.equal(h.root.querySelector('.wrist-frame').classList.contains('wrist-red'),true);assert.equal(h.calls.filter(x=>x==='wristOn').length,1);
  h.ui.sequence=false;h.draw(null);assert.equal(h.api.isClosing(),true);assert.ok(h.calls.filter(x=>!x.startsWith('stop:')).every(x=>['wristOn','wristDrone','turnOff'].includes(x)));h.advance(1000);h.draw(null);assert.ok(h.calls.filter(x=>!x.startsWith('stop:')).every(x=>['wristOn','wristDrone','turnOff'].includes(x)));assert.equal(h.root.querySelector('.wrist-frame').style['--wrist-delay'],'-1000ms');h.advance(1253);assert.equal(h.root.querySelector('.wrist-overlay'),null);assert.equal(h.api.isClosing(),false);
 }
@@ -51,5 +51,12 @@ function harness(){
 }
 {const h=harness();h.draw('event');h.advance(813);h.draw('choice');h.draw('private');assert.equal(h.calls.filter(x=>['wristOn','wristDrone','turnOff'].includes(x)).length,0);h.document.hidden=true;h.listeners.visibilitychange();h.document.hidden=false;h.listeners.visibilitychange();assert.equal(h.calls.filter(x=>['wristOn','wristDrone','turnOff'].includes(x)).length,0);h.draw('turn');assert.equal(h.calls.filter(x=>x==='wristOn').length,1);h.ended.get('wristOn')();h.draw('event');const drones=h.calls.filter(x=>x==='wristDrone').length;h.document.hidden=true;h.listeners.visibilitychange();h.document.hidden=false;h.listeners.visibilitychange();assert.equal(h.calls.filter(x=>x==='wristDrone').length,drones)}
 {const h=harness();h.draw('turn');assert.deepEqual(h.levels[0],['wristOn',.15]);h.ended.get('wristOn')();assert.deepEqual(h.levels[1],['wristDrone',.1]);h.draw(null);h.draw(null);assert.equal(h.calls.filter(x=>x==='turnOff').length,1);assert.deepEqual(h.levels.find(x=>x[0]==='turnOff'),['turnOff',.2]);h.advance(2253);assert.equal(h.calls.filter(x=>x==='turnOff').length,1)}
-{const h=harness();h.draw('event');h.advance(813);h.draw(null);assert.equal(h.calls.filter(x=>x==='turnOff').length,0)}
-console.log('PASS: turn-only reduced gains and power-down, silent other closures, early close, mute, visibility, red briefing, no redraw restart.');
+{const h=harness();h.draw('event');h.advance(813);h.draw(null);h.draw(null);assert.equal(h.calls.filter(x=>x==='turnOff').length,1);assert.deepEqual(h.levels.find(x=>x[0]==='turnOff'),['turnOff',.2])}
+console.log('PASS: turn-only startup/drone gains, all-popup power-down once at 20%, early close, mute, visibility, red briefing, no redraw restart.');
+
+for(const kind of ['choice','private']){const h=harness();h.draw(kind);h.advance(813);h.draw(null);h.draw(null);assert.equal(h.calls.filter(x=>x==='turnOff').length,1);assert.deepEqual(h.levels.find(x=>x[0]==='turnOff'),['turnOff',.2])}
+{const h=harness();h.draw('event');h.ui.sequence=true;h.draw(null);assert.equal(h.calls.filter(x=>x==='turnOff').length,0);h.draw('private');h.ui.sequence=false;h.draw(null);assert.equal(h.calls.filter(x=>x==='turnOff').length,1)}
+
+{const h=harness();h.draw('orders');assert.deepEqual(h.levels.at(-1),['wristOn',.15]);h.ended.get('wristOn')();assert.equal(h.calls.filter(x=>x==='wristDrone').length,0)}
+
+{const h=harness();h.draw('turn');h.ended.get('wristOn')();h.draw('orders');assert.equal(h.calls.filter(x=>x==='wristOn').length,2);const drones=h.calls.filter(x=>x==='wristDrone').length;h.ended.get('wristOn')();assert.equal(h.calls.filter(x=>x==='wristDrone').length,drones)}

@@ -1,5 +1,5 @@
-# v71 verification
+# v72 verification
 
-All six automated test suites pass. Popup tests confirm that no auto-close timeout is scheduled, reports persist through other scheduled callbacks, and explicit acknowledgement closes them. Terminal tests verify one power-down cue at 20% for turn, event, choice and private reports, including repeated renders, early close, mute/visibility handling and linked reports without intermediate shutdown sounds. Existing gameplay, cinematic, audio and dropship tests also pass.
+All seven automated suites pass: crew/sentry, existing events, gameplay, terminal sessions, cinematic cues, audio playback and dropship layers. Checks include four role loadouts, sentry cache placement, free drop and deployment, scanning turret markup, firing/retreat before capture, spent ammunition, tracker persistence through ordinary popups and silence during capture, one nest egg excluding capture, scientist boarding report, and silent Gravity Well transport. Terminal tests cover initial-orders startup with no drone, including transition from handoff. Cinematic tests verify APC audio is absent until its one-second timer fires.
 
-Both event images decode successfully and are mapped to their intended events. Existing capture imagery is preserved. All 25 embedded audio payloads match v70 exactly. Syntax checks and ZIP integrity/patch reconstruction pass. Physical iPad audio and playtesting remain to be done.
+JavaScript syntax, all embedded image decoding, unchanged audio payloads, ZIP integrity and reconstruction over v71 pass. These are automated checks; physical iPad testing and visual review of the in-game sentry animation/layout are still needed.

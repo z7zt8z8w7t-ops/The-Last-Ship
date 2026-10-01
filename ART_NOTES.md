@@ -11,3 +11,9 @@ Built-in image_gen.imagegen was used for both previews. Final assets are alien-l
 Alien Lunge edit prompt: Change the alien's running pose so it sprints on all fours like a galloping dog. Preserve the black biomechanical alien, elongated domed head, ribbed exoskeleton, dorsal tubes, long segmented tail, rocky landscape, green mist, lighting and realistic style. Keep its torso low and almost horizontal, four limbs in a powerful gallop, full creature and tail visible, travelling right with kicked-up dust. No text or UI.
 
 Facehugger prompt: A Colonial Marine in worn olive military science fiction armour has a pale tan H. R. Giger facehugger attached to their face, its eight finger-like limbs around the head and segmented tail around the neck. Alive, leaning backwards with gloved hands raised. Non-graphic, intact skin, no blood. Medium close-up with entire head and upper torso; cracked charcoal rock, olive moss, teal mineral seams and green mist. Detailed cinematic realism, emerald rim lighting, no text or UI.
+
+## v72 sentry gun
+
+Approved two-part top-down sprite sheet generated using image_gen.imagegen. Transparent fixed tripod and rotating gun were separated and converted to sentry-base.webp and sentry-turret.webp. Both are embedded in artwork.js, with aligned rotation bearings and board perspective applied during SVG rendering.
+
+Prompt: Redesign the referenced Aliens-style sentry gun into a two-part transparent animation asset sheet. Worn olive military metal, boxy machine gun, heavy barrel, ammo box and green targeting sensor. True overhead view. Left: fixed three-legged tripod with circular bearing. Right: detached rotating turret with barrel upwards, no tripod. Matching scale and lighting, ample transparent padding, all edges visible. No text, floor, background, flash or UI.
