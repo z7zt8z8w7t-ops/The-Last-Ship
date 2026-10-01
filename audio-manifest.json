@@ -160,7 +160,7 @@
     "container": "index.html #ship-audio-data"
   },
   {
-    "usage": "On opening cache-search or false-PDT-search result popup, including egg recovery",
+    "usage": "Cache and false PDT discovery, 130% gain",
     "creator": "User supplied",
     "source": "TLS discovery.m4a",
     "license": "User supplied",
@@ -197,7 +197,7 @@
   {
     "usage": "Continuous terminal session drone",
     "creator": "User supplied",
-    "source": "TLS CRT drone(1).m4a → TLS_CRT_drone_seamless.wav",
+    "source": "TLS CRT drone(1).m4a \u2192 TLS_CRT_drone_seamless.wav",
     "license": "User supplied recording; no additional license asserted",
     "edits": "v60: decoded to 44.1 kHz stereo PCM WAV; trimmed at matching waveform phases to 1.555692 seconds; no fades or overlap. Circular Web Audio loop.",
     "embedded_key": "wristDrone",
@@ -215,7 +215,7 @@
   },
   {
     "key": "chances",
-    "usage": "First character of I CAN’T LIE TO YOU ABOUT YOUR CHANCES on MU-TH-UR",
+    "usage": "First character of I CAN\u2019T LIE TO YOU ABOUT YOUR CHANCES on MU-TH-UR",
     "title": "TLS chances",
     "source": "TLS chances.m4a",
     "credit": "User-supplied recording",
@@ -227,8 +227,8 @@
     "key": "ripley",
     "embedded_key": "ripley",
     "usage": "Launch Mission, 50% gain",
-    "title": "TLS Ripley speech",
-    "source": "TLS Ripley speech.m4a",
+    "title": "TLS rip speech",
+    "source": "TLS rip speech .m4a",
     "credit": "User-supplied recording",
     "edits": "Embedded without trimming or other audio edits",
     "container": "index.html #ship-audio-data"

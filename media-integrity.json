@@ -1,5 +1,5 @@
 {
-  "artwork_file_sha256": "a1fa3a7eac1e0f5d58e6287516c2bfb65403eb58144a0f16ac1cd7d43ed157d9",
+  "artwork_file_sha256": "3a5b13af5ef3c096095290fb254f09072308e7bbbbc8614ad171820e7896320d",
   "images": [
     {
       "index": 0,
@@ -52,10 +52,10 @@
     },
     {
       "index": 7,
-      "format": "png",
-      "width": 346,
-      "height": 360,
-      "sha256": "ce9500bee0982e13c4456b46bf3cba528530299de770319437d10063e6507ea8"
+      "format": "webp",
+      "width": 480,
+      "height": 400,
+      "sha256": "b45954163fda2b83b6cd2a599828b3194c0d8ba3dfa04d37c4cf90275046388b"
     },
     {
       "index": 8,
@@ -197,5 +197,9 @@
       "height": 825,
       "sha256": "d93668d3f2fc141b0b7f14b55932b6ecef3e7ff995fc6e543647b64f5f4a2ad6"
     }
-  ]
+  ],
+  "chemical_research_asset": {
+    "file": "chemical-research.webp",
+    "sha256": "b45954163fda2b83b6cd2a599828b3194c0d8ba3dfa04d37c4cf90275046388b"
+  }
 }

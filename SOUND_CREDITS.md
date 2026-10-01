@@ -93,9 +93,11 @@ Embedded recordings are unchanged. Effects are decoded silently and played only 
 
 ## v63 user-supplied recordings
 
-- TLS Ripley speech.m4a — embedded recording, starts when Launch Mission is pressed, at 50% gain.
+- TLS rip speech .m4a — embedded recording, starts when Launch Mission is pressed, at 50% gain.
 - TLS chances.m4a — embedded MU-TH-UR speech; begins with the requested CHANCES line.
 
 Both supplied by the user and embedded without audio editing.
 
 - TLS crt pwr dwn short .m4a — player turn popup closing, once.
+
+V70: TLS rip speech .m4a replaces the prior Ripley clip at 50% gain. TLS discovery uses 130% gain. Other sound levels and cues are unchanged.

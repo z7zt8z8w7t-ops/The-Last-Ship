@@ -15,7 +15,7 @@
     "url": "https://freesound.org/people/colorsCrimsonTears/sounds/537883/",
     "license": "CC0 1.0",
     "title": "Freesound - Monster roar by colorsCrimsonTears",
-    "source_description": "Monster roar.\nCreated from a clip of me inhaling air.\n\n-----\n\nThis sound, like everything I upload here,\nis completely free for anyone to use.\nI hope it is useful.\n🎶"
+    "source_description": "Monster roar.\nCreated from a clip of me inhaling air.\n\n-----\n\nThis sound, like everything I upload here,\nis completely free for anyone to use.\nI hope it is useful.\n\ud83c\udfb6"
   },
   {
     "key": "alien2",
@@ -183,7 +183,7 @@
     "container": "index.html #ship-audio-data"
   },
   {
-    "usage": "On opening cache-search or false-PDT-search result popup, including egg recovery",
+    "usage": "Cache and false PDT discovery, 130% gain",
     "creator": "User supplied",
     "source": "TLS discovery.m4a",
     "license": "User supplied",
@@ -226,7 +226,7 @@
   },
   {
     "key": "chances",
-    "usage": "First character of I CAN’T LIE TO YOU ABOUT YOUR CHANCES on MU-TH-UR",
+    "usage": "First character of I CAN\u2019T LIE TO YOU ABOUT YOUR CHANCES on MU-TH-UR",
     "title": "TLS chances",
     "source": "TLS chances.m4a",
     "credit": "User-supplied recording",
@@ -238,8 +238,8 @@
     "key": "ripley",
     "embedded_key": "ripley",
     "usage": "Launch Mission, 50% gain",
-    "title": "TLS Ripley speech",
-    "source": "TLS Ripley speech.m4a",
+    "title": "TLS rip speech",
+    "source": "TLS rip speech .m4a",
     "credit": "User-supplied recording",
     "edits": "Embedded without trimming or other audio edits",
     "container": "index.html #ship-audio-data"

@@ -510,3 +510,5 @@ body{position:fixed;inset:0;height:100dvh}
 .board.dropship-departing{overflow:visible;z-index:1}
 .board.dropship-departing .dropship-canvas{object-fit:fill;max-width:none;max-height:none}
 .layout:has(.dropship-departing)>.side{position:relative;z-index:2}
+
+.infection-status{border:1px solid #e2ae55;border-radius:7px;padding:7px 9px;margin:8px 0;color:#efc67c;background:#352812}.infection-status strong,.infection-status small{display:block}.infection-status small{font-size:11px;line-height:1.3;margin-top:4px}

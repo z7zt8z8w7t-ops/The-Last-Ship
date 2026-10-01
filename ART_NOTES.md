@@ -1,0 +1,5 @@
+# Chemical Research artwork
+
+Asset: chemical-research.webp; embedded in artwork.js under the existing specimen item key. Generated with image_gen.imagegen, then resized to a maximum of 480 pixels and converted to WebP. Transparent background; visually inspected for complete vials without cropping.
+
+Prompt: Create a game inventory popup artwork for Chemical Research: only a small group of three sealed futuristic glass reagent vials, no laboratory kit, no rack, no tools, no people. Stylized highly detailed cinematic military science fiction painted 3D game item art, worn industrial dark steel caps and clear thick glass containing amber and muted teal chemical liquids, restrained olive and charcoal palette, realistic reflections, dramatic soft green edge lighting. The entire vials clearly visible with ample transparent space around all edges, centered compact composition, matching a gritty retro science-fiction Colonial Marine survival board game. No text or logos. Transparent background.
