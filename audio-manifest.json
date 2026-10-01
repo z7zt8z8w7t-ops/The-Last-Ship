@@ -214,13 +214,13 @@
     "container": "index.html #ship-audio-data"
   },
   {
-    "key": "sympathies",
+    "key": "chances",
     "usage": "First character of I CAN’T LIE TO YOU ABOUT YOUR CHANCES on MU-TH-UR",
-    "title": "TLS sympathies",
-    "source": "TLS sympathies .m4a",
+    "title": "TLS chances",
+    "source": "TLS chances.m4a",
     "credit": "User-supplied recording",
     "edits": "Embedded without audio editing",
-    "embedded_key": "sympathies",
+    "embedded_key": "chances",
     "container": "index.html #ship-audio-data"
   },
   {
