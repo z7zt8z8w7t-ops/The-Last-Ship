@@ -1,22 +1,10 @@
-# v40 verification
+# v49 fixes and verification
 
-Title music uses the licensed source from original 00:15 to end, with six-second fade-in and no fade-out. The title starts after five seconds of black, and the flash starts at opening 36.3 seconds. APC starts at 37.75 seconds; music overlaps the beginning of APC. MU-TH-UR, offline media and gameplay assets are inherited from v39.
-
-
-## v43 changes
-- POWER ON label; typing begins 2 seconds after power press while audio still starts on press.
-- Final five prompt lines each receive a two-second blinking pause. Screen shutdown waits for typing and recording to finish.
-- Automatic popups display for four seconds then fade for 650ms; decision dialogs remain user controlled.
-- Capture layering: swarm at 0ms, pulse rifle at 500ms, launch screech and existing marine voice at 1000ms.
-- JavaScript syntax and deterministic terminal/capture timing checks passed. iPad audiovisual playback requires device verification.
-
-
-## v44
-Wind trim and circular crossfade validated in PCM; old embedded recording removed; new bytes checked against exported MP3; JavaScript syntax checked. Physical iPad loop playback not verified.
-
-
-## v46
-JavaScript syntax checked. Mock native audio checks confirm roster starts, stays continuous across renders, respects sound toggle and stops on exit. Physical iPad playback not verified.
-
-### v47 audio changes
-Verify POWER ON starts seamless theme loop; roster has no other loop; LAUNCH MISSION stops theme; gameplay event/specimen starts a one-shot without overlap or restart; button-press follow-on event is silent; louder wind remains present and other music is unchanged.
+- Five visible cursor flashes over 2.5 seconds, beginning immediately after the final character.
+- Existing 70ms character timing and two-second intermediate line pauses retained.
+- Malfunction lasts 900ms; shutdown lasts 750ms, then the existing roster fade runs.
+- Explicit glowing raster collapses into a horizontal line, contracts to a point and fades to black.
+- Native audio volume now uses the requested 0–1 value directly, including wind.
+- Theme start/stop and event continuation logic unchanged; all embedded recordings and artwork preserved.
+- JavaScript syntax, animation keyframe count, audio volume behavior and ZIP integrity verified.
+- Physical iPad audiovisual playback has not been tested.

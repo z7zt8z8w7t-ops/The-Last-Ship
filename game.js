@@ -1,5 +1,5 @@
 (()=>{'use strict';
-window.ShipBuild='v47';document.querySelector('.build-marker').textContent='v47';
+window.ShipBuild='v49';document.querySelector('.build-marker').textContent='v49';
 const {GROUND_ART,FLARE_ART,CASE_ART,ITEM_ARTS,SCIENTIST_ARTS,CAPTURE_ARTS,EMBEDDED_TILE_ART}=window.ShipArtwork;
 if(new URLSearchParams(location.search).has('soundcheck')){ShipAudio.showSoundCheck();return}
 const KEY='last-shuttle-playtest-v6',R=3,HOME='0,0',DROPSHIP='3,-2';
@@ -87,18 +87,28 @@ function mountTerminal(restart=false,onDone=null){
  run.finish=()=>{if(terminalRun!==run)return;clearTimeout(run.timer);session.count=total;session.done=true;paint();const done=run.onDone;run.onDone=null;done?.()};
  if(session.done){run.onDone?.();return}
  if(matchMedia('(prefers-reduced-motion: reduce)').matches){run.finish();return}
- function tick(){if(terminalRun!==run||!region.isConnected||document.hidden)return;session.count++;paint();let offset=session.count,boundary=false;for(const length of lengths){if(offset<=length){boundary=offset===length;break}offset-=length}if(session.count>=total){if(key==='boot')run.timer=setTimeout(run.finish,2000);else run.finish();return}let delay=key==='boot'?70:12;if(boundary){delay=key==='boot'?2000:90;if(key==='boot'){region.classList.remove('line-glitch');void region.offsetWidth;region.classList.add('line-glitch');setTimeout(()=>region.classList.remove('line-glitch'),280)}}run.timer=setTimeout(tick,delay)}
+ function tick(){if(terminalRun!==run||!region.isConnected||document.hidden)return;session.count++;paint();let offset=session.count,boundary=false;for(const length of lengths){if(offset<=length){boundary=offset===length;break}offset-=length}if(session.count>=total){run.finish();return}let delay=key==='boot'?70:12;if(boundary){delay=key==='boot'?2000:90;if(key==='boot'){region.classList.remove('line-glitch');void region.offsetWidth;region.classList.add('line-glitch');setTimeout(()=>region.classList.remove('line-glitch'),280)}}run.timer=setTimeout(tick,delay)}
  run.timer=setTimeout(tick,key==='boot'?Math.max(0,(ui.introTypingAt||performance.now())-performance.now()):100);
 
 }
 function revealTerminal(){if(!terminalRun||terminalRun.session.done)return false;terminalRun.finish();return true}
 document.addEventListener('visibilitychange',()=>{if(document.hidden){stopTerminal();clearTimeout(trackerTimer);trackerTimer=null;clearTimeout(alienTimer);alienTimer=null}else{mountTerminal(false,ui.introActivated&&ui.boot==='boot'?finishIntro:null);scheduleTracker();scheduleAlienAmbience()}});
-function finishIntro(){if(ui.boot!=='boot')return;ui.introReady=true;if(ui.introAudioDone)shutdownIntro()}
-function introAudioEnded(){if(ui.boot!=='boot')return;ui.introAudioDone=true;if(ui.introReady)shutdownIntro()}
-function shutdownIntro(){
+function finishIntro(){
  if(ui.boot!=='boot'||!ui.introActivated||ui.introClosing)return;
- ui.introClosing=true;clearTimeout(ui.introEndTimer);ui.loginEndCancel?.();stopTerminal();
- const app=document.getElementById('app');app.classList.add('intro-crt-off');
+ ui.introReady=true;ui.introClosing=true;clearTimeout(ui.introEndTimer);ui.loginEndCancel?.();stopTerminal();
+ const app=document.getElementById('app'),cursor=app.querySelector('.typing-cursor');
+ cursor?.classList.add('final-cursor-flash');
+ setTimeout(()=>{
+  if(ui.boot!=='boot')return;
+  app.classList.add('intro-malfunction');
+  setTimeout(()=>shutdownIntro(),900);
+ },2500);
+}
+function introAudioEnded(){if(ui.boot!=='boot')return;ui.introAudioDone=true}
+function shutdownIntro(){
+ if(ui.boot!=='boot'||!ui.introActivated)return;
+ const app=document.getElementById('app');app.classList.remove('intro-malfunction');app.classList.add('intro-crt-off');
+ const glow=document.createElement('div');glow.className='crt-shutdown-glow';glow.setAttribute('aria-hidden','true');app.append(glow);
  setTimeout(()=>{if(ui.boot!=='boot')return;app.classList.add('intro-roster-fade','fade-black');app.classList.remove('intro-crt-off');ui.boot='roster';ui.introRosterFade=true;render();requestAnimationFrame(()=>requestAnimationFrame(()=>app.classList.remove('fade-black')));setTimeout(()=>app.classList.remove('intro-roster-fade'),1300)},750);
 }
 
@@ -255,7 +265,7 @@ function howToPlay(){return `<div class="overlay rules-overlay" role="dialog" ar
 <section><h3>TRACKER &amp; BIOSUIT</h3><p>The tracker shows contact only when the alien is within two hexes of the current Marine. A new contact plays a horror sting; tracker pings speed up at one hex. Popups and private orders pause tracking, then resume without repeating the sting for unchanged contact. Sound can be muted without removing the blip.</p><p>The biosuit shows heart rate rising with alien proximity or captivity. Its ECG is visual and silent. Finding scientists has no scream; Marine capture plays a human scream with the orchestral swarm.</p></section>
 <section><h3>LAUNCH &amp; ENDING THE MISSION</h3><p>After both scientists are delivered, a free Marine at the Dropship may Call for Launch with an action available. Choose at least one eligible passenger currently at the Dropship. You may return to the board to use remaining scans before closing the hatch.</p><p>If any selected passenger carries the egg, the Corporation operative wins. Otherwise the crew wins, even if the egg or other Marines remain on the planet. Missing the nine-hour window gives the operative the win.</p><p>Abort Mission leaves the current mission. Closing or reloading the app also ends it: there is no saved-game continuation.</p></section>
 </div><div class="order-footer"><button class="order-ack" data-act="closeRules">ACKNOWLEDGE</button></div></div></div>`}
-function render(){stopTerminal();scheduleTracker();if(ui.note&&!ui.mode&&ui.note!==ui.timedNote){ui.timedNote=ui.note;let message=ui.note,game=s;setTimeout(()=>{if(s===game&&ui.note===message&&!ui.mode){ui.note='';render()}},5000)}document.body.dataset.screen=ui.boot;let root=document.getElementById('app');if(ui.boot==='boot'){const messages=[['MU-TH-UR >:','NEW CO-ORDINATES RECEIVED.'],['> ','SPECIAL ORDER 937 ACTIVATED.'],['> ','ALL OTHER CONSIDERATIONS SECONDARY.'],['> ','ACKNOWLEDGE'],['> ','ACKNOWLEDGE'],...Array.from({length:5},()=>['> ',''])];root.innerHTML=`<main class="muthur-boot ${ui.introActivated?'logged-in':'login-blank'}"><div class="muthur-terminal">${ui.introActivated?terminalMarkup('boot',messages.map(([prefix,text])=>`<div class="muthur-line" data-terminal-line data-prefix="${prefix}">${text}</div>`).join('')):''}</div>${ui.introActivated?'':'<button class="crt-terminal-button" data-act="beginIntro">POWER ON</button>'}</main>`;bind();return}if(ui.boot==='openingBlack'){root.innerHTML='<main class="arrival-black pre-title-black" aria-label="Mission opening"></main>';bind();return}if(ui.boot==='arrival'){root.innerHTML='<main class="arrival-black" aria-label="APC arriving on the planet surface"></main>';bind();return}if(ui.boot==='title'){root.innerHTML=`<main class="title-screen title-fade-in ${ui.cinematic?'cinematic-title':''}" ${ui.cinematic?'aria-label="The Last Ship mission opening"':'data-act="enterRoster" role="button" tabindex="0" aria-label="Tap anywhere to continue"'}><div class="title-cloud"></div>${ui.cinematic?'<div class="title-glow" aria-hidden="true"></div>':''}<div class="title-content"><p>UKSS APATE · COLONIAL MARINES</p><svg class="alien-era-title" viewBox="0 0 1260 190" role="img" aria-label="THE · LAST · SHIP">
+function render(){stopTerminal();scheduleTracker();if(ui.note&&!ui.mode&&ui.note!==ui.timedNote){ui.timedNote=ui.note;let message=ui.note,game=s;setTimeout(()=>{if(s===game&&ui.note===message&&!ui.mode){ui.note='';render()}},5000)}document.body.dataset.screen=ui.boot;let root=document.getElementById('app');if(ui.boot==='boot'){const messages=[['MU-TH-UR >:','NEW CO-ORDINATES RECEIVED.'],['> ','SPECIAL ORDER 937 ACTIVATED.'],['> ','ALL OTHER CONSIDERATIONS SECONDARY.'],['> ','ACKNOWLEDGE'],...Array.from({length:4},()=>['> ', '']),['> ','I CAN’T LIE TO YOU ABOUT YOUR CHANCES, BUT…'],['> ','YOU HAVE MY SYMPATHIES']];root.innerHTML=`<main class="muthur-boot ${ui.introActivated?'logged-in':'login-blank'}"><div class="muthur-terminal">${ui.introActivated?terminalMarkup('boot',messages.map(([prefix,text])=>`<div class="muthur-line" data-terminal-line data-prefix="${prefix}">${text}</div>`).join('')):''}</div>${ui.introActivated?'':'<button class="crt-terminal-button" data-act="beginIntro">INITIALISE</button>'}</main>`;bind();return}if(ui.boot==='openingBlack'){root.innerHTML='<main class="arrival-black pre-title-black" aria-label="Mission opening"></main>';bind();return}if(ui.boot==='arrival'){root.innerHTML='<main class="arrival-black" aria-label="APC arriving on the planet surface"></main>';bind();return}if(ui.boot==='title'){root.innerHTML=`<main class="title-screen title-fade-in ${ui.cinematic?'cinematic-title':''}" ${ui.cinematic?'aria-label="The Last Ship mission opening"':'data-act="enterRoster" role="button" tabindex="0" aria-label="Tap anywhere to continue"'}><div class="title-cloud"></div>${ui.cinematic?'<div class="title-glow" aria-hidden="true"></div>':''}<div class="title-content"><p>UKSS APATE · COLONIAL MARINES</p><svg class="alien-era-title" viewBox="0 0 1260 190" role="img" aria-label="THE · LAST · SHIP">
 <g class="title-geometry">
 <path class="title-seg" pathLength="1" style="--d:17.856s" d="M55 35H145"/><path class="title-seg" pathLength="1" style="--d:18.972s" d="M100 35V155"/>
 <path class="title-seg" pathLength="1" style="--d:13.392s" d="M175 35V155"/><path class="title-seg" pathLength="1" style="--d:14.508s" d="M255 35V155"/><path class="title-seg" pathLength="1" style="--d:15.624s" d="M175 95H255"/>

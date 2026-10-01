@@ -363,3 +363,67 @@ body{position:fixed;inset:0;height:100dvh}
 .actions-header{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
 .actions-header h2{margin:0;min-width:0}
 .actions-header .sound-switch{position:static;flex:none;margin:0;min-height:30px;white-space:nowrap}
+
+/* v48: MU-TH-UR final transmission and deliberate five-blink CRT failure. */
+.muthur-copy .typing-cursor.final-cursor-flash{
+  opacity:1;
+  animation:muthurFinalCursorFlash 2.5s steps(1,end) forwards!important;
+}
+@keyframes muthurFinalCursorFlash{
+  0%,20%,40%,60%,80%{opacity:1}
+  10%,30%,50%,70%,90%,100%{opacity:0}
+}
+#app.intro-malfunction{animation:muthurTerminalFail .9s steps(1,end) forwards;pointer-events:none}
+#app.intro-malfunction .muthur-terminal{animation:muthurTerminalWarp .9s steps(1,end) forwards}
+#app.intro-malfunction .muthur-copy{animation:muthurTextBreakup .9s steps(1,end) forwards!important}
+#app.intro-malfunction .muthur-boot::before{animation:muthurStaticBurst .9s steps(1,end) forwards!important}
+@keyframes muthurTerminalFail{
+  0%{filter:brightness(1) contrast(1);transform:none}
+  10%{filter:brightness(2.1) contrast(1.6);transform:translate(2px,-1px)}
+  18%{filter:brightness(.35) contrast(2);transform:translate(-4px,2px) skewX(-.6deg)}
+  29%{filter:brightness(1.7) contrast(1.3);transform:translate(5px,0)}
+  41%{filter:brightness(.18) contrast(2.4);transform:translate(-2px,-2px) skewX(.8deg)}
+  53%{filter:brightness(2.8) contrast(1.9);transform:translate(3px,1px)}
+  66%{filter:brightness(.55) contrast(2.2);transform:translate(-5px,0)}
+  79%{filter:brightness(2.2) contrast(2);transform:translate(1px,-1px)}
+  100%{filter:brightness(1.35) contrast(1.5);transform:none}
+}
+@keyframes muthurTerminalWarp{
+  0%,100%{transform:none}
+  14%{transform:translateY(4px) scaleX(1.015)}
+  27%{transform:translateY(-3px) scaleX(.985)}
+  48%{transform:translateX(7px) skewX(-1deg)}
+  62%{transform:translateX(-8px) skewX(1.2deg)}
+  82%{transform:scaleY(.96) scaleX(1.02)}
+}
+@keyframes muthurTextBreakup{
+  0%,100%{opacity:1;filter:none}
+  12%{opacity:.48;filter:blur(.4px)}
+  20%{opacity:1;filter:brightness(1.8)}
+  37%{opacity:.22;filter:blur(1px)}
+  44%{opacity:1;filter:none}
+  69%{opacity:.38;filter:brightness(2)}
+  75%{opacity:1;filter:blur(.3px)}
+}
+@keyframes muthurStaticBurst{
+  0%,100%{opacity:.68}
+  13%{opacity:1}
+  19%{opacity:.15}
+  32%{opacity:.95}
+  46%{opacity:.25}
+  58%{opacity:1}
+  73%{opacity:.18}
+  86%{opacity:.9}
+}
+@media(prefers-reduced-motion:reduce){
+ .muthur-copy .typing-cursor.final-cursor-flash{animation-duration:.5s!important}
+ #app.intro-malfunction,#app.intro-malfunction .muthur-terminal,#app.intro-malfunction .muthur-copy,#app.intro-malfunction .muthur-boot::before{animation-duration:.1s!important}
+}
+
+/* v49: bright CRT raster collapses to a line, then a phosphor point. */
+#app.intro-crt-off{animation:none;opacity:1;transform:none;filter:none;background:#000}
+#app.intro-crt-off>.muthur-boot{animation:crtContentCollapse .75s linear forwards;transform-origin:center}
+.crt-shutdown-glow{position:absolute;z-index:100;pointer-events:none;left:50%;top:50%;width:100%;height:100%;background:#dfffe7;box-shadow:0 0 18px 5px #baffca;transform:translate(-50%,-50%);animation:crtRasterCollapse .75s linear forwards}
+@keyframes crtContentCollapse{0%{transform:scaleY(1);opacity:1;filter:brightness(1.5)}40%{transform:scaleY(.008);opacity:1;filter:brightness(3)}55%,100%{transform:scaleY(0);opacity:0}}
+@keyframes crtRasterCollapse{0%{opacity:0;height:100%;width:100%}25%{opacity:.2;height:18%;width:100%}40%{opacity:1;height:3px;width:100%}58%{opacity:1;height:3px;width:100%}82%{opacity:1;height:5px;width:5px}91%{opacity:.8;height:4px;width:4px}100%{opacity:0;height:0;width:0}}
+@media(prefers-reduced-motion:reduce){#app.intro-crt-off>.muthur-boot{animation:none;opacity:0}.crt-shutdown-glow{display:none}}
