@@ -1,7 +1,7 @@
-# v65 checks
+# v66 checks
 
-Automated gameplay checks confirm Launch Mission requests Ripley, the existing screech and score. Audio tests check Ripley at full gain and retain wind/drone tests. Title timing remains unchanged without a separate speech cue. Terminal-only turn audio, lunge popup roar, MU-TH-UR, gameplay and dropship flight checks pass.
+Passed existing gameplay, cinematic, audio, terminal and dropship tests. New assertions verify Ripley gain 0.5, turn startup gain 0.3, turn drone gain 0.275, one power-down cue on turn-popup closure, and no power-down cue for ordinary event popups.
 
-The new embedded recording is byte-identical to TLS Ripley.m4a; all other retained embedded recordings are identical to v64. The replaced recording and its trigger are absent. JavaScript syntax, service worker paths and ZIP integrity pass.
+New embedded recordings match the supplied files byte for byte; other embedded recordings match v65. JavaScript syntax and offline asset paths pass. ZIP contains exactly the files differing from v65 and passes ZIP integrity checks.
 
-Tests use simulated DOM/audio/canvas. No physical iPad playback or real-browser rendering test was available.
+Tests simulate DOM/audio/canvas. No physical iPad playback or real-browser visual verification was available.

@@ -226,11 +226,20 @@
   {
     "key": "ripley",
     "embedded_key": "ripley",
-    "usage": "Launch Mission button, at full volume",
-    "title": "TLS Ripley",
-    "source": "TLS Ripley.m4a",
+    "usage": "Launch Mission, 50% gain",
+    "title": "TLS Ripley speech",
+    "source": "TLS Ripley speech.m4a",
     "credit": "User-supplied recording",
     "edits": "Embedded without trimming or other audio edits",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "key": "turnOff",
+    "embedded_key": "turnOff",
+    "source": "TLS crt pwr dwn short .m4a",
+    "usage": "Player turn popup closes; once, drone stops",
+    "credit": "User-supplied recording",
+    "edits": "Embedded without editing",
     "container": "index.html #ship-audio-data"
   }
 ]
