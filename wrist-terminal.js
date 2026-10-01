@@ -14,17 +14,18 @@ function startAudio(x){
  x.cancelEnded=audio().onEnded('wristOn',()=>ready(x));
  audio().play('wristOn');
  // Only use the fallback if playback never started (muted/blocked browser).
- x.openTimer=setTimeout(()=>{if(session===x&&!x.ready&&(!enabled||document.hidden||!audio().position('wristOn')))ready(x)},ON_MS+250);
+ x.openTimer=setTimeout(()=>{if(session===x&&!x.ready&&(!enabled||document.hidden||!audio().position('wristOn'))){audio().stopEffect('wristOn');ready(x)}},ON_MS+250);
 }
 function create(owner){
  const overlay=document.createElement('div');overlay.className='wrist-overlay';overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');
  const frame=document.createElement('div');frame.className='wrist-frame';
  const screen=document.createElement('div');screen.className='wrist-screen';
  const header=document.createElement('div');header.className='wrist-header';header.innerHTML='<span>CMC · FIELD TERMINAL</span><button data-act="toggleSound" class="wrist-sound">SOUND</button>';
+ const imagePanel=document.createElement('div');imagePanel.className='wrist-image-panel';imagePanel.hidden=true;
  const content=document.createElement('div');content.className='wrist-content';
  const footer=document.createElement('div');footer.className='wrist-footer';
- screen.append(header,content,footer);frame.append(screen);overlay.append(frame);
- const x={owner,overlay,frame,screen,content,footer,header,opened:performance.now(),ready:false,closing:false,jobs:[]};session=x;
+ screen.append(header,imagePanel,content,footer);frame.append(screen);overlay.append(frame);
+ const x={owner,overlay,frame,screen,content,imagePanel,footer,header,opened:performance.now(),ready:false,closing:false,jobs:[]};session=x;
  if(enabled)startAudio(x);else x.openTimer=setTimeout(()=>ready(x),ON_MS);
  return x;
 }
@@ -50,7 +51,9 @@ function sync(ui,game,soundOn){
  if(candidate){
   const red=candidate.classList.contains('classified-order');x.frame.classList.toggle('wrist-red',red);
   const wrapper=candidate.parentElement,fresh=wrapper!==x.content;
-  x.content.replaceChildren(candidate);x.content.inert=false;x.footer.inert=false;if(fresh){x.footer.replaceChildren();
+  x.content.replaceChildren(candidate);x.content.inert=false;x.footer.inert=false;if(fresh){x.footer.replaceChildren();x.imagePanel.replaceChildren();
+  const art=candidate.querySelector('.capture-art,.equipment-art,.event-art');
+  x.imagePanel.hidden=!art;if(art)x.imagePanel.append(art);
   const ack=candidate.querySelector('[data-act="closeSearchPopup"],[data-act="ackMission"],[data-act="reveal"],[data-act="startTurn"],[data-act="closePrivate"],[data-act="closeRules"]');
   if(ack){ack.textContent='ACKNOWLEDGE';x.footer.append(ack)}else{const choices=candidate.querySelector('.row');if(choices)x.footer.append(choices)}
   if(candidate.classList.contains('rules-window'))paginateRules(x,candidate);}
@@ -68,10 +71,20 @@ function sync(ui,game,soundOn){
 }
 function fit(x){
  if(session!==x||!x.content.clientHeight)return;
+ const dialog=x.content.firstElementChild,host=x.overlay.parentElement;
+ if(!dialog||!host)return;
+ x.content.style.setProperty('--wrist-type-scale','1');
+ x.frame.style.height='440px';
+ const maxHeight=Math.max(240,host.clientHeight*.96);
+ const padding=typeof getComputedStyle==='function'?parseFloat(getComputedStyle(x.content).paddingTop)+parseFloat(getComputedStyle(x.content).paddingBottom):32;
+ const chrome=x.frame.offsetHeight-x.content.clientHeight;
+ const needed=Math.max(280,Math.ceil(chrome+dialog.scrollHeight+padding+4));
+ x.frame.style.height=`${Math.min(maxHeight,needed)}px`;
  let scale=1;
- x.content.style.setProperty('--wrist-type-scale',scale);
- while(x.content.scrollHeight>x.content.clientHeight+1&&scale>.6){scale-=.04;x.content.style.setProperty('--wrist-type-scale',scale.toFixed(2))}
+ while(x.content.scrollHeight>x.content.clientHeight+1&&scale>.72){scale-=.04;x.content.style.setProperty('--wrist-type-scale',scale.toFixed(2))}
 }
+window.addEventListener?.('resize',()=>{if(session)fit(session)});
+
 function paginateRules(x,dialog){
  const sections=[...dialog.querySelectorAll('.rules-scroll>section')];if(!sections.length)return;
  x.rulesPage=Math.min(x.rulesPage||0,sections.length-1);

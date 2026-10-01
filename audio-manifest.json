@@ -166,7 +166,8 @@
     "license": "User supplied",
     "edits": "As supplied",
     "embedded_key": "discovery",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "playback_gain_v62": 1.2
   },
   {
     "usage": "Female player alien capture: combined sequence once, no separate layers or popup snap",
@@ -190,7 +191,8 @@
     "license": "User supplied recording; no additional license asserted",
     "edits": "Embedded original M4A without edits. Drone uses native audio looping.",
     "embedded_key": "wristOn",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "playback_gain_v62": 0.6
   },
   {
     "usage": "Continuous terminal session drone",
@@ -199,7 +201,8 @@
     "license": "User supplied recording; no additional license asserted",
     "edits": "v60: decoded to 44.1 kHz stereo PCM WAV; trimmed at matching waveform phases to 1.555692 seconds; no fades or overlap. Circular Web Audio loop.",
     "embedded_key": "wristDrone",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "playback_gain_v62": 0.55
   },
   {
     "usage": "MU-TH-UR intro shutdown only",

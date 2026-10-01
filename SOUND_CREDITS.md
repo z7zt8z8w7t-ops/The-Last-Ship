@@ -86,3 +86,7 @@ TLS CRT drone(1).m4a is decoded to stereo 44.1 kHz PCM and trimmed to matching w
 ## v61 terminal audio
 
 User supplied: TLS CRT on short(1).m4a for gameplay popup opening; TLS CRT drone(1).m4a trimmed to the existing seamless PCM WAV for the terminal drone; TLS muthur pwr dwn .m4a for MU-TH-UR intro shutdown only. Opening and MU-TH-UR shutdown recordings are embedded unchanged. The drone begins when INITIALISE is pressed and stops when the MU-TH-UR screen starts collapsing. Gameplay popups retain their startup and continuous linked-session drone; their final closure is silent. Capture and discovery recordings remain unchanged.
+
+## v62 playback and levels
+
+Embedded recordings are unchanged. Effects are decoded silently and played only on request through Web Audio gain nodes, with a native fallback. TLS CRT opening gain is 0.6; TLS discovery gain is 1.2 with transient peak limiting; terminal drone gain is 0.55. The circular PCM drone and MU-TH-UR shutdown recording are retained. No fade or crossfade is added.

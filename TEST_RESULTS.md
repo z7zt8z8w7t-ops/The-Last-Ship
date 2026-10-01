@@ -1,21 +1,13 @@
-# v61 release checks
+# v62 release checks
 
-Passed:
+Passed automated checks:
 
-- Terminal session harness: one startup across linked dialogs; silent final close; drone cancellation on early close; mute/unmute and visibility handling; red briefing; continuity through handoff; unchanged closing deadline; ACKNOWLEDGE moved outside message content into the footer and retained through a sync.
-- Gameplay/intro harness: terrain placement across 100 generated boards; free inventory use; search cue flags; APC egg incineration; crew/company/alien victory rules; combined captures; lunge-only standalone roar; power-on flags and drone on Initialise; one intro shutdown sound; roster transition after the collapse; visual startup timer still advances when audio setup throws; marker SVG follows the hull canvas.
-- Audio-engine harness: circular PCM drone retained; no linked-message source restart; cancelled decode cannot restart audio; immediate mute/close; visibility cancellation; WAV fallback; only intro media loaded during cold preparation; silent priming failures remain diagnostic and do not become playback error warnings; gameplay media load at launch.
-- Dropship drawing harness: upper hull canvas contains the ship; ground canvas retains only its shadow and ground lighting; three round-seven ground sweeps; launch frame; absent hull after completed departure.
-- Original artwork, terrain and ship image assets are unchanged. Every previous audio payload except the removed popup shutdown recording is unchanged. The new MU-TH-UR shutdown payload matches the supplied file bytes. Seamless drone WAV is unchanged.
-- Application and inline JavaScript syntax; offline asset paths and v61 cache marker; ZIP integrity.
+- Audio harness: preparing media creates no playback sources and calls no native Play; unlocking does not start prepared effects; launch requests only screech and score (ongoing wind remains); startup gain 0.6, discovery gain 1.2, drone gain 0.55; natural startup completion callback; one circular drone source across linked dialogs; suspended context resumes; cancellation, mute and visibility handling; legacy fallback preparation remains silent.
+- Game harness: confirmed redirect preserves its hidden queued destination while removing yellow selection; turn handover clears target state; timed popup schedules five seconds and remains manually closable. Previous terrain, free inventory, egg incineration, victory rules, capture recordings, roar rules, intro behaviour and startup error recovery checks pass.
+- Terminal harness: image container moves into a dedicated panel outside the message area; Acknowledge stays in the footer; one startup across linked dialogs, silent closure, early-close cancellation and handoff continuity remain.
+- Dropship drawing harness: hull above board layers; shadow/sweeps remain on ground; launch and final departure retained.
+- Every embedded audio payload and artwork/ship/terrain asset matches v61. JavaScript syntax, v62 offline asset paths and ZIP integrity checked.
 
-These checks use simulated DOM, canvas, audio and timers. No real-browser rendering or physical iPad playback test was available. Responsive text fitting, footer appearance, foreground/background recovery and the reported first-load issue still require an iPad playtest. The first-load work prevents known audio/setup failures from blocking the visual sequence; the screenshot alone does not establish the original device-specific cause.
+Tests use simulated DOM, audio, canvas and timers. No physical iPad or real-browser rendering test was available. The bulk playback mechanism reported at launch is removed and guarded by tests; final sound balance, image fit and frame sizing require an iPad playtest.
 
-Run:
-
-```
-node verification/terminal-session.test.js
-node verification/gameplay.test.js
-node verification/drone-playback.test.js
-node verification/dropship-layers.test.js
-```
+Run each verification/*.test.js with Node.

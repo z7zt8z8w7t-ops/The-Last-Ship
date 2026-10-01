@@ -492,3 +492,15 @@ body{position:fixed;inset:0;height:100dvh}
 @keyframes muthurPowerOn{0%{transform:scale(.002,.002);filter:brightness(15)}18%{transform:scale(1,.003);filter:brightness(10)}54%{transform:scale(1);filter:brightness(3)}65%{filter:brightness(.45)}77%{filter:brightness(1.6)}86%{filter:brightness(.8)}100%{transform:scale(1);filter:brightness(1)}}
 @media(max-width:600px){.wrist-content{padding:12px;font-size:calc(15px * var(--wrist-type-scale))}.wrist-footer{padding:8px;gap:5px;min-height:60px}.wrist-footer .order-ack{min-width:112px;font-size:12px}.wrist-pages{gap:4px}.wrist-pages button{font-size:9px;padding:6px 4px}}
 @media(prefers-reduced-motion:reduce){.muthur-boot.muthur-power-on{animation:muthurSimpleOn 1s both}@keyframes muthurSimpleOn{from{opacity:0}to{opacity:1}}}
+
+/* v62: compact terminal, dedicated uncropped artwork panel and message area. */
+.wrist-frame{width:min(94%,650px);height:440px;max-height:96%}
+.wrist-header{padding:7px 12px;min-height:38px}
+.wrist-content{padding:14px 18px;font-size:calc(16px * var(--wrist-type-scale));overflow:hidden}
+.wrist-footer{min-height:60px;padding:9px 14px}
+.wrist-image-panel{flex:none;height:180px;min-height:0;margin:12px 18px 0;padding:8px;border:1px solid #7cb88a55;border-radius:5px;background:#020b07}
+.wrist-image-panel[hidden]{display:none!important}
+.wrist-red .wrist-image-panel{border-color:#ba655755;background:#100504}
+.wrist-image-panel .capture-art,.wrist-image-panel .equipment-art,.wrist-image-panel .event-art{display:block!important;width:100%!important;height:100%!important;max-height:none!important;aspect-ratio:auto!important;padding:0!important;margin:0!important;overflow:visible!important;background:transparent!important}
+.wrist-image-panel img{display:block!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center!important}
+@media(max-height:650px){.wrist-image-panel{height:130px}.wrist-content{padding:10px 14px}.wrist-footer{min-height:54px}}
