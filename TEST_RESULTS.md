@@ -1,10 +1,8 @@
-# v49 fixes and verification
+# v50 verification
 
-- Five visible cursor flashes over 2.5 seconds, beginning immediately after the final character.
-- Existing 70ms character timing and two-second intermediate line pauses retained.
-- Malfunction lasts 900ms; shutdown lasts 750ms, then the existing roster fade runs.
-- Explicit glowing raster collapses into a horizontal line, contracts to a point and fades to black.
-- Native audio volume now uses the requested 0–1 value directly, including wind.
-- Theme start/stop and event continuation logic unchanged; all embedded recordings and artwork preserved.
-- JavaScript syntax, animation keyframe count, audio volume behavior and ZIP integrity verified.
-- Physical iPad audiovisual playback has not been tested.
+Startup recording is TLS loop.m4a decoded to PCM. Circular Web Audio buffer playback adds no fades, crossfades or silent joins. INITIALISE starts the loop; LAUNCH MISSION stops it. Sound toggle and backgrounding pause/resume the loop. Event/specimen playback of the removed recording is deleted. Other existing popup effects remain.
+
+Previous five-flash and CRT shutdown corrections retained. Syntax, embedded media preservation, startup loop lifecycle and archive integrity checked. Physical iPad playback still requires device testing.
+
+## v51
+Scientist discovery plays TLS event.m4a once; also triggers when already escorting another scientist. Re-escorting or collecting a dropped scientist does not replay it. False signals, equipment, delivery and unrelated events do not trigger it. Startup loop unchanged. Syntax and discovery routing verified; iPad playback requires device verification.

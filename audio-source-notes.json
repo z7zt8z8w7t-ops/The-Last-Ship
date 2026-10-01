@@ -167,12 +167,21 @@
     "container": "index.html #ship-audio-data"
   },
   {
-    "usage": "Loop from POWER ON to LAUNCH MISSION; one-shot for gameplay events and specimens",
+    "usage": "Loop from INITIALISE until LAUNCH MISSION only",
     "creator": "User supplied",
-    "source": "Theme for the last ship.mp3",
+    "source": "TLS loop.m4a",
     "license": "User supplied",
-    "edits": "Used as supplied, without start/end fading. Independent intro loop and event one-shot players.",
-    "embedded_key": "shipTheme",
+    "edits": "Decoded to PCM WAV without trimming, fades or crossfades; circular buffer playback.",
+    "embedded_key": "introLoop",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "usage": "One-shot on first physical discovery of a scientist",
+    "creator": "User supplied",
+    "source": "TLS event.m4a",
+    "license": "User supplied",
+    "edits": "As supplied; no additional fades, trimming or looping.",
+    "embedded_key": "scientistFound",
     "container": "index.html #ship-audio-data"
   }
 ]
