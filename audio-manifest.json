@@ -151,7 +151,7 @@
     "container": "index.html #ship-audio-data"
   },
   {
-    "usage": "Once as Alien Lunge movement begins, unless it will capture a player. Routine gameplay noise is silent. Combined capture MP3s unchanged.",
+    "usage": "Alien Lunge popup opening, once; not during movement",
     "creator": "User supplied",
     "source": "TLS alien roar.m4a",
     "license": "User supplied",
@@ -214,16 +214,6 @@
     "container": "index.html #ship-audio-data"
   },
   {
-    "key": "titleSpeech",
-    "usage": "First stroke of the A in LAST during the title",
-    "title": "TLS speech",
-    "source": "TLS speech.m4a",
-    "credit": "User-supplied recording",
-    "edits": "Embedded without audio editing",
-    "embedded_key": "titleSpeech",
-    "container": "index.html #ship-audio-data"
-  },
-  {
     "key": "sympathies",
     "usage": "First character of I CAN’T LIE TO YOU ABOUT YOUR CHANCES on MU-TH-UR",
     "title": "TLS sympathies",
@@ -231,6 +221,16 @@
     "credit": "User-supplied recording",
     "edits": "Embedded without audio editing",
     "embedded_key": "sympathies",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "key": "ripley",
+    "embedded_key": "ripley",
+    "usage": "Launch Mission button, at full volume",
+    "title": "TLS Ripley",
+    "source": "TLS Ripley.m4a",
+    "credit": "User-supplied recording",
+    "edits": "Embedded without trimming or other audio edits",
     "container": "index.html #ship-audio-data"
   }
 ]

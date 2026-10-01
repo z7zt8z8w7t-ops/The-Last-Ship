@@ -93,7 +93,7 @@ Embedded recordings are unchanged. Effects are decoded silently and played only 
 
 ## v63 user-supplied recordings
 
-- TLS speech.m4a — embedded title speech; begins with the A in LAST.
+- TLS Ripley.m4a — embedded recording, starts when Launch Mission is pressed, at full volume.
 - TLS sympathies .m4a — embedded MU-TH-UR speech; begins with the requested CHANCES line.
 
 Both supplied by the user and embedded without audio editing.

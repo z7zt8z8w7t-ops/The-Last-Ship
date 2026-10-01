@@ -8,15 +8,16 @@ const selectors=['.rules-window','.mission-overlay .card','.private.executive-or
 function stopOpening(x){x.cancelEnded?.();x.cancelEnded=null;clearTimeout(x.openTimer);audio().stopEffect('wristOn')}
 function stopAudio(x){stopOpening(x);audio().stopEffect('wristDrone')}
 function cancel(){if(!session)return;const x=session;session=null;clearTimeout(x.closeTimer);stopAudio(x);x.overlay.remove()}
-function ready(x){if(session!==x||x.closing||x.ready)return;x.ready=true;clearTimeout(x.openTimer);x.cancelEnded?.();x.cancelEnded=null;if(enabled&&!document.hidden)audio().play('wristDrone');const jobs=x.jobs.splice(0);jobs.forEach(fn=>fn())}
+function ready(x){if(session!==x||x.closing||x.ready)return;x.ready=true;clearTimeout(x.openTimer);x.cancelEnded?.();x.cancelEnded=null;if(enabled&&x.turnAudio&&!document.hidden)audio().play('wristDrone');const jobs=x.jobs.splice(0);jobs.forEach(fn=>fn())}
 function startAudio(x){
+ if(!x.turnAudio){if(!x.ready)x.openTimer=setTimeout(()=>ready(x),ON_MS);return}
  if(x.ready){if(!document.hidden)audio().play('wristDrone');return}
  x.cancelEnded=audio().onEnded('wristOn',()=>ready(x));
  audio().play('wristOn');
  // Only use the fallback if playback never started (muted/blocked browser).
  x.openTimer=setTimeout(()=>{if(session===x&&!x.ready&&(!enabled||document.hidden||!audio().position('wristOn'))){audio().stopEffect('wristOn');ready(x)}},ON_MS+250);
 }
-function create(owner){
+function create(owner,turnAudio){
  const overlay=document.createElement('div');overlay.className='wrist-overlay';overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');
  const frame=document.createElement('div');frame.className='wrist-frame';
  const screen=document.createElement('div');screen.className='wrist-screen';
@@ -25,7 +26,7 @@ function create(owner){
  const content=document.createElement('div');content.className='wrist-content';
  const footer=document.createElement('div');footer.className='wrist-footer';
  screen.append(header,imagePanel,content,footer);frame.append(screen);overlay.append(frame);
- const x={owner,overlay,frame,screen,content,imagePanel,footer,header,opened:performance.now(),ready:false,closing:false,jobs:[]};session=x;
+ const x={owner,turnAudio,overlay,frame,screen,content,imagePanel,footer,header,opened:performance.now(),ready:false,closing:false,jobs:[]};session=x;
  if(enabled)startAudio(x);else x.openTimer=setTimeout(()=>ready(x),ON_MS);
  return x;
 }
@@ -46,7 +47,8 @@ function sync(ui,game,soundOn){
  if(!candidate&&!session)return;
  let x=session;
  if(candidate&&x?.closing){cancel();x=null}
- if(candidate&&!x)x=create(game);
+ if(candidate&&!x)x=create(game,candidate.classList.contains('handoff-prompt'));
+ if(candidate&&x){const turnAudio=candidate.classList.contains('handoff-prompt');if(x.turnAudio!==turnAudio){stopAudio(x);x.turnAudio=turnAudio;if(turnAudio)x.ready=false;if(enabled)startAudio(x)}}
  const host=root.querySelector('.board')||root;
  if(candidate){
   const red=candidate.classList.contains('classified-order');x.frame.classList.toggle('wrist-red',red);
@@ -96,6 +98,6 @@ function paginateRules(x,dialog){
  nav.append(previous,label,next);x.footer.prepend(nav);paint();
 }
 function afterOpen(fn){if(!session||session.ready)fn();else if(!session.closing)session.jobs.push(fn)}
-document.addEventListener('visibilitychange',()=>{if(!session)return;const x=session;if(document.hidden){stopOpening(x);audio().stopEffect('wristDrone')}else if(enabled&&!x.closing){if(!x.ready){x.ready=true;x.jobs.splice(0).forEach(fn=>fn())}audio().play('wristDrone')}});
+document.addEventListener('visibilitychange',()=>{if(!session)return;const x=session;if(document.hidden){stopOpening(x);audio().stopEffect('wristDrone')}else if(enabled&&!x.closing){if(!x.ready){x.ready=true;x.jobs.splice(0).forEach(fn=>fn())}if(x.turnAudio)audio().play('wristDrone')}});
 window.WristTerminal={sync,afterOpen,cancel,isClosing:()=>!!session?.closing};
 })();
