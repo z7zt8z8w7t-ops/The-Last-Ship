@@ -1,5 +1,5 @@
 (()=>{'use strict';
-window.ShipBuild='v67';document.querySelector('.build-marker').textContent='v67';
+window.ShipBuild='v68';document.querySelector('.build-marker').textContent='v68';
 const {GROUND_ART,FLARE_ART,CASE_ART,ITEM_ARTS,SCIENTIST_ARTS,CAPTURE_ARTS,EMBEDDED_TILE_ART}=window.ShipArtwork;
 if(new URLSearchParams(location.search).has('soundcheck')){ShipAudio.showSoundCheck();return}
 const KEY='last-shuttle-playtest-v6',R=3,HOME='0,0',DROPSHIP='3,-2';

@@ -8,12 +8,12 @@ const selectors=['.rules-window','.mission-overlay .card','.private.executive-or
 function stopOpening(x){x.cancelEnded?.();x.cancelEnded=null;clearTimeout(x.openTimer);audio().stopEffect('wristOn')}
 function stopAudio(x){stopOpening(x);audio().stopEffect('wristDrone')}
 function cancel(){if(!session)return;const x=session;session=null;clearTimeout(x.closeTimer);stopAudio(x);x.overlay.remove()}
-function ready(x){if(session!==x||x.closing||x.ready)return;x.ready=true;clearTimeout(x.openTimer);x.cancelEnded?.();x.cancelEnded=null;if(enabled&&x.turnAudio&&!document.hidden)audio().play('wristDrone',.275);const jobs=x.jobs.splice(0);jobs.forEach(fn=>fn())}
+function ready(x){if(session!==x||x.closing||x.ready)return;x.ready=true;clearTimeout(x.openTimer);x.cancelEnded?.();x.cancelEnded=null;if(enabled&&x.turnAudio&&!document.hidden)audio().play('wristDrone',.1);const jobs=x.jobs.splice(0);jobs.forEach(fn=>fn())}
 function startAudio(x){
  if(!x.turnAudio){if(!x.ready)x.openTimer=setTimeout(()=>ready(x),ON_MS);return}
- if(x.ready){if(!document.hidden)audio().play('wristDrone',.275);return}
+ if(x.ready){if(!document.hidden)audio().play('wristDrone',.1);return}
  x.cancelEnded=audio().onEnded('wristOn',()=>ready(x));
- audio().play('wristOn',.3);
+ audio().play('wristOn',.15);
  // Only use the fallback if playback never started (muted/blocked browser).
  x.openTimer=setTimeout(()=>{if(session===x&&!x.ready&&(!enabled||document.hidden||!audio().position('wristOn'))){audio().stopEffect('wristOn');ready(x)}},ON_MS+250);
 }
@@ -30,7 +30,7 @@ function create(owner,turnAudio){
  if(enabled)startAudio(x);else x.openTimer=setTimeout(()=>ready(x),ON_MS);
  return x;
 }
-function endTurnAudio(x){if(!x.turnAudio)return;stopAudio(x);x.turnAudio=false;if(enabled&&!document.hidden)audio().play('turnOff')}
+function endTurnAudio(x){if(!x.turnAudio)return;stopAudio(x);x.turnAudio=false;if(enabled&&!document.hidden)audio().play('turnOff',.2)}
 function close(x){
  if(x.closing)return;x.closing=true;x.closedAt=performance.now();x.jobs=[];if(x.turnAudio)endTurnAudio(x);else stopAudio(x);
  x.content.inert=true;x.footer.inert=true;x.frame.classList.add('wrist-off');x.frame.style.setProperty('--wrist-delay','0ms');
@@ -100,6 +100,6 @@ function paginateRules(x,dialog){
  nav.append(previous,label,next);x.footer.prepend(nav);paint();
 }
 function afterOpen(fn){if(!session||session.ready)fn();else if(!session.closing)session.jobs.push(fn)}
-document.addEventListener('visibilitychange',()=>{if(!session)return;const x=session;if(document.hidden){stopOpening(x);audio().stopEffect('wristDrone')}else if(enabled&&!x.closing){if(!x.ready){x.ready=true;x.jobs.splice(0).forEach(fn=>fn())}if(x.turnAudio)audio().play('wristDrone',.275)}});
+document.addEventListener('visibilitychange',()=>{if(!session)return;const x=session;if(document.hidden){stopOpening(x);audio().stopEffect('wristDrone')}else if(enabled&&!x.closing){if(!x.ready){x.ready=true;x.jobs.splice(0).forEach(fn=>fn())}if(x.turnAudio)audio().play('wristDrone',.1)}});
 window.WristTerminal={sync,afterOpen,cancel,isClosing:()=>!!session?.closing};
 })();

@@ -1,7 +1,5 @@
-# v67 checks
+# v68 checks
 
-The MU-TH-UR cue test verifies the replacement starts with the first character of the CHANCES line. Retained audio, gameplay, terminal and dropship tests pass.
+Terminal tests verify player-turn startup gain 0.15, drone gain 0.1 and power-down gain 0.2, with one closing cue and silent other popup closures. Existing audio, gameplay, cinematic and dropship tests pass. Embedded audio is identical to v67. Syntax, offline paths and ZIP integrity pass.
 
-The new embedded recording matches TLS chances.m4a byte for byte; retained embedded recordings match v66. The replaced audio key is absent. Syntax, service worker paths and ZIP integrity pass. The ZIP contains exactly files changed since v66.
-
-Tests simulate DOM/audio/canvas. No physical iPad playback or real-browser visual verification was available.
+Tests simulate DOM/audio/canvas; physical iPad playback was not available.
