@@ -427,3 +427,34 @@ body{position:fixed;inset:0;height:100dvh}
 @keyframes crtContentCollapse{0%{transform:scaleY(1);opacity:1;filter:brightness(1.5)}40%{transform:scaleY(.008);opacity:1;filter:brightness(3)}55%,100%{transform:scaleY(0);opacity:0}}
 @keyframes crtRasterCollapse{0%{opacity:0;height:100%;width:100%}25%{opacity:.2;height:18%;width:100%}40%{opacity:1;height:3px;width:100%}58%{opacity:1;height:3px;width:100%}82%{opacity:1;height:5px;width:5px}91%{opacity:.8;height:4px;width:4px}100%{opacity:0;height:0;width:0}}
 @media(prefers-reduced-motion:reduce){#app.intro-crt-off>.muthur-boot{animation:none;opacity:0}.crt-shutdown-glow{display:none}}
+
+/* Launch locks all mission decisions until the outcome is displayed. */
+.departure-lock{position:absolute;inset:0;z-index:80;display:flex;align-items:flex-end;justify-content:center;padding:26px;color:#b6e8ff;font:800 1rem monospace;letter-spacing:.1em;text-shadow:0 0 12px #72b9ff;pointer-events:all;background:transparent}.board:has(.departure-lock) .abort-mission{visibility:hidden}
+
+/* v59: every dialog shares the same centred wrist terminal. */
+.wrist-overlay{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:#0008;isolation:isolate;touch-action:pan-y}
+.wrist-overlay.wrist-on-board{position:absolute}
+.wrist-frame{--wrist-ink:#c2f7ac;--wrist-glow:#76dd85;--wrist-delay:0ms;box-sizing:border-box;width:min(94%,600px);height:min(90%,440px);padding:10px;border:2px solid #52745c;border-radius:18px;background:#101914;box-shadow:0 0 0 5px #07100b,0 12px 36px #000b;animation:wrist-start .813s var(--wrist-delay) both;transform-origin:center;overflow:hidden}
+.wrist-frame.wrist-red{--wrist-ink:#ffb4a6;--wrist-glow:#ff6254;border-color:#85483f;background:#20100e}
+.wrist-screen{height:100%;display:flex;flex-direction:column;color:var(--wrist-ink);background:radial-gradient(ellipse at center,#15291b,#030b06);border:1px solid var(--wrist-glow);border-radius:9px;overflow:hidden;text-shadow:0 0 6px var(--wrist-glow);position:relative}
+.wrist-red .wrist-screen{background:radial-gradient(ellipse at center,#321711,#0e0403)}
+.wrist-screen:after{content:'';pointer-events:none;position:absolute;inset:0;z-index:2;background:repeating-linear-gradient(transparent 0 2px,#0003 2px 3px);opacity:.5}
+.wrist-header{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;border-bottom:1px solid var(--wrist-glow);font:11px ui-monospace,monospace;flex:none}
+.wrist-header .wrist-sound{padding:5px 8px;font-size:10px;color:var(--wrist-ink);border-color:var(--wrist-glow);background:transparent}
+.wrist-content{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:18px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.wrist-content .wrist-dialog{position:static!important;inset:auto!important;transform:none!important;width:100%!important;max-width:none!important;height:auto!important;max-height:none!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;animation:none!important;overflow:visible!important;color:var(--wrist-ink)!important;text-align:left}
+.wrist-content .wrist-dialog:before,.wrist-content .wrist-dialog:after,.wrist-content .popup-timer{display:none!important}
+.wrist-content h1,.wrist-content h2,.wrist-content p,.wrist-content .order-classification{color:var(--wrist-ink)!important}
+.wrist-content h1,.wrist-content h2{font-size:1.12rem;line-height:1.35}
+.wrist-content p{font-size:.9rem;line-height:1.5}
+.wrist-content .capture-art,.wrist-content .equipment-art,.wrist-content .event-art{height:150px;max-height:150px;margin:0 0 12px}
+.wrist-content img{width:100%;height:100%;max-height:150px;object-fit:contain}
+.wrist-content .rules-scroll{overflow:visible;max-height:none}
+.wrist-content button{color:var(--wrist-ink);border-color:var(--wrist-glow)}
+.wrist-off{animation:wrist-stop 2.253s var(--wrist-delay) both;pointer-events:none}
+@keyframes wrist-start{0%{transform:scale(.006,.006);filter:brightness(12)}20%{transform:scale(1,.008);filter:brightness(8)}52%{transform:scale(1,1);filter:brightness(2)}62%{filter:brightness(.65)}72%{filter:brightness(1.5)}85%{filter:brightness(.85)}100%{transform:scale(1);filter:brightness(1)}}
+@keyframes wrist-stop{0%{transform:scale(1);filter:brightness(1)}30%{transform:scale(1);filter:brightness(1.1)}55%{transform:scale(1,.008);filter:brightness(6)}77%{transform:scale(.006,.006);filter:brightness(10);opacity:1}100%{transform:scale(.001,.001);filter:brightness(0);opacity:0}}
+@media(prefers-reduced-motion:reduce){.wrist-frame{animation:wrist-simple-on .813s var(--wrist-delay) both}.wrist-off{animation:wrist-simple-off 2.253s var(--wrist-delay) both}@keyframes wrist-simple-on{from{opacity:0}to{opacity:1}}@keyframes wrist-simple-off{from{opacity:1}to{opacity:0}}}
+
+.wrist-content button.primary{background:#123018;color:var(--wrist-ink);border-color:var(--wrist-glow)}
+.wrist-red .wrist-content button.primary{background:#381711}

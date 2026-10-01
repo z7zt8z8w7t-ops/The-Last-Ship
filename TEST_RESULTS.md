@@ -1,17 +1,19 @@
-# Verification
+# v59 release checks
 
-All agreed rules/naming changes applied. Sites and false PDTs exclude Gravity Wells, nest, APC and Dropship. Inventory use/research costs no action; other activities keep their costs. Scanning reveals but leaves the egg with the holder; only APC incineration destroys it. Egg recovery popup uses role-specific instructions and red CRT for Company Man, green for crew. Capture popup retained; redundant handover/log report removed. CMC IDs. Noise roar coalesces repeated synchronous noise in one action. Roster appearance starts startup loop, launch stops it.
+Passed automated checks:
 
-Verified JavaScript syntax, randomized placement, free-item behavior and UI gating, egg scan/incineration, role popup style, decoy validation, noise deduplication, roster loop routing, embedded media and ZIP integrity. Physical iPad playback requires device verification.
+- Terminal session harness: one startup across redraws and linked report/choice/outcome dialogs; one final power-down; drone cancellation on early close; mute/unmute and visibility handling; red private briefing; continuity during the first-turn handoff gap; stable closing deadline through redraws.
+- Gameplay harness: 100 generated boards exclude caches/PDTs from special terrain; one Company Representative; searches retain their discovery flags and gameplay noise; jetpack can be used after the cache search consumes the action; egg destruction requires APC; two scientists required for launch; crew/company outcomes follow egg aboard; combined male/female capture recordings; all-captured Alien victory; standalone roar only for a non-capturing Alien Lunge.
+- Every v58 embedded audio entry is unchanged. The three new M4As match the supplied source bytes exactly.
+- Artwork, Dropship module, both Dropship assets, planet artwork and media-integrity manifest match v58 byte-for-byte.
+- All application JavaScript files and executable inline scripts pass Node syntax checks.
+- Offline asset paths resolve and the cache/build markers are v59. ZIP extraction/integrity checked before delivery.
 
-## v53
-Search metadata selects discovery/scientist sounds on opening and delays roar until result close. Search noise is recorded immediately for alien behavior, without immediate roar. Manual and automatic close share one guarded fade/finish path; stale timers and repeated presses cannot double-play. Search popups have ACKNOWLEDGE; other popups retain automatic closure. Tests cover cache/egg/false PDT/scientist searches, sound mute, game replacement, auto/manual close and repeated presses. Existing v52 checks retained. Existing rules passed again, including 1,000 randomized maps. All executable inline scripts pass syntax checks. Existing embedded audio and artwork remain byte-identical to v52; discovery audio matches the supplied M4A. Physical iPad playback not tested.
+The tests use simulated DOM/audio and game state. This release has not been visually or audibly tested on a physical iPad or in a real browser. In particular, iPad playback permissions and the final CRT appearance need device playtesting.
 
-## v54
-Verified female combined capture plays alone, with separate popup snap and all capture layers skipped. Verified male gunfire replacement at 500 ms; swarm and 1-second screech/voice retained. Search lifecycle tests and 1,000-map rules regression passed. Existing media unchanged; new embedded clips match their source files. Inline JavaScript syntax checks and ZIP integrity passed. Physical iPad playback not tested.
+Run:
 
-## v55
-Verified new male gunfire embedded byte-for-byte, roar once at 5 seconds after popup closes, cancellation on mute/game replacement/hidden document. Female capture and search audio lifecycle regressions passed. Existing media/artwork unchanged apart from male gunfire. JavaScript syntax and ZIP integrity passed. Physical iPad playback not tested.
-
-## v56
-Male/female/default-voice captures play only one combined clip, with no popup snap or delayed separate effects. Mute and search audio lifecycle checks passed. Combined male MP3 matches preview byte-for-byte; female clip and remaining media/artwork unchanged. Removed unused separate capture recordings. Inline JS syntax and ZIP integrity passed. Physical iPad playback not tested.
+```
+node verification/terminal-session.test.js
+node verification/gameplay.test.js
+```

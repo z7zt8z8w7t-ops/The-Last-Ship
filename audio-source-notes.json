@@ -174,7 +174,7 @@
     "container": "index.html #ship-audio-data"
   },
   {
-    "usage": "Once per noise-producing player action",
+    "usage": "Once as Alien Lunge movement begins, unless it will capture a player. Routine gameplay noise is silent. Combined capture MP3s unchanged.",
     "creator": "User supplied",
     "source": "TLS alien roar.m4a",
     "license": "User supplied",
@@ -205,5 +205,23 @@
     "usage": "Male alien capture: combined sequence once at volume 1, no separate layers",
     "edits": "MP3 preview embedded byte-for-byte",
     "container": "index.html #ship-audio-data"
+  },
+  {
+    "key": "wristOn",
+    "author": "User supplied",
+    "title": "TLS CRT on short(1).m4a",
+    "source_description": "Terminal session startup; original M4A embedded unchanged."
+  },
+  {
+    "key": "wristDrone",
+    "author": "User supplied",
+    "title": "TLS CRT drone(1).m4a",
+    "source_description": "Continuous terminal session drone; original M4A embedded unchanged."
+  },
+  {
+    "key": "wristOff",
+    "author": "User supplied",
+    "title": "TLS power down.m4a",
+    "source_description": "Final terminal shutdown; original M4A embedded unchanged."
   }
 ]

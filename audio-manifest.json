@@ -151,7 +151,7 @@
     "container": "index.html #ship-audio-data"
   },
   {
-    "usage": "Once per noise-producing player action",
+    "usage": "Once as Alien Lunge movement begins, unless it will capture a player. Routine gameplay noise is silent. Combined capture MP3s unchanged.",
     "creator": "User supplied",
     "source": "TLS alien roar.m4a",
     "license": "User supplied",
@@ -181,6 +181,33 @@
     "source": "TLS_Male_Capture_Gunfire_2_Roar.mp3",
     "usage": "Male alien capture: combined sequence once at volume 1, no separate layers",
     "edits": "MP3 preview embedded byte-for-byte",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "usage": "Terminal session startup",
+    "creator": "User supplied",
+    "source": "TLS CRT on short(1).m4a",
+    "license": "User supplied recording; no additional license asserted",
+    "edits": "Embedded original M4A without edits. Drone uses native audio looping.",
+    "embedded_key": "wristOn",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "usage": "Continuous terminal session drone",
+    "creator": "User supplied",
+    "source": "TLS CRT drone(1).m4a",
+    "license": "User supplied recording; no additional license asserted",
+    "edits": "Embedded original M4A without edits. Drone uses native audio looping.",
+    "embedded_key": "wristDrone",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "usage": "Final terminal shutdown",
+    "creator": "User supplied",
+    "source": "TLS power down.m4a",
+    "license": "User supplied recording; no additional license asserted",
+    "edits": "Embedded original M4A without edits. Drone uses native audio looping.",
+    "embedded_key": "wristOff",
     "container": "index.html #ship-audio-data"
   }
 ]

@@ -75,3 +75,10 @@ Gunfire now uses TLS male gunfire 2.m4a at 500 ms. TLS alien roar plays at 5 sec
 
 ### v56 capture playback
 Male and female captures each play their respective combined MP3 once at volume 1. Separate capture layers, delayed roar timer and popup snap are removed from capture playback. Unused individual capture clips are removed from embedded audio and sound-check choices. Shared popup, launch screech and player-noise roar remain for other game actions.
+
+### v59 roar rules (supersedes earlier noise/search rules)
+Routine gameplay noise is silent: cache/PDT searches, spores, jetpacks and APC incineration do not play the standalone TLS alien roar. Their gameplay noise still attracts the alien. Alien Lunge plays the roar once as movement begins, unless its destination will capture an eligible player. In that case only the combined capture recording plays. Discovery/scientist-found and male/female capture recordings unchanged.
+
+## v59 terminal recordings
+
+User supplied: TLS CRT on short(1).m4a, TLS CRT drone(1).m4a and TLS power down.m4a. Original recordings are embedded unchanged. Startup and final shutdown play once per terminal session. Drone loops across linked dialogs. The older standalone popup snap is no longer triggered for these dialogs; capture recordings are retained unchanged.
