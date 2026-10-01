@@ -127,17 +127,6 @@
     "container": "index.html #ship-audio-data"
   },
   {
-    "embedded_key": "captureSwarm",
-    "key": "captureSwarm",
-    "usage": "Marine capture orchestral swarm",
-    "creator": "Coghezzi - Freesound.org (TommasoMotteran)",
-    "source": "https://freesound.org/people/TommasoMotteran/sounds/854154/",
-    "license": "CC BY 4.0",
-    "license_url": "https://creativecommons.org/licenses/by/4.0/",
-    "edits": "Public high-quality MP3 preview, full recording; volume 0.42 and short edge fades.",
-    "container": "index.html #ship-audio-data"
-  },
-  {
     "key": "titleDrone",
     "embedded_key": "titleDrone",
     "usage": "Title reveal crescendo",
@@ -167,7 +156,7 @@
     "container": "index.html #ship-audio-data"
   },
   {
-    "usage": "Loop from INITIALISE until LAUNCH MISSION only",
+    "usage": "Loop from crew roster appearance until LAUNCH MISSION only",
     "creator": "User supplied",
     "source": "TLS loop.m4a",
     "license": "User supplied",
@@ -182,6 +171,39 @@
     "license": "User supplied",
     "edits": "As supplied; no additional fades, trimming or looping.",
     "embedded_key": "scientistFound",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "usage": "Once per noise-producing player action",
+    "creator": "User supplied",
+    "source": "TLS alien roar.m4a",
+    "license": "User supplied",
+    "edits": "As supplied",
+    "embedded_key": "noiseRoar",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "usage": "On opening cache-search or false-PDT-search result popup, including egg recovery",
+    "creator": "User supplied",
+    "source": "TLS discovery.m4a",
+    "license": "User supplied",
+    "edits": "As supplied",
+    "embedded_key": "discovery",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "usage": "Female player alien capture: combined sequence once, no separate layers or popup snap",
+    "source": "TLS_Alien_Capture_Sequence_Female.mp3",
+    "embedded_key": "femaleCapture",
+    "creator": "User supplied recordings, combined for preview",
+    "edits": "Embedded preview as generated",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "embedded_key": "maleCapture",
+    "source": "TLS_Male_Capture_Gunfire_2_Roar.mp3",
+    "usage": "Male alien capture: combined sequence once at volume 1, no separate layers",
+    "edits": "MP3 preview embedded byte-for-byte",
     "container": "index.html #ship-audio-data"
   }
 ]

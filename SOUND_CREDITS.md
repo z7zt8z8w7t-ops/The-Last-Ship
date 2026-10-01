@@ -56,7 +56,22 @@ Separate looping edit of user supplied RPReplay_Final1790791206.mp4: silence tri
 
 
 ### Startup loop
-User supplied TLS loop.m4a, decoded to PCM without fades, crossfades or trimming. Loops from INITIALISE until LAUNCH MISSION. No event/specimen recording.
+User supplied TLS loop.m4a, decoded to PCM without fades, crossfades or trimming. Loops from crew roster appearance until LAUNCH MISSION. No event/specimen recording.
 
 ### Scientist discovery
 TLS event.m4a supplied by user, played once when each scientist is first found. No added fades or edits.
+
+### Player noise
+TLS alien roar.m4a supplied by user; played once per noise-producing action.
+
+### Search results
+TLS discovery.m4a plays when a cache or false PDT search result opens. Scientist discoveries retain TLS event.m4a. Every search result triggers TLS alien roar.m4a once after closing, automatically or with ACKNOWLEDGE. Other noise timing unchanged.
+
+### v54 capture audio
+Female captures play the combined female MP3 once at volume 1, including its popup snap, swarm, rifle, alien screech and female scream. Separate capture sounds are skipped for female players. Male captures retain their sequence with TLS male gunfire.m4a at 500 ms and volume 0.70 in place of the pulse rifle.
+
+### v55 male capture
+Gunfire now uses TLS male gunfire 2.m4a at 500 ms. TLS alien roar plays at 5 seconds, including after normal popup dismissal. Existing 1-second alien screech and marine scream remain. Female capture unchanged.
+
+### v56 capture playback
+Male and female captures each play their respective combined MP3 once at volume 1. Separate capture layers, delayed roar timer and popup snap are removed from capture playback. Unused individual capture clips are removed from embedded audio and sound-check choices. Shared popup, launch screech and player-noise roar remain for other game actions.
