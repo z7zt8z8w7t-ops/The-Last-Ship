@@ -103,3 +103,7 @@ Both supplied by the user and embedded without audio editing.
 V70: TLS rip speech .m4a replaces the prior Ripley clip at 50% gain. TLS discovery uses 130% gain. Other sound levels and cues are unchanged.
 
 V71: TLS crt pwr dwn short plays once at 20% gain on all popup closures. Player-turn startup and drone remain exclusive to player-turn reports.
+
+V73: user-supplied TLS sentry gun.m4a embedded unchanged, 100% gain. Opening screech starts 0.5 seconds before its end (at 1.752336 seconds).
+
+V74: TLS facehugger.m4a plays on event opening. Reference countdown video audio supplies the first five seconds of the round-end interstitial. Mission and Company Representative briefings use the same 15% startup, 10% drone and 20% closing sound as turn reports.

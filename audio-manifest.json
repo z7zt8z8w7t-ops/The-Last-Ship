@@ -241,5 +241,30 @@
     "credit": "User-supplied recording",
     "edits": "Embedded without editing",
     "container": "index.html #ship-audio-data"
+  },
+  {
+    "embedded_key": "sentryGun",
+    "source": "TLS sentry gun.m4a",
+    "credit": "User-supplied recording",
+    "usage": "Sentry firing, once at 100% gain; opening screech follows at 1.752336 seconds",
+    "duration_seconds": 2.252336,
+    "edits": "None; embedded unchanged",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "embedded_key": "facehugger",
+    "source": "TLS facehugger.m4a",
+    "credit": "User-supplied recording",
+    "usage": "Facehugger Attack popup opening, once at 100% gain",
+    "edits": "None; embedded unchanged",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "embedded_key": "roundCountdown",
+    "source": "ScreenRecording_10-01-2026 23-52-20_1(1).mp4",
+    "credit": "User-supplied reference clip",
+    "usage": "Five-second end-of-round countdown, 100% gain",
+    "edits": "First five seconds of audio extracted to AAC; no fades or crossfades",
+    "container": "index.html #ship-audio-data"
   }
 ]

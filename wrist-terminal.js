@@ -4,6 +4,7 @@
 const ON_MS=813,OFF_MS=2253;
 let session=null,enabled=false;
 const audio=()=>window.ShipAudio;
+const hasTurnAudio=n=>n.classList.contains('handoff-prompt')||n.classList.contains('initial-orders')||n.classList.contains('muthur-mission');
 const selectors=['.rules-window','.mission-overlay .card','.private.executive-order','.event-window','.board-overlay .card','.handoff-prompt'];
 function stopOpening(x){x.cancelEnded?.();x.cancelEnded=null;clearTimeout(x.openTimer);audio().stopEffect('wristOn')}
 function stopAudio(x){stopOpening(x);audio().stopEffect('wristDrone')}
@@ -40,7 +41,7 @@ function sync(ui,game,soundOn){
  const root=document.getElementById('app');
  if(!root)return;
  const allowed=(ui.boot==='game'&&!ui.cinematic&&!ui.boardArrival)||ui.boot==='roster';
- if(!allowed){cancel();return}
+ if(!allowed||game?.phase==='countdown'){cancel();return}
  if(session&&session.owner!==game)cancel();
  if(enabled!==soundOn){enabled=soundOn;if(session){stopAudio(session);if(enabled&&!session.closing)startAudio(session);else if(!session.closing&&!session.ready)session.openTimer=setTimeout(()=>ready(session),ON_MS)}}
  const candidate=selectors.map(sel=>root.querySelector(sel)).find(Boolean);
@@ -48,8 +49,8 @@ function sync(ui,game,soundOn){
  if(!candidate&&!session)return;
  let x=session;
  if(candidate&&x?.closing){cancel();x=null}
- if(candidate&&!x)x=create(game,candidate.classList.contains('handoff-prompt'),candidate.classList.contains('initial-orders'));
- if(candidate&&x){const turnAudio=candidate.classList.contains('handoff-prompt'),startupAudio=candidate.classList.contains('initial-orders');if(x.turnAudio!==turnAudio||x.startupAudio!==startupAudio){if(x.turnAudio)endTurnAudio(x);else stopAudio(x);x.turnAudio=turnAudio;x.startupAudio=startupAudio;if(turnAudio||startupAudio)x.ready=false;if(enabled)startAudio(x)}}
+ if(candidate&&!x)x=create(game,hasTurnAudio(candidate));
+ if(candidate&&x){const turnAudio=hasTurnAudio(candidate),startupAudio=false;if(x.turnAudio!==turnAudio||x.startupAudio!==startupAudio){if(x.turnAudio)endTurnAudio(x);else stopAudio(x);x.turnAudio=turnAudio;x.startupAudio=startupAudio;if(turnAudio||startupAudio)x.ready=false;if(enabled)startAudio(x)}}
  if(!candidate&&x?.turnAudio)endTurnAudio(x);
  const host=root.querySelector('.board')||root;
  if(candidate){
