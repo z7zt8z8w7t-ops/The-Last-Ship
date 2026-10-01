@@ -1,5 +1,3 @@
-# The Last Ship — v68 update
+# The Last Ship — v69 update
 
-Contains only files changed since v67. Replace matching files in your existing v67 game folder, retaining all others. Open online once and confirm v68.
-
-Player turn popup gains: TLS CRT startup 15%, looping drone 10%, short power-down 20%. Other audio levels and recordings remain unchanged.
+Only files changed since v68 are included. Replace matching files in the existing v68 game folder. TLS chances gain is now 50%; its text trigger and recording are unchanged. All other audio levels remain unchanged.
