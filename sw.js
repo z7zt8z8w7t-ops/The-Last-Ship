@@ -1,6 +1,6 @@
-const CACHE='the-last-ship-v74';
+const CACHE='the-last-ship-v75';
 const ROOT=self.registration.scope;
-const ASSETS=['./','./index.html','./style.css?v=74','./game.js?v=74','./artwork.js?v=74','./dropship.js?v=65','./wrist-terminal.js?v=74','./dropship-ship.webp','./dropship-terrain.webp','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png','./alien-planet.webp','./sound-check.html'];
+const ASSETS=['./','./index.html','./style.css?v=75','./game.js?v=75','./artwork.js?v=74','./dropship.js?v=65','./wrist-terminal.js?v=74','./dropship-ship.webp','./dropship-terrain.webp','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png','./alien-planet.webp','./sound-check.html'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('the-last-ship-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{

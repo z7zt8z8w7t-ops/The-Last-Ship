@@ -1,5 +1,5 @@
-# v74 verification
+# v75 verification
 
-All eight automated suites pass. New checks cover stable random turn headings and player names, countdown displays from 08:00 through 00:00, a five-second wait before completion, and the Facehugger cue when its popup opens. Terminal tests cover mission/Company briefing startup 15%, drone 10%, closing 20%, and linked transitions without restarting. Existing sentry, events, capture, extraction, audio, cinematic and dropship checks pass.
+All eight existing automated suites pass. JavaScript syntax checks pass. Source checks confirm removal of the Actions header, board sound controls in both play and handoff, clipping of both countdown animation groups inside the perimeter, and front-face hiding during reverse-facing panel states. Embedded audio is byte-for-byte unchanged from v74.
 
-The Facehugger payload matches the uploaded file exactly. Countdown audio is extracted from the supplied reference video; its AAC duration is 5.005011 seconds and playback stops at the five-second screen boundary. Previous audio payloads are unchanged. JavaScript syntax, ZIP integrity and reconstruction over v73 pass. No physical iPad playback or visual browser test was performed; in-game animation/playtesting remains needed.
+ZIP integrity and reconstruction over v74 pass. Browser runtimes were unavailable, so no rendered browser or physical iPad visual test was performed. Please check the panel flip and countdown on iPad.
