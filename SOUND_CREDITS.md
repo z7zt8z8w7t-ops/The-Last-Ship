@@ -101,3 +101,5 @@ Both supplied by the user and embedded without audio editing.
 - TLS crt pwr dwn short .m4a — player turn popup closing, once.
 
 V70: TLS rip speech .m4a replaces the prior Ripley clip at 50% gain. TLS discovery uses 130% gain. Other sound levels and cues are unchanged.
+
+V71: TLS crt pwr dwn short plays once at 20% gain on all popup closures. Player-turn startup and drone remain exclusive to player-turn reports.

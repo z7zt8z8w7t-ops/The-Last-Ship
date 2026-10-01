@@ -1,8 +1,8 @@
 (()=>{'use strict';
-window.ShipBuild='v70';document.querySelector('.build-marker').textContent='v70';
+window.ShipBuild='v71';document.querySelector('.build-marker').textContent='v71';
 const EVENTS=['Alien lunge','Earthquake','Spore burst','PDT Locator','Adrenaline surge','Motion echo','Facehugger attack'];
 const itemName=v=>v==='specimen'?'Chemical Research':v;
-const {GROUND_ART,FLARE_ART,CASE_ART,ITEM_ARTS,SCIENTIST_ARTS,CAPTURE_ARTS,EMBEDDED_TILE_ART}=window.ShipArtwork;
+const {GROUND_ART,FLARE_ART,CASE_ART,EVENT_ARTS,ITEM_ARTS,SCIENTIST_ARTS,CAPTURE_ARTS,EMBEDDED_TILE_ART}=window.ShipArtwork;
 if(new URLSearchParams(location.search).has('soundcheck')){ShipAudio.showSoundCheck();return}
 const KEY='last-shuttle-playtest-v6',R=3,HOME='0,0',DROPSHIP='3,-2';
 const DIRS=[[1,0],[1,-1],[0,-1],[-1,0],[-1,1],[0,1]];
@@ -155,7 +155,7 @@ async function alienStep(targetOverride,remaining=2){let game=s,from=s.alien,to=
 let popupRun=null;
 function closePopup(run=popupRun){
  if(!run||popupRun!==run||run.closing)return;
- run.closing=true;clearTimeout(run.timer);
+ run.closing=true;
  if(s!==run.game||ui.popup!==run.popup){popupRun=null;run.resolve();return}
  popupRun=null;
  ui.popup=null;
@@ -163,7 +163,7 @@ function closePopup(run=popupRun){
  run.resolve();
 }
 async function showPopup(message){
- if(popupRun){clearTimeout(popupRun.timer);popupRun.resolve();popupRun=null}
+ if(popupRun){popupRun.resolve();popupRun=null}
  const game=s,popup={...message,fading:false};ui.popup=popup;render();if(message.kind==='event'&&message.title==='Alien lunge'&&soundOn&&!document.hidden)ShipAudio.play('noiseRoar');
  WristTerminal.afterOpen(()=>{
   if(s!==game||ui.popup!==popup||!soundOn)return;
@@ -172,14 +172,13 @@ async function showPopup(message){
   if(message.kind==='capture')playCaptureSequence(message);
  });
  await new Promise(resolve=>{
-  const run={game,popup,resolve,closing:false,timer:null};popupRun=run;
-  run.timer=setTimeout(()=>closePopup(run),5000);
+  const run={game,popup,resolve,closing:false};popupRun=run;
  });
 }
 async function drainMessages(){while(ui.messages?.length)await showPopup(ui.messages.shift())}
 async function runMessages(){if(ui.sequence)return;ui.sequence=true;await drainMessages();ui.sequence=false;finish()}
-function eventArt(title){let kind=title.split(' — ')[0];return ({'Alien lunge':CAPTURE_ARTS[0],'Earthquake':EMBEDDED_TILE_ART['collapsed-bridge'],'Spore burst':EMBEDDED_TILE_ART['spore-field'],'Adrenaline surge':ITEM_ARTS.medkit,'Motion echo':ITEM_ARTS.scanner,'Facehugger attack':CAPTURE_ARTS[0],'PDT Locator':EMBEDDED_TILE_ART.event})[kind]||EMBEDDED_TILE_ART.event}
-function popupMarkup(){if(!ui.popup)return '';let m=ui.popup,scene=m.kind==='capture'?CAPTURE_ARTS[m.imageIndex]||CAPTURE_ARTS[0]:m.kind==='scientist'?SCIENTIST_ARTS[m.scientistId===1?1:0]:null,itemKey=m.item||(m.title.startsWith('Equipment recovered: ')?m.title.slice(21).toLowerCase():null),img=m.kind==='equipment'?ITEM_ARTS[itemKey]||CASE_ART:m.kind==='event'?eventArt(m.title):null;return `<div class="event-overlay ${m.fading?'fading':''}" role="dialog" aria-modal="true" aria-label="${esc(m.title)}"><div class="event-window crt ${m.companyEgg?'classified-order':''} ${scene?'capture-window':m.kind==='equipment'?'equipment-window':'event-report-window'}">${scene?`<div class="capture-art"><img src="${scene}" alt="${m.kind==='scientist'?'A Colonial Marine helps a scientist to safety':'A biomechanical alien capture scene'}"></div>`:img?`<div class="${m.kind==='equipment'?'equipment-art':'event-art'}"><img src="${img}" alt="${esc(m.title)} artwork"></div>`:''}<h2>${esc(m.title)}</h2><p>${esc(m.text)}</p>${m.kind==='capture'?'<blockquote>“Man, their signs are real low, but they ain’t dead.”</blockquote>':''}<div class="order-footer"><button class="order-ack" data-act="closeSearchPopup">ACKNOWLEDGE</button></div><div class="popup-timer" aria-hidden="true"></div></div></div>`}
+function eventArt(title){let kind=title.split(' — ')[0];return ({'Alien lunge':EVENT_ARTS?.['alien-lunge']||CAPTURE_ARTS[0],'Earthquake':EMBEDDED_TILE_ART['collapsed-bridge'],'Spore burst':EMBEDDED_TILE_ART['spore-field'],'Adrenaline surge':ITEM_ARTS.medkit,'Motion echo':ITEM_ARTS.scanner,'Facehugger attack':EVENT_ARTS?.['facehugger-attack']||CAPTURE_ARTS[0],'PDT Locator':EMBEDDED_TILE_ART.event})[kind]||EMBEDDED_TILE_ART.event}
+function popupMarkup(){if(!ui.popup)return '';let m=ui.popup,scene=m.kind==='capture'?CAPTURE_ARTS[m.imageIndex]||CAPTURE_ARTS[0]:m.kind==='scientist'?SCIENTIST_ARTS[m.scientistId===1?1:0]:null,itemKey=m.item||(m.title.startsWith('Equipment recovered: ')?m.title.slice(21).toLowerCase():null),img=m.kind==='equipment'?ITEM_ARTS[itemKey]||CASE_ART:m.kind==='event'?eventArt(m.title):null;return `<div class="event-overlay ${m.fading?'fading':''}" role="dialog" aria-modal="true" aria-label="${esc(m.title)}"><div class="event-window crt ${m.companyEgg?'classified-order':''} ${scene?'capture-window':m.kind==='equipment'?'equipment-window':'event-report-window'}">${scene?`<div class="capture-art"><img src="${scene}" alt="${m.kind==='scientist'?'A Colonial Marine helps a scientist to safety':'A biomechanical alien capture scene'}"></div>`:img?`<div class="${m.kind==='equipment'?'equipment-art':'event-art'}"><img src="${img}" alt="${esc(m.title)} artwork"></div>`:''}<h2>${esc(m.title)}</h2><p>${esc(m.text)}</p>${m.kind==='capture'?'<blockquote>“Man, their signs are real low, but they ain’t dead.”</blockquote>':''}<div class="order-footer"><button class="order-ack" data-act="closeSearchPopup">ACKNOWLEDGE</button></div></div></div>`}
 function startNext(i){ui.targetHex=null;ui.itemIndex=null;ui.mode='';s.turn=i;s.moves=2;s.movesTaken=0;s.movementStopped=false;s.turnMoveBudget=2;s.ap=1;s.phase='handoff';ui.escapeRoll=null;ui.dieSettled=false;let p=me();if(p.captive){s.ap=0;return}let e=p.researchEffect;if(e){if(e.kind==='adrenal'){s.moves=3;ui.note='Chemical Research effect: 3 moves this turn.'}if(e.kind==='cognitive'){s.ap=2;ui.note='Chemical Research effect: 2 actions this turn.'}if(e.kind==='fatigue'){s.moves=1;ui.note='Chemical Research effect: 1 move this turn.'}if(e.kind==='shutdown'){s.ap=0;ui.note='Neural shutdown: no actions this turn; movement is available.'}e.turns--;if(e.turns<=0)p.researchEffect=null} s.turnMoveBudget=s.moves;if(p.facehuggerInjured)s.moves=Math.min(s.moves,1)}
  async function roundEnd(){s.alert='';for(let sabotage of s.pendingSabotage||[]){if(sabotage.type==='jam'&&s.scans>0){s.scans--;log('Scanner interference cost the team one charge.')}if(sabotage.type==='decoy'){let t=tile(sabotage.hex);if(siteAllowed(t)&&!t.site){t.site={kind:'distress',value:'false',status:'hidden',decoy:true};log('A new PDT appeared.')}}if(sabotage.type==='redirect'){s.lure=sabotage.hex;log('An unexplained signal redirected the creature.')}}s.pendingSabotage=[];s.phase='alien';s.alienMovesLeft=2;save();await runAlienTurn()}
 async function runAlienTurn(){if(ui.sequence)return;ui.sequence=true;ui.private=false;ui.privateResult='';ui.flipping='';render();while(s.phase==='alien'&&s.alienMovesLeft>0){await alienStep(null,s.alienMovesLeft);save()}if(s.phase==='over'){ui.sequence=false;finish();return}if(s.alienMind.mode==='stalk')s.alienMind.stalked++;if(s.alienMind.mode==='withdraw'&&s.round>=s.alienMind.withdrawUntil)s.alienMind.mode='stalk';s.lure=null;s.noise=[];s.flares=s.flares.filter(f=>f.untilRound>s.round);for(let p of s.players)p.safeNest=false;

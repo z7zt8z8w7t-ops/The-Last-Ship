@@ -1,5 +1,5 @@
 {
-  "artwork_file_sha256": "3a5b13af5ef3c096095290fb254f09072308e7bbbbc8614ad171820e7896320d",
+  "artwork_file_sha256": "759ecba1d56d64da7f6b5a15a67f7149521debe8dee59238a837b85b0e6b2635",
   "images": [
     {
       "index": 0,
@@ -182,6 +182,20 @@
       "width": 480,
       "height": 416,
       "sha256": "a5916b6764f708775091e76c9ffd84c918c0daf810fcf185232e795e46682228"
+    },
+    {
+      "index": 26,
+      "format": "webp",
+      "width": 1000,
+      "height": 667,
+      "sha256": "93f0bf4acac8e94aac3542a49696ed6459febfb034d1a3e7c72955c71c41f158"
+    },
+    {
+      "index": 27,
+      "format": "webp",
+      "width": 1000,
+      "height": 667,
+      "sha256": "d88153879107518cc7c06f255604f4408f87fca362d2020237ecea431f482b7a"
     }
   ],
   "dropship_assets": [
@@ -201,5 +215,15 @@
   "chemical_research_asset": {
     "file": "chemical-research.webp",
     "sha256": "b45954163fda2b83b6cd2a599828b3194c0d8ba3dfa04d37c4cf90275046388b"
-  }
+  },
+  "event_assets": [
+    {
+      "file": "alien-lunge.webp",
+      "sha256": "93f0bf4acac8e94aac3542a49696ed6459febfb034d1a3e7c72955c71c41f158"
+    },
+    {
+      "file": "facehugger-attack.webp",
+      "sha256": "d88153879107518cc7c06f255604f4408f87fca362d2020237ecea431f482b7a"
+    }
+  ]
 }

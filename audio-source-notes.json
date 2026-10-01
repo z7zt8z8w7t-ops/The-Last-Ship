@@ -248,7 +248,7 @@
     "key": "turnOff",
     "embedded_key": "turnOff",
     "source": "TLS crt pwr dwn short .m4a",
-    "usage": "Player turn popup closes; once, drone stops",
+    "usage": "All field terminal popups close; once at 20% gain, after the linked session ends",
     "credit": "User-supplied recording",
     "edits": "Embedded without editing",
     "container": "index.html #ship-audio-data"
