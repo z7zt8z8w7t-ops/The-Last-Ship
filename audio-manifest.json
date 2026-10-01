@@ -197,7 +197,7 @@
   {
     "usage": "Continuous terminal session drone",
     "creator": "User supplied",
-    "source": "TLS CRT drone(1).m4a \u2192 TLS_CRT_drone_seamless.wav",
+    "source": "TLS CRT drone(1).m4a → TLS_CRT_drone_seamless.wav",
     "license": "User supplied recording; no additional license asserted",
     "edits": "v60: decoded to 44.1 kHz stereo PCM WAV; trimmed at matching waveform phases to 1.555692 seconds; no fades or overlap. Circular Web Audio loop.",
     "embedded_key": "wristDrone",
@@ -211,6 +211,26 @@
     "license": "User supplied recording; no additional license asserted",
     "edits": "Original M4A embedded unchanged. Plays once when MU-TH-UR screen collapse begins; not used by gameplay popups.",
     "embedded_key": "muthurOff",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "key": "titleSpeech",
+    "usage": "First stroke of the A in LAST during the title",
+    "title": "TLS speech",
+    "source": "TLS speech.m4a",
+    "credit": "User-supplied recording",
+    "edits": "Embedded without audio editing",
+    "embedded_key": "titleSpeech",
+    "container": "index.html #ship-audio-data"
+  },
+  {
+    "key": "sympathies",
+    "usage": "First character of I CAN’T LIE TO YOU ABOUT YOUR CHANCES on MU-TH-UR",
+    "title": "TLS sympathies",
+    "source": "TLS sympathies .m4a",
+    "credit": "User-supplied recording",
+    "edits": "Embedded without audio editing",
+    "embedded_key": "sympathies",
     "container": "index.html #ship-audio-data"
   }
 ]

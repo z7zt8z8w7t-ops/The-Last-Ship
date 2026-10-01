@@ -504,3 +504,9 @@ body{position:fixed;inset:0;height:100dvh}
 .wrist-image-panel .capture-art,.wrist-image-panel .equipment-art,.wrist-image-panel .event-art{display:block!important;width:100%!important;height:100%!important;max-height:none!important;aspect-ratio:auto!important;padding:0!important;margin:0!important;overflow:visible!important;background:transparent!important}
 .wrist-image-panel img{display:block!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center!important}
 @media(max-height:650px){.wrist-image-panel{height:130px}.wrist-content{padding:10px 14px}.wrist-footer{min-height:54px}}
+
+/* The departing hull can cross the board edge; the opaque player panel masks it. */
+.layout:has(.dropship-departing){position:relative}
+.board.dropship-departing{overflow:visible;z-index:1}
+.board.dropship-departing .dropship-canvas{object-fit:fill;max-width:none;max-height:none}
+.layout:has(.dropship-departing)>.side{position:relative;z-index:2}
