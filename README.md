@@ -1,13 +1,9 @@
-# The Last Ship v89
+# The Last Ship v90 — audit cleanup
 
-Extract these changed files over v88, preserving the terrain directory. Refresh the game to load v89.
+This is a changed-files patch over v89, not a complete standalone installation. Replace the matching files in your existing game. The visible version becomes v90.
 
-Approved overhead terrain replaces the board artwork. The staging hex connects to a larger Cheyenne on an external rocky apron. Corner beacons rotate yellow from the start and turn red at two hours remaining. Cache cases follow adjacent edges; blue beacons stop after collection. Gravity well centres rotate while outer rock rings stay fixed. Marines stand near hex centres. APC occupants use small seat initials.
+New terrain images are embedded in terrain.js (about 6.7 MB), so there is no terrain folder to upload. All changed files are below 25 MB individually. Existing icons, manifest and alien-planet background are still required from your installed game.
 
-Board Dropship offers confirmation at the staging area. Boarded Marines leave the board, skip normal turns and participate in quarantine. Scientists can be delivered separately or accompany boarding. If the last free Marine boards with both scientists delivered, the crew can activate quarantine directly. If no free Marines remain and extraction is incomplete, the mission fails.
+Use REMOVE_OLD_FILES.txt to remove the specifically listed retired files from the existing installation. A ZIP cannot delete existing files automatically. Do not remove other files.
 
-Discarded equipment and equipment lost on capture are permanently removed. A lost egg can be replaced on a normal nest visit. Capture text says All carried equipment has been lost without naming the egg.
-
-The old dropship flight and contact swarm are removed. Quarantine still transitions through blackout to the orbital results scene; replacement flight choreography is deferred. Audio recordings and gains remain unchanged.
-
-Cache sites use open ground. Initial PDTs use open ground or hard cover so special terrain remains visible.
+Read AUDIT_REPORT.md for confirmed remaining faults and test limitations. This patch cleans dependencies and unused code; it does not claim to fix the intermittent iPad freeze or every reported gameplay/layout fault.

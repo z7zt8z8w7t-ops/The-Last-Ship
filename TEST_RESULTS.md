@@ -1,9 +1,19 @@
-# v89 validation
+# v90 verification
 
-13 Node checks pass, including 1,000 randomized terrain layouts, boarding and skipped turns, last-player launch access, permanent discard and capture loss, capture wording, replacement egg availability, quarantine clearance and contamination, capture timing, input routing, prior terminal freeze regressions, audio continuity and gains.
+14 regression/playthrough scripts passed. One additional audit-findings script reproduced documented remaining defects. See AUDIT_REPORT.md for coverage and limitations.
 
-All 13 terrain image atlases were decoded and rendered with the canvas implementation. Cache beacon state, yellow/red staging threshold and animation cancellation were checked. A static SVG composition was rendered and inspected for tile placement and ramp connection.
-
-A full browser session could not run because Chromium was unavailable and its download was blocked. No iPad/Safari playtest was performed. These automated checks do not establish that every previously reported intermittent freeze is resolved.
-
-The ZIP is a changed-files patch over v88. Every individual hosted file is under 25,000,000 bytes.
+- audit-findings.test.js: PASS
+- background-crossfade.test.js: PASS
+- board-tokens.test.js: PASS
+- boarding-loss.test.js: PASS
+- drone-playback.test.js: PASS
+- emplacement-spacing.test.js: PASS
+- ending-audio.test.js: PASS
+- facing-vehicles.test.js: PASS
+- mission-dialog.test.js: PASS
+- quarantine-ending.test.js: PASS
+- skip-sequences.test.js: PASS
+- terminal-orphan.test.js: PASS
+- terrain-render.test.js: PASS
+- touch-capture-items.test.js: PASS
+- virtual-playthrough.test.js: PASS

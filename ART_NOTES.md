@@ -1,7 +1,7 @@
-# v89 overhead artwork
+# The Last Ship v90 artwork
 
-Individual approved concept images are retained in terrain/ as raster atlases. terrain.js selects the tile regions at runtime; captions and adjacency previews are outside the displayed crops. The larger landing scene aligns its ramp with the upper-right staging edge. All textures share the green-black mineral terrain palette.
+Approved terrain atlases are embedded in terrain.js as WebP at quality 92, using the same source dimensions and crop coordinates. Terrain no longer makes requests to a separate terrain folder. Popup terrain pictures use crops of the current broken bridge, spores and event artwork.
 
-The original concept illustrations contain some dimensional shading, preserved from the approved previews. The game projects them onto the actual point-up board hexes. Existing sentry and marine sprites retain their separate animation layers. Cache and staging lights are live overlays. The old dropship canvas flight is disabled.
+Obsolete embedded board terrain, old sentry parts, role patches and gun-emplacement artwork references have been removed. Active marine, alien, sentry, scientist, item, capture, quarantine and orbital artwork remain.
 
-No previously established audio clips were replaced in this release.
+The drawing geometry and terrain animation are otherwise preserved. The audit report documents remaining clipping, overlays and animation faults.

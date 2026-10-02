@@ -1,0 +1,23 @@
+After applying all v90 changed files, remove only these retired game files:
+
+dropship-ship.webp
+dropship-terrain.webp
+dropship.js
+gun-emplacement.png
+role-patches.png
+sentry-parts.png
+terrain/apc.png
+terrain/bridge.png
+terrain/broken.png
+terrain/cache.png
+terrain/cover.png
+terrain/emplacement.png
+terrain/event.png
+terrain/ground.png
+terrain/landing.png
+terrain/nest.png
+terrain/pdt.png
+terrain/spores.png
+terrain/wells.png
+
+Terrain is now embedded in terrain.js. Keep all other installed files.

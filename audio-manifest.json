@@ -20,16 +20,6 @@
     "container": "index.html #ship-audio-data"
   },
   {
-    "usage": "Popup electrical snap",
-    "creator": "corkob",
-    "source": "https://freesound.org/people/corkob/sounds/415594/",
-    "license": "CC0 1.0",
-    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "edits": "220 ms excerpt of CRT switch/static. Playback level baked into MP3 for consistent iPad native-player loudness.",
-    "embedded_key": "popup",
-    "container": "index.html #ship-audio-data"
-  },
-  {
     "usage": "Creature call 1",
     "creator": "colorsCrimsonTears",
     "source": "https://freesound.org/people/colorsCrimsonTears/sounds/537883/",
@@ -142,7 +132,7 @@
     "container": "index.html #ship-audio-data"
   },
   {
-    "usage": "One-shot on first physical discovery of a scientist",
+    "usage": "Every scientist discovery or recovery",
     "creator": "User supplied",
     "source": "TLS event.m4a",
     "license": "User supplied",
@@ -160,14 +150,13 @@
     "container": "index.html #ship-audio-data"
   },
   {
-    "usage": "Cache and false PDT discovery, 130% gain",
+    "usage": "Cache, false PDT and egg discovery; 130% gain",
     "creator": "User supplied",
     "source": "TLS discovery.m4a",
     "license": "User supplied",
     "edits": "As supplied",
     "embedded_key": "discovery",
-    "container": "index.html #ship-audio-data",
-    "playback_gain_v62": 1.2
+    "container": "index.html #ship-audio-data"
   },
   {
     "usage": "Female player alien capture: combined sequence once, no separate layers or popup snap",
@@ -185,24 +174,22 @@
     "container": "index.html #ship-audio-data"
   },
   {
-    "usage": "Terminal session startup",
+    "usage": "Turn, mission and Company Representative terminal opening; 15% gain",
     "creator": "User supplied",
     "source": "TLS CRT on short(1).m4a",
     "license": "User supplied recording; no additional license asserted",
     "edits": "Embedded original M4A without edits. Drone uses native audio looping.",
     "embedded_key": "wristOn",
-    "container": "index.html #ship-audio-data",
-    "playback_gain_v62": 0.6
+    "container": "index.html #ship-audio-data"
   },
   {
-    "usage": "Continuous terminal session drone",
+    "usage": "Turn, mission and Company Representative terminal drone; 10% gain (MU-TH-UR uses its own call)",
     "creator": "User supplied",
     "source": "TLS CRT drone(1).m4a \u2192 TLS_CRT_drone_seamless.wav",
     "license": "User supplied recording; no additional license asserted",
     "edits": "v60: decoded to 44.1 kHz stereo PCM WAV; trimmed at matching waveform phases to 1.555692 seconds; no fades or overlap. Circular Web Audio loop.",
     "embedded_key": "wristDrone",
-    "container": "index.html #ship-audio-data",
-    "playback_gain_v62": 0.55
+    "container": "index.html #ship-audio-data"
   },
   {
     "usage": "MU-TH-UR intro shutdown only",
@@ -237,7 +224,7 @@
     "key": "turnOff",
     "embedded_key": "turnOff",
     "source": "TLS crt pwr dwn short .m4a",
-    "usage": "All field terminal popups close; once at 20% gain, after the linked session ends",
+    "usage": "Acknowledgement/terminal closure; 20% gain",
     "credit": "User-supplied recording",
     "edits": "Embedded without editing",
     "container": "index.html #ship-audio-data"
