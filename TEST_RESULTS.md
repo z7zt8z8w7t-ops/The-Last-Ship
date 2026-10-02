@@ -1,26 +1,7 @@
-# v91 verification
+# v93 verification
 
-- All 31 real recordings match their restored source hashes and fully decode without errors, non-finite samples or extreme spikes.
-- Unsafe whole-document version substitution is reproduced; safe build update preserves all embedded media.
-- Countdown end ramp is checked in the audio engine test. Existing title, terminal and music gains and requested playback paths pass.
-- All production and executable inline JavaScript syntax checks pass.
-- 14 regression/playthrough scripts pass; one additional findings script continues to reproduce documented unrelated defects. Physical Safari playback is not claimed.
+All 17 JavaScript test scripts pass. Virtual playthrough: 100 games, 900 rounds, 7,761 moves, 3,268 reports, 611 captures and two boardings. Terrain generation: 1,000 layouts. Audio integrity: all 31 embedded recordings match source hashes and fully decode. All production and inline JavaScript syntax checks pass.
 
-- audit-findings.test.js: PASS
-- background-crossfade.test.js: PASS
-- board-tokens.test.js: PASS
-- boarding-loss.test.js: PASS
-- drone-playback.test.js: PASS
-- emplacement-spacing.test.js: PASS
-- ending-audio.test.js: PASS
-- facing-vehicles.test.js: PASS
-- mission-dialog.test.js: PASS
-- quarantine-ending.test.js: PASS
-- skip-sequences.test.js: PASS
-- terminal-orphan.test.js: PASS
-- terrain-render.test.js: PASS
-- touch-capture-items.test.js: PASS
-- virtual-playthrough.test.js: PASS
+New checks cover revealed-tile alien range, no native orbital playback on the Web Audio path, deferred orbital decoding, countdown layering, persistent weather scheduling, surround-only lightning/mist, unchanged hidden tiles/game state, and reduced-motion behavior.
 
-
-See V92_CHANGES.md for the v92 update, validation and device-test limitations.
+Physical iPad/Safari playback and long-session reliability still require device testing. See V93_CHANGES.md.

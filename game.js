@@ -1,5 +1,5 @@
 (()=>{'use strict';
-window.ShipBuild='v92';document.querySelector('.build-marker').textContent='v92';
+window.ShipBuild='v93';document.querySelector('.build-marker').textContent='v93';
 const TURN_PHRASES=['Move up!','Go, go, go!','Let’s move, Marines!','Stay sharp!','On your feet!','Keep it tight!','Move out!','Stay frosty!','Watch those corners!','We’re on the clock!','Eyes up, Marine!','Let’s get our people home!'];
 const EVENTS=['Alien lunge','Earthquake','Spore burst','PDT Locator','Adrenaline surge','Motion echo','Facehugger attack'];
 const itemName=v=>v==='specimen'?'Chemical Research':v==='sentry'?'Sentry Gun':v==='medkit'?'Med Evac':v;
@@ -218,7 +218,7 @@ function countdownSweeps(){
  function hit(x,y,dx,dy){let nearest=Infinity,result;for(let i=0;i<8;i++){const [ax,ay]=perimeter[i],[bx,by]=perimeter[(i+1)%8],ex=bx-ax,ey=by-ay,det=dx*ey-dy*ex;if(!det)continue;const t=((ax-x)*ey-(ay-y)*ex)/det,u=((ax-x)*dy-(ay-y)*dx)/det;if(t>=0&&u>=-1e-8&&u<=1+1e-8&&t<nearest){nearest=t;result=[x+t*dx,y+t*dy]}}return result}
  return [[600,325,[-1,-1],[1,-1]],[600,575,[-1,1],[1,1]],[475,455,[-1,-1],[-1,1]],[725,455,[1,-1],[1,1]]].map(([x,y,a,b])=>{const positions=new Set(Array.from({length:81},(_,i)=>i/80));for(const [vx,vy] of perimeter)for(const [dx,dy] of [a,b]){const denominator=(600-x)*dy-(450-y)*dx;if(denominator){const p=((vx-x)*dy-(vy-y)*dx)/denominator;if(p>0&&p<1)positions.add(p)}}return [...positions].sort((a,b)=>a-b).map(p=>{const cx=x+(600-x)*p,cy=y+(450-y)*p,from=hit(cx,cy,...a),to=hit(cx,cy,...b);return `M${from.join(' ')}L${cx} ${cy}L${to.join(' ')}`})});
 }
-function countdownMarkup(){const value=countdownValue(),frame='M280 45H920L1155 280V620L920 855H280L45 620V280Z',sweeps=countdownSweeps();return `<main class="round-countdown" role="status" data-countdown-value="${value}" aria-label="T minus ${value}"><svg viewBox="0 0 1200 900" aria-hidden="true"><defs><clipPath id="countdown-interior" clipPathUnits="userSpaceOnUse"><path d="${frame}"/></clipPath><mask id="countdown-clear"><rect width="1200" height="900" fill="white"/><rect x="40" y="325" width="380" height="201" fill="black"/></mask></defs><g mask="url(#countdown-clear)" clip-path="url(#countdown-interior)" class="countdown-anchored">${sweeps.map(values=>`<path d="${values[0]}">${matchMedia('(prefers-reduced-motion: reduce)').matches?'':`<animate attributeName="d" values="${[...values,values.at(-1)].join(';')}" keyTimes="${[...values.map((_,i)=>i/(values.length-1)*.9),1].join(';')}" dur="1.25s" repeatCount="indefinite"/>`}</path>`).join('')}</g><path class="countdown-frame" d="${frame}"/><text class="countdown-label" x="65" y="365">T MINUS</text><path class="countdown-frame" d="M45 390H410V520H45M118 390V520M191 390V520M264 390V520M337 390V520"/>${[...value].map((digit,i)=>`<text class="countdown-digits" x="${81.5+73*i}" y="455" text-anchor="middle" dominant-baseline="central">${digit}</text>`).join('')}</svg></main>`}
+function countdownMarkup(){const value=countdownValue(),frame='M280 45H920L1155 280V620L920 855H280L45 620V280Z',sweeps=countdownSweeps();return `<main class="round-countdown" role="status" data-countdown-value="${value}" aria-label="T minus ${value}"><svg viewBox="0 0 1200 900" aria-hidden="true"><defs><clipPath id="countdown-interior" clipPathUnits="userSpaceOnUse"><path d="${frame}"/></clipPath></defs><path class="countdown-frame" d="${frame}"/><text class="countdown-label" x="65" y="365">T MINUS</text><path class="countdown-frame" d="M45 390H410V520H45M118 390V520M191 390V520M264 390V520M337 390V520"/>${[...value].map((digit,i)=>`<text class="countdown-digits" x="${81.5+73*i}" y="455" text-anchor="middle" dominant-baseline="central">${digit}</text>`).join('')}<g clip-path="url(#countdown-interior)" class="countdown-anchored">${sweeps.map(values=>`<path d="${values[0]}">${matchMedia('(prefers-reduced-motion: reduce)').matches?'':`<animate attributeName="d" values="${[...values,values.at(-1)].join(';')}" keyTimes="${[...values.map((_,i)=>i/(values.length-1)*.9),1].join(';')}" dur="1.25s" repeatCount="indefinite"/>`}</path>`).join('')}</g></svg></main>`}
 function endTurn(){if(s.phase!=='play'||s.pendingEvent)return;ui.mode='';ui.note='';ui.privateResult='';ui.flipping='';const next=s.players.findIndex((p,i)=>i>s.turn&&!p.boarded);if(next<0)roundEnd();else startNext(next);finish()}
 function flipEndTurn(){if(ui.sequence||ui.popup||ui.flipping||s.phase!=='play'||s.pendingEvent)return;ui.private=false;ui.privateKind='';ui.privateResult='';ui.flipping='out';ui.flipDeadline=performance.now()+1300;const game=s,turn=s.turn;setTimeout(()=>{if(s===game&&s.turn===turn)endTurn()},1000);render()}
 function triggerEvent(k){if(!s.events.length)s.events=shuffle(EVENTS);let event=s.events.shift();if(event!=='Facehugger attack')log(`${me().name} triggered an event: ${event}.`);ui.note='';ui.sequence=true;runEvent(event,k).catch(error=>console.error('Event failed',event,error))}
@@ -283,7 +283,7 @@ function syncQuarantineAudio(){
  audioSafely(repeat);
 }
 document.addEventListener('visibilitychange',syncQuarantineAudio);
-// A single native audio stream belongs to each departure; redraws never restart it.
+// A single unlocked audio stream belongs to each departure; redraws never restart it.
 let endingAudioOwner=null,endingAudioPlaying=false,endingAudioOffset=0,endingAudioDone=false,endingAudioCancel=null;
 function pauseEndingAudio(){
  if(!endingAudioPlaying)return;
@@ -320,6 +320,7 @@ function finishLaunch(purge=false){
  if(purge){s.players[q.selected].boarded=false;s.players[q.selected].pos=DROPSHIP;log(`${s.players[q.selected].name} was ejected through the airlock and left on the surface.`)}
  syncQuarantineAudio();WristTerminal.cancel();finish();
  setTimeout(()=>{if(s!==game||s.phase!=='departing')return;ui.endingFadeAt=performance.now();finish()},6200);
+ audioSafely(()=>ShipAudio.preload('ending'));
  setTimeout(()=>{if(s!==game||s.phase!=='departing')return;s.phase='orbital';ui.orbitalAt=performance.now();syncEndingAudio();finish()},7500);
  setTimeout(()=>{if(s!==game||s.phase!=='orbital')return;s.winner=s.departure.winner;s.phase='over';log(s.winner==='crew'?'Both scientists escaped without contamination. Crew victory.':`COMPANY OBJECTIVE ACHIEVED. ${s.departure.impregnatedAboard?'An impregnated passenger escaped aboard the Dropship.':'The egg escaped aboard the Dropship.'}`);finish()},12000);
 }
@@ -368,14 +369,15 @@ function marineToken(p,i,x,y){
  const art=aboard?`<text class="apc-seat-initial" text-anchor="middle" y="4">${initial}</text>`:`<g class="marine-facing" transform="rotate(${angle})">${sweep}<svg x="-18.4" y="-23" width="36.8" height="46" viewBox="${crop} 0 543 724"><defs><clipPath id="marine-crop-${i}"><rect x="${crop}" width="543" height="724"/></clipPath></defs><image clip-path="url(#marine-crop-${i})" href="${window.ShipArtwork.MARINE_ART}" width="2172" height="724"/></svg></g>`;
  return `<g class="crew-token marine-token ${aboard?'aboard-token':''} ${p.captive?'captive':''} ${s.phase==='play'&&i===s.turn?'active-turn':''}" transform="translate(${x} ${y})" style="--piece-color:${COLOURS[i]}" aria-label="${esc(rank(i)+' '+p.name)}${aboard?' aboard vehicle':''}${p.scientist?' escorting a scientist':''}"><circle class="helmet-rim" r="17"/>${art}<circle class="marine-name-badge" cx="11" cy="13" r="7.5"/><text class="crew-initial" x="11" y="17">${initial}</text>${p.scientist?'<circle cx="-11" cy="-13" r="6" fill="#f6fff7"/><text class="scientist-tag" x="-11" y="-10">✚</text>':''}</g>`;
 }
+function alienContactVisible(k){return !!tile(k)?.known&&s.players.some(p=>!p.captive&&!p.boarded&&dist(p.pos,k)<=2)}
 function alienRevealed(k){return !!tile(k)?.known&&s.players.some(p=>!p.captive&&!p.boarded&&dist(p.pos,k)===1)}
 function hexCentre(k){let c=MAP[k];return [360+Math.sqrt(3)*55*(c.q+c.r/2),315+82.5*c.r]}
 function alienIcon(){
- const motion=ui.alienMotion,echo=ui.motionEcho?.until>Date.now()&&ui.motionEcho.hex===s.alien,from=motion?.from||s.alien,to=motion?.to||s.alien;
- const nearFrom=alienRevealed(from),nearTo=alienRevealed(to),visibleFrom=true,visibleTo=true;
- if(!echo&&!visibleFrom&&!visibleTo)return '';
+ const motion=ui.alienMotion,from=motion?.from||s.alien,to=motion?.to||s.alien;
+ const nearFrom=alienRevealed(from),nearTo=alienRevealed(to),visibleFrom=alienContactVisible(from),visibleTo=alienContactVisible(to);
+ if(!visibleFrom&&!visibleTo)return '';
  const a=hexCentre(from),b=hexCentre(to),elapsed=motion?Date.now()-motion.started:0,progress=motion?Math.min(1,elapsed/motion.duration):1,x=a[0]+(b[0]-a[0])*progress,y=a[1]+(b[1]-a[1])*progress,seconds=motion?Math.max(.001,(motion.duration-elapsed)/1000):0;
- const opacity=echo?1:visibleFrom?visibleTo?1:Math.max(0,1-progress*5):Math.max(0,(progress-.8)*5),near=motion&&progress<.5?nearFrom:nearTo;
+ const opacity=visibleFrom?visibleTo?1:Math.max(0,1-progress*5):Math.max(0,(progress-.8)*5),near=motion&&progress<.5?nearFrom:nearTo;
  const change=motion&&nearFrom!==nearTo&&progress<.5,changeAfter=change?Math.max(0,(motion.duration*.5-elapsed)/1000):0;
  const orb=`<g class="alien-presence" opacity="${near?0:1}">${change?`<set attributeName="opacity" to="${nearTo?0:1}" begin="${changeAfter}s" fill="freeze"/>`:''}<circle class="alien-halo" r="18"/><path class="alien-core" d="M0-12C8-12 13-7 12 1 12 8 6 13-2 12-10 11-14 5-12-2-11-9-6-12 0-12Z"/><circle class="alien-heart" r="5"/></g>`;
  const art=`<g class="alien-revealed" opacity="${near?1:0}">${change?`<set attributeName="opacity" to="${nearTo?1:0}" begin="${changeAfter}s" fill="freeze"/>`:''}<g class="alien-facing" transform="rotate(${alienFacing()})"><image class="alien-sprite" href="${window.ShipArtwork.ALIEN_ART}" x="-23" y="-29" width="46" height="60"/></g></g>`;

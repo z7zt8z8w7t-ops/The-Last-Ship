@@ -559,3 +559,6 @@ body{position:fixed;inset:0;height:100dvh}
 .hex,.hex.sel,.hex.reach,.hex.danger,.hex.target,.hex.chosen{stroke:#83b392!important;stroke-width:1.4!important;filter:none!important}
 .hex.reach{stroke-width:2.1!important}.hex.target{stroke-width:3!important}.hex.chosen{stroke-width:4.2!important}
 .alien-activity{top:45px!important;left:10px!important}
+
+/* Valley surround; the canvas restores the flat floor inside the hexes. */
+.board{background:#101d16 url('board-valley.webp') center/cover no-repeat}
