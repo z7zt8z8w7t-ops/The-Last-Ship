@@ -7,7 +7,7 @@ let session=null,enabled=false;
 const safeMedia=new Proxy({},{get:(_,method)=>(...args)=>{try{return window.ShipAudio?.[method]?.(...args)}catch(error){console.warn('Terminal audio unavailable',error)}}});
 const audio=()=>safeMedia;
 const hasTurnAudio=n=>n.classList.contains('handoff-prompt')||n.classList.contains('initial-orders')||n.classList.contains('muthur-mission');
-const selectors=['.rules-window','.mission-overlay .card','.private.executive-order','.event-window','.board-overlay .card','.handoff-prompt'];
+const selectors=['.rules-window','.mission-overlay .card','.private.executive-order','.event-window','.board-overlay .card','.handoff-prompt','.muthur-mission','.initial-orders','.wrist-dialog'];
 function stopOpening(x){try{x.cancelEnded?.()}catch(error){console.warn('Terminal audio cleanup failed',error)}x.cancelEnded=null;clearTimeout(x.openTimer);audio().stopEffect('wristOn')}
 function stopAudio(x){stopOpening(x);audio().stopEffect('wristDrone')}
 function cancel(){if(!session)return;const x=session;session=null;clearTimeout(x.closeTimer);stopAudio(x);x.overlay.remove()}
