@@ -1,5 +1,7 @@
-# v75 verification
+# v76 verification
 
-All eight existing automated suites pass. JavaScript syntax checks pass. Source checks confirm removal of the Actions header, board sound controls in both play and handoff, clipping of both countdown animation groups inside the perimeter, and front-face hiding during reverse-facing panel states. Embedded audio is byte-for-byte unchanged from v74.
+All eight automated suites and JavaScript syntax checks pass. New tests verify that jetpack, sentry gun, medkit, flare and Chemical Research have no Incinerate button and cannot be destroyed by a direct incinerate request. Egg incineration is available only at the APC.
 
-ZIP integrity and reconstruction over v74 pass. Browser runtimes were unavailable, so no rendered browser or physical iPad visual test was performed. Please check the panel flip and countdown on iPad.
+Markup checks confirm ID above controls and ECG after inventory. Embedded audio is unchanged. ZIP integrity and reconstruction over v75 pass.
+
+No physical iPad or rendered browser test was performed. Please check the ECG layout on iPad.

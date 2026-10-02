@@ -1,9 +1,9 @@
-# The Last Ship v75 — changed-files update
+# The Last Ship v76 — changed-files update
 
-Extract over existing v74, replacing matching files.
+Extract over existing v75, replacing matching files.
 
-Removed the Actions heading. The board sound button sits immediately above Abort Mission at bottom left, during play and handoff.
+Incinerate appears only for the egg at the APC. The action handler also rejects every other item. Existing egg action cost and captive restrictions remain unchanged.
 
-Player panel faces and their contents are hidden while facing away. The reverse remains the opaque Last Ship panel, with no mirrored controls, ID or ECG showing through.
+The player ID stays at the top. The ECG is the last section, beneath inventory, aligned at the bottom when space allows.
 
-Countdown sweeps and their glow are clipped to the inside of the fixed orange perimeter. Timing, audio and countdown digits remain unchanged.
+All v75 fixes remain included. Audio is unchanged.

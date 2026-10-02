@@ -532,3 +532,4 @@ body{position:fixed;inset:0;height:100dvh}
 @keyframes backAway{0%,49.99%{visibility:hidden}50%,100%{visibility:visible}}
 @keyframes backReturn{0%,49.99%{visibility:visible}50%,100%{visibility:hidden}}
 @media(prefers-reduced-motion:reduce){.flip-inner.flip-out>.flip-face,.flip-inner.flip-in>.flip-face{animation-duration:.01ms}}
+.flip-front>.heart-monitor{margin:auto 8px 8px;flex-shrink:0}
