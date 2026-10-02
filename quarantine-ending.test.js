@@ -14,7 +14,7 @@ function harness({failAudio=false}={}){
 
 
 const h=harness(),t=h.t;
-function ready(){h.fresh();t.s.delivered=2;t.s.players.forEach(p=>{p.pos=t.DROPSHIP;p.cargo=[];p.impregnated=false});t.s.ap=1;t.s.moves=2}
+function ready(){h.fresh();t.s.delivered=2;t.s.players.forEach(p=>{p.pos=t.DROPSHIP;p.boarded=true;p.cargo=[];p.impregnated=false});t.s.ap=1;t.s.moves=2}
 ready();t.s.delivered=1;assert.equal(t.canLaunch(),false);t.launch();assert.equal(t.s.phase,'play');
 ready();t.launch();assert.equal(t.s.phase,'quarantine');assert.equal(t.s.backgroundStopped,true);assert.ok(h.calls.includes('gameLoop')===false); // mock gameLoop is a no-op; state records the stop.
 const pos=t.s.players[0].pos,scans=t.s.scans,ap=t.s.ap;t.act('cancelLaunch');t.act('scan');t.act('drop:0');t.act('abortMission');t.move('0,0');assert.equal(t.s.phase,'quarantine');assert.equal(t.s.players[0].pos,pos);assert.equal(t.s.scans,scans);assert.equal(t.s.ap,ap);
@@ -22,15 +22,15 @@ assert.equal((t.quarantineMarkup().match(/class="quarantine-seat /g)||[]).length
 // Countdown sound repeats once per completed cue; redraw does not restart it.
 let ended=null;h.context.ShipAudio.onEnded=(key,fn)=>{ended=fn;return ()=>{ended=null}};t.syncQuarantineAudio();assert.equal(h.calls.filter(k=>k==='roundCountdown').length,1);t.syncQuarantineAudio();assert.equal(h.calls.filter(k=>k==='roundCountdown').length,1);ended();assert.equal(h.calls.filter(k=>k==='roundCountdown').length,2);
 // No departure until other passengers have clearance.
-t.selectPurge(3);t.finishLaunch(true);assert.equal(t.s.phase,'quarantine');for(let i=0;i<3;i++)t.grantClearance(i);t.s.players[3].cargo=['egg'];t.finishLaunch(true);assert.equal(t.s.phase,'departing');assert.deepEqual(Array.from(t.s.departure.people),[0,1,2]);assert.equal(t.s.departure.ejected,3);assert.equal(t.s.departure.winner,'crew');assert.equal(t.s.players[3].pos,t.DROPSHIP);assert.equal(ended,null);assert.ok(h.calls.includes('stop:roundCountdown'));assert.equal(t.s.departure.contacts.length,28);assert.equal((t.swarmMarkup().match(/animateMotion/g)||[]).length,28);t.act('scan');assert.equal(t.s.scans,scans);
+t.selectPurge(3);t.finishLaunch(true);assert.equal(t.s.phase,'quarantine');for(let i=0;i<3;i++)t.grantClearance(i);t.s.players[3].cargo=['egg'];t.finishLaunch(true);assert.equal(t.s.phase,'departing');assert.deepEqual(Array.from(t.s.departure.people),[0,1,2]);assert.equal(t.s.departure.ejected,3);assert.equal(t.s.departure.winner,'crew');assert.equal(t.s.players[3].pos,t.DROPSHIP);assert.equal(ended,null);assert.ok(h.calls.includes('stop:roundCountdown'));assert.equal(t.s.departure.contacts.length,0);t.act('scan');assert.equal(t.s.scans,scans);
 h.advance(6200);assert.equal(t.s.phase,'departing');assert.equal(t.s.winner,null);h.advance(1300);assert.equal(t.s.phase,'orbital');assert.ok(!t.orbitalMarkup().includes('CREW VICTORY'));h.advance(4499);assert.equal(t.s.phase,'orbital');h.advance(1);assert.equal(t.s.phase,'over');assert.ok(t.orbitalMarkup().includes('CREW VICTORY'));assert.ok(t.orbitalMarkup().includes('ackResults'));t.act('ackResults');assert.equal(t.ui.resultsAcknowledged,true);assert.ok(t.orbitalMarkup().includes('PLAY AGAIN'));
 // Actual manifest, never representative identity, decides crew/company outcome.
 for(const contaminated of ['egg','impregnated']){ready();t.s.players[0].role='crew';t.s.players[3].role='companyRepresentative';t.s.players[0].cargo=contaminated==='egg'?['egg']:[];t.s.players[0].impregnated=contaminated==='impregnated';t.launch();t.selectPurge(3);for(let i=0;i<3;i++)t.grantClearance(i);t.finishLaunch(true);assert.equal(t.s.departure.winner,'company')}
 // All-clear route launches without requiring a victim.
 ready();t.launch();for(let i=0;i<4;i++)t.grantClearance(i);assert.ok(t.quarantineMarkup().includes('LAUNCH — ALL CLEARED'));t.finishLaunch(false);assert.equal(t.s.departure.ejected,null);assert.equal(t.s.departure.people.length,4);
 // Last eligible passenger cannot be purged into an empty craft.
-ready();t.s.players.slice(1).forEach(p=>p.pos=t.HOME);t.launch();t.selectPurge(0);t.finishLaunch(true);assert.equal(t.s.phase,'quarantine');
+ready();t.s.players.slice(1).forEach(p=>{p.pos=t.HOME;p.boarded=false});t.launch();t.selectPurge(0);t.finishLaunch(true);assert.equal(t.s.phase,'quarantine');
 // Gun is rigidly rotated; no perspective scale in the upper assembly.
 assert.ok(t.sentryIcon({hex:'1,0',armed:true,aim:0,firingUntil:0}).includes('scale(.85)'));
 const left=t.countdownSweeps()[2][0].match(/-?\d+(?:\.\d+)?/g).map(Number);assert.equal(left[2],475);assert.equal(left[3],455);assert.equal(390-455,410-475);assert.equal(520-455,-(410-475));
-console.log('PASS: irreversible quarantine, eight seats, clearance and purge manifests, contamination outcomes, audio repeat/stop, 28 cinematic contacts, launch/fade/orbit/results timing, native sentry rotation and timer-corner start.');
+console.log('PASS: irreversible quarantine, eight seats, clearance and purge manifests, contamination outcomes, audio repeat/stop, removed old launch animation, launch/fade/orbit/results timing, native sentry rotation and timer-corner start.');

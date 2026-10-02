@@ -1,0 +1,24 @@
+const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path'),assert=require('node:assert/strict');
+function harness({failAudio=false}={}){
+ let now=0,id=0;const timers=new Map(),calls=[],renders=[],digits=Array.from({length:5},()=>({textContent:''}));
+ const listeners={},app={classList:{remove(){}},dataset:{},addEventListener:(key,fn)=>{(listeners['app:'+key]??=[]).push(fn)}};const screen={setAttribute(k,v){this[k]=v},querySelectorAll:()=>digits};const noop=()=>{};
+ const audio=new Proxy({play:key=>{calls.push(key);if(failAudio)throw Error('Media failed')},capture:key=>calls.push(key),stopEffect:key=>calls.push('stop:'+key)},{get:(o,k)=>o[k]||noop});
+ const context={window:{ShipArtwork:{CAPTURE_ARTS:['a'],SCIENTIST_ARTS:['s'],ITEM_ARTS:{},SENTRY_ART:{parts:"sentry-parts.png",emplacement:"gun-emplacement.png"},EMBEDDED_TILE_ART:{}}},ShipAudio:audio,WristTerminal:{cancel:()=>{},acknowledge:()=>{},afterOpen:fn=>fn(),isClosing:()=>false},ShipDropship:{stop:noop},document:{hidden:false,querySelector:s=>s==='.round-countdown'?screen:{textContent:''},querySelectorAll:()=>[],getElementById:()=>app,addEventListener:(key,fn)=>{(listeners[key]??=[]).push(fn)},body:{dataset:{},classList:{toggle:noop}}},localStorage:{removeItem:noop,getItem:()=>null,setItem:noop},location:{search:''},URLSearchParams,Date:class extends Date{static now(){return now}},performance:{now:()=>now},matchMedia:()=>({matches:false}),requestAnimationFrame:noop,setTimeout:(fn,ms)=>{timers.set(++id,{fn,at:now+ms});return id},clearTimeout:n=>timers.delete(n),setInterval:(fn,ms)=>{timers.set(++id,{fn,at:now+ms,repeat:ms});return id},clearInterval:n=>timers.delete(n),console:{...console,warn:noop},renders,failNextRender:false};
+ let source=fs.readFileSync(path.join(__dirname,'../game.js'),'utf8');source=source.replace(/ render\(\);window.ShipReady=true;\s*\n\}\)\(\);\s*$/,`render=()=>{if(failNextRender){failNextRender=false;throw Error('Render failed')}renders.push(s?.phase)};finish=()=>render();cinemaStage=()=>{};alienStep=async()=>{s.alienMovesLeft=0};mountTerminal=()=>{};window.test={launch,canLaunch,grantClearance,selectPurge,finishLaunch,departurePlan,quarantineMarkup,orbitalMarkup,endingMarkup,swarmMarkup,syncQuarantineAudio,heading,marineFacing,alienFacing,marineToken,alienIcon,arrive,sentryAllowed,sentryAim,sentryIcon,fireSentry,spacedTerrain,validItemTarget,beginEscort,deliver,queueEquipment,countdownSweeps,bind,beginItem,useItem,targetPanel,HOME,DROPSHIP,newGame,drop,capture,boardDropship,offerBoarding,endTurn,startNext,runEvent,runMessages,showPopup,closePopup,roundCountdown,countdownValue,countdownMarkup,runAlienTurn,move,act,get s(){return s},get ui(){return ui}};})();`);
+ vm.runInNewContext(source,context);const t=context.window.test;
+ function fresh(){t.newGame(['A','B','C','D']);t.ui.boot='game';t.ui.cinematic=false;t.s.phase='play';t.s.players[0].role='crew';t.s.players[0].briefed=true;calls.length=0;renders.length=0;timers.clear()}
+ function advance(ms){const end=now+ms;for(;;){const next=[...timers].filter(([,v])=>v.at<=end).sort((a,b)=>a[1].at-b[1].at)[0];if(!next)break;const [n,timer]=next;now=timer.at;if(timer.repeat)timer.at+=timer.repeat;else timers.delete(n);timer.fn()}now=end}
+ fresh();return {t,context,calls,renders,digits,screen,advance,fresh,listeners};
+}
+
+
+
+
+
+(async()=>{const h=harness(),t=h.t,p=t.s.players[0];
+p.cargo=['egg','flare'];t.s.nestEggFound=true;t.drop(0);assert.deepEqual(Array.from(p.cargo),['flare']);assert.equal(t.s.tiles[p.pos].loose.length,0);assert.equal(t.s.nestEggFound,false);
+p.cargo=['egg','sentry'];t.s.nestEggFound=true;t.s.alien=p.pos;t.capture();assert.equal(p.cargo.length,0);assert.equal(t.s.nestEggFound,false);assert.equal(t.s.tiles[t.HOME].loose.length,0);assert.equal(t.ui.messages[0].text,'Taken to the Alien Nest. All carried equipment has been lost.');assert.equal(p.captive,true);
+h.fresh();t.s.players[1].boarded=true;t.endTurn();assert.equal(t.s.turn,2);
+h.fresh();t.s.players[0].pos=t.DROPSHIP;t.s.delivered=2;t.boardDropship();await Promise.resolve();await Promise.resolve();await Promise.resolve();assert.equal(t.s.players[0].boarded,true);assert.equal(t.s.turn,1);assert.equal(t.s.phase,'handoff');
+h.fresh();t.s.delivered=2;t.s.players.forEach(p=>p.boarded=true);t.s.players[0].boarded=false;t.s.players[0].pos=t.DROPSHIP;t.boardDropship();await Promise.resolve();await Promise.resolve();await Promise.resolve();assert.equal(t.s.phase,'readyLaunch');assert.equal(t.canLaunch(),true);t.act('launch');assert.equal(t.s.phase,'quarantine');assert.equal(t.s.quarantine.eligible.length,4);
+console.log('PASS: permanent discard/capture loss, replacement nest egg, capture wording, skipped boarded turns, last player boarding and quarantine entry.');})().catch(e=>{console.error(e);process.exitCode=1});

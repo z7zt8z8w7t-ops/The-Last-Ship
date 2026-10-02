@@ -1,6 +1,6 @@
-const CACHE='the-last-ship-v88';
+const CACHE='the-last-ship-v89';
 const ROOT=self.registration.scope;
-const ASSETS=['./','./index.html','./style.css?v=88','./game.js?v=88','./artwork.js?v=88','./dropship.js?v=65','./wrist-terminal.js?v=82','./dropship-ship.webp','./dropship-terrain.webp','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png','./alien-planet.webp','./sound-check.html','./role-patches.png','./marine-tokens.png','./alien-overhead.png','./sentry-overhead-parts.png','./gun-emplacement.png','./orbital-ending.png','./quarantine-schematic.png'];
+const ASSETS=['./','./index.html','./style.css?v=89','./game.js?v=89','./artwork.js?v=89','./dropship.js?v=65','./wrist-terminal.js?v=82','./dropship-ship.webp','./dropship-terrain.webp','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png','./alien-planet.webp','./sound-check.html','./terrain.js?v=89','./terrain/ground.png','./terrain/cover.png','./terrain/spores.png','./terrain/wells.png','./terrain/event.png','./terrain/nest.png','./terrain/apc.png','./terrain/landing.png','./terrain/emplacement.png','./terrain/cache.png','./terrain/pdt.png','./terrain/bridge.png','./terrain/broken.png','./marine-tokens.png','./alien-overhead.png','./sentry-overhead-parts.png','./gun-emplacement.png','./orbital-ending.png','./quarantine-schematic.png'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('the-last-ship-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{

@@ -1,17 +1,9 @@
-# v84 verification
+# v89 validation
 
-Eight automated test scripts pass. New quarantine tests cover the scientist launch gate, irreversible board lock, eight-seat layout, clearance selection and revocation, purge eligibility, all-clear departure, retained ejected position, contamination outcomes, repeat/stop audio lifecycle, 28 launch contacts and staged launch/fade/orbital/results timing. Existing spacing, inventory, input, terminal recovery, skip and audio checks pass. Countdown rays touch the timer corners and avoid the text interior. Upper sentry transforms contain no perspective scaling. JavaScript syntax and changed-file ZIP reconstruction are checked.
+13 Node checks pass, including 1,000 randomized terrain layouts, boarding and skipped turns, last-player launch access, permanent discard and capture loss, capture wording, replacement egg availability, quarantine clearance and contamination, capture timing, input routing, prior terminal freeze regressions, audio continuity and gains.
 
-Tests use source and simulated timers/DOM; the new interface and animations have not been tested in an iPad browser. Earlier intermittent mid-game freeze reports remain unconfirmed; the v82 mission-dialog fix is retained.
+All 13 terrain image atlases were decoded and rendered with the canvas implementation. Cache beacon state, yellow/red staging threshold and animation cancellation were checked. A static SVG composition was rendered and inspected for tile placement and ramp connection.
 
-## v85 verification
-All nine Node verification scripts pass, including new orbital audio lifecycle checks: no playback before orbit, no restart on redraw/results, visibility and mute pause/resume, natural completion without replay, and fresh-game reset. Game and inline JavaScript syntax checks pass. Extracted embedded credits stream is stereo AAC, 146.214 seconds, 1,780,976 bytes; index.html is 24,706,754 bytes. iPad playback has not been tested.
+A full browser session could not run because Chromium was unavailable and its download was blocked. No iPad/Safari playtest was performed. These automated checks do not establish that every previously reported intermittent freeze is resolved.
 
-## v86 verification
-Nine Node verification scripts pass. Sentry tests verify smooth sweep while armed, direct firing aim, red light off on firing, muzzle flash present only during firing, and no perspective scale or old normalization rotation. A static SVG render was visually inspected for pivot alignment and barrel-tip flash position. iPad animation playback has not been tested.
-
-## v87
-v87: all ten Node verification scripts pass. New board-token tests cover distances zero/one/two/three, nearest player beyond current player, fog handling, animated range transition, four role crops, active-turn and scientist/captive markers. A static SVG render was inspected for marine and alien silhouette readability. JavaScript syntax checked. iPad gameplay/animation has not been tested.
-
-## v88
-All eleven Node scripts pass. New facing/vehicle tests verify start/return vehicle patches, arrival heading, active versus off-turn sweep, nearby-alien focus, disabled captive guard, alien movement/target/withdraw headings, APC size and explicit visible v88. Existing sentry assertions updated for uniform 0.85 scale. Static SVG preview inspected for patch crop and rotated marine alignment. Actual iPad animation has not been tested.
+The ZIP is a changed-files patch over v88. Every individual hosted file is under 25,000,000 bytes.

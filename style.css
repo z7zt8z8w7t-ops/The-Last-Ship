@@ -546,3 +546,13 @@ body{position:fixed;inset:0;height:100dvh}
 
 /* Overhead player tokens preserve the existing turn pulse and capture rim. */
 .marine-token .helmet-rim{fill:#0b1918;stroke:var(--piece-color);stroke-width:1.8}.marine-token.captive .helmet-rim{stroke:#e9eef0;stroke-dasharray:3 2}.marine-name-badge{fill:#10221f;stroke:var(--piece-color);stroke-width:1.6}.marine-token .crew-initial{font-size:11px;stroke-width:1px}.alien-revealed{filter:drop-shadow(0 1px 2px #000)}
+/* v89 overhead terrain and off-grid landing apron */
+.board-stats{top:8px;left:8px;right:auto;flex-direction:row;gap:5px;max-width:65%}
+.board-stats .pill{font-size:.7rem;gap:6px;background:#09271de8}
+.apc-seat-initial{font:bold 8px monospace;fill:#caffb0;paint-order:stroke;stroke:#142019;stroke-width:1.8px}
+.aboard-token .helmet-rim,.aboard-token .marine-name-badge,.aboard-token .crew-initial{display:none}
+.cache-loaded{animation:cache-flash 1.2s steps(1,end) infinite;filter:drop-shadow(0 0 3px #42caff)}
+@keyframes cache-flash{0%,55%{opacity:1}56%,100%{opacity:.15}}
+.staging-hazards{pointer-events:none;mix-blend-mode:screen}
+.board .dropship-canvas{display:none}
+@media(prefers-reduced-motion:reduce){.cache-loaded{animation:none}.staging-hazards animateTransform{display:none}}

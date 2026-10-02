@@ -15,9 +15,9 @@ function harness({failAudio=false}={}){
 
 
 const h=harness(),t=h.t;h.context.window.ShipArtwork.PATCH_ART='role-patches.png';h.context.window.ShipArtwork.MARINE_ART='marine-tokens.png';h.context.window.ShipArtwork.ALIEN_ART='alien-overhead.png';
-const p=t.s.players[0];p.pos=t.HOME;assert.ok(t.marineToken(p,0,0,0).includes('vehicle-role-patch'));assert.ok(!t.marineToken(p,0,0,0).includes('marine-facing'));p.pos=t.DROPSHIP;assert.ok(t.marineToken(p,0,0,0).includes('vehicle-role-patch'));
+const p=t.s.players[0];p.pos=t.HOME;assert.ok(t.marineToken(p,0,0,0).includes('apc-seat-initial'));assert.ok(!t.marineToken(p,0,0,0).includes('marine-facing'));p.pos=t.DROPSHIP;assert.ok(t.marineToken(p,0,0,0).includes('marine-facing'));
 p.pos=t.HOME;t.s.tiles['1,0'].terrain='open';t.s.tiles['1,0'].site=null;t.s.alien='-3,0';t.arrive('1,0','moved');assert.equal(p.facing,90);assert.ok(t.marineToken(p,0,0,0).includes('rotate(-90)'));assert.equal(t.marineFacing(p,0).guard,false);
 t.s.turn=1;assert.equal(t.marineFacing(p,0).guard,true);assert.ok(t.marineToken(p,0,0,0).includes('calcMode="spline"'));t.s.alien='1,1';assert.equal(t.marineFacing(p,0).guard,false);assert.equal(t.marineFacing(p,0).angle,t.heading(p.pos,t.s.alien));p.captive=true;assert.equal(t.marineFacing(p,0).guard,false);p.captive=false;
 t.ui.alienMotion={from:'0,0',to:'1,0'};assert.equal(t.alienFacing(),90);t.ui.alienMotion=null;t.s.alien='0,0';t.s.alienMind={mode:'stalk',target:0};assert.equal(t.alienFacing(),90);t.s.alienMind.mode='withdraw';t.s.alienFacing=-60;assert.equal(t.alienFacing(),-60);
-assert.ok(t.alienIcon().includes('alien-facing'));const source=fs.readFileSync(path.join(__dirname,'../game.js'),'utf8');assert.ok(source.includes("ShipBuild='v88'"));assert.ok(source.includes("textContent='v88'"));assert.ok(source.includes('artWidth*1.12'));
-console.log('PASS: vehicle patches, movement facing, idle guard/detection, captured guard disabled, alien travel/target/last facing, APC scale and visible v88 label.');
+assert.ok(t.alienIcon().includes('alien-facing'));const source=fs.readFileSync(path.join(__dirname,'../game.js'),'utf8');assert.ok(source.includes("ShipBuild='v89'"));assert.ok(source.includes("textContent='v89'"));assert.ok(source.includes('ShipTerrain.mount'));
+console.log('PASS: vehicle seat initials, movement facing, idle guard/detection, captured guard disabled, alien travel/target/last facing, APC scale and visible v89 label.');
