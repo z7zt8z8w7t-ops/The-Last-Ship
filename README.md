@@ -58,3 +58,6 @@ Apply over v85. Sentry now uses a strict overhead fixed tripod and separate rota
 
 ## v87
 v87: apply over v86. Overhead role-specific marine tokens retain player initials, coloured rims, turn pulse and scientist/capture badges. The alien sprite is revealed at a hex distance of two or less from any player; farther away it uses the existing green orb and existing fog/contact visibility. Moving contacts switch appearance halfway across a hex boundary. Changes are visual; movement/capture rules remain.
+
+## v88
+Apply v88 over v87. Marines are 15% larger and remember their travel heading. Off-turn, uncaptured marines sweep ±18 degrees over six seconds unless the alien is within two hexes, when they face it. Active marines retain movement heading. Vehicle hexes (APC/dropship) use role patches at game start and on every return. Initials and status badges remain upright. APC image enlarged 12% within its hex; sentry uniformly reduced 15%. Alien faces movement, stalking/attack target, or last heading when withdrawing. Visible build and cache now v88.

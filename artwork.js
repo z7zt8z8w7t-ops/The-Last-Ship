@@ -17,3 +17,5 @@ window.ShipArtwork.ITEM_ARTS.sentry="./sentry-overhead-parts.png";
 
 window.ShipArtwork.MARINE_ART="./marine-tokens.png";
 window.ShipArtwork.ALIEN_ART="./alien-overhead.png";
+
+window.ShipArtwork.PATCH_ART="./role-patches.png";

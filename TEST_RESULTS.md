@@ -12,3 +12,6 @@ Nine Node verification scripts pass. Sentry tests verify smooth sweep while arme
 
 ## v87
 v87: all ten Node verification scripts pass. New board-token tests cover distances zero/one/two/three, nearest player beyond current player, fog handling, animated range transition, four role crops, active-turn and scientist/captive markers. A static SVG render was inspected for marine and alien silhouette readability. JavaScript syntax checked. iPad gameplay/animation has not been tested.
+
+## v88
+All eleven Node scripts pass. New facing/vehicle tests verify start/return vehicle patches, arrival heading, active versus off-turn sweep, nearby-alien focus, disabled captive guard, alien movement/target/withdraw headings, APC size and explicit visible v88. Existing sentry assertions updated for uniform 0.85 scale. Static SVG preview inspected for patch crop and rotated marine alignment. Actual iPad animation has not been tested.

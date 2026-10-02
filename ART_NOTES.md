@@ -7,3 +7,6 @@ Built-in image generation produced sentry-overhead-parts.png. Prompt: two disass
 
 ## v87
 v87: marine-tokens.png was generated using the approved marine comparison as reference, extracting four overhead roles without baked names/rings/text. Built-in prompt: overhead Sergeant/Weapons Tech/Medic/Science Officer, gritty olive-grey armour, gold/cyan/red/purple role accents, transparent four-column sheet. Runtime SVG crops 543px columns and overlays live initials/rims/status. alien-overhead.png is the approved overhead reference-derived creature (elongated head, crouched limbs, curled tail, grey-green highlights). Both are external image assets; audio stays embedded.
+
+## v88
+role-patches.png created with built-in image generation from approved comparison art: four circular embroidered roles, chevrons/ammunition/cross/molecule, no baked initials or labels, transparent background. SVG crops four 543px columns with runtime name/status badges. Marine sprites face down natively, so a -180 degree offset normalizes travel headings; only sprite art rotates. Guard scan and alien facing preserve existing mechanics.
