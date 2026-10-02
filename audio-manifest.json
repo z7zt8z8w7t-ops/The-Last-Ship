@@ -283,5 +283,13 @@
     "embedded_key": "background",
     "container": "index.html #ship-audio-data",
     "edits": "Original AAC audio retained; attached cover art and metadata removed. Decoded once at playback and given a two-second equal-power circular crossfade; 35% gain."
+  },
+  {
+    "usage": "Scientist boarding report opening",
+    "creator": "User supplied",
+    "source": "Rescued.m4a",
+    "embedded_key": "rescued",
+    "container": "index.html #ship-audio-data",
+    "edits": "Original M4A embedded, 100% gain, played for each boarding."
   }
 ]

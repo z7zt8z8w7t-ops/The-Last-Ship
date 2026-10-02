@@ -106,5 +106,6 @@ function afterOpen(fn){if(!session||session.ready)fn();else if(!session.closing)
 document.addEventListener('visibilitychange',()=>{if(!session)return;const x=session;if(document.hidden){stopOpening(x);audio().stopEffect('wristDrone')}else if(enabled&&!x.closing){if(!x.ready){x.ready=true;x.jobs.splice(0).forEach(fn=>fn())}if(x.turnAudio)audio().play('wristDrone',.1)}});
 function acknowledge(){if(session?.closing)return;if(session)session.ackPlayed=true;if(enabled&&!document.hidden)audio().play('turnOff',.2)}
 function isClosing(){if(session?.closing&&performance.now()-session.closedAt>=OFF_MS){const x=session;session=null;clearTimeout(x.closeTimer);x.overlay.remove()}return !!session?.closing}
-window.WristTerminal={sync,afterOpen,cancel,acknowledge,isClosing};
+function releaseOrphan(ui,game){if(!session||ui.sequence||ui.messages?.length||game?.pendingEvent||ui.terminalHold)return;const root=document.getElementById('app');if(!selectors.some(selector=>root.querySelector(selector)))cancel()}
+window.WristTerminal={releaseOrphan,sync,afterOpen,cancel,acknowledge,isClosing};
 })();

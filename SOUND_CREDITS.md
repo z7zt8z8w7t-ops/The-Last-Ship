@@ -122,3 +122,9 @@ Background converted to 22.05 kHz mono PCM, preserving the existing crossfade an
 
 ## v80 — replacement background recording
 Game background LQ.m4a replaces the v79 background. Original compressed AAC audio retained, with artwork/metadata removed. A two-second equal-power circular crossfade is built once after Web Audio decoding. Stereo is retained. Playback gain remains 35%, starting with board fade and stopping at dropship Launch. Native fallback plays the compressed file on repeat without the decoded crossfade. Audio lifecycle and waveform crossfade regression checks pass; physical iPad verification remains outstanding.
+
+
+## v81
+Scientist discovery audio repeats on every recovery, including scientists dropped after capture. Rescued.m4a plays on boarding report opening. Egg discovery uses TLS Discovery at 130%; acknowledgement power-down remains 20%. Background pauses for combined capture audio, resumes from its saved position 0.5 seconds before the recording ends, and fades in over 1.5 seconds. The four-second capture-report delay is retained. Countdown endpoints slide on the octagonal perimeter as the four inner vertices converge, including the reopening phase.
+
+Input work: independent touch-end path handles pointer cancellation without depending on a generated click, with per-gesture duplicate suppression; stale intro input-blocking classes and orphan terminal overlays are removed. Live popup/sequence gates remain. ShipInputDiagnostics() exposes bounded recent input and lock state for further diagnosis. Player-four flare, subsequent movement, duplicate click, drag rejection, protected sequence, repeated scientist recovery, egg/boarding cues, capture timing, background position/fade/overlap, and perimeter intersections pass automated checks. Actual iPad freeze remains unconfirmed; no physical iPad or browser-engine test was performed. Four available verification scripts pass.
