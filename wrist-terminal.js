@@ -7,7 +7,7 @@ let session=null,enabled=false;
 const safeMedia=new Proxy({},{get:(_,method)=>(...args)=>{try{return window.ShipAudio?.[method]?.(...args)}catch(error){console.warn('Terminal audio unavailable',error)}}});
 const audio=()=>safeMedia;
 const hasTurnAudio=n=>n.classList.contains('handoff-prompt')||n.classList.contains('initial-orders')||n.classList.contains('muthur-mission');
-const selectors=['.rules-window','.mission-overlay .card','.private.executive-order','.event-window','.board-overlay .card','.handoff-prompt','.muthur-mission','.initial-orders','.wrist-dialog'];
+const selectors=['.rules-window','.mission-overlay .card','.private.executive-order','.event-window','.board-overlay .card','.handoff-prompt','.muthur-mission','.initial-orders','.wrist-dialog','.results-dialog'];
 function stopOpening(x){try{x.cancelEnded?.()}catch(error){console.warn('Terminal audio cleanup failed',error)}x.cancelEnded=null;clearTimeout(x.openTimer);audio().stopEffect('wristOn')}
 function stopAudio(x){stopOpening(x);audio().stopEffect('wristDrone')}
 function cancel(){if(!session)return;const x=session;session=null;clearTimeout(x.closeTimer);stopAudio(x);x.overlay.remove()}
@@ -43,7 +43,7 @@ function sync(ui,game,soundOn){
  const root=document.getElementById('app');
  if(!root)return;
  const allowed=(ui.boot==='game'&&!ui.cinematic&&!ui.boardArrival)||ui.boot==='roster';
- if(!allowed||game?.phase==='countdown'){cancel();return}
+ if(!allowed||['countdown','quarantine','departing','orbital'].includes(game?.phase)){cancel();return}
  if(session&&session.owner!==game)cancel();
  if(enabled!==soundOn){enabled=soundOn;if(session){stopAudio(session);if(enabled&&!session.closing)startAudio(session);else if(!session.closing&&!session.ready)session.openTimer=setTimeout(()=>ready(session),ON_MS)}}
  const candidate=selectors.map(sel=>root.querySelector(sel)).find(Boolean);
@@ -61,7 +61,7 @@ function sync(ui,game,soundOn){
   x.content.replaceChildren(candidate);x.content.inert=false;x.footer.inert=false;if(fresh){x.ackPlayed=false;x.footer.replaceChildren();x.imagePanel.replaceChildren();
   const art=candidate.querySelector('.capture-art,.equipment-art,.event-art');
   x.imagePanel.hidden=!art;if(art)x.imagePanel.append(art);
-  const ack=candidate.querySelector('[data-act="closeSearchPopup"],[data-act="ackMission"],[data-act="reveal"],[data-act="startTurn"],[data-act="closePrivate"],[data-act="closeRules"]');
+  const ack=candidate.querySelector('[data-act="closeSearchPopup"],[data-act="ackMission"],[data-act="reveal"],[data-act="startTurn"],[data-act="closePrivate"],[data-act="closeRules"],[data-act="ackResults"]');
   if(ack){ack.textContent='ACKNOWLEDGE';x.footer.append(ack)}else{const choices=candidate.querySelector('.row');if(choices)x.footer.append(choices)}
   if(candidate.classList.contains('rules-window'))paginateRules(x,candidate);}
   candidate.classList.add('wrist-dialog');
