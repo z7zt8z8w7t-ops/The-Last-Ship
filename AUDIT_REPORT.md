@@ -1,3 +1,13 @@
+# v91 audio repair supplement
+
+The v90 audit checked audio metadata but missed damaged encoded frames. The subsequent full decode check found that unsafe whole-document version substitutions had changed base64 characters inside the embedded audio data. The failure began in the available v82→v83 update chain and accumulated in later builds.
+
+v91 restores all 31 recordings from intact copies, rebuilds the orbital recording from the original upload, and uses exact version-label edits. Every recording now passes hash verification, full ffmpeg decoding with errors treated as failures, and a check for non-finite or extreme decoded samples. A deliberately unsafe substitution is reproduced in the new integrity test; the safe version updater leaves media byte-for-byte unchanged.
+
+The supplied gameplay recording's background and wind mix coefficients remained steady across the perceived drop. The loud countdown/terminal cues ending accounted for the large change in the mix. The countdown receives a 120 ms end ramp; existing gains and screen timing remain intact. The title speech contained malformed AAC frames and extreme decoded spikes; the restored recording has neither. Physical iPad playback still needs user verification.
+
+The following earlier v89/v90 findings remain applicable except for the audio validation limitations corrected above.
+
 # The Last Ship v89 audit and v90 cleanup
 
 The missing terrain in the screenshots is strongly consistent with failed requests for the new `terrain/*.png` assets. All 13 source images decode locally. The player sprite and yellow light shapes do not use those image requests, which explains why they can remain visible while the terrain, APC and dropship disappear. The live site's HTTP responses and installed service-worker state were not available for verification, so the exact deployment failure is not proved.

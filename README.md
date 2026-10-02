@@ -1,9 +1,11 @@
-# The Last Ship v90 — audit cleanup
+# The Last Ship v91 — audio repair
 
-This is a changed-files patch over v89, not a complete standalone installation. Replace the matching files in your existing game. The visible version becomes v90.
+Apply this changed-files patch over v90. Replace matching files, then reload the game. The visible version becomes v91. No audio file upload or separate sounds folder is required.
 
-New terrain images are embedded in terrain.js (about 6.7 MB), so there is no terrain folder to upload. All changed files are below 25 MB individually. Existing icons, manifest and alien-planet background are still required from your installed game.
+All 31 embedded recordings have been restored to intact copies. Most come from the earlier unchanged v80/v81 recordings; the orbital ending was rebuilt from the original uploaded End credits.m4a as stereo AAC at 96 kbps.
 
-Use REMOVE_OLD_FILES.txt to remove the specifically listed retired files from the existing installation. A ZIP cannot delete existing files automatically. Do not remove other files.
+The corruption came from replacing version text throughout index.html, which changed matching characters in base64 audio. Future build-label updates must use verification/set-build-version.py and pass verification/audio-integrity.test.py before packaging.
 
-Read AUDIT_REPORT.md for confirmed remaining faults and test limitations. This patch cleans dependencies and unused code; it does not claim to fix the intermittent iPad freeze or every reported gameplay/layout fault.
+The countdown cue has a 120 ms ending ramp to remove its hard cutoff. Its five-second screen duration, the title timings, player-turn audio settings and other gains are preserved.
+
+Every included file is below 25 MB individually. Existing v90 terrain and gameplay cleanup are retained. This patch addresses audio corruption; the previously documented gameplay/layout issues remain listed in AUDIT_REPORT.md.

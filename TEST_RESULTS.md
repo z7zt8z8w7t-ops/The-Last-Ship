@@ -1,6 +1,10 @@
-# v90 verification
+# v91 verification
 
-14 regression/playthrough scripts passed. One additional audit-findings script reproduced documented remaining defects. See AUDIT_REPORT.md for coverage and limitations.
+- All 31 real recordings match their restored source hashes and fully decode without errors, non-finite samples or extreme spikes.
+- Unsafe whole-document version substitution is reproduced; safe build update preserves all embedded media.
+- Countdown end ramp is checked in the audio engine test. Existing title, terminal and music gains and requested playback paths pass.
+- All production and executable inline JavaScript syntax checks pass.
+- 14 regression/playthrough scripts pass; one additional findings script continues to reproduce documented unrelated defects. Physical Safari playback is not claimed.
 
 - audit-findings.test.js: PASS
 - background-crossfade.test.js: PASS
