@@ -275,5 +275,13 @@
     "duration_seconds": 6.617687,
     "edits": "None; embedded unchanged",
     "container": "index.html #ship-audio-data"
+  },
+  {
+    "usage": "Board background loop",
+    "creator": "User supplied",
+    "source": "Game background LQ.m4a upload",
+    "embedded_key": "background",
+    "container": "index.html #ship-audio-data",
+    "edits": "Original AAC audio retained; attached cover art and metadata removed. Decoded once at playback and given a two-second equal-power circular crossfade; 35% gain."
   }
 ]

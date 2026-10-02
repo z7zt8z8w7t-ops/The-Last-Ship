@@ -35,7 +35,7 @@ function create(owner,turnAudio,startupAudio=false){
 }
 function endTurnAudio(x){if(!x.turnAudio)return;stopAudio(x);x.turnAudio=false}
 function close(x){
- if(x.closing)return;x.closing=true;x.closedAt=performance.now();x.jobs=[];if(x.turnAudio)endTurnAudio(x);else stopAudio(x);if(!x.ackPlayed&&enabled&&!document.hidden)audio().play('turnOff',.2);
+ if(x.closing)return;x.closing=true;x.overlay.style.pointerEvents='none';x.closedAt=performance.now();x.jobs=[];if(x.turnAudio)endTurnAudio(x);else stopAudio(x);if(!x.ackPlayed&&enabled&&!document.hidden)audio().play('turnOff',.2);
  x.content.inert=true;x.footer.inert=true;x.frame.classList.add('wrist-off');x.frame.style.setProperty('--wrist-delay','0ms');
  x.closeTimer=setTimeout(()=>{if(session!==x)return;x.overlay.remove();session=null},OFF_MS);
 }

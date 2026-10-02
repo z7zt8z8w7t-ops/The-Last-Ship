@@ -11,3 +11,17 @@ Every enabled Acknowledge press plays TLS crt pwr dwn short at 20% gain, includi
 TLS EVAC.m4a plays once at 100% gain after the two-hour countdown has disappeared and the next handoff screen has rendered. It is embedded unchanged in index.html.
 
 Freeze protection: terminal media errors no longer abort cleanup; expired closing locks can clear even if a timer is delayed. Popup acknowledgement resolves despite a redraw failure, event/message sequence locks clear in finally blocks, and turn-flip completion is scheduled before drawing. A permanent lock from a simulated audio failure was reproduced in v76 and no longer occurs in the same v77 check. The exact cause of the reported iPad freeze remains unconfirmed.
+
+
+## v78
+Background recording embedded as 44.1 kHz stereo PCM with a two-second equal-power wrap crossfade, played at 35% gain from board fade until dropship Launch is pressed. Capture recording starts immediately; its acknowledgement report appears four seconds later. Sentry perspective adjusted, including directional aim. Sentry deploys on the current hex after Use → Confirm. Medkit is displayed as Med Evac and returns the player automatically to the APC after confirmation; the embryo remains.
+
+Input recovery: pointer-up routes taps without depending on a synthetic click; duplicate compatibility clicks and drags are rejected. Closing terminal overlays no longer intercept taps, reverse panel faces cannot intercept front controls, and alien transition locks release on errors. Automated tests exercise the actual input route, redraw, item confirmation, delayed capture, audio lifecycle and existing gameplay. No browser engine or physical iPad was available; the reported intermittent freeze requires iPad verification.
+
+
+## v79 — smaller embedded background audio
+Background converted to 22.05 kHz mono PCM, preserving the existing crossfade and playback behaviour. Its embedded size is reduced by about 75%; index.html is below 25,000,000 bytes. This trades stereo and upper-frequency detail for a smaller upload while retaining PCM gapless looping.
+
+
+## v80 — replacement background recording
+Game background LQ.m4a replaces the v79 background. Original compressed AAC audio retained, with artwork/metadata removed. A two-second equal-power circular crossfade is built once after Web Audio decoding. Stereo is retained. Playback gain remains 35%, starting with board fade and stopping at dropship Launch. Native fallback plays the compressed file on repeat without the decoded crossfade. Audio lifecycle and waveform crossfade regression checks pass; physical iPad verification remains outstanding.
