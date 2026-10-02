@@ -291,5 +291,12 @@
     "embedded_key": "rescued",
     "container": "index.html #ship-audio-data",
     "edits": "Original M4A embedded, 100% gain, played for each boarding."
+  },
+  {
+    "usage": "Orbital scene and results",
+    "source": "User supplied End credits.m4a",
+    "embedded_key": "endCredits",
+    "container": "index.html #ship-audio-data",
+    "edits": "Full audio duration; audio-only stereo AAC at 96 kbps. Cover artwork and metadata removed. One-shot playback at 100% gain; begins with orbital fade-in and continues through results."
   }
 ]

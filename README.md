@@ -43,9 +43,12 @@ Small green CRT-style SKIP controls sit bottom left. MU-TH-UR skip cancels its a
 Apply this changed-files patch over v82. New sentry artwork replaces both old layers. Emplacements replace terrain and use open-ground rules; existing equipment/scientists remain available. Invalid deployment shows an acknowledged CRT warning and preserves inventory. Armed guns sweep smoothly towards the alien and flash red; firing locks aim and turns the light off. Crates are centred. Countdown lines remain clear of text. Same-type events, bridges, spores and all Gravity Wells are non-adjacent at generation, preserving tile counts.
 
 
-## v84 changes
+## v85 changes
 Apply over v83. Launch commits to a board-sized quarantine CRT with two secured scientist seats and six player seats. Select a player's seat to nominate them for PURGE; grant clearance to everyone else. PURGE ejects the selected player and starts launch; clearing everyone offers an all-clear launch. No scans, equipment use, movement, abort or return to the board are available once committed. Countdown audio repeats during quarantine and stops for launch.
 
 Launch retains the ejected token on the dropship hex while 28 cinematic alien contacts converge. After the existing 6.2-second ship launch, the scene fades to black over 1.3 seconds. Static green orbital artwork fades in over 1.5 seconds, remains visible for 3 seconds, then the acknowledged CRT results open. The rejected orbital docking animation is not included. Crew/Company outcome uses the actual departing manifest.
 
 Countdown cross starts at the timer's top-right/bottom-right corners. Upper sentry artwork rotates without perspective scaling; base and emplacement are unchanged.
+
+## v85 audio update
+Apply this changed-files patch over v84. The full End credits recording starts once as the orbital scene fades in and continues through results. Restart stops it; mute and backgrounding pause it. Embedded stereo AAC at 96 kbps keeps index.html below 25,000,000 bytes.
