@@ -21,3 +21,6 @@
 - terrain-render.test.js: PASS
 - touch-capture-items.test.js: PASS
 - virtual-playthrough.test.js: PASS
+
+
+See V92_CHANGES.md for the v92 update, validation and device-test limitations.

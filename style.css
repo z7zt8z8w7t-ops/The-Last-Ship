@@ -550,3 +550,12 @@ body{position:fixed;inset:0;height:100dvh}
 @keyframes cache-flash{0%,55%{opacity:1}56%,100%{opacity:.15}}
 .staging-hazards{pointer-events:none;mix-blend-mode:screen}
 @media(prefers-reduced-motion:reduce){.cache-loaded{animation:none}.staging-hazards animateTransform{display:none}}
+
+/* v92 continuous overhead surface and subdued grid. */
+.board{background:#101d16 url('board-ground.webp') center/200px repeat}
+.board:before{display:none}
+.board>svg{padding:0!important}
+.board>.terrain-canvas{object-fit:fill}
+.hex,.hex.sel,.hex.reach,.hex.danger,.hex.target,.hex.chosen{stroke:#83b392!important;stroke-width:1.4!important;filter:none!important}
+.hex.reach{stroke-width:2.1!important}.hex.target{stroke-width:3!important}.hex.chosen{stroke-width:4.2!important}
+.alien-activity{top:45px!important;left:10px!important}

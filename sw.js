@@ -1,6 +1,6 @@
-const CACHE='the-last-ship-v91';
+const CACHE='the-last-ship-v92';
 const ROOT=self.registration.scope;
-const ASSETS=['./','./index.html','./style.css?v=91','./game.js?v=91','./artwork.js?v=91','./wrist-terminal.js?v=82','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png','./alien-planet.webp','./sound-check.html','./terrain.js?v=91','./marine-tokens.png','./alien-overhead.png','./sentry-overhead-parts.png','./orbital-ending.png','./quarantine-schematic.png'];
+const ASSETS=['./','./index.html','./style.css?v=92','./game.js?v=92','./artwork.js?v=92','./wrist-terminal.js?v=92','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png','./alien-planet.webp','./sound-check.html','./board-ground.webp','./terrain.js?v=92','./marine-tokens.png','./alien-overhead.png','./sentry-overhead-parts.png','./orbital-ending.png','./quarantine-schematic.png'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('the-last-ship-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{

@@ -11,14 +11,14 @@ const selectors=['.rules-window','.mission-overlay .card','.private.executive-or
 function stopOpening(x){try{x.cancelEnded?.()}catch(error){console.warn('Terminal audio cleanup failed',error)}x.cancelEnded=null;clearTimeout(x.openTimer);audio().stopEffect('wristOn')}
 function stopAudio(x){stopOpening(x);audio().stopEffect('wristDrone')}
 function cancel(){if(!session)return;const x=session;session=null;clearTimeout(x.closeTimer);stopAudio(x);x.overlay.remove()}
-function ready(x){if(session!==x||x.closing||x.ready)return;x.ready=true;clearTimeout(x.openTimer);try{x.cancelEnded?.()}catch(error){console.warn('Terminal audio cleanup failed',error)}x.cancelEnded=null;if(enabled&&x.turnAudio&&!document.hidden)audio().play('wristDrone',.1);const jobs=x.jobs.splice(0);jobs.forEach(fn=>fn())}
+function ready(x){if(session!==x||x.closing||x.ready)return;x.ready=true;clearTimeout(x.openTimer);try{x.cancelEnded?.()}catch(error){console.warn('Terminal audio cleanup failed',error)}x.cancelEnded=null;if(enabled&&x.turnAudio&&!document.hidden)audio().play('wristDrone',.1);const jobs=x.jobs.splice(0);jobs.forEach(fn=>{try{fn()}catch(error){console.warn("Terminal follow-up failed",error)}})}
 function startAudio(x){
  if(!x.turnAudio&&!x.startupAudio){if(!x.ready)x.openTimer=setTimeout(()=>ready(x),ON_MS);return}
  if(x.ready){if(x.turnAudio&&!document.hidden)audio().play('wristDrone',.1);return}
  x.cancelEnded=audio().onEnded('wristOn',()=>ready(x));
  audio().play('wristOn',.15);
- // Only use the fallback if playback never started (muted/blocked browser).
- x.openTimer=setTimeout(()=>{if(session===x&&!x.ready&&(!enabled||document.hidden||!audio().position('wristOn'))){audio().stopEffect('wristOn');ready(x)}},ON_MS+250);
+ // Visual readiness has a fixed deadline even if audio starts and then stalls.
+ x.openTimer=setTimeout(()=>{if(session===x&&!x.ready){audio().stopEffect('wristOn');ready(x)}},ON_MS+250);
 }
 function create(owner,turnAudio,startupAudio=false){
  const overlay=document.createElement('div');overlay.className='wrist-overlay';overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');
@@ -69,6 +69,8 @@ function sync(ui,game,soundOn){
   root.querySelectorAll('.handoff-prompt').forEach(node=>{if(node!==candidate)node.remove()});
   x.overlay.setAttribute('aria-label',candidate.querySelector('h1,h2')?.textContent||'Field terminal');
  }else if(held&&!x.closing){x.content.inert=true;x.footer.inert=true}
+ x.overlay.style.pointerEvents=candidate&&!x.closing?'auto':'none';
+ x.overlay.hidden=!candidate&&held;
  host.append(x.overlay);
  x.overlay.classList.toggle('wrist-on-board',host!==root);
  x.header.querySelector('button').textContent=enabled?'SOUND ON':'SOUND OFF';

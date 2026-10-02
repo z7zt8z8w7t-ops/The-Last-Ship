@@ -9,3 +9,6 @@ The corruption came from replacing version text throughout index.html, which cha
 The countdown cue has a 120 ms ending ramp to remove its hard cutoff. Its five-second screen duration, the title timings, player-turn audio settings and other gains are preserved.
 
 Every included file is below 25 MB individually. Existing v90 terrain and gameplay cleanup are retained. This patch addresses audio corruption; the previously documented gameplay/layout issues remain listed in AUDIT_REPORT.md.
+
+
+See V92_CHANGES.md for the v92 update, validation and device-test limitations.
