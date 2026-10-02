@@ -9,3 +9,6 @@ All nine Node verification scripts pass, including new orbital audio lifecycle c
 
 ## v86 verification
 Nine Node verification scripts pass. Sentry tests verify smooth sweep while armed, direct firing aim, red light off on firing, muzzle flash present only during firing, and no perspective scale or old normalization rotation. A static SVG render was visually inspected for pivot alignment and barrel-tip flash position. iPad animation playback has not been tested.
+
+## v87
+v87: all ten Node verification scripts pass. New board-token tests cover distances zero/one/two/three, nearest player beyond current player, fog handling, animated range transition, four role crops, active-turn and scientist/captive markers. A static SVG render was inspected for marine and alien silhouette readability. JavaScript syntax checked. iPad gameplay/animation has not been tested.

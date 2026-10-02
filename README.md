@@ -55,3 +55,6 @@ Apply this changed-files patch over v84. The full End credits recording starts o
 
 ## v86 sentry artwork
 Apply over v85. Sentry now uses a strict overhead fixed tripod and separate rotating upper. Existing emplacement, sweep, aiming and firing rules remain; the red indicator flashes while armed and switches off when firing. Muzzle flashes rotate with the barrel.
+
+## v87
+v87: apply over v86. Overhead role-specific marine tokens retain player initials, coloured rims, turn pulse and scientist/capture badges. The alien sprite is revealed at a hex distance of two or less from any player; farther away it uses the existing green orb and existing fog/contact visibility. Moving contacts switch appearance halfway across a hex boundary. Changes are visual; movement/capture rules remain.
