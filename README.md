@@ -52,3 +52,6 @@ Countdown cross starts at the timer's top-right/bottom-right corners. Upper sent
 
 ## v85 audio update
 Apply this changed-files patch over v84. The full End credits recording starts once as the orbital scene fades in and continues through results. Restart stops it; mute and backgrounding pause it. Embedded stereo AAC at 96 kbps keeps index.html below 25,000,000 bytes.
+
+## v86 sentry artwork
+Apply over v85. Sentry now uses a strict overhead fixed tripod and separate rotating upper. Existing emplacement, sweep, aiming and firing rules remain; the red indicator flashes while armed and switches off when firing. Muzzle flashes rotate with the barrel.

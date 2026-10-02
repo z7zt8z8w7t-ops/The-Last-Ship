@@ -6,3 +6,6 @@ Tests use source and simulated timers/DOM; the new interface and animations have
 
 ## v85 verification
 All nine Node verification scripts pass, including new orbital audio lifecycle checks: no playback before orbit, no restart on redraw/results, visibility and mute pause/resume, natural completion without replay, and fresh-game reset. Game and inline JavaScript syntax checks pass. Extracted embedded credits stream is stereo AAC, 146.214 seconds, 1,780,976 bytes; index.html is 24,706,754 bytes. iPad playback has not been tested.
+
+## v86 verification
+Nine Node verification scripts pass. Sentry tests verify smooth sweep while armed, direct firing aim, red light off on firing, muzzle flash present only during firing, and no perspective scale or old normalization rotation. A static SVG render was visually inspected for pivot alignment and barrel-tip flash position. iPad animation playback has not been tested.
