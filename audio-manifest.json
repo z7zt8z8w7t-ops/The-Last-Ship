@@ -266,5 +266,14 @@
     "usage": "Five-second end-of-round countdown, 100% gain",
     "edits": "First five seconds of audio extracted to AAC; no fades or crossfades",
     "container": "index.html #ship-audio-data"
+  },
+  {
+    "embedded_key": "evac",
+    "source": "TLS EVAC.m4a",
+    "credit": "User-supplied recording",
+    "usage": "Once after the two-hour countdown screen closes, 100% gain",
+    "duration_seconds": 6.617687,
+    "edits": "None; embedded unchanged",
+    "container": "index.html #ship-audio-data"
   }
 ]

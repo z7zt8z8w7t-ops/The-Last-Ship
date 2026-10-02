@@ -3,13 +3,15 @@
 'use strict';
 const ON_MS=813,OFF_MS=2253;
 let session=null,enabled=false;
-const audio=()=>window.ShipAudio;
+// Media errors must never interrupt terminal cleanup or leave input locked.
+const safeMedia=new Proxy({},{get:(_,method)=>(...args)=>{try{return window.ShipAudio?.[method]?.(...args)}catch(error){console.warn('Terminal audio unavailable',error)}}});
+const audio=()=>safeMedia;
 const hasTurnAudio=n=>n.classList.contains('handoff-prompt')||n.classList.contains('initial-orders')||n.classList.contains('muthur-mission');
 const selectors=['.rules-window','.mission-overlay .card','.private.executive-order','.event-window','.board-overlay .card','.handoff-prompt'];
-function stopOpening(x){x.cancelEnded?.();x.cancelEnded=null;clearTimeout(x.openTimer);audio().stopEffect('wristOn')}
+function stopOpening(x){try{x.cancelEnded?.()}catch(error){console.warn('Terminal audio cleanup failed',error)}x.cancelEnded=null;clearTimeout(x.openTimer);audio().stopEffect('wristOn')}
 function stopAudio(x){stopOpening(x);audio().stopEffect('wristDrone')}
 function cancel(){if(!session)return;const x=session;session=null;clearTimeout(x.closeTimer);stopAudio(x);x.overlay.remove()}
-function ready(x){if(session!==x||x.closing||x.ready)return;x.ready=true;clearTimeout(x.openTimer);x.cancelEnded?.();x.cancelEnded=null;if(enabled&&x.turnAudio&&!document.hidden)audio().play('wristDrone',.1);const jobs=x.jobs.splice(0);jobs.forEach(fn=>fn())}
+function ready(x){if(session!==x||x.closing||x.ready)return;x.ready=true;clearTimeout(x.openTimer);try{x.cancelEnded?.()}catch(error){console.warn('Terminal audio cleanup failed',error)}x.cancelEnded=null;if(enabled&&x.turnAudio&&!document.hidden)audio().play('wristDrone',.1);const jobs=x.jobs.splice(0);jobs.forEach(fn=>fn())}
 function startAudio(x){
  if(!x.turnAudio&&!x.startupAudio){if(!x.ready)x.openTimer=setTimeout(()=>ready(x),ON_MS);return}
  if(x.ready){if(x.turnAudio&&!document.hidden)audio().play('wristDrone',.1);return}
@@ -33,7 +35,7 @@ function create(owner,turnAudio,startupAudio=false){
 }
 function endTurnAudio(x){if(!x.turnAudio)return;stopAudio(x);x.turnAudio=false}
 function close(x){
- if(x.closing)return;x.closing=true;x.closedAt=performance.now();x.jobs=[];if(x.turnAudio)endTurnAudio(x);else stopAudio(x);if(enabled&&!document.hidden)audio().play('turnOff',.2);
+ if(x.closing)return;x.closing=true;x.closedAt=performance.now();x.jobs=[];if(x.turnAudio)endTurnAudio(x);else stopAudio(x);if(!x.ackPlayed&&enabled&&!document.hidden)audio().play('turnOff',.2);
  x.content.inert=true;x.footer.inert=true;x.frame.classList.add('wrist-off');x.frame.style.setProperty('--wrist-delay','0ms');
  x.closeTimer=setTimeout(()=>{if(session!==x)return;x.overlay.remove();session=null},OFF_MS);
 }
@@ -51,12 +53,12 @@ function sync(ui,game,soundOn){
  if(candidate&&x?.closing){cancel();x=null}
  if(candidate&&!x)x=create(game,hasTurnAudio(candidate));
  if(candidate&&x){const turnAudio=hasTurnAudio(candidate),startupAudio=false;if(x.turnAudio!==turnAudio||x.startupAudio!==startupAudio){if(x.turnAudio)endTurnAudio(x);else stopAudio(x);x.turnAudio=turnAudio;x.startupAudio=startupAudio;if(turnAudio||startupAudio)x.ready=false;if(enabled)startAudio(x)}}
- if(!candidate&&x?.turnAudio)endTurnAudio(x);
+ if(!candidate&&!held&&x?.turnAudio)endTurnAudio(x);
  const host=root.querySelector('.board')||root;
  if(candidate){
   const red=candidate.classList.contains('classified-order');x.frame.classList.toggle('wrist-red',red);
   const wrapper=candidate.parentElement,fresh=wrapper!==x.content;
-  x.content.replaceChildren(candidate);x.content.inert=false;x.footer.inert=false;if(fresh){x.footer.replaceChildren();x.imagePanel.replaceChildren();
+  x.content.replaceChildren(candidate);x.content.inert=false;x.footer.inert=false;if(fresh){x.ackPlayed=false;x.footer.replaceChildren();x.imagePanel.replaceChildren();
   const art=candidate.querySelector('.capture-art,.equipment-art,.event-art');
   x.imagePanel.hidden=!art;if(art)x.imagePanel.append(art);
   const ack=candidate.querySelector('[data-act="closeSearchPopup"],[data-act="ackMission"],[data-act="reveal"],[data-act="startTurn"],[data-act="closePrivate"],[data-act="closeRules"]');
@@ -102,5 +104,7 @@ function paginateRules(x,dialog){
 }
 function afterOpen(fn){if(!session||session.ready)fn();else if(!session.closing)session.jobs.push(fn)}
 document.addEventListener('visibilitychange',()=>{if(!session)return;const x=session;if(document.hidden){stopOpening(x);audio().stopEffect('wristDrone')}else if(enabled&&!x.closing){if(!x.ready){x.ready=true;x.jobs.splice(0).forEach(fn=>fn())}if(x.turnAudio)audio().play('wristDrone',.1)}});
-window.WristTerminal={sync,afterOpen,cancel,isClosing:()=>!!session?.closing};
+function acknowledge(){if(session?.closing)return;if(session)session.ackPlayed=true;if(enabled&&!document.hidden)audio().play('turnOff',.2)}
+function isClosing(){if(session?.closing&&performance.now()-session.closedAt>=OFF_MS){const x=session;session=null;clearTimeout(x.closeTimer);x.overlay.remove()}return !!session?.closing}
+window.WristTerminal={sync,afterOpen,cancel,acknowledge,isClosing};
 })();
