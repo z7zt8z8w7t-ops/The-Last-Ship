@@ -593,3 +593,12 @@ body{position:fixed;inset:0;height:100dvh}
 .diagnostic-panel button{float:right;font:12px monospace;padding:9px 20px;background:#103124;color:#b7edc4;border:1px solid #8dc99e}
 .diagnostic-panel::after{content:'';display:block;clear:both}
 @media(prefers-reduced-motion:reduce){.alien-body,.alien-tail,.flare-ember{animation:none!important}}
+
+/* v96: terrain-blended outlines and full-tile targeting. */
+.hex,.hex.sel,.hex.reach,.hex.danger,.hex.target,.hex.chosen{stroke:#526c59!important;stroke-opacity:.66;stroke-width:1.05!important;filter:drop-shadow(0 0 .4px #526c5940)!important}
+.hex.chosen{stroke-opacity:.95;stroke-width:1.7!important}
+.tile-target-fill{fill:#e63434;fill-opacity:.16;animation:eligibleTilePulse 1.1s ease-in-out infinite;pointer-events:none}
+.tile-target-selected{fill:#ff4848;animation:chosenTilePulse 1.1s ease-in-out infinite}
+@keyframes eligibleTilePulse{50%{fill-opacity:.34}}
+@keyframes chosenTilePulse{0%,100%{fill-opacity:.25}50%{fill-opacity:.45}}
+@media(prefers-reduced-motion:reduce){.tile-target-fill{animation:none;fill-opacity:.25}.tile-target-selected{fill-opacity:.38}}

@@ -1,14 +1,16 @@
-# v95 verification
+# v96 validation
 
-21 JavaScript check scripts passed, plus the audio integrity and syntax checks.
+- 24 JavaScript verification scripts passed. Detailed output: verification/v96-validation.json.
+- 100 seeded four/six-player state-machine playthroughs passed with real popup markup rendering: {"games":100,"rounds":899,"moves":7501,"reports":3204,"captures":738,"boardings":4}
+- Four complete event decks (28 events) passed through production queue/refill, popup rendering and acknowledgement. Master list stayed intact, a new mission received all seven events, and movement/turn handover remained available.
+- Missing-title reports remained renderable and dismissible.
+- Verified six event opening sound routes and discovery/thunder gains.
+- Verified whole-tile eligible overlays, selected state and confirm/cancel cleanup for targeting actions.
+- Verified three/two/one-tile tracker contact and scheduled pings (1800/1100/650 ms), four-tile cutoff, capture suppression and unchanged board-icon visibility.
+- Native canvas checks passed for feathered ship lighting, APC forward/rear lighting and preserved darkness in unexplored tiles. Red storm lighting and delayed once-only thunder checks passed.
+- Existing boarding, quarantine/endings, capture timing, terminal transitions, item use, tile spacing and audio lifecycle checks passed.
+- Standalone and executable inline JavaScript syntax passed.
+- All 31 embedded recordings match the source hashes and decode successfully. Safe version bump preserves media bytes.
+- verification/v96-board.png is a native canvas composite using production terrain and sprite sizes, not a browser screenshot.
 
-- 100 seeded four/six-player virtual games completed without a stalled state: 879 total rounds, 7,625 moves, 2,957 acknowledged reports and 590 capture reports. These random games reached their mission end; deterministic boarding tests separately cover explicit boarding, cancellation, confirmation and quarantine entry.
-- 1,000 generated boards passed terrain counts and spacing checks.
-- Actual input-route checks cover taps without compatibility clicks, duplicate-click suppression, movement/item actions, fourth-player flare use, sequence blocking, acknowledgement and transition continuation.
-- v95 checks cover arrival without automatic boarding, Board Dropship confirmation, Cancel, independent diagnostics under locked gameplay, error capture, blue lightning/fog boundaries, once-only delayed thunder, muted thunder, ship foreground lights/ramp, and decoded new artwork.
-- Native canvas checks cover lighting and an artwork composite using production token dimensions and placement. verification/v95-board.png is this composite; it is not a Safari screenshot and does not validate browser CSS/SMIL animation.
-- Earlier mission-popup and round-report freeze reproductions continue to pass their fixes. Active report queues are retained.
-- All 31 existing embedded recordings match their source hashes and fully decode. Version changes preserve their combined SHA-256: 48388d44ebdbd56bc51ef9082e939d2d8159f254aeed828863e64f09aaf0e917. Thunder is generated procedurally; no existing recording or volume level was replaced.
-- Production JavaScript and inline audio scripts parse. index.html is 24,700,945 bytes, below the user's 25 MB per-file target.
-
-Limitations: no installed Safari/WebKit or Chromium browser is available. Node VM tests use mocked UI/audio clocks; canvas raster tests use native canvas. The latest device-only freeze is unconfirmed; diagnostic evidence from the iPad is still needed. Existing documented Facehugger current-turn movement limitation and cache-site/emplacement state remain outside this update.
+The reproduced event-deck defect is fixed and regression-tested. These checks use simulated DOM/audio/timers and native canvas; they do not emulate iPad Safari. A real iPad playthrough is still needed to confirm no other device-specific freezes remain.

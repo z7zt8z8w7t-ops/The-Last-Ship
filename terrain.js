@@ -38,7 +38,7 @@ function mount(canvas,game,cells,centre,staging,redraw,facing){stop();owner=canv
 document.addEventListener?.('visibilitychange',()=>{if(!document.hidden)owner?.__terrainResume?.()});
 // Weather persists across redraws, has no timers/input locks, and paints outside the hexes.
 const weatherStates=new WeakMap();
-function weatherFor(game){if(!weatherStates.has(game))weatherStates.set(game,{next:performance.now()+12000+Math.random()*12000,strike:-Infinity,bolt:[],thunderDue:Infinity});return weatherStates.get(game)}
+function weatherFor(game){if(!weatherStates.has(game))weatherStates.set(game,{next:performance.now()+12000+Math.random()*12000,strike:-Infinity,thunderDue:Infinity});return weatherStates.get(game)}
 function drawWeather(ctx,state,now,reduced,cells,centre,bounds,game){
  ctx.save();ctx.beginPath();ctx.rect(...bounds);
  for(const c of cells){const [x,y]=centre(c.k);polygon(ctx,x-20,y-8,56,false)}ctx.clip('evenodd');
@@ -46,7 +46,7 @@ function drawWeather(ctx,state,now,reduced,cells,centre,bounds,game){
  for(let i=0;i<9;i++){const x=40+i*99+Math.sin((reduced?0:now/18000)+i)*16,y=i%2?575:30;
   const fog=ctx.createRadialGradient(x,y,2,x,y,85);fog.addColorStop(0,'rgba(160,190,174,.19)');fog.addColorStop(1,'rgba(160,190,174,0)');ctx.fillStyle=fog;ctx.fillRect(x-85,y-85,170,170)}
  const mist=ctx.createRadialGradient(775,330+Math.sin(reduced?0:now/21000)*35,8,775,330,145);mist.addColorStop(0,'rgba(160,190,174,.16)');mist.addColorStop(1,'rgba(160,190,174,0)');ctx.fillStyle=mist;ctx.fillRect(680,130,150,400);
- if(!reduced&&now>=state.next){state.strike=now;state.thunderDue=now+650+Math.random()*650;state.next=now+16000+Math.random()*18000;const x=745+Math.random()*50;state.bolt=Array.from({length:7},(_,i)=>[x+Math.sin(i*2.7)*13,i*19+25])}
+ if(!reduced&&now>=state.next){state.strike=now;state.thunderDue=now+650+Math.random()*650;state.next=now+16000+Math.random()*18000}
  if(now>=state.thunderDue){const delay=now-state.thunderDue;state.thunderDue=Infinity;if(!reduced&&delay<1200)window.ShipStormThunder?.(game)}
  ctx.restore();
 }
@@ -55,8 +55,8 @@ function drawStormFlash(ctx,state,now,reduced,cells,centre,bounds){
  const age=now-state.strike;if(reduced||age<0||age>=800)return;
  const alpha=Math.pow(1-age/800,2);ctx.save();ctx.beginPath();ctx.rect(...bounds);
  for(const c of cells)if(!state.game?.tiles?.[c.k]?.known){const [x,y]=centre(c.k);polygon(ctx,x-20,y-8,55,false)}
- ctx.clip('evenodd');ctx.fillStyle=`rgba(108,173,255,${alpha*.53})`;ctx.fillRect(...bounds);
- ctx.shadowColor='#80baff';ctx.shadowBlur=18;ctx.strokeStyle=`rgba(223,241,255,${alpha})`;ctx.lineWidth=3.2;ctx.beginPath();state.bolt.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.stroke();ctx.restore();
+ ctx.clip('evenodd');ctx.fillStyle=`rgba(125,13,20,${alpha*.48})`;ctx.fillRect(...bounds);
+ ctx.restore();
 }
 // A reusable darkness mask keeps terrain dark while local lights restore visibility.
 let lightCanvas=null;
@@ -70,8 +70,12 @@ function drawLighting(ctx,game,cells,centre,staging,now,reduced,w,h,scale,ox,oy,
  mask.clip();ctx.clip();mask.globalCompositeOperation='destination-out';
  function pool(x,y,r,strength,warm){const glow=mask.createRadialGradient(x,y,0,x,y,r);glow.addColorStop(0,`rgba(0,0,0,${strength})`);glow.addColorStop(.4,`rgba(0,0,0,${strength*.78})`);glow.addColorStop(1,'rgba(0,0,0,0)');mask.fillStyle=glow;mask.fillRect(x-r,y-r,r*2,r*2);
   if(warm){const colour=ctx.createRadialGradient(x,y,0,x,y,r);colour.addColorStop(0,warm);colour.addColorStop(1,'rgba(255,160,65,0)');ctx.fillStyle=colour;ctx.fillRect(x-r,y-r,r*2,r*2)}}
+ // Feathered vehicle beams restore light only in revealed tiles.
+ function beam(x,y,angle,length,width,strength,colour){const a=angle*Math.PI/180,bx=x+Math.sin(a)*length*.4,by=y-Math.cos(a)*length*.4;
+  mask.save();ctx.save();for(const c of [mask,ctx]){c.beginPath();c.moveTo(x,y);for(const side of [-width,width])c.lineTo(x+Math.sin(a+side)*length,y-Math.cos(a+side)*length);c.closePath();c.clip()}pool(bx,by,length*.68,strength,colour);ctx.restore();mask.restore()}
  // Vehicle lamps keep the start and evacuation zones readable without revealing neighbours.
  for(const k of ['0,0',staging]){const [x,y]=centre(k);pool(x-20,y-8,72,.65,null)}
+ const [apcx,apcy]=centre('0,0');for(const dx of [-16,16]){beam(apcx-20+dx,apcy-8-37,0,105,.27,.9,'rgba(244,241,216,.13)');pool(apcx-20+dx,apcy-8+38,28,.48,'rgba(255,24,37,.21)')}
  game.players?.forEach((p,i)=>{if(p.captive||p.boarded||['0,0',staging].includes(p.pos))return;const [cx,cy]=centre(p.pos),x=cx-20,y=cy-8,focus=facing?.(p,i)||{angle:p.facing||0,guard:false};
   pool(x,y,43,.57,'rgba(245,226,179,.045)');
   const swing=focus.guard&&!reduced?-18*Math.cos((Date.now()%6000)/6000*Math.PI*2):0,a=(focus.angle+swing)*Math.PI/180;
@@ -79,10 +83,13 @@ function drawLighting(ctx,game,cells,centre,staging,now,reduced,w,h,scale,ox,oy,
  });
  for(const flare of game.flares||[]){const [x,y]=centre(flare.hex),flicker=reduced?1:.94+.06*Math.sin(now/110)*Math.sin(now/67);pool(x-20,y-8,100,.98*flicker,`rgba(255,25,33,${.36*flicker})`)}
  ctx.restore();mask.restore();
- // The off-board ship and ramp illuminate only their footprint and revealed terrain.
+ // Soft ship and ramp pools feather into the valley; undiscovered tiles stay dark.
  const [sx,sy]=centre(staging),lx=sx-20,ly=sy-8;
- mask.save();mask.beginPath();mask.rect(lx+30,ly-124,220,170);mask.clip();mask.beginPath();mask.rect(-ox/scale,-oy/scale,w/scale,h/scale);
- for(const c of cells)if(!game.tiles[c.k]?.known){const [x,y]=centre(c.k);polygon(mask,x-20,y-8,55,false)}mask.clip('evenodd');mask.globalCompositeOperation='destination-out';pool(lx+122,ly-62,105,.76,null);pool(lx+53,ly-23,48,.7,null);mask.restore();
+ mask.save();ctx.save();for(const c of [mask,ctx]){c.beginPath();c.rect(-ox/scale,-oy/scale,w/scale,h/scale);
+ for(const tile of cells)if(!game.tiles[tile.k]?.known){const [x,y]=centre(tile.k);polygon(c,x-20,y-8,55,false)}c.clip('evenodd')}mask.globalCompositeOperation='destination-out';pool(lx+122,ly-62,105,.76,null);pool(lx+53,ly-23,48,.7,null);
+ // Nose landing lamp points along the ship centreline, away from the ramp.
+ beam(lx+(1435-320)*.19,ly+(840-665)*.19,132,125,.36,.94,'rgba(244,241,216,.10)');ctx.restore();mask.restore();
+
  mask.globalCompositeOperation='source-over';ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.drawImage(lightCanvas,0,0);ctx.restore();
 }
 function drawLanding(ctx,game,point,redraw){const img=image('landing',redraw);if(!img.complete||!img.naturalWidth)return;const x=point[0]-20,y=point[1]-8,scale=.19;
@@ -90,8 +97,9 @@ function drawLanding(ctx,game,point,redraw){const img=image('landing',redraw);if
  ctx.drawImage(img,0,0,img.naturalWidth,img.naturalHeight,x-320*scale,y-665*scale,img.naturalWidth*scale,img.naturalHeight*scale);
 }
 function foreground(game,cells,centre,staging){const [sx,sy]=centre(staging),shipX=sx-320*.19,shipY=sy-665*.19;let out=[`<defs><clipPath id="ship-ramp-clip"><polygon points="${[[427,565],[732,384],[816,482],[519,676]].map(([x,y])=>`${shipX+x*.19},${shipY+y*.19}`).join(' ')}"/></clipPath></defs><g class="dropship-ramp" clip-path="url(#ship-ramp-clip)"><image href="dropship-landing.webp" x="${shipX}" y="${shipY}" width="${1536*.19}" height="${1024*.19}"/></g>`];
- const nav=[[1300,208,'#ff353b','Port red'],[900,830,'#3dff8b','Starboard green']];
+ const nav=[[1300,208,'#ff353b','Port red'],[858,752,'#3dff8b','Starboard green']];
  out.push(`<defs>${nav.map(([, ,colour,label],i)=>`<radialGradient id="ship-nav-${i}"><stop offset="0" stop-color="${colour}" stop-opacity=".55"/><stop offset="1" stop-color="${colour}" stop-opacity="0"/></radialGradient>`).join('')}</defs>`);
+ const [ax,ay]=centre('0,0');out.push(`<defs><radialGradient id="apc-rear-light"><stop offset="0" stop-color="#ff2536" stop-opacity=".6"/><stop offset="1" stop-color="#ff2536" stop-opacity="0"/></radialGradient></defs><g class="apc-lights" aria-label="APC headlights and rear lights">${[-16,16].map(dx=>`<circle cx="${ax+dx}" cy="${ay-37}" r="1.7" fill="#fff4d2"/><circle cx="${ax+dx}" cy="${ay+38}" r="10" fill="url(#apc-rear-light)"/><circle cx="${ax+dx}" cy="${ay+38}" r="1.6" fill="#ff2536"/>`).join('')}</g>`);
  nav.forEach(([dx,dy,colour,label],i)=>out.push(`<g class="ship-navigation" aria-label="${label} navigation light" transform="translate(${shipX+dx*.19} ${shipY+dy*.19})"><circle r="13" fill="url(#ship-nav-${i})"/><circle r="2" fill="${colour}"/><circle r=".7" fill="#fff"/></g>`));for(const c of cells){const t=game.tiles[c.k];if(!t.known)continue;const [x,y]=centre(c.k),id=c.k.replace(',','_');
  if(!t.emplacement&&t.site?.kind==='cargo'){const on=t.site.status==='hidden';out.push(`<g class="cache-beacons ${on?'cache-loaded':''}" aria-label="${on?'Equipment available':'Equipment collected'}">${[[-9,-40],[-32,-18]].map(([dx,dy])=>`<circle cx="${x+dx}" cy="${y+dy}" r="3" fill="${on?'#4bcaff':'#24352c'}"/>`).join('')}</g>`)}
  if(t.terrain==='nest'){const angle=nestAngle(game,c.k);out.push(`<g transform="translate(${x} ${y}) rotate(${angle})" fill="none" stroke="#434939" stroke-width="3.5" stroke-linecap="round">${[-30,0,30].map((dy,i)=>`<path d="M40 ${dy}Q54 ${dy-7} 63 ${dy+i*3}"/>`).join('')}</g>`)}
