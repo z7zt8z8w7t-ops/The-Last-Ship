@@ -22,6 +22,7 @@ for(let game=0;game<100;game++){
     else if(p.captive)t.act('end');
     else if(tile.site?.status==='hidden'&&t.s.ap>0&&(tile.site.kind!=='cargo'||p.cargo.length<2))t.act('search');
     else if(p.scientist&&p.pos===t.DROPSHIP&&t.s.ap>0)t.act('deliver');
+    else if(p.pos===t.DROPSHIP&&t.s.delivered===2&&!p.boarded)t.act('boardDropship');
     else if(t.s.moves>0){const options=t.adjacent(p.pos);const next=options[(game+tick)%options.length];t.move(next);moves++}
     else t.act('end');
    }

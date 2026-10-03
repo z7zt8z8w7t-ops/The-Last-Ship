@@ -62,7 +62,7 @@ function sync(ui,game,soundOn){
   const art=candidate.querySelector('.capture-art,.equipment-art,.event-art');
   x.imagePanel.hidden=!art;if(art)x.imagePanel.append(art);
   const ack=candidate.querySelector('[data-act="closeSearchPopup"],[data-act="ackMission"],[data-act="reveal"],[data-act="startTurn"],[data-act="closePrivate"],[data-act="closeRules"],[data-act="ackResults"]');
-  if(ack){ack.textContent='ACKNOWLEDGE';x.footer.append(ack)}else{const choices=candidate.querySelector('.row');if(choices)x.footer.append(choices)}
+  if(ack){ack.textContent=ack.dataset.terminalLabel||'ACKNOWLEDGE';x.footer.append(ack)}else{const choices=candidate.querySelector('.row');if(choices)x.footer.append(choices)}
   if(candidate.classList.contains('rules-window'))paginateRules(x,candidate);}
   candidate.classList.add('wrist-dialog');
   if(wrapper!==root&&wrapper!==host&&wrapper.matches('.overlay,.event-overlay,.board-overlay'))wrapper.remove();

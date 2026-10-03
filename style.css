@@ -570,3 +570,26 @@ body{position:fixed;inset:0;height:100dvh}
 .flare-smoke{animation:flareSmoke 3s ease-in-out infinite alternate}
 @keyframes flareSmoke{from{opacity:.18;transform:translateY(0)}to{opacity:.4;transform:translateY(-5px)}}
 @media(prefers-reduced-motion:reduce){.flare-aura,.flare-core,.flare-smoke{animation:none}}
+/* v95: lighter marine halo, stronger beam, red flare and independent diagnostics. */
+.flare-marker{filter:drop-shadow(0 0 3px #ff263b)}
+.flare-aura{fill:#ff263b;opacity:.18}
+.flare-ember{animation:flareGlow .9s ease-in-out infinite alternate}
+.alien-body{transform-box:fill-box;transform-origin:65% 60%}
+.alien-idle{animation:alienBreathe 3.4s ease-in-out infinite}
+.alien-tail{transform-box:fill-box;transform-origin:60% 79%;animation:alienTailSway 3.2s ease-in-out infinite}
+.alien-scuttling{animation:alienScuttle .18s ease-in-out infinite alternate}
+@keyframes alienBreathe{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.018)}}
+@keyframes alienTailSway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+@keyframes alienScuttle{from{transform:translate(-.65px,-.35px) rotate(-1deg)}to{transform:translate(.65px,.35px) rotate(1deg)}}
+.dropship-ramp{filter:brightness(.73)}
+.ship-navigation{filter:drop-shadow(0 0 3px currentColor)}
+.diagnostic-status{position:fixed;left:calc(18px + 6.5vw);bottom:calc(75px + env(safe-area-inset-bottom));z-index:10002;display:flex;align-items:center;gap:7px;max-width:50vw;pointer-events:none;color:#a5d4b4;font:10px monospace}
+.diagnostic-status[hidden]{display:none}
+.diagnostic-status button{pointer-events:auto;font:10px monospace;padding:8px;border:1px solid #648d76;border-radius:4px;background:#081811;color:#b6e6c4}
+.diagnostic-status small{background:#05130dc9;padding:3px;font-size:9px}
+.diagnostic-panel{position:fixed;z-index:10003;left:2vw;bottom:2vh;width:min(640px,73vw);max-height:94vh;padding:18px;border:1px solid #8dc99e;border-radius:12px;background:#06120ff5;color:#b7edc4;box-shadow:0 0 50px #000}
+.diagnostic-panel h2{font:700 16px monospace;margin:0 0 12px}
+.diagnostic-panel pre{font:11px/1.35 monospace;white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 12px;max-height:74vh;overflow:auto}
+.diagnostic-panel button{float:right;font:12px monospace;padding:9px 20px;background:#103124;color:#b7edc4;border:1px solid #8dc99e}
+.diagnostic-panel::after{content:'';display:block;clear:both}
+@media(prefers-reduced-motion:reduce){.alien-body,.alien-tail,.flare-ember{animation:none!important}}
