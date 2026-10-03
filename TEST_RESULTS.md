@@ -1,12 +1,9 @@
-# v97 validation
+# v98 validation
 
-- All 25 JavaScript verification scripts passed; detailed output is in verification/v97-validation.json.
-- 100 seeded four/six-player virtual playthroughs passed, including actual popup markup and repeated event deck refills.
+- Nine applicable JavaScript verification scripts passed, covering audio lifecycle/gains, deployment and 1,000 terrain layouts, vehicle facing, quarantine/endings, 28 events across four complete decks, targeting, tracker range, lighting, Field Manual, storm corners and the new quarantine flow.
+- Every non-empty-survivor selection combination for four- and six-person quarantine manifests passed. Tests include multiple ejections, named confirmation, changing status after confirmation, survivor contamination, surface placement and launch transitions.
+- All 32 embedded clips match updated hashes and fully decode without errors, non-finite samples or extreme decoded spikes. Each compact encoding is smaller than its source; encoder duration differences stay below 60 ms. Gains were tested through the audio engine.
 - All executable inline and standalone JavaScript passed syntax checks.
-- All 32 embedded recordings passed integrity and decode checks. The original 31 recordings remain unchanged.
-- New checks cover smaller forward sentry deployment, unchanged tile/action state, actual Field Manual rendering, the Spore Burst opening cue, and four-corner storm lighting with unrevealed tiles kept dark.
-- Audio checks verify the countdown gain has no end ramp.
-- Existing capture, boarding, quarantine, terminal transitions, targeting, tracker, event and audio lifecycle regressions passed.
-- verification/v97-board.png is a native canvas composite, not a browser screenshot.
+- Detailed checks: verification/v98-validation.json and verification/v98-audio-compression.json.
 
-These checks use simulated DOM/audio/timers and native canvas. An iPad Safari playthrough remains necessary to verify device-specific behavior.
+Checks use simulated DOM/audio/timers and native canvas. The prior full artwork/browser environment was unavailable after workspace maintenance; a complete browser visual run and subjective listening comparison were not performed. Check the wing lamp alignment, quarantine layout and compressed audio on the iPad. Earlier validation reports are historical, not fresh v98 results.

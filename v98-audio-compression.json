@@ -1,0 +1,322 @@
+[
+  {
+    "key": "wind",
+    "before": 2597516,
+    "after": 1473351,
+    "changed": true,
+    "original_seconds": 122.749388,
+    "encoded_seconds": 122.749388,
+    "sha256": "6cc409d5a67bc9675bdaf2923eebaec41936e848fd00a737d20f9317e42713d7",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "crt",
+    "before": 81547,
+    "after": 48946,
+    "changed": true,
+    "original_seconds": 4.04898,
+    "encoded_seconds": 4.04898,
+    "sha256": "83b15313724497d59a1e5cbbb4eeb116bd4f5a3062aed1c17b488255571edd0d",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "transition",
+    "before": 23555,
+    "after": 14151,
+    "changed": true,
+    "original_seconds": 1.149388,
+    "encoded_seconds": 1.149388,
+    "sha256": "d7be32eef70594529d3112e8174ba5bc95ad9d04382d04a71793ccfd8c52292a",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "alien1",
+    "before": 60126,
+    "after": 36094,
+    "changed": true,
+    "original_seconds": 2.977959,
+    "encoded_seconds": 2.977959,
+    "sha256": "e82cbf833a12781e9a17c8f3e6ae871ad2d78cd93f93b2cddee6adf7a5e3d8cc",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "alien2",
+    "before": 102445,
+    "after": 61485,
+    "changed": true,
+    "original_seconds": 5.093878,
+    "encoded_seconds": 5.093878,
+    "sha256": "f3114a91e5662df7a8a1cbb988e028f044d5c4508415785d7e1f854975882d87",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "alien3",
+    "before": 104012,
+    "after": 62425,
+    "changed": true,
+    "original_seconds": 5.172245,
+    "encoded_seconds": 5.172245,
+    "sha256": "02341887ee6cd9bca1ab6e1d43eebec7f0f2601f9ef220a5f184c38352923a93",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "start",
+    "before": 44975,
+    "after": 27003,
+    "changed": true,
+    "original_seconds": 2.220408,
+    "encoded_seconds": 2.220408,
+    "sha256": "875c2db337317244711211c5dde31206282d2aeb0369d21511b58330b6e1604d",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "tracker",
+    "before": 18016,
+    "after": 13524,
+    "changed": true,
+    "original_seconds": 1.097143,
+    "encoded_seconds": 1.097143,
+    "sha256": "1a5d7cc3c4cad2d742d360802fce4a5775d1cc1353cf94541a5d741254a12917",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "apc",
+    "before": 249147,
+    "after": 186872,
+    "changed": true,
+    "original_seconds": 15.542857,
+    "encoded_seconds": 15.542857,
+    "sha256": "b87d9ab28fa3624e7a9a7a625b1d475b53d751ef4b1d61ad22de346a92a9ee58",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "trackerSting",
+    "before": 229503,
+    "after": 172139,
+    "changed": true,
+    "original_seconds": 14.315102,
+    "encoded_seconds": 14.315102,
+    "sha256": "a278d3e6a8b8137dcfab71e589348d57cb1f6f50af399b1c403d5703154ae4cb",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "titleDrone",
+    "before": 565438,
+    "after": 484668,
+    "changed": true,
+    "original_seconds": 40.359184,
+    "encoded_seconds": 40.359184,
+    "sha256": "c35bd6ace9a5f6a527f4aea7ec8c4a01b02ece361269130d1f70856c0f4a6485",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "muthurLogin",
+    "before": 338315,
+    "after": 201389,
+    "changed": true,
+    "original_seconds": 16.74449,
+    "encoded_seconds": 16.74449,
+    "sha256": "f8a11e191bb95dfbaf75659d64e3da730a709be06b8409b04f76fc62f11bf1e8",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "introLoop",
+    "before": 4853666,
+    "after": 2426914,
+    "changed": true,
+    "original_seconds": 27.514195,
+    "encoded_seconds": 27.514195,
+    "sha256": "9e3b3bcd5baf5b4cf6a22aa509cb017bc1d62c6ef89f04d50cf10ace05f63ba4",
+    "encoding": "PCM 16-bit 22050 Hz"
+  },
+  {
+    "key": "scientistFound",
+    "before": 405024,
+    "after": 88834,
+    "changed": true,
+    "original_seconds": 7.500045,
+    "encoded_seconds": 7.451995,
+    "sha256": "53dd27fb4a5168fd08353cef05b579ba3d27399418d20809fcc6ce9da825ff12",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "noiseRoar",
+    "before": 236012,
+    "after": 28742,
+    "changed": true,
+    "original_seconds": 2.252336,
+    "encoded_seconds": 2.203991,
+    "sha256": "4a689a0249260f9e86c9fc3003aa73970209c3ce9ac48b6fc0767a9869b035ed",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "discovery",
+    "before": 306282,
+    "after": 54388,
+    "changed": true,
+    "original_seconds": 4.435011,
+    "encoded_seconds": 4.387007,
+    "sha256": "6428a94bda3677abb8994e9aaffd61eca52e4dd720bf2108fb94c87b728b0ec3",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "femaleCapture",
+    "before": 409435,
+    "after": 204740,
+    "changed": true,
+    "original_seconds": 17.031837,
+    "encoded_seconds": 17.031837,
+    "sha256": "f6e8d500a0f3b05ae6e5ae754107a7b7b359360d58211ee10b16345e40791b94",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "maleCapture",
+    "before": 409435,
+    "after": 204740,
+    "changed": true,
+    "original_seconds": 17.031837,
+    "encoded_seconds": 17.031837,
+    "sha256": "1d9f040adf619c0c91326ba9062efc5fbc401939daea7d6911f8e94036000d56",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "wristOn",
+    "before": 189215,
+    "after": 8877,
+    "changed": true,
+    "original_seconds": 0.812698,
+    "encoded_seconds": 0.765011,
+    "sha256": "01127a264884b8de43fb1dde01a6a12a7e666cf1943ccea3edd47509a5c28c68",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "wristDrone",
+    "before": 274468,
+    "after": 137290,
+    "changed": true,
+    "original_seconds": 1.555692,
+    "encoded_seconds": 1.555692,
+    "sha256": "f165c2797cb92c73c92a3cd3fb7070901e3b1076a49765df6056daf8871a3786",
+    "encoding": "PCM 16-bit 22050 Hz"
+  },
+  {
+    "key": "muthurOff",
+    "before": 212997,
+    "after": 13542,
+    "changed": true,
+    "original_seconds": 1.555737,
+    "encoded_seconds": 1.508005,
+    "sha256": "2336efc0a2ed90a076c4fecdb915fa2f804e6fd3e66a954ee4c71c7b170ff61d",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "ripley",
+    "before": 1569794,
+    "after": 459092,
+    "changed": true,
+    "original_seconds": 43.723175,
+    "encoded_seconds": 43.675011,
+    "sha256": "c76be82a9f4edbce9f449e9abe06c78db48cb5b98bf8bcdfb3d2a010ea4ad480",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "turnOff",
+    "before": 212841,
+    "after": 14780,
+    "changed": true,
+    "original_seconds": 1.555737,
+    "encoded_seconds": 1.508005,
+    "sha256": "a7d3acf25784556c3992aca5ea495ed7246485e988af0ded070f3dfb11b1cbfe",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "chances",
+    "before": 404098,
+    "after": 88705,
+    "changed": true,
+    "original_seconds": 7.500045,
+    "encoded_seconds": 7.451995,
+    "sha256": "700eec6c515f1a888e40db859ae0d8f45597624c2a12e23bd7d6ff1092195e09",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "sentryGun",
+    "before": 235246,
+    "after": 29973,
+    "changed": true,
+    "original_seconds": 2.252336,
+    "encoded_seconds": 2.203991,
+    "sha256": "c4a625afb60323970a344ef6adcceb6d7dd406acd88847faaa9b2837af08e1a2",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "facehugger",
+    "before": 284492,
+    "after": 46776,
+    "changed": true,
+    "original_seconds": 3.784853,
+    "encoded_seconds": 3.737007,
+    "sha256": "d1afd3102d2db8aa4754102ff70ca8bec6ca976d873bc47654c9ee37d77d786c",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "roundCountdown",
+    "before": 101643,
+    "after": 62098,
+    "changed": true,
+    "original_seconds": 5.005011,
+    "encoded_seconds": 5.02,
+    "sha256": "79380c6e1227d92f64f03adfb1ed014dd1d8564fe1a0e77990631d4b7c2aad63",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "evac",
+    "before": 375773,
+    "after": 83703,
+    "changed": true,
+    "original_seconds": 6.617687,
+    "encoded_seconds": 6.57,
+    "sha256": "92fe2ba9ca5ca58821cab72a64fd7a859d8c39ec734d7109365c3496112e62e8",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "background",
+    "before": 1596407,
+    "after": 603316,
+    "changed": true,
+    "original_seconds": 49.55,
+    "encoded_seconds": 49.55,
+    "sha256": "c21b5f2375eba4bc6dacc773339166aa45a9a37479114d617591e0c12f4a1dfe",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "rescued",
+    "before": 235119,
+    "after": 29337,
+    "changed": true,
+    "original_seconds": 2.252336,
+    "encoded_seconds": 2.203991,
+    "sha256": "10469fab2cab74a66998d7fd78cf59d582a3c03c0fd23687a695e4675204620a",
+    "encoding": "96 kbps"
+  },
+  {
+    "key": "endCredits",
+    "before": 1781155,
+    "after": 1781155,
+    "changed": false,
+    "original_seconds": 146.213991,
+    "encoded_seconds": 146.213991,
+    "sha256": "235839eb59b45e83981243d488688f5cd5310f9c28a5c878fe6711b20f13968f",
+    "encoding": "original retained"
+  },
+  {
+    "key": "sporeBurst",
+    "before": 51494,
+    "after": 39093,
+    "changed": true,
+    "original_seconds": 3.1,
+    "encoded_seconds": 3.110998,
+    "sha256": "e13676ae45a4bda3fe67ebb9217b400754aef43ab025ce2bf4cab09b09569298",
+    "encoding": "96 kbps"
+  }
+]

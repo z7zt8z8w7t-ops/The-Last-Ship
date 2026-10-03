@@ -1,0 +1,47 @@
+[
+  {
+    "test": "drone-playback.test.js",
+    "passed": true,
+    "output": "PASS: silent preload/unlock, launch plays only requested cues, gain levels, natural startup completion, drone resumption, cancellation, mute and legacy fallback."
+  },
+  {
+    "test": "emplacement-spacing.test.js",
+    "passed": true,
+    "output": "PASS: 1,000 generated boards retain counts and same-type spacing; illegal and atomic deployments, open-ground conversion, countdown clearance, tracking/LED/fire lifecycle."
+  },
+  {
+    "test": "facing-vehicles.test.js",
+    "passed": true,
+    "output": "PASS: vehicle seat initials, movement facing, idle guard/detection, captured guard disabled, alien travel/target/last facing, APC scale and visible v98 label."
+  },
+  {
+    "test": "quarantine-ending.test.js",
+    "passed": true,
+    "output": "PASS: irreversible quarantine, eight seats, clearance and purge manifests, contamination outcomes, audio repeat/stop, removed old launch animation, launch/fade/orbit/results timing, native sentry rotation and timer-corner start."
+  },
+  {
+    "test": "v96-event-targets.test.js",
+    "passed": true,
+    "output": "PASS: 28 events across four full decks with real popup markup, restart/movement/turn handover, missing-title ACK, six opening sound routes, all eligible target overlays and confirm/cancel cleanup."
+  },
+  {
+    "test": "v96-tracker.test.js",
+    "passed": true,
+    "output": "PASS: tracker contact and ping/pulse at 3/2/1 tiles (1800/1100/650ms), four-tile cutoff, unrevealed terrain and board-icon privacy, reports continue and capture/visibility suppress audio."
+  },
+  {
+    "test": "v96-vehicle-lighting.test.js",
+    "passed": true,
+    "output": "PASS: feathered ship light boundary, no unknown-tile illumination, APC forward beam and rear red glow, persistent lamp markers."
+  },
+  {
+    "test": "v97-changes.test.js",
+    "passed": true,
+    "output": "PASS: smaller forward sentry without movement/action changes, actual roster/manual render and saved names, one triple-spore request per opening, four randomized green-white flash corners and unrevealed-tile masking."
+  },
+  {
+    "test": "v98-quarantine.test.js",
+    "passed": true,
+    "output": "PASS: every four/six-person purge combination, confirmation and selection changes, survivor manifests, stacked statuses, flare artwork without hard circle and revised green lamp."
+  }
+]

@@ -13,3 +13,7 @@ Embedded recordings were restored from intact earlier copies. The orbital record
 ## v97 audio update
 
 Spore Burst is an original procedurally synthesized effect, mixed as three overlapping copies at 0, 0.15 and 0.30 seconds and encoded as stereo AAC. There are now 32 embedded recordings. The countdown ending gain ramp described in the historical v91 section has been removed.
+
+## v98 compact embedded audio
+
+All source credits remain. 31 clips were re-encoded compactly; one retained its original bytes because the candidate saving was too small. PCM terminal/roster loops remain WAV at 22050 Hz; other changed clips use 96 kbps in their existing MP3/AAC container. Runtime EVAC and Rescued gains are 50%. Compression trial measurements and updated hashes are stored under verification.

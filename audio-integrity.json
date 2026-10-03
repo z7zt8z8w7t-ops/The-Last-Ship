@@ -1,162 +1,162 @@
 {
   "wind": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "012990ce6b719b5d4b1d00eb127a65267b53bc57627d6b7a09beb87bc3cb92e5",
-    "bytes": 2597516
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "6cc409d5a67bc9675bdaf2923eebaec41936e848fd00a737d20f9317e42713d7",
+    "bytes": 1473351
   },
   "crt": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "8c87ce304a39cbc5c828f60797b18942b8b1414970795b65e6cf0c7e9b0a324c",
-    "bytes": 81547
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "83b15313724497d59a1e5cbbb4eeb116bd4f5a3062aed1c17b488255571edd0d",
+    "bytes": 48946
   },
   "transition": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "73fe3f39c17923e645cb2ef1fc7ef330c13c87cdfe9f548245791b90445761fa",
-    "bytes": 23555
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "d7be32eef70594529d3112e8174ba5bc95ad9d04382d04a71793ccfd8c52292a",
+    "bytes": 14151
   },
   "alien1": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "614725ad3bd384a72b80ecffe3562f738ee20e4ae46379998d13864b628ba668",
-    "bytes": 60126
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "e82cbf833a12781e9a17c8f3e6ae871ad2d78cd93f93b2cddee6adf7a5e3d8cc",
+    "bytes": 36094
   },
   "alien2": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "1a4b073da0fa1d79719ad7ea60e0def08e29d2b4a6095c5c041ba8417d300234",
-    "bytes": 102445
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "f3114a91e5662df7a8a1cbb988e028f044d5c4508415785d7e1f854975882d87",
+    "bytes": 61485
   },
   "alien3": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "2a73eeac457fb78fe2fc299cbbecf0ca37ee93abe41275b2f16d77aca02748ce",
-    "bytes": 104012
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "02341887ee6cd9bca1ab6e1d43eebec7f0f2601f9ef220a5f184c38352923a93",
+    "bytes": 62425
   },
   "start": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "68848cb1085ba11e8ee4ac33ec07a2f9fce351bd2cc5d8947e64089651bbe4da",
-    "bytes": 44975
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "875c2db337317244711211c5dde31206282d2aeb0369d21511b58330b6e1604d",
+    "bytes": 27003
   },
   "tracker": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "f5c6bd555ef7134d0c5baff17baa45d5b67067f2a80441ceabd8b9aa6ebb9606",
-    "bytes": 18016
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "1a5d7cc3c4cad2d742d360802fce4a5775d1cc1353cf94541a5d741254a12917",
+    "bytes": 13524
   },
   "apc": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "da2a1d5347a124981762a97bf55846b0788570680c314239db037443ebfd64e2",
-    "bytes": 249147
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "b87d9ab28fa3624e7a9a7a625b1d475b53d751ef4b1d61ad22de346a92a9ee58",
+    "bytes": 186872
   },
   "trackerSting": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "6a47a4f481d96c9e06043258e2018e5c1afd2faadaaca79d53758d00b011ab7e",
-    "bytes": 229503
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "a278d3e6a8b8137dcfab71e589348d57cb1f6f50af399b1c403d5703154ae4cb",
+    "bytes": 172139
   },
   "titleDrone": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "f0b6c22713e5d28751980d77b02e19e8d8d4495817dd923ac378c078c036ab1d",
-    "bytes": 565438
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "c35bd6ace9a5f6a527f4aea7ec8c4a01b02ece361269130d1f70856c0f4a6485",
+    "bytes": 484668
   },
   "muthurLogin": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "bdd701084b951dfed56ddc6e52ecd762f0550f128883b0db482401df8c584d6d",
-    "bytes": 338315
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "f8a11e191bb95dfbaf75659d64e3da730a709be06b8409b04f76fc62f11bf1e8",
+    "bytes": 201389
   },
   "introLoop": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "a1afa6b5e272ec6536b9fd546d6b7110e0f47d850bd6e7c8ed0ddc8c3b0a7c77",
-    "bytes": 4853666
+    "origin": "v98 compact encoding from intact v97 audio; PCM 16-bit 22050 Hz",
+    "sha256": "9e3b3bcd5baf5b4cf6a22aa509cb017bc1d62c6ef89f04d50cf10ace05f63ba4",
+    "bytes": 2426914
   },
   "scientistFound": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "c46fedd925842ff51713f8bfd6c64483b7b248eafce7aff89c6b41eb018320ae",
-    "bytes": 405024
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "53dd27fb4a5168fd08353cef05b579ba3d27399418d20809fcc6ce9da825ff12",
+    "bytes": 88834
   },
   "noiseRoar": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "e8938e58ee1e1b2826a40e3df1f92cf931b1a741de04f7b2c36a614c7553264e",
-    "bytes": 236012
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "4a689a0249260f9e86c9fc3003aa73970209c3ce9ac48b6fc0767a9869b035ed",
+    "bytes": 28742
   },
   "discovery": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "e15720dd1d9e7c8e9073e6902dcd289fd8d21678efa6d69086df6b0754b9fa36",
-    "bytes": 306282
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "6428a94bda3677abb8994e9aaffd61eca52e4dd720bf2108fb94c87b728b0ec3",
+    "bytes": 54388
   },
   "femaleCapture": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "d7ddb7de42a1e3e7aa4a39f53abb0f0cbcf127fd25de51f7eb5dbfc26e011fe1",
-    "bytes": 409435
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "f6e8d500a0f3b05ae6e5ae754107a7b7b359360d58211ee10b16345e40791b94",
+    "bytes": 204740
   },
   "maleCapture": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "f5f0c30803d3da7b2c8702eb21c2a6ed1a3c620ffebff93fb4e454aff82777e1",
-    "bytes": 409435
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "1d9f040adf619c0c91326ba9062efc5fbc401939daea7d6911f8e94036000d56",
+    "bytes": 204740
   },
   "wristOn": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "831858c7746128926d6ec581ed8da7f6c4926f93da0e6b7ef57d1fe0d2c9d762",
-    "bytes": 189215
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "01127a264884b8de43fb1dde01a6a12a7e666cf1943ccea3edd47509a5c28c68",
+    "bytes": 8877
   },
   "wristDrone": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "6893350471865c7c4042a5f16119013d3c76f56683ccc256cbdfe4706fd53928",
-    "bytes": 274468
+    "origin": "v98 compact encoding from intact v97 audio; PCM 16-bit 22050 Hz",
+    "sha256": "f165c2797cb92c73c92a3cd3fb7070901e3b1076a49765df6056daf8871a3786",
+    "bytes": 137290
   },
   "muthurOff": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "ac7d1d8ce1c48e615d07dc42ae4ced91f3d53df165b94ac138958dc21fc11fff",
-    "bytes": 212997
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "2336efc0a2ed90a076c4fecdb915fa2f804e6fd3e66a954ee4c71c7b170ff61d",
+    "bytes": 13542
   },
   "ripley": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "7b65fce7010a94d3da8abb13588524b06a3cf771d7373e8364d27cd39abc4280",
-    "bytes": 1569794
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "c76be82a9f4edbce9f449e9abe06c78db48cb5b98bf8bcdfb3d2a010ea4ad480",
+    "bytes": 459092
   },
   "turnOff": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "6f65f626b29e1b57b6ae330d993a6fe71ea5214e4feeb522147d37b17b0705c1",
-    "bytes": 212841
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "a7d3acf25784556c3992aca5ea495ed7246485e988af0ded070f3dfb11b1cbfe",
+    "bytes": 14780
   },
   "chances": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "bc6cf6c8d28562e8a0ed083819d497e5c7af6b955929e4cb1663ab6079f675db",
-    "bytes": 404098
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "700eec6c515f1a888e40db859ae0d8f45597624c2a12e23bd7d6ff1092195e09",
+    "bytes": 88705
   },
   "sentryGun": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "5dfa6994fd31ee63c07c772d925a7717d42d54cfa2178bb24cd0338dec0c473d",
-    "bytes": 235246
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "c4a625afb60323970a344ef6adcceb6d7dd406acd88847faaa9b2837af08e1a2",
+    "bytes": 29973
   },
   "facehugger": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "a547fa0550ec6e57632f8c67eaab26b34e87ee3d2072a3ee1ff24452d3da5784",
-    "bytes": 284492
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "d1afd3102d2db8aa4754102ff70ca8bec6ca976d873bc47654c9ee37d77d786c",
+    "bytes": 46776
   },
   "roundCountdown": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "c328d7a06a1961db78f658cd9537eb2fed58614b5f8e90d479ffb3b50607e14f",
-    "bytes": 101643
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "79380c6e1227d92f64f03adfb1ed014dd1d8564fe1a0e77990631d4b7c2aad63",
+    "bytes": 62098
   },
   "evac": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "8979c264a93b29f693afb8c31104a7640fe3a4477e4349acb85144500f40c0cc",
-    "bytes": 375773
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "92fe2ba9ca5ca58821cab72a64fd7a859d8c39ec734d7109365c3496112e62e8",
+    "bytes": 83703
   },
   "background": {
-    "origin": "Unchanged embedded recording from v80",
-    "sha256": "7b0203edc0b70aa3739e4b32b639084e5f0d20acc6184e1abfb3a292a05f58c0",
-    "bytes": 1596407
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "c21b5f2375eba4bc6dacc773339166aa45a9a37479114d617591e0c12f4a1dfe",
+    "bytes": 603316
   },
   "rescued": {
-    "origin": "Unchanged embedded recording from v81",
-    "sha256": "acf6ef6075da87e82c221deaeb7c3c5ffe2a0376333ac179553cee077a9d7a23",
-    "bytes": 235119
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "10469fab2cab74a66998d7fd78cf59d582a3c03c0fd23687a695e4675204620a",
+    "bytes": 29337
   },
   "endCredits": {
-    "origin": "Original uploaded End credits.m4a, re-encoded stereo AAC 96 kbps without cover artwork",
+    "origin": "v98 compact encoding from intact v97 audio; original retained",
     "sha256": "235839eb59b45e83981243d488688f5cd5310f9c28a5c878fe6711b20f13968f",
     "bytes": 1781155
   },
   "sporeBurst": {
-    "origin": "Original synthesized Spore Burst preview; three identical clips at 0, 150 and 300 ms, shared normalization and stereo AAC 128 kbps",
-    "sha256": "15b5f584577d7475e3803caf988332de2e9e2dff27614f3adc285b71f3b61473",
-    "bytes": 51494
+    "origin": "v98 compact encoding from intact v97 audio; 96 kbps",
+    "sha256": "e13676ae45a4bda3fe67ebb9217b400754aef43ab025ce2bf4cab09b09569298",
+    "bytes": 39093
   }
 }

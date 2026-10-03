@@ -602,3 +602,7 @@ body{position:fixed;inset:0;height:100dvh}
 @keyframes eligibleTilePulse{50%{fill-opacity:.34}}
 @keyframes chosenTilePulse{0%,100%{fill-opacity:.25}50%{fill-opacity:.45}}
 @media(prefers-reduced-motion:reduce){.tile-target-fill{animation:none;fill-opacity:.25}.tile-target-selected{fill-opacity:.38}}
+
+/* v98 explicit, vertically stacked quarantine choices */
+.quarantine-choices{display:flex;flex-direction:column;gap:3px;width:100%}.contaminated-button{font:700 clamp(7px,.72vw,11px) monospace;min-height:28px;padding:4px 2px;width:100%;border:1px solid #ba645c;color:#e19b91;background:#29110e}.contaminated-button[aria-pressed="true"]{background:#a32d25;color:#fff2e9;box-shadow:0 0 9px #ff594960}.clearance-button[aria-pressed="true"]{background:#276c3c;color:#e0ffd8}.quarantine-seat svg{width:22px;height:22px}.purge-button{width:auto;max-width:95%;font-size:clamp(12px,1.6vw,23px);padding:7px 16px}.quarantine-seats{inset:7% 29% 7%}.all-clear-launch{font-size:16px}
+@media(max-height:650px){.quarantine-seat svg{width:15px;height:15px}.quarantine-choices{gap:2px}.contaminated-button,.clearance-button{min-height:23px;padding:2px}.quarantine-seats{inset:4% 27% 4%}}

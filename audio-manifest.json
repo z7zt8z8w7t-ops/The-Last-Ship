@@ -7,7 +7,8 @@
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
     "edits": "First four seconds; trimmed and loudness adjusted. Playback level baked into MP3 for consistent iPad native-player loudness.",
     "embedded_key": "crt",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "usage": "Roster transition",
@@ -17,7 +18,8 @@
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
     "edits": "Short excerpt of the same recorded CRT. Playback level baked into MP3 for consistent iPad native-player loudness.",
     "embedded_key": "transition",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "usage": "Creature call 1",
@@ -27,7 +29,8 @@
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
     "edits": "Trimmed and loudness adjusted. Playback level baked into MP3 for consistent iPad native-player loudness. v28: damped outdoor reverb, 1.15-second tail.",
     "embedded_key": "alien1",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "usage": "Creature call 2",
@@ -37,7 +40,8 @@
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
     "edits": "Creator processed a recorded human scream into a creature roar; trimmed. Playback level baked into MP3 for consistent iPad native-player loudness. v28: damped outdoor reverb, 1.15-second tail.",
     "embedded_key": "alien2",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "usage": "Creature call 3",
@@ -47,7 +51,8 @@
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
     "edits": "Trimmed hiss/roar effect. Playback level baked into MP3 for consistent iPad native-player loudness. v28: damped outdoor reverb, 1.15-second tail.",
     "embedded_key": "alien3",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "usage": "Start Game only",
@@ -57,7 +62,8 @@
     "license_url": "https://pixabay.com/service/license-summary/",
     "edits": "User-selected Monster Screech uploaded by the user. Original pitch preserved, 1.35-second damped stereo reverb tail. Replaces the rejected v27 composite completely.",
     "embedded_key": "start",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "usage": "Motion tracker within two hexes of current player; faster within one hex; independent of ECG",
@@ -69,7 +75,8 @@
     "download": "https://raw.githubusercontent.com/FrunkQ/dynamic-map-renderer-v2/main/src/assets/MT-return.mp3",
     "license": "Uploader labels CC0 1.0; underlying film provenance unverified",
     "edits": "Quiet playback level baked into MP3 (volume 0.30), short attack/fade.",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "usage": "APC driving and stopping",
@@ -80,7 +87,8 @@
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
     "edits": "From 11 seconds to the end, original pitch, 30 ms entry fade, volume 0.65. Layered over continuous wind.",
     "embedded_key": "apc",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "embedded_key": "trackerSting",
@@ -91,7 +99,8 @@
     "license": "CC0 1.0",
     "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
     "edits": "Public high-quality MP3 preview, full recording; volume 0.28 and short edge fades.",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "key": "titleDrone",
@@ -102,7 +111,8 @@
     "license": "Pixabay Content License",
     "license_url": "https://pixabay.com/service/license-summary/",
     "edits": "Original 00:15 through end, original pitch/speed; volume 0.5 and six-second fade-in. No fade-out. Blue flash at opening 36.3 seconds (about one second after the former musical cue); natural tail overlaps APC arrival from 37.75 seconds.",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "key": "muthurLogin",
@@ -112,7 +122,8 @@
     "source": "RPReplay_Final1790781942_audio(1).mp3, extracted from user-uploaded video",
     "license": "User-provided; third-party usage rights not established",
     "edits": "Original 16.74-second stereo MP3; playback at 0.72",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "embedded_key": "wind",
@@ -120,7 +131,8 @@
     "usage": "Looping background wind",
     "source": "User supplied RPReplay_Final1790790516.mp4",
     "edits": "Trimmed 3.65s to 129.35s; three-second equal-power circular crossfade; loop 122.7s; volume matched to previous background wind.",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "usage": "Loop from crew roster appearance until LAUNCH MISSION only",
@@ -129,7 +141,8 @@
     "license": "User supplied",
     "edits": "Decoded to PCM WAV without trimming, fades or crossfades; circular buffer playback.",
     "embedded_key": "introLoop",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "PCM 16-bit 22050 Hz; no intentional gain, trimming or fade changes"
   },
   {
     "usage": "Every scientist discovery or recovery",
@@ -138,7 +151,8 @@
     "license": "User supplied",
     "edits": "As supplied; no additional fades, trimming or looping.",
     "embedded_key": "scientistFound",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "usage": "Alien Lunge popup opening, once; not during movement",
@@ -147,7 +161,8 @@
     "license": "User supplied",
     "edits": "As supplied",
     "embedded_key": "noiseRoar",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "usage": "Cache, false PDT and egg discovery; 130% gain",
@@ -156,7 +171,8 @@
     "license": "User supplied",
     "edits": "As supplied",
     "embedded_key": "discovery",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "usage": "Female player alien capture: combined sequence once, no separate layers or popup snap",
@@ -164,14 +180,16 @@
     "embedded_key": "femaleCapture",
     "creator": "User supplied recordings, combined for preview",
     "edits": "Embedded preview as generated",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "embedded_key": "maleCapture",
     "source": "TLS_Male_Capture_Gunfire_2_Roar.mp3",
     "usage": "Male alien capture: combined sequence once at volume 1, no separate layers",
     "edits": "MP3 preview embedded byte-for-byte",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "usage": "Turn, mission and Company Representative terminal opening; 15% gain",
@@ -180,7 +198,8 @@
     "license": "User supplied recording; no additional license asserted",
     "edits": "Embedded original M4A without edits. Drone uses native audio looping.",
     "embedded_key": "wristOn",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "usage": "Turn, mission and Company Representative terminal drone; 10% gain (MU-TH-UR uses its own call)",
@@ -189,7 +208,8 @@
     "license": "User supplied recording; no additional license asserted",
     "edits": "v60: decoded to 44.1 kHz stereo PCM WAV; trimmed at matching waveform phases to 1.555692 seconds; no fades or overlap. Circular Web Audio loop.",
     "embedded_key": "wristDrone",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "PCM 16-bit 22050 Hz; no intentional gain, trimming or fade changes"
   },
   {
     "usage": "MU-TH-UR intro shutdown only",
@@ -198,7 +218,8 @@
     "license": "User supplied recording; no additional license asserted",
     "edits": "Original M4A embedded unchanged. Plays once when MU-TH-UR screen collapse begins; not used by gameplay popups.",
     "embedded_key": "muthurOff",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "key": "chances",
@@ -208,7 +229,8 @@
     "credit": "User-supplied recording",
     "edits": "Embedded without audio editing",
     "embedded_key": "chances",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "key": "ripley",
@@ -218,7 +240,8 @@
     "source": "TLS rip speech .m4a",
     "credit": "User-supplied recording",
     "edits": "Embedded without trimming or other audio edits",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "key": "turnOff",
@@ -227,7 +250,8 @@
     "usage": "Acknowledgement/terminal closure; 20% gain",
     "credit": "User-supplied recording",
     "edits": "Embedded without editing",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "embedded_key": "sentryGun",
@@ -236,7 +260,8 @@
     "usage": "Sentry firing, once at 100% gain; opening screech follows at 1.752336 seconds",
     "duration_seconds": 2.252336,
     "edits": "None; embedded unchanged",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "embedded_key": "facehugger",
@@ -244,7 +269,8 @@
     "credit": "User-supplied recording",
     "usage": "Facehugger Attack popup opening, once at 100% gain",
     "edits": "None; embedded unchanged",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "embedded_key": "roundCountdown",
@@ -252,7 +278,8 @@
     "credit": "User-supplied reference clip",
     "usage": "Five-second end-of-round countdown, 100% gain",
     "edits": "First five seconds of audio extracted to AAC; no fades or crossfades",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "embedded_key": "evac",
@@ -261,7 +288,9 @@
     "usage": "Once after the two-hour countdown screen closes, 100% gain",
     "duration_seconds": 6.617687,
     "edits": "None; embedded unchanged",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes",
+    "v98_gain": "50%"
   },
   {
     "usage": "Board background loop",
@@ -269,7 +298,8 @@
     "source": "Game background LQ.m4a upload",
     "embedded_key": "background",
     "container": "index.html #ship-audio-data",
-    "edits": "Original AAC audio retained; attached cover art and metadata removed. Decoded once at playback and given a two-second equal-power circular crossfade; 35% gain."
+    "edits": "Original AAC audio retained; attached cover art and metadata removed. Decoded once at playback and given a two-second equal-power circular crossfade; 35% gain.",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   },
   {
     "usage": "Scientist boarding report opening",
@@ -277,7 +307,9 @@
     "source": "Rescued.m4a",
     "embedded_key": "rescued",
     "container": "index.html #ship-audio-data",
-    "edits": "Original M4A embedded, 100% gain, played for each boarding."
+    "edits": "Original M4A embedded, 100% gain, played for each boarding.",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes",
+    "v98_gain": "50%"
   },
   {
     "usage": "Orbital scene and results",
@@ -292,6 +324,7 @@
     "source": "Approved Spore_Burst_Preview.mp3 / underlying synthesized PCM",
     "edits": "Three copies overlap at 0, 150 and 300 ms; mixed from original stereo PCM and normalized together to 0.85 peak, encoded stereo AAC 128 kbps.",
     "embedded_key": "sporeBurst",
-    "container": "index.html #ship-audio-data"
+    "container": "index.html #ship-audio-data",
+    "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
   }
 ]
