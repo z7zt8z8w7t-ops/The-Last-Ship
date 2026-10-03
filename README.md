@@ -17,3 +17,6 @@ Overlay on v101. Includes caller boarding, zero-hour quarantine, final-battle st
 
 ## v103 update
 Overlay on v102. Removes all crew keyboard flicker/glitch effects. See V103_CHANGES.md.
+
+## v104 update
+Overlay on v103. In-place roster keyboard updates and a full-screen readable Field Manual with current tile artwork. See V104_CHANGES.md.

@@ -7,7 +7,7 @@ let session=null,enabled=false;
 const safeMedia=new Proxy({},{get:(_,method)=>(...args)=>{try{return window.ShipAudio?.[method]?.(...args)}catch(error){console.warn('Terminal audio unavailable',error)}}});
 const audio=()=>safeMedia;
 const hasTurnAudio=n=>n.classList.contains('handoff-prompt')||n.classList.contains('initial-orders')||n.classList.contains('muthur-mission');
-const selectors=['.rules-window','.mission-overlay .card','.private.executive-order','.event-window','.board-overlay .card','.handoff-prompt','.muthur-mission','.initial-orders','.wrist-dialog','.results-dialog'];
+const selectors=['.mission-overlay .card','.private.executive-order','.event-window','.board-overlay .card','.handoff-prompt','.muthur-mission','.initial-orders','.wrist-dialog','.results-dialog'];
 function stopOpening(x){try{x.cancelEnded?.()}catch(error){console.warn('Terminal audio cleanup failed',error)}x.cancelEnded=null;clearTimeout(x.openTimer);audio().stopEffect('wristOn')}
 function stopAudio(x){stopOpening(x);audio().stopEffect('wristDrone')}
 function cancel(){if(!session)return;const x=session;session=null;clearTimeout(x.closeTimer);stopAudio(x);x.overlay.remove()}
@@ -42,6 +42,7 @@ function close(x){
 function sync(ui,game,soundOn){
  const root=document.getElementById('app');
  if(!root)return;
+ if(ui.rules){cancel();return}
  const allowed=(ui.boot==='game'&&!ui.cinematic&&!ui.boardArrival)||ui.boot==='roster';
  if(!allowed||['countdown','quarantine','departing','orbital'].includes(game?.phase)){cancel();return}
  if(session&&session.owner!==game)cancel();
