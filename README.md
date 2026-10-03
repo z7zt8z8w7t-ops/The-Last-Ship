@@ -20,3 +20,6 @@ Overlay on v102. Removes all crew keyboard flicker/glitch effects. See V103_CHAN
 
 ## v104 update
 Overlay on v103. In-place roster keyboard updates and a full-screen readable Field Manual with current tile artwork. See V104_CHANGES.md.
+
+## v105 update
+Overlay on v104. APC deployment transmission begins three seconds into the audio, with typing drone and CRT shutdown before the board fade. See V105_CHANGES.md.
