@@ -32,8 +32,10 @@ function mount(canvas,game,centre,staging,onTime){
  stop();owner=canvas;const c=canvas.getContext('2d'),art=images();if(!c)return;game.departure.battle??=plan(game,staging);const battle=game.departure.battle,reduced=root.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
  function glow(x,y,r,rgb,a){const g=c.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,`rgba(${rgb},${a})`);g.addColorStop(1,`rgba(${rgb},0)`);c.fillStyle=g;c.fillRect(x-r,y-r,2*r,2*r)}
  function sprite(im,x,y,w,h){if(ready(im))c.drawImage(im,x,y,w,h)}
- function ship(t){const[sx,sy]=centre(staging),sc=.19,x=sx-320*sc,y=sy-665*sc;
+ function platform(){const[sx,sy]=centre(staging),sc=.19,x=sx-320*sc,y=sy-665*sc;
   if(ready(art.ship)){c.save();polygon(c,[[15,688],[80,621],[133,473],[211,394],[237,448],[302,466],[416,477],[509,650],[551,774],[524,875],[406,961],[311,988],[292,955],[245,934],[160,831],[58,815]].map(([a,b])=>[x+a*sc,y+b*sc]));c.clip();sprite(art.ship,x,y,1536*sc,1024*sc);c.restore();c.save();polygon(c,[[427,565],[732,384],[816,482],[519,676]].map(([a,b])=>[x+a*sc,y+b*sc]));c.clip();sprite(art.ship,x,y,1536*sc,1024*sc);c.restore()}
+ }
+ function ship(t){const[sx,sy]=centre(staging),sc=.19,x=sx-320*sc,y=sy-665*sc;
   const lift=ease((t-14)/4),flight=ease((t-18)/14),power=ease((t-8)/4);c.save();c.translate(x+1030*sc+flight*297,y+465*sc-lift*16+flight*270);c.scale(sc*(1+lift*.1-flight*.04),sc*(1+lift*.1-flight*.04));c.translate(-1030,-465);
   if(power)for(const[ex,ey]of [[690,130],[590,254]])glow(ex,ey,300,'135,255,220',power*.8);
   c.save();polygon(c,HULL);c.clip();sprite(art.ship,0,0,1536,1024);c.restore();
@@ -43,6 +45,7 @@ function mount(canvas,game,centre,staging,onTime){
  }
  function draw(){if(owner!==canvas||!canvas.isConnected)return;raf=null;if(document.hidden)return;
   const t=(performance.now()-game.departure.started)/1000,w=canvas.clientWidth||820,h=canvas.clientHeight||614;if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h}c.setTransform(1,0,0,1,0,0);c.clearRect(0,0,w,h);const scale=Math.min(w/820,h/614);c.setTransform(scale,0,0,scale,(w-820*scale)/2-20*scale,(h-614*scale)/2-8*scale);
+  platform();
   const positions=battle.contacts.map(a=>position(a,t,centre));
   for(let i=0;i<10;i++){const a=battle.contacts[i],p=positions[i];if(t>=a.death)continue;c.save();c.translate(p.x,p.y+(reduced?0:Math.sin(t*14+a.phase)*1));c.rotate(p.angle);sprite(art.tail,-19,-28,38,54);sprite(art.body,-19,-28,38,54);c.restore()}
   const shot=SHOTS.findIndex(at=>t>=at&&t<at+.075);

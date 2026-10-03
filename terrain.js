@@ -32,10 +32,18 @@ function mount(canvas,game,cells,centre,staging,redraw,facing){stop();owner=canv
   const edges=image('edges',redraw);if(edges.complete&&edges.naturalWidth)for(const c of cells){const t=game.tiles[c.k];if(!t.known||t.emplacement||t.site||!['cover','spores'].includes(t.terrain))continue;const [cx,cy]=centre(c.k),x=cx-20,y=cy-8,half=edges.naturalWidth/2;ctx.drawImage(edges,t.terrain==='spores'?0:half,0,half,edges.naturalHeight,x-58,y-58,116,116)}
   const span=image('bridgeSprite',redraw);if(span.complete&&span.naturalWidth)for(const c of cells){const t=game.tiles[c.k];if(!t.known||t.emplacement||t.terrain!=='bridge')continue;const [cx,cy]=centre(c.k),x=cx-20,y=cy-8;ctx.save();ctx.beginPath();ctx.rect(x-70,y-70,140,140);for(let i=5;i>=0;i--){const a=(60*i-30)*Math.PI/180;i===5?ctx.moveTo(x+55*Math.cos(a),y+55*Math.sin(a)):ctx.lineTo(x+55*Math.cos(a),y+55*Math.sin(a))}ctx.closePath();ctx.clip('evenodd');ctx.drawImage(span,x-66,y-53,132,106);ctx.restore()}
   drawWeather(ctx,weather,now,reduced,cells,centre,[-ox/scale,-oy/scale,w/scale,h/scale],game);
-  drawLanding(ctx,game,centre(staging),redraw);drawLighting(ctx,game,cells,centre,staging,now,reduced,w,h,scale,ox,oy,facing);drawStormFlash(ctx,weather,now,reduced,cells,centre,[-ox/scale,-oy/scale,w/scale,h/scale]);frame=requestAnimationFrame(draw)
+  drawLanding(ctx,game,centre(staging),redraw);drawLighting(ctx,game,cells,centre,staging,now,reduced,w,h,scale,ox,oy,facing);drawWellGlow(ctx,game,cells,centre,now,reduced,redraw);drawStormFlash(ctx,weather,now,reduced,cells,centre,[-ox/scale,-oy/scale,w/scale,h/scale]);frame=requestAnimationFrame(draw)
  }canvas.__terrainResume=()=>{if(owner===canvas&&frame===null&&!document.hidden)draw()};draw()
 }
 document.addEventListener?.('visibilitychange',()=>{if(!document.hidden)owner?.__terrainResume?.()});
+// Emissive well cores stay visible above the darkness mask; rims never rotate.
+function drawWellGlow(ctx,game,cells,centre,now,reduced,redraw){
+ for(const cell of cells){const tile=game.tiles[cell.k];if(!tile.known||tile.terrain!=='gravity')continue;
+  const[cx,cy]=centre(cell.k),x=cx-20,y=cy-5,name=tile.pair==='red'?'green':'blue',rgb=name==='green'?'45,255,124':'45,143,255',pulse=reduced?1:.94+.06*Math.sin(now/1700);
+  ctx.save();ctx.globalCompositeOperation='screen';const halo=ctx.createRadialGradient(x,y,2,x,y,34);halo.addColorStop(0,`rgba(${rgb},${.4*pulse})`);halo.addColorStop(.65,`rgba(${rgb},${.16*pulse})`);halo.addColorStop(1,`rgba(${rgb},0)`);ctx.fillStyle=halo;ctx.fillRect(x-34,y-34,68,68);
+  ctx.beginPath();ctx.arc(x,y,26,0,Math.PI*2);ctx.clip();ctx.globalAlpha=.8;ctx.translate(x,y);ctx.rotate(now/24000*Math.PI*2);paint(ctx,name,0,-3,55,redraw);ctx.restore();
+ }
+}
 // Weather persists across redraws, has no timers/input locks, and paints outside the hexes.
 const weatherStates=new WeakMap();
 function weatherFor(game){if(!weatherStates.has(game))weatherStates.set(game,{next:performance.now()+12000+Math.random()*12000,strike:-Infinity,corner:null,thunderDue:Infinity});return weatherStates.get(game)}

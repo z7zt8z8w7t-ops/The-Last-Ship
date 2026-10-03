@@ -8,3 +8,6 @@ See V98_CHANGES.md and TEST_RESULTS.md. Every included file is under 25 MB.
 
 ## v100 update
 Overlay the changed-file archive on v99. See V100_CHANGES.md and TEST_RESULTS.md. New last-stand.js is required; all original artwork assets remain required.
+
+## v101 update
+Overlay on v100. Includes the CRT roster keyboard and voice toggle, brighter well cores, and final-stand platform layering fix. See V101_CHANGES.md.

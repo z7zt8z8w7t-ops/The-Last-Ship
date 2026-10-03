@@ -631,3 +631,16 @@ body{position:fixed;inset:0;height:100dvh}
 .departure-lock{pointer-events:none;z-index:46;font-size:.75rem}
 .ending-blackout{animation-duration:2s}
 .orbital-scene{animation-duration:3s}
+
+/* A game-owned keyboard avoids invoking the native iPad name keyboard. */
+.roster .voice-toggle{flex:0 0 155px;min-height:44px;font-size:.72rem;padding:9px 7px;white-space:nowrap}
+.crt-name-field{cursor:pointer;caret-color:transparent}.crt-name-field.editing{border-color:#c2ffb3!important;box-shadow:0 0 10px #80ff9d35}
+.crt-keyboard{position:fixed;z-index:180;left:50%;bottom:12px;transform:translateX(-50%);width:min(760px,calc(100vw - 24px));padding:12px 16px;border:1px solid #80ba82;border-radius:8px;background:repeating-linear-gradient(0deg,#081b12 0px,#081b12 2px,#0b2115 3px,#0b2115 4px);box-shadow:0 -12px 60px #000d,inset 0 0 35px #2e6a3222;color:#c8fbb5;font-family:monospace;touch-action:manipulation}
+.crt-keyboard header{display:flex;align-items:center;justify-content:space-between;font-size:.8rem;letter-spacing:.08em;margin-bottom:6px}.crt-keyboard header button{padding:7px 18px;min-height:40px}
+.keyboard-readout{min-height:35px;padding:6px 12px;margin-bottom:8px;border:1px solid #426c48;background:#05110b;text-shadow:0 0 6px #a7ff8d;font-size:1.05rem;overflow:hidden;white-space:nowrap}
+.keyboard-cursor{animation:crtNameCursor 1s steps(2) infinite}@keyframes crtNameCursor{50%{opacity:0}}
+.keyboard-row{display:flex;justify-content:center;gap:6px;margin-top:6px}.keyboard-row button{flex:1;min-width:0;min-height:42px;padding:5px;border:1px solid #669575;border-radius:3px;background:linear-gradient(#183a25,#0b2115);color:#cff7b9;font:700 1rem monospace;text-shadow:0 0 5px #aaff8055;box-shadow:inset 0 0 8px #86ff9310}.keyboard-row button:active{background:#315c36;box-shadow:0 0 12px #9bff8750}.keyboard-tools button{font-size:.72rem}.keyboard-tools .space-key{flex:3}
+.roster:has(.crt-keyboard){padding-bottom:325px;overflow-y:auto}.roster:has(.crt-keyboard) .roster-list{overflow:visible}
+@media(max-height:650px){.crt-keyboard{padding:8px 12px;bottom:6px}.keyboard-row{margin-top:4px}.keyboard-row button{min-height:36px}.roster:has(.crt-keyboard){padding-bottom:290px}}
+@media(max-width:600px){.roster .voice-toggle{flex-basis:112px;font-size:.63rem}.keyboard-row{gap:3px}.crt-keyboard{padding:8px}.keyboard-row button{font-size:.8rem}.keyboard-tools button{font-size:.6rem}}
+@media(prefers-reduced-motion:reduce){.keyboard-cursor{animation:none}}
