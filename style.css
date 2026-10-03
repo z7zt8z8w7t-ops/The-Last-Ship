@@ -606,3 +606,20 @@ body{position:fixed;inset:0;height:100dvh}
 /* v98 explicit, vertically stacked quarantine choices */
 .quarantine-choices{display:flex;flex-direction:column;gap:3px;width:100%}.contaminated-button{font:700 clamp(7px,.72vw,11px) monospace;min-height:28px;padding:4px 2px;width:100%;border:1px solid #ba645c;color:#e19b91;background:#29110e}.contaminated-button[aria-pressed="true"]{background:#a32d25;color:#fff2e9;box-shadow:0 0 9px #ff594960}.clearance-button[aria-pressed="true"]{background:#276c3c;color:#e0ffd8}.quarantine-seat svg{width:22px;height:22px}.purge-button{width:auto;max-width:95%;font-size:clamp(12px,1.6vw,23px);padding:7px 16px}.quarantine-seats{inset:7% 29% 7%}.all-clear-launch{font-size:16px}
 @media(max-height:650px){.quarantine-seat svg{width:15px;height:15px}.quarantine-choices{gap:2px}.contaminated-button,.clearance-button{min-height:23px;padding:2px}.quarantine-seats{inset:4% 27% 4%}}
+/* Bioscanner reports and non-interactive CRT interference. */
+.bioscan-terminal{width:min(94%,760px)}
+.bioscan-report{display:grid;grid-template-columns:44fr 56fr;gap:12px;align-items:center}
+.bioscan-anatomy{height:clamp(180px,36vh,330px);background:radial-gradient(ellipse,#173b28aa,transparent 70%);overflow:hidden}
+.bioscan-anatomy svg{width:100%;height:100%;display:block}
+.bioscan-findings{font-size:14px;line-height:1.4;padding-right:12px}
+.bioscan-findings h3{font-size:14px;margin:16px 0 8px}
+.bioscan-status{font-size:18px;font-weight:bold;color:#b4f1a1;margin:8px 0}
+.bioscan-status.anomaly{color:#e5c06c;animation:bioscan-alert 1s steps(2,end) infinite}
+.bioscan-equipment{border:1px solid #588b65;padding:8px;margin:6px 0;display:flex;flex-direction:column}
+.bioscan-equipment small,.bioscan-findings>small{letter-spacing:1px;color:#8dbb93;font-size:11px}
+.wrist-screen::before,.quarantine-screen::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:4;opacity:0;background:linear-gradient(transparent 31%,#b8ffbd22 31.4%,transparent 32.4%,transparent 72%,#89c88f18 72.5%,transparent 74%);animation:crt-interference 11s linear infinite}
+.wrist-screen::after{animation:crt-scan-flicker 7s linear infinite}
+@keyframes bioscan-alert{0%,100%{opacity:1}50%{opacity:.5}}
+@keyframes crt-interference{0%,41%,44%,78%,81%,100%{opacity:0;transform:translateX(0)}42%,79%{opacity:.8;transform:translateX(2px)}43%,80%{opacity:.4;transform:translateX(-2px)}}
+@keyframes crt-scan-flicker{0%,100%{opacity:.45}47%{opacity:.5}48%{opacity:.35}49%{opacity:.47}}
+@media(prefers-reduced-motion:reduce){.wrist-screen::before,.wrist-screen::after,.quarantine-screen::before,.bioscan-status.anomaly{animation:none}.ship-amber-rotation animateTransform{display:none}}

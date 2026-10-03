@@ -56,7 +56,7 @@ function sync(ui,game,soundOn){
  if(!candidate&&!held&&x?.turnAudio)endTurnAudio(x);
  const host=root.querySelector('.board')||root;
  if(candidate){
-  const red=candidate.classList.contains('classified-order');x.frame.classList.toggle('wrist-red',red);
+  const red=candidate.classList.contains('classified-order');x.frame.classList.toggle('wrist-red',red);x.frame.classList.toggle('bioscan-terminal',candidate.classList.contains('bioscan-window'));const heading=x.header?.querySelector('span');if(heading)heading.textContent=candidate.classList.contains('bioscan-window')?'CMC · BIOSCANNER':'CMC · FIELD TERMINAL';
   const wrapper=candidate.parentElement,fresh=wrapper!==x.content;
   x.content.replaceChildren(candidate);x.content.inert=false;x.footer.inert=false;if(fresh){x.ackPlayed=false;x.footer.replaceChildren();x.imagePanel.replaceChildren();
   const art=candidate.querySelector('.capture-art,.equipment-art,.event-art');

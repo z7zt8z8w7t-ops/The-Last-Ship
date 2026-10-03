@@ -9,5 +9,5 @@ for(const count of [4,6])for(let mask=0;mask<(1<<count)-1;mask++){
 }
 const h=harness(),t=h.t;t.s.delivered=2;t.s.players.forEach(p=>{p.pos=t.DROPSHIP;p.boarded=true;p.cargo=[]});t.launch();t.selectPurge(1);t.selectPurge(2);t.grantClearance(0);t.grantClearance(3);t.finishLaunch(true);assert.equal(t.s.quarantine.confirmPurge,true);t.grantClearance(2);assert.equal(t.s.quarantine.confirmPurge,false);assert.deepEqual(Array.from(t.s.quarantine.contaminated),[1]);t.selectPurge(0);assert.ok(!t.s.quarantine.cleared.includes(0));assert.equal(t.s.phase,'quarantine');
 assert.ok(!t.flareIcon({hex:t.HOME}).includes('flare-aura'));assert.ok(t.flareIcon({hex:t.HOME}).includes('flare-overhead.webp'));
-const terrain=fs.readFileSync(path.join(__dirname,'../terrain.js'),'utf8');assert.ok(terrain.includes("[810,730,'#3dff8b'"));assert.ok(terrain.includes('255,25,33'),'soft flare lighting retained');
+const terrain=fs.readFileSync(path.join(__dirname,'../terrain.js'),'utf8');assert.ok(terrain.includes("[849,688,'#3dff8b'"));assert.ok(terrain.includes('255,25,33'),'soft flare lighting retained');
 console.log('PASS: every four/six-person purge combination, confirmation and selection changes, survivor manifests, stacked statuses, flare artwork without hard circle and revised green lamp.');
