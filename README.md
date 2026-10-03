@@ -26,3 +26,6 @@ Overlay on v104. APC deployment transmission begins three seconds into the audio
 
 ## v106 update
 Overlay on v105. Gameplay and final-battle thunder now use 150% gain.
+
+## v107 update
+Overlay on v106. Removes the visible version label and diagnostic UI/logging.

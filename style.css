@@ -18,8 +18,6 @@ body{background:#07140e;position:relative;isolation:isolate}body::before{content
 /* Slow movement inside unrevealed hex mist */
 .fog-wisp{transform-box:fill-box;transform-origin:center;animation:hexMistDrift 8s ease-in-out infinite alternate}.fog-wisp.second{animation-duration:11s;animation-direction:alternate-reverse}@keyframes hexMistDrift{from{transform:translateX(-10px) scale(1)}to{transform:translateX(10px) scale(1.07)}}@media(prefers-reduced-motion:reduce){.fog-wisp{animation:none}}
 
-.build-marker{position:fixed;left:10px;bottom:9px;z-index:9;padding:3px 7px;border:1px solid #8abb99aa;border-radius:7px;background:#09251fc9;color:#d6f3dc;font:700 11px/1.2 system-ui,sans-serif;pointer-events:none;letter-spacing:.04em}
-
 /* Heart monitor in the active player's panel */
 .flip-front{display:flex;flex-direction:column}
 .heart-monitor{--pulse:#7bedab;--beat-time:1.935s;box-sizing:border-box;margin:auto 8px 10px;padding:12px 10px 10px;border:1px solid #347b5c;border-radius:12px;background:linear-gradient(145deg,#071b18,#0b2d24);box-shadow:inset 0 0 20px #124e3899,0 0 10px #0008;color:var(--pulse);font-family:system-ui,sans-serif}
@@ -221,8 +219,6 @@ body{background:#07140e;position:relative;isolation:isolate}body::before{content
 @media(max-width:650px){.muthur-boot .muthur-copy{font-size:clamp(.8rem,2.8vw,1.1rem)}.crt-terminal-button{right:20px;bottom:20px}}
 @media(prefers-reduced-motion:reduce){.login-crt-flicker{animation:none}.title-seg{animation:none;opacity:1;stroke-dashoffset:0}.title-content p,.title-content>span{animation:none;opacity:1}}
 
-body[data-screen="boot"] .build-marker{display:none}
-
 /* Compact motion tracker in the board corner, clear of the playable hexes. */
 .motion-tracker{position:absolute;right:10px;bottom:10px;width:142px;z-index:2;padding:7px;border:2px solid #718d76;border-radius:9px;background:linear-gradient(145deg,#253e31,#0d1d15);box-shadow:0 3px 14px #000b,inset 0 0 0 1px #020904;pointer-events:none;font:700 9px ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;letter-spacing:.08em;color:#c4eac5}
 .tracker-label{text-align:center;margin-bottom:5px;font-size:9px}.tracker-display{position:relative;overflow:hidden;border:1px solid #487a5c;border-radius:4px;background:radial-gradient(ellipse at center,#0b3028,#01130f);box-shadow:inset 0 0 14px #000;isolation:isolate}
@@ -253,7 +249,6 @@ body[data-screen="boot"] .build-marker{display:none}
 .mission-overlay .shared-order{width:min(90vw,1000px);max-height:92svh;overflow:auto}
 .mission-overlay .shared-order>button{display:block;margin:22px 0 0 auto}
 body[data-screen="arrival"],body:has(.cinematic-title-out){background:#000}
-body[data-screen="arrival"] .build-marker,body:has(.cinematic-title-out) .build-marker,body:has(.board-arrival-mask) .build-marker{visibility:hidden}
 .arrival-black{position:fixed;inset:0;background:#000}
 .cinematic-title{cursor:default}
 .title-screen.cinematic-title-out{animation:cinematicTitleOut 3s ease-in-out forwards}
@@ -267,7 +262,7 @@ body.cinema-paused .title-screen,body.cinema-paused .title-screen *,body.cinema-
 .classified-order .typing-cursor{color:#ef9396;text-shadow:0 0 8px #ff696988}
 body:has(.board-arrival-mask) .handoff-prompt{visibility:hidden}
 
-body[data-screen="openingBlack"]{background:#000}body[data-screen="openingBlack"] .build-marker{visibility:hidden}
+body[data-screen="openingBlack"]{background:#000}
 
 /* Approved blue crescendo preview. */
 .title-glow{position:fixed;z-index:3;pointer-events:none;border-radius:50%;opacity:0;background:radial-gradient(ellipse,rgba(205,242,255,.98) 0%,rgba(106,208,255,.78) 8%,rgba(25,130,255,.5) 27%,rgba(0,74,220,.2) 50%,transparent 72%);mix-blend-mode:screen;will-change:transform,opacity}
@@ -276,7 +271,6 @@ body[data-screen="openingBlack"]{background:#000}body[data-screen="openingBlack"
 @keyframes blueCrescendoFlash{0%{opacity:1}25%{opacity:.668}50%{opacity:.379}75%{opacity:.144}100%{opacity:0}}
 .title-screen.cinematic-flash-out{animation:titleFlashOut .65s linear forwards}
 @keyframes titleFlashOut{from{opacity:1}to{opacity:0}}
-body:has(.cinematic-title) .build-marker{visibility:hidden}
 body.cinema-paused .title-flash{animation-play-state:paused!important}
 @media(prefers-reduced-motion:reduce){.title-glow,.title-flash{display:none}.title-screen.cinematic-flash-out{animation:cinematicTitleOut .65s ease-out forwards}}
 
@@ -570,7 +564,7 @@ body{position:fixed;inset:0;height:100dvh}
 .flare-smoke{animation:flareSmoke 3s ease-in-out infinite alternate}
 @keyframes flareSmoke{from{opacity:.18;transform:translateY(0)}to{opacity:.4;transform:translateY(-5px)}}
 @media(prefers-reduced-motion:reduce){.flare-aura,.flare-core,.flare-smoke{animation:none}}
-/* v95: lighter marine halo, stronger beam, red flare and independent diagnostics. */
+/* v95: lighter marine halo, stronger beam, red flare. */
 .flare-marker{filter:drop-shadow(0 0 3px #ff263b)}
 .flare-aura{fill:#ff263b;opacity:.18}
 .flare-ember{animation:flareGlow .9s ease-in-out infinite alternate}
@@ -583,15 +577,15 @@ body{position:fixed;inset:0;height:100dvh}
 @keyframes alienScuttle{from{transform:translate(-.65px,-.35px) rotate(-1deg)}to{transform:translate(.65px,.35px) rotate(1deg)}}
 .dropship-ramp{filter:brightness(.73)}
 .ship-navigation{filter:drop-shadow(0 0 3px currentColor)}
-.diagnostic-status{position:fixed;left:calc(18px + 6.5vw);bottom:calc(75px + env(safe-area-inset-bottom));z-index:10002;display:flex;align-items:center;gap:7px;max-width:50vw;pointer-events:none;color:#a5d4b4;font:10px monospace}
-.diagnostic-status[hidden]{display:none}
-.diagnostic-status button{pointer-events:auto;font:10px monospace;padding:8px;border:1px solid #648d76;border-radius:4px;background:#081811;color:#b6e6c4}
-.diagnostic-status small{background:#05130dc9;padding:3px;font-size:9px}
-.diagnostic-panel{position:fixed;z-index:10003;left:2vw;bottom:2vh;width:min(640px,73vw);max-height:94vh;padding:18px;border:1px solid #8dc99e;border-radius:12px;background:#06120ff5;color:#b7edc4;box-shadow:0 0 50px #000}
-.diagnostic-panel h2{font:700 16px monospace;margin:0 0 12px}
-.diagnostic-panel pre{font:11px/1.35 monospace;white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 12px;max-height:74vh;overflow:auto}
-.diagnostic-panel button{float:right;font:12px monospace;padding:9px 20px;background:#103124;color:#b7edc4;border:1px solid #8dc99e}
-.diagnostic-panel::after{content:'';display:block;clear:both}
+
+
+
+
+
+
+
+
+
 @media(prefers-reduced-motion:reduce){.alien-body,.alien-tail,.flare-ember{animation:none!important}}
 
 /* v96: terrain-blended outlines and full-tile targeting. */
