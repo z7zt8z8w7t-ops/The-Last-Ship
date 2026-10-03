@@ -23,3 +23,6 @@ Overlay on v103. In-place roster keyboard updates and a full-screen readable Fie
 
 ## v105 update
 Overlay on v104. APC deployment transmission begins three seconds into the audio, with typing drone and CRT shutdown before the board fade. See V105_CHANGES.md.
+
+## v106 update
+Overlay on v105. Gameplay and final-battle thunder now use 150% gain.

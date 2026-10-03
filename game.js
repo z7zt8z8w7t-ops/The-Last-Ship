@@ -1,5 +1,5 @@
 (()=>{'use strict';
-window.ShipBuild='v105';document.querySelector('.build-marker').textContent='v105';
+window.ShipBuild='v106';document.querySelector('.build-marker').textContent='v106';
 const TURN_PHRASES=['Move up!','Go, go, go!','Let’s move, Marines!','Stay sharp!','On your feet!','Keep it tight!','Move out!','Stay frosty!','Watch those corners!','We’re on the clock!','Eyes up, Marine!','Let’s get our people home!'];
 const EVENTS=Object.freeze(['Alien lunge','Seismic Shift','Spore burst','PDT Locator','Adrenaline surge','Motion echo','Facehugger attack']);
 const itemName=v=>v==='specimen'?'Chemical Research':v==='sentry'?'Sentry Gun':v==='medkit'?'Med Evac':v==='scanner'?'Bioscanner':v;
