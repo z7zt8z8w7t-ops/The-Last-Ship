@@ -1,7 +1,10 @@
-# v107 validation
+Validation
 
-Verified no build marker or diagnostic UI/logging references remain in runtime code/styles. Runtime scripts pass syntax checks. All 33 embedded audio payloads match v106 exactly.
+- terrain.js syntax check passed.
+- Independent irregular light pulses and reduced-motion steady lights passed.
+- Facility paint order and exclusion clipping checked.
+- No new timers or gameplay input locks.
+- game.js matches v107 byte for byte.
+- All embedded audio matches v107 byte for byte.
 
-Passed APC transmission, keyboard/Field Manual and launch/quarantine/flare checks. Passed 100 virtual games through results: 901 rounds, 7,501 moves, 3,204 reports, 738 captures and four boardings.
-
-Physical iPad/Safari verification remains outstanding.
+Not tested on an actual iPad.
