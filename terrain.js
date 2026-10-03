@@ -92,11 +92,11 @@ function drawLighting(ctx,game,cells,centre,staging,now,reduced,w,h,scale,ox,oy,
 
  mask.globalCompositeOperation='source-over';ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.drawImage(lightCanvas,0,0);ctx.restore();
 }
-function drawLanding(ctx,game,point,redraw){const img=image('landing',redraw);if(!img.complete||!img.naturalWidth)return;const x=point[0]-20,y=point[1]-8,scale=.19;
+function drawLanding(ctx,game,point,redraw){if(game.phase==='departing')return;const img=image('landing',redraw);if(!img.complete||!img.naturalWidth)return;const x=point[0]-20,y=point[1]-8,scale=.19;
  // Transparent ship/platform overlay, without a rectangular apron or clipping polygon.
  ctx.drawImage(img,0,0,img.naturalWidth,img.naturalHeight,x-320*scale,y-665*scale,img.naturalWidth*scale,img.naturalHeight*scale);
 }
-function foreground(game,cells,centre,staging){const [sx,sy]=centre(staging),shipX=sx-320*.19,shipY=sy-665*.19;let out=[`<defs><clipPath id="ship-ramp-clip"><polygon points="${[[427,565],[732,384],[816,482],[519,676]].map(([x,y])=>`${shipX+x*.19},${shipY+y*.19}`).join(' ')}"/></clipPath></defs><g class="dropship-ramp" clip-path="url(#ship-ramp-clip)"><image href="dropship-landing.webp" x="${shipX}" y="${shipY}" width="${1536*.19}" height="${1024*.19}"/></g>`];
+function foreground(game,cells,centre,staging){if(game.phase==='departing')return ''; const [sx,sy]=centre(staging),shipX=sx-320*.19,shipY=sy-665*.19;let out=[`<defs><clipPath id="ship-ramp-clip"><polygon points="${[[427,565],[732,384],[816,482],[519,676]].map(([x,y])=>`${shipX+x*.19},${shipY+y*.19}`).join(' ')}"/></clipPath></defs><g class="dropship-ramp" clip-path="url(#ship-ramp-clip)"><image href="dropship-landing.webp" x="${shipX}" y="${shipY}" width="${1536*.19}" height="${1024*.19}"/></g>`];
  const nav=[[1261,168,'#ff353b','Port red'],[849,688,'#3dff8b','Starboard green']];
  out.push(`<defs>${nav.map(([, ,colour,label],i)=>`<radialGradient id="ship-nav-${i}"><stop offset="0" stop-color="${colour}" stop-opacity=".55"/><stop offset="1" stop-color="${colour}" stop-opacity="0"/></radialGradient>`).join('')}</defs>`);
  if(game.shipBeaconActive)out.push(`<defs><radialGradient id="ship-amber-sweep"><stop offset="0" stop-color="#ffc64b" stop-opacity=".48"/><stop offset="1" stop-color="#ffc64b" stop-opacity="0"/></radialGradient></defs><g class="ship-amber-beacon" aria-label="Active amber roof beacon" transform="translate(${shipX+943*.19} ${shipY+415*.19})"><g class="ship-amber-rotation" fill="url(#ship-amber-sweep)"><path d="M0 0L-18 -55Q0 -65 18 -55Z M0 0L18 55Q0 65 -18 55Z"/><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="3.6s" begin="-${(performance.now()%3600)/1000}s" repeatCount="indefinite"/></g><circle r="1.8" fill="#ffce55"/></g>`);

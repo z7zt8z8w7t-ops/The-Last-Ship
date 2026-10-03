@@ -326,5 +326,12 @@
     "embedded_key": "sporeBurst",
     "container": "index.html #ship-audio-data",
     "v98_compression": "96 kbps; no intentional gain, trimming or fade changes"
+  },
+  {
+    "usage": "Final stand at departure; full clip overlaps orbital audio at 39 seconds",
+    "source": "User supplied Final battle.m4a",
+    "embedded_key": "finalBattle",
+    "container": "index.html #ship-audio-data",
+    "edits": "Stereo AAC 128 kbps, no trimming or intentional volume/fade changes."
   }
 ]

@@ -17,3 +17,6 @@ Spore Burst is an original procedurally synthesized effect, mixed as three overl
 ## v98 compact embedded audio
 
 All source credits remain. 31 clips were re-encoded compactly; one retained its original bytes because the candidate saving was too small. PCM terminal/roster loops remain WAV at 22050 Hz; other changed clips use 96 kbps in their existing MP3/AAC container. Runtime EVAC and Rescued gains are 50%. Compression trial measurements and updated hashes are stored under verification.
+
+## v100 departure
+User-supplied Final battle.m4a, embedded as stereo AAC at 128 kbps without trimming or intentional gain/fade changes. Wind uses the existing loop; delayed thunder uses the existing procedural thunder generator with overlapping storm tails.
