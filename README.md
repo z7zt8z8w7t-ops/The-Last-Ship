@@ -1,7 +1,7 @@
-# The Last Ship v93
+# The Last Ship v94
 
-Apply this changed-files ZIP over v92, replacing matching files and adding board-valley.webp. Reload the game; its version label should show v93. Existing v92 assets and fixes are retained.
+Apply this changed-files ZIP over v93, replacing matching files. Reload and check the v94 version marker. No additional artwork or sound uploads are required.
 
-This update adds the valley surround, drifting mist and occasional visual lightning, draws the countdown cross above the timer, repairs orbital ending playback through the unlocked audio engine, and applies the revised revealed-tile/range rules for the alien. See V93_CHANGES.md for details and verification.
+Adds darker terrain and valley lighting, marine torch pools and directional beams, visible flare markers and warm flare illumination. Fixes a reproduced hidden-report input lock around round/handoff transitions and adds deadline recovery for delayed visual waits. See V94_CHANGES.md and TEST_RESULTS.md.
 
-All 31 sound recordings remain embedded and byte-for-byte unchanged. Every included file is under 25 MB.
+Every included file is under 25 MB. All 31 recordings remain embedded and unchanged.

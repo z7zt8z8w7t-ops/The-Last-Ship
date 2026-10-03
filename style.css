@@ -562,3 +562,11 @@ body{position:fixed;inset:0;height:100dvh}
 
 /* Valley surround; the canvas restores the flat floor inside the hexes. */
 .board{background:#101d16 url('board-valley.webp') center/cover no-repeat}
+
+/* Dark valley, restrained boundaries and persistent visible flare marker. */
+.hex,.hex.sel,.hex.reach,.hex.danger,.hex.target,.hex.chosen{stroke:#587960!important}
+.flare-marker{filter:drop-shadow(0 0 5px #ff572c)}
+.flare-aura{fill:#ff602d;opacity:.28}
+.flare-smoke{animation:flareSmoke 3s ease-in-out infinite alternate}
+@keyframes flareSmoke{from{opacity:.18;transform:translateY(0)}to{opacity:.4;transform:translateY(-5px)}}
+@media(prefers-reduced-motion:reduce){.flare-aura,.flare-core,.flare-smoke{animation:none}}

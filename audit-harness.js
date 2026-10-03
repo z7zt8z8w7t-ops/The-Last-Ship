@@ -1,0 +1,19 @@
+const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path'),assert=require('node:assert/strict');
+function harness({failAudio=false,seed=1,realFinish=false}={}){
+ let now=0,id=0;const timers=new Map(),calls=[],renders=[],digits=Array.from({length:5},()=>({textContent:''}));
+ const listeners={},app={classList:{remove(){}},dataset:{},addEventListener:(key,fn)=>{(listeners['app:'+key]??=[]).push(fn)}};const screen={setAttribute(k,v){this[k]=v},querySelectorAll:()=>digits};const noop=()=>{};
+ const audio=new Proxy({play:key=>{calls.push(key);if(failAudio)throw Error('Media failed')},capture:key=>calls.push(key),stopEffect:key=>calls.push('stop:'+key)},{get:(o,k)=>o[k]||noop});
+ const context={window:{ShipArtwork:{CAPTURE_ARTS:['a'],SCIENTIST_ARTS:['s'],ITEM_ARTS:{},SENTRY_ART:{parts:"sentry-parts.png",emplacement:"gun-emplacement.png"},EMBEDDED_TILE_ART:{}}},ShipAudio:audio,WristTerminal:{cancel:()=>{},acknowledge:()=>{},afterOpen:fn=>fn(),isClosing:()=>false},ShipDropship:{stop:noop},document:{hidden:false,querySelector:s=>s==='.round-countdown'?screen:{textContent:''},querySelectorAll:()=>[],getElementById:()=>app,addEventListener:(key,fn)=>{(listeners[key]??=[]).push(fn)},body:{dataset:{},classList:{toggle:noop}}},localStorage:{removeItem:noop,getItem:()=>null,setItem:noop},location:{search:''},URLSearchParams,Date:class extends Date{static now(){return now}},performance:{now:()=>now},matchMedia:()=>({matches:false}),requestAnimationFrame:noop,setTimeout:(fn,ms)=>{timers.set(++id,{fn,at:now+ms});return id},clearTimeout:n=>timers.delete(n),setInterval:(fn,ms)=>{timers.set(++id,{fn,at:now+ms,repeat:ms});return id},clearInterval:n=>timers.delete(n),console:{...console,warn:noop},renders,failNextRender:false};
+ let source=fs.readFileSync(path.join(__dirname,'../game.js'),'utf8');source=source.replace(/ render\(\);window.ShipReady=true;\s*\n\}\)\(\);\s*$/,`render=()=>{if(failNextRender){failNextRender=false;throw Error('Render failed')}renders.push(s?.phase)};${realFinish?'':'finish=()=>render();'}cinemaStage=()=>{};mountTerminal=()=>{};window.test={recoverInput,board,flareIcon,popupMarkup,adjacent,search,escort,deliver,escapeNest,beginEscort,triggerEvent,runEvent,launch,canLaunch,grantClearance,selectPurge,finishLaunch,departurePlan,quarantineMarkup,orbitalMarkup,endingMarkup,syncQuarantineAudio,heading,marineFacing,alienFacing,marineToken,alienIcon,arrive,sentryAllowed,sentryAim,sentryIcon,fireSentry,spacedTerrain,validItemTarget,beginEscort,deliver,queueEquipment,countdownSweeps,bind,beginItem,useItem,targetPanel,HOME,DROPSHIP,newGame,drop,capture,boardDropship,offerBoarding,endTurn,startNext,runEvent,runMessages,showPopup,closePopup,roundCountdown,countdownValue,countdownMarkup,runAlienTurn,move,act,get s(){return s},get ui(){return ui}};})();`);
+ context.Math=Object.create(Math);context.Math.random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296};vm.runInNewContext(source,context);const t=context.window.test;
+ function fresh(){t.newGame(['A','B','C','D']);t.ui.boot='game';t.ui.cinematic=false;t.s.phase='play';t.s.players[0].role='crew';t.s.players[0].briefed=true;calls.length=0;renders.length=0;timers.clear()}
+ function advance(ms){const end=now+ms;for(;;){const next=[...timers].filter(([,v])=>v.at<=end).sort((a,b)=>a[1].at-b[1].at)[0];if(!next)break;const [n,timer]=next;now=timer.at;if(timer.repeat)timer.at+=timer.repeat;else timers.delete(n);timer.fn()}now=end}
+ fresh();return {t,context,calls,renders,digits,screen,advance,fresh,listeners,timers};
+}
+
+
+
+
+
+
+module.exports={harness};

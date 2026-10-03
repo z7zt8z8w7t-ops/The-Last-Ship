@@ -7,7 +7,7 @@ function polygon(ctx,x,y,r=55,begin=true){if(begin)ctx.beginPath();for(let i=0;i
 function paint(ctx,name,x,y,r=55,redraw){const c=crops[name],img=image(c[0],redraw);if(!img.complete||!img.naturalWidth)return;ctx.drawImage(img,...c.slice(1),x-r*Math.sqrt(3)/2,y-r,r*Math.sqrt(3),r*2)}
 function tileName(t){return t.emplacement?'emplacement':t.terrain==='gravity'?t.pair==='red'?'green':'blue':t.site?.kind==='cargo'?'cache':t.site?.kind==='distress'?'pdt':t.terrain==='open'?'ground':t.terrain}
 function nestAngle(game,key){const candidates=[0,60,120,180,240,300];const dirs=[[1,-1],[1,0],[0,1],[-1,1],[-1,0],[0,-1]];const [q,r]=key.split(',').map(Number);let best=0,score=-1;for(let n=0;n<6;n++){const a=dirs[n],b=dirs[(n+1)%6],c=dirs[(n+2)%6],v=[a,b,c].filter(([dq,dr])=>game.tiles[`${q+dq},${r+dr}`]).length;if(v>score){score=v;best=candidates[n]}}return best}
-function mount(canvas,game,cells,centre,staging,redraw){stop();owner=canvas;const ctx=canvas.getContext('2d');if(!ctx)return;
+function mount(canvas,game,cells,centre,staging,redraw,facing){stop();owner=canvas;const ctx=canvas.getContext('2d');if(!ctx)return;
  const host=canvas.parentElement,w=host?.clientWidth||820,h=host?.clientHeight||614;
  canvas.width=w;canvas.height=h;
  const scale=Math.min(w/820,h/614),ox=(w-820*scale)/2,oy=(h-614*scale)/2;
@@ -32,7 +32,7 @@ function mount(canvas,game,cells,centre,staging,redraw){stop();owner=canvas;cons
   const edges=image('edges',redraw);if(edges.complete&&edges.naturalWidth)for(const c of cells){const t=game.tiles[c.k];if(!t.known||t.emplacement||t.site||!['cover','spores'].includes(t.terrain))continue;const [cx,cy]=centre(c.k),x=cx-20,y=cy-8,half=edges.naturalWidth/2;ctx.drawImage(edges,t.terrain==='spores'?0:half,0,half,edges.naturalHeight,x-58,y-58,116,116)}
   const span=image('bridgeSprite',redraw);if(span.complete&&span.naturalWidth)for(const c of cells){const t=game.tiles[c.k];if(!t.known||t.emplacement||t.terrain!=='bridge')continue;const [cx,cy]=centre(c.k),x=cx-20,y=cy-8;ctx.save();ctx.beginPath();ctx.rect(x-70,y-70,140,140);for(let i=5;i>=0;i--){const a=(60*i-30)*Math.PI/180;i===5?ctx.moveTo(x+55*Math.cos(a),y+55*Math.sin(a)):ctx.lineTo(x+55*Math.cos(a),y+55*Math.sin(a))}ctx.closePath();ctx.clip('evenodd');ctx.drawImage(span,x-66,y-53,132,106);ctx.restore()}
   drawWeather(ctx,weather,now,reduced,cells,centre,[-ox/scale,-oy/scale,w/scale,h/scale]);
-  drawLanding(ctx,game,centre(staging),redraw);frame=requestAnimationFrame(draw)
+  drawLanding(ctx,game,centre(staging),redraw);drawLighting(ctx,game,cells,centre,staging,now,reduced,w,h,scale,ox,oy,facing);frame=requestAnimationFrame(draw)
  }canvas.__terrainResume=()=>{if(owner===canvas&&frame===null&&!document.hidden)draw()};draw()
 }
 document.addEventListener?.('visibilitychange',()=>{if(!document.hidden)owner?.__terrainResume?.()});
@@ -44,13 +44,35 @@ function drawWeather(ctx,state,now,reduced,cells,centre,bounds){
  for(const c of cells){const [x,y]=centre(c.k);polygon(ctx,x-20,y-8,56,false)}ctx.clip('evenodd');
  // Soft mist drifts along the exposed cliff bases, never over a playable hex.
  for(let i=0;i<9;i++){const x=40+i*99+Math.sin((reduced?0:now/18000)+i)*16,y=i%2?575:30;
-  const fog=ctx.createRadialGradient(x,y,2,x,y,85);fog.addColorStop(0,'rgba(160,190,174,.13)');fog.addColorStop(1,'rgba(160,190,174,0)');ctx.fillStyle=fog;ctx.fillRect(x-85,y-85,170,170)}
- const mist=ctx.createRadialGradient(775,330+Math.sin(reduced?0:now/21000)*35,8,775,330,145);mist.addColorStop(0,'rgba(160,190,174,.11)');mist.addColorStop(1,'rgba(160,190,174,0)');ctx.fillStyle=mist;ctx.fillRect(680,130,150,400);
+  const fog=ctx.createRadialGradient(x,y,2,x,y,85);fog.addColorStop(0,'rgba(160,190,174,.19)');fog.addColorStop(1,'rgba(160,190,174,0)');ctx.fillStyle=fog;ctx.fillRect(x-85,y-85,170,170)}
+ const mist=ctx.createRadialGradient(775,330+Math.sin(reduced?0:now/21000)*35,8,775,330,145);mist.addColorStop(0,'rgba(160,190,174,.16)');mist.addColorStop(1,'rgba(160,190,174,0)');ctx.fillStyle=mist;ctx.fillRect(680,130,150,400);
  if(!reduced&&now>=state.next){state.strike=now;state.next=now+16000+Math.random()*18000;const x=745+Math.random()*50;state.bolt=Array.from({length:7},(_,i)=>[x+Math.sin(i*2.7)*13,i*19+25])}
  const age=now-state.strike;
  // One restrained flash per strike, with a smooth decay; no rapid flashing or thunder.
  if(!reduced&&age>=0&&age<600){const alpha=Math.pow(1-age/600,2);ctx.fillStyle=`rgba(177,207,225,${alpha*.14})`;ctx.fillRect(...bounds);ctx.strokeStyle=`rgba(194,225,245,${alpha*.8})`;ctx.lineWidth=1.4;ctx.beginPath();state.bolt.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.stroke();ctx.beginPath();const p=state.bolt[3];ctx.moveTo(...p);ctx.lineTo(p[0]-19,p[1]+12);ctx.lineTo(p[0]-25,p[1]+30);ctx.stroke()}
  ctx.restore();
+}
+// A reusable darkness mask keeps terrain dark while local lights restore visibility.
+let lightCanvas=null;
+function drawLighting(ctx,game,cells,centre,staging,now,reduced,w,h,scale,ox,oy,facing){
+ if(!document.createElement)return;
+ lightCanvas??=document.createElement('canvas');if(lightCanvas.width!==w)lightCanvas.width=w;if(lightCanvas.height!==h)lightCanvas.height=h;
+ const mask=lightCanvas.getContext('2d');mask.setTransform(1,0,0,1,0,0);mask.globalCompositeOperation='source-over';mask.clearRect(0,0,w,h);mask.fillStyle='rgba(0,4,3,.76)';mask.fillRect(0,0,w,h);
+ mask.setTransform(scale,0,0,scale,ox,oy);mask.save();mask.beginPath();
+ ctx.save();ctx.beginPath();
+ for(const c of cells)if(game.tiles[c.k]?.known){const [x,y]=centre(c.k);polygon(mask,x-20,y-8,55,false);polygon(ctx,x-20,y-8,55,false)}
+ mask.clip();ctx.clip();mask.globalCompositeOperation='destination-out';
+ function pool(x,y,r,strength,warm){const glow=mask.createRadialGradient(x,y,0,x,y,r);glow.addColorStop(0,`rgba(0,0,0,${strength})`);glow.addColorStop(.4,`rgba(0,0,0,${strength*.78})`);glow.addColorStop(1,'rgba(0,0,0,0)');mask.fillStyle=glow;mask.fillRect(x-r,y-r,r*2,r*2);
+  if(warm){const colour=ctx.createRadialGradient(x,y,0,x,y,r);colour.addColorStop(0,warm);colour.addColorStop(1,'rgba(255,160,65,0)');ctx.fillStyle=colour;ctx.fillRect(x-r,y-r,r*2,r*2)}}
+ // Vehicle lamps keep the start and evacuation zones readable without revealing neighbours.
+ for(const k of ['0,0',staging]){const [x,y]=centre(k);pool(x-20,y-8,72,.65,null)}
+ game.players?.forEach((p,i)=>{if(p.captive||p.boarded||['0,0',staging].includes(p.pos))return;const [cx,cy]=centre(p.pos),x=cx-20,y=cy-8,focus=facing?.(p,i)||{angle:p.facing||0,guard:false};
+  pool(x,y,66,.94,'rgba(245,226,179,.11)');
+  const swing=focus.guard&&!reduced?-18*Math.cos((Date.now()%6000)/6000*Math.PI*2):0,a=(focus.angle+swing)*Math.PI/180;
+  mask.save();mask.beginPath();mask.moveTo(x,y);for(const side of [-.34,.34])mask.lineTo(x+Math.sin(a+side)*105,y-Math.cos(a+side)*105);mask.closePath();mask.clip();const bx=x+Math.sin(a)*48,by=y-Math.cos(a)*48,beam=mask.createRadialGradient(bx,by,0,bx,by,70);beam.addColorStop(0,'rgba(0,0,0,.88)');beam.addColorStop(1,'rgba(0,0,0,0)');mask.fillStyle=beam;mask.fillRect(bx-70,by-70,140,140);mask.restore();
+ });
+ for(const flare of game.flares||[]){const [x,y]=centre(flare.hex),flicker=reduced?1:.94+.06*Math.sin(now/110)*Math.sin(now/67);pool(x-20,y-8,100,.98*flicker,`rgba(255,93,28,${.25*flicker})`)}
+ ctx.restore();mask.restore();mask.globalCompositeOperation='source-over';ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.drawImage(lightCanvas,0,0);ctx.restore();
 }
 function drawLanding(ctx,game,point,redraw){const img=image('landing',redraw);if(!img.complete||!img.naturalWidth)return;const x=point[0]-20,y=point[1]-8,scale=.19;
  // Transparent ship/platform overlay, without a rectangular apron or clipping polygon.
