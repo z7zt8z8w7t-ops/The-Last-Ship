@@ -14,3 +14,6 @@ Overlay on v100. Includes the CRT roster keyboard and voice toggle, brighter wel
 
 ## v102 update
 Overlay on v101. Includes caller boarding, zero-hour quarantine, final-battle staging, steady CRT typing, permanent flare discovery and player-colour rings around vehicle seat initials. See V102_CHANGES.md.
+
+## v103 update
+Overlay on v102. Removes all crew keyboard flicker/glitch effects. See V103_CHANGES.md.
