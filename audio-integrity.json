@@ -1,0 +1,162 @@
+{
+  "wind": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "012990ce6b719b5d4b1d00eb127a65267b53bc57627d6b7a09beb87bc3cb92e5",
+    "bytes": 2597516
+  },
+  "crt": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "8c87ce304a39cbc5c828f60797b18942b8b1414970795b65e6cf0c7e9b0a324c",
+    "bytes": 81547
+  },
+  "transition": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "73fe3f39c17923e645cb2ef1fc7ef330c13c87cdfe9f548245791b90445761fa",
+    "bytes": 23555
+  },
+  "alien1": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "614725ad3bd384a72b80ecffe3562f738ee20e4ae46379998d13864b628ba668",
+    "bytes": 60126
+  },
+  "alien2": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "1a4b073da0fa1d79719ad7ea60e0def08e29d2b4a6095c5c041ba8417d300234",
+    "bytes": 102445
+  },
+  "alien3": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "2a73eeac457fb78fe2fc299cbbecf0ca37ee93abe41275b2f16d77aca02748ce",
+    "bytes": 104012
+  },
+  "start": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "68848cb1085ba11e8ee4ac33ec07a2f9fce351bd2cc5d8947e64089651bbe4da",
+    "bytes": 44975
+  },
+  "tracker": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "f5c6bd555ef7134d0c5baff17baa45d5b67067f2a80441ceabd8b9aa6ebb9606",
+    "bytes": 18016
+  },
+  "apc": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "da2a1d5347a124981762a97bf55846b0788570680c314239db037443ebfd64e2",
+    "bytes": 249147
+  },
+  "trackerSting": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "6a47a4f481d96c9e06043258e2018e5c1afd2faadaaca79d53758d00b011ab7e",
+    "bytes": 229503
+  },
+  "titleDrone": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "f0b6c22713e5d28751980d77b02e19e8d8d4495817dd923ac378c078c036ab1d",
+    "bytes": 565438
+  },
+  "muthurLogin": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "bdd701084b951dfed56ddc6e52ecd762f0550f128883b0db482401df8c584d6d",
+    "bytes": 338315
+  },
+  "introLoop": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "a1afa6b5e272ec6536b9fd546d6b7110e0f47d850bd6e7c8ed0ddc8c3b0a7c77",
+    "bytes": 4853666
+  },
+  "scientistFound": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "c46fedd925842ff51713f8bfd6c64483b7b248eafce7aff89c6b41eb018320ae",
+    "bytes": 405024
+  },
+  "noiseRoar": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "e8938e58ee1e1b2826a40e3df1f92cf931b1a741de04f7b2c36a614c7553264e",
+    "bytes": 236012
+  },
+  "discovery": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "e15720dd1d9e7c8e9073e6902dcd289fd8d21678efa6d69086df6b0754b9fa36",
+    "bytes": 306282
+  },
+  "femaleCapture": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "d7ddb7de42a1e3e7aa4a39f53abb0f0cbcf127fd25de51f7eb5dbfc26e011fe1",
+    "bytes": 409435
+  },
+  "maleCapture": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "f5f0c30803d3da7b2c8702eb21c2a6ed1a3c620ffebff93fb4e454aff82777e1",
+    "bytes": 409435
+  },
+  "wristOn": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "831858c7746128926d6ec581ed8da7f6c4926f93da0e6b7ef57d1fe0d2c9d762",
+    "bytes": 189215
+  },
+  "wristDrone": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "6893350471865c7c4042a5f16119013d3c76f56683ccc256cbdfe4706fd53928",
+    "bytes": 274468
+  },
+  "muthurOff": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "ac7d1d8ce1c48e615d07dc42ae4ced91f3d53df165b94ac138958dc21fc11fff",
+    "bytes": 212997
+  },
+  "ripley": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "7b65fce7010a94d3da8abb13588524b06a3cf771d7373e8364d27cd39abc4280",
+    "bytes": 1569794
+  },
+  "turnOff": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "6f65f626b29e1b57b6ae330d993a6fe71ea5214e4feeb522147d37b17b0705c1",
+    "bytes": 212841
+  },
+  "chances": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "bc6cf6c8d28562e8a0ed083819d497e5c7af6b955929e4cb1663ab6079f675db",
+    "bytes": 404098
+  },
+  "sentryGun": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "5dfa6994fd31ee63c07c772d925a7717d42d54cfa2178bb24cd0338dec0c473d",
+    "bytes": 235246
+  },
+  "facehugger": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "a547fa0550ec6e57632f8c67eaab26b34e87ee3d2072a3ee1ff24452d3da5784",
+    "bytes": 284492
+  },
+  "roundCountdown": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "c328d7a06a1961db78f658cd9537eb2fed58614b5f8e90d479ffb3b50607e14f",
+    "bytes": 101643
+  },
+  "evac": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "8979c264a93b29f693afb8c31104a7640fe3a4477e4349acb85144500f40c0cc",
+    "bytes": 375773
+  },
+  "background": {
+    "origin": "Unchanged embedded recording from v80",
+    "sha256": "7b0203edc0b70aa3739e4b32b639084e5f0d20acc6184e1abfb3a292a05f58c0",
+    "bytes": 1596407
+  },
+  "rescued": {
+    "origin": "Unchanged embedded recording from v81",
+    "sha256": "acf6ef6075da87e82c221deaeb7c3c5ffe2a0376333ac179553cee077a9d7a23",
+    "bytes": 235119
+  },
+  "endCredits": {
+    "origin": "Original uploaded End credits.m4a, re-encoded stereo AAC 96 kbps without cover artwork",
+    "sha256": "235839eb59b45e83981243d488688f5cd5310f9c28a5c878fe6711b20f13968f",
+    "bytes": 1781155
+  },
+  "sporeBurst": {
+    "origin": "Original synthesized Spore Burst preview; three identical clips at 0, 150 and 300 ms, shared normalization and stereo AAC 128 kbps",
+    "sha256": "15b5f584577d7475e3803caf988332de2e9e2dff27614f3adc285b71f3b61473",
+    "bytes": 51494
+  }
+}

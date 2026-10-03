@@ -3,7 +3,7 @@ const html=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8');
 const script=[...html.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)].map(m=>m[2]).find(code=>code.includes('window.ShipAudio='));
 function harness(webAudio=true){
  const nodes=[],decodes=[],listeners={},nativePlays=[];let context;
- const keys=['background','introLoop','wristDrone','wind','crt','muthurLogin','tracker','wristOn','muthurOff','discovery','start','titleDrone','femaleCapture','maleCapture','ripley','chances','roundCountdown','endCredits'];
+ const keys=['background','introLoop','wristDrone','wind','crt','muthurLogin','tracker','wristOn','muthurOff','discovery','start','titleDrone','femaleCapture','maleCapture','ripley','chances','roundCountdown','endCredits','sporeBurst'];
  const embedded=Object.fromEntries(keys.map((key,i)=>[key,Buffer.from([i+1]).toString('base64')]));
  class Context{
   constructor(){context=this;this.state='suspended';this.currentTime=0;this.destination={};this.sampleRate=22050}
@@ -33,7 +33,7 @@ async function tick(){for(let i=0;i<8;i++)await Promise.resolve()}
  h.api.preload('game');h.resolveAll();await tick();const before=h.nodes.length;h.api.unlock();await tick();assert.equal(h.nodes.length,before,'unlock must not start prepared effects');assert.equal(h.nativePlays.length,0);
  h.api.play('start',.85);h.api.play('ripley');h.api.play('titleDrone');await tick();const requested=h.nodes.slice(before).map(n=>n.buffer.key);assert.deepEqual(requested.sort(),['ripley','start','titleDrone'],'mission launch requests Ripley, screech and score');
  let ended=0;h.api.onEnded('wristOn',()=>ended++);h.api.play('wristOn');await tick();const startup=h.nodes.find(n=>n.buffer.key==='wristOn');assert.equal(startup.gain.gain.value,.6);startup.onended();assert.equal(ended,1);
- h.api.play('roundCountdown');await tick();const countdown=h.nodes.find(n=>n.buffer.key==='roundCountdown');assert.equal(countdown.gain.gain.ramp.value,0);assert.equal(countdown.gain.gain.ramp.time,5);assert.equal(countdown.startArgs[0],0);
+ h.api.play('roundCountdown');await tick();const countdown=h.nodes.find(n=>n.buffer.key==='roundCountdown');assert.equal(countdown.gain.gain.ramp,undefined,'countdown has no end fade');assert.equal(countdown.gain.gain.value,1);assert.equal(countdown.startArgs[0],0);
  h.api.play('discovery');await tick();assert.equal(h.nodes.find(n=>n.buffer.key==='discovery').gain.gain.value,1.5);
  h.api.play('ripley');await tick();assert.equal(h.nodes.find(n=>n.buffer.key==='ripley').gain.gain.value,.5);h.api.play('chances');await tick();assert.equal(h.nodes.find(n=>n.buffer.key==='chances').gain.gain.value,.5);h.api.wind(.1);assert.equal(h.nodes.find(n=>n.buffer.key==='wind'&&n.stops===0).gain.gain.value,.125);
  h.api.stopEffect('wristDrone');assert.equal(drone.stops,1);h.api.setEnabled(false);assert.ok(h.nodes.filter(n=>n.buffer.key==='titleDrone').every(n=>n.stops===1));h.api.setEnabled(true);await tick();assert.equal(h.nodes.filter(n=>n.buffer.key==='wristDrone').length,1,'unmute cannot revive a cancelled drone');

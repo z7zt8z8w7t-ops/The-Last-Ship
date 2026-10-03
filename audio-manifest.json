@@ -285,5 +285,13 @@
     "embedded_key": "endCredits",
     "container": "index.html #ship-audio-data",
     "edits": "Full audio duration; audio-only stereo AAC at 96 kbps. Cover artwork and metadata removed. One-shot playback at 100% gain; begins with orbital fade-in and continues through results."
+  },
+  {
+    "usage": "Spore Burst event popup opening",
+    "creator": "Original procedural sound created for The Last Ship",
+    "source": "Approved Spore_Burst_Preview.mp3 / underlying synthesized PCM",
+    "edits": "Three copies overlap at 0, 150 and 300 ms; mixed from original stereo PCM and normalized together to 0.85 peak, encoded stereo AAC 128 kbps.",
+    "embedded_key": "sporeBurst",
+    "container": "index.html #ship-audio-data"
   }
 ]

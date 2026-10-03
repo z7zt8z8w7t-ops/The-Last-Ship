@@ -38,7 +38,7 @@ function mount(canvas,game,cells,centre,staging,redraw,facing){stop();owner=canv
 document.addEventListener?.('visibilitychange',()=>{if(!document.hidden)owner?.__terrainResume?.()});
 // Weather persists across redraws, has no timers/input locks, and paints outside the hexes.
 const weatherStates=new WeakMap();
-function weatherFor(game){if(!weatherStates.has(game))weatherStates.set(game,{next:performance.now()+12000+Math.random()*12000,strike:-Infinity,thunderDue:Infinity});return weatherStates.get(game)}
+function weatherFor(game){if(!weatherStates.has(game))weatherStates.set(game,{next:performance.now()+12000+Math.random()*12000,strike:-Infinity,corner:null,thunderDue:Infinity});return weatherStates.get(game)}
 function drawWeather(ctx,state,now,reduced,cells,centre,bounds,game){
  ctx.save();ctx.beginPath();ctx.rect(...bounds);
  for(const c of cells){const [x,y]=centre(c.k);polygon(ctx,x-20,y-8,56,false)}ctx.clip('evenodd');
@@ -46,7 +46,7 @@ function drawWeather(ctx,state,now,reduced,cells,centre,bounds,game){
  for(let i=0;i<9;i++){const x=40+i*99+Math.sin((reduced?0:now/18000)+i)*16,y=i%2?575:30;
   const fog=ctx.createRadialGradient(x,y,2,x,y,85);fog.addColorStop(0,'rgba(160,190,174,.19)');fog.addColorStop(1,'rgba(160,190,174,0)');ctx.fillStyle=fog;ctx.fillRect(x-85,y-85,170,170)}
  const mist=ctx.createRadialGradient(775,330+Math.sin(reduced?0:now/21000)*35,8,775,330,145);mist.addColorStop(0,'rgba(160,190,174,.16)');mist.addColorStop(1,'rgba(160,190,174,0)');ctx.fillStyle=mist;ctx.fillRect(680,130,150,400);
- if(!reduced&&now>=state.next){state.strike=now;state.thunderDue=now+650+Math.random()*650;state.next=now+16000+Math.random()*18000}
+ if(!reduced&&now>=state.next){state.strike=now;state.corner=state.corner===null||state.corner===undefined?Math.floor(Math.random()*4):(state.corner+1+Math.floor(Math.random()*3))%4;state.thunderDue=now+650+Math.random()*650;state.next=now+16000+Math.random()*18000}
  if(now>=state.thunderDue){const delay=now-state.thunderDue;state.thunderDue=Infinity;if(!reduced&&delay<1200)window.ShipStormThunder?.(game)}
  ctx.restore();
 }
@@ -55,7 +55,7 @@ function drawStormFlash(ctx,state,now,reduced,cells,centre,bounds){
  const age=now-state.strike;if(reduced||age<0||age>=800)return;
  const alpha=Math.pow(1-age/800,2);ctx.save();ctx.beginPath();ctx.rect(...bounds);
  for(const c of cells)if(!state.game?.tiles?.[c.k]?.known){const [x,y]=centre(c.k);polygon(ctx,x-20,y-8,55,false)}
- ctx.clip('evenodd');ctx.fillStyle=`rgba(125,13,20,${alpha*.48})`;ctx.fillRect(...bounds);
+ ctx.clip('evenodd');const [left,top,width,height]=bounds,corner=state.corner??0,cx=left+width*(corner%2?.94:.06),cy=top+height*(corner>=2?.94:.06),radius=Math.max(width,height)*.78,flash=ctx.createRadialGradient(cx,cy,0,cx,cy,radius);flash.addColorStop(0,`rgba(219,246,228,${alpha*.57})`);flash.addColorStop(.12,`rgba(51,111,73,${alpha*.48})`);flash.addColorStop(.55,`rgba(12,65,35,${alpha*.19})`);flash.addColorStop(1,'rgba(6,40,20,0)');ctx.fillStyle=flash;ctx.fillRect(...bounds);
  ctx.restore();
 }
 // A reusable darkness mask keeps terrain dark while local lights restore visibility.
@@ -76,7 +76,7 @@ function drawLighting(ctx,game,cells,centre,staging,now,reduced,w,h,scale,ox,oy,
  // Vehicle lamps keep the start and evacuation zones readable without revealing neighbours.
  for(const k of ['0,0',staging]){const [x,y]=centre(k);pool(x-20,y-8,72,.65,null)}
  const [apcx,apcy]=centre('0,0');for(const dx of [-16,16]){beam(apcx-20+dx,apcy-8-37,0,105,.27,.9,'rgba(244,241,216,.13)');pool(apcx-20+dx,apcy-8+38,28,.48,'rgba(255,24,37,.21)')}
- game.players?.forEach((p,i)=>{if(p.captive||p.boarded||['0,0',staging].includes(p.pos))return;const [cx,cy]=centre(p.pos),x=cx-20,y=cy-8,focus=facing?.(p,i)||{angle:p.facing||0,guard:false};
+ game.players?.forEach((p,i)=>{if(p.captive||p.boarded||['0,0',staging].includes(p.pos))return;const [cx,cy]=centre(p.pos),gun=game.sentries?.find(g=>g.hex===p.pos),offset=(gun?.deployFacing||0)*Math.PI/180,x=cx-20-(gun?Math.sin(offset)*18:0),y=cy-8+(gun?Math.cos(offset)*18:0),focus=facing?.(p,i)||{angle:p.facing||0,guard:false};
   pool(x,y,43,.57,'rgba(245,226,179,.045)');
   const swing=focus.guard&&!reduced?-18*Math.cos((Date.now()%6000)/6000*Math.PI*2):0,a=(focus.angle+swing)*Math.PI/180;
   mask.save();mask.beginPath();mask.moveTo(x,y);for(const side of [-.34,.34])mask.lineTo(x+Math.sin(a+side)*105,y-Math.cos(a+side)*105);mask.closePath();mask.clip();const bx=x+Math.sin(a)*48,by=y-Math.cos(a)*48,beam=mask.createRadialGradient(bx,by,0,bx,by,70);beam.addColorStop(0,'rgba(0,0,0,1)');beam.addColorStop(1,'rgba(0,0,0,0)');mask.fillStyle=beam;mask.fillRect(bx-70,by-70,140,140);mask.restore();
