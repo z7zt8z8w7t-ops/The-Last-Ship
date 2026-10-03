@@ -11,3 +11,6 @@ Overlay the changed-file archive on v99. See V100_CHANGES.md and TEST_RESULTS.md
 
 ## v101 update
 Overlay on v100. Includes the CRT roster keyboard and voice toggle, brighter well cores, and final-stand platform layering fix. See V101_CHANGES.md.
+
+## v102 update
+Overlay on v101. Includes caller boarding, zero-hour quarantine, final-battle staging, steady CRT typing, permanent flare discovery and player-colour rings around vehicle seat initials. See V102_CHANGES.md.

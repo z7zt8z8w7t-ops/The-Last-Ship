@@ -1,11 +1,15 @@
-# v101 validation
+# v102 validation
 
-Passed CRT keyboard actions: characters/numbers, case, space, backspace, clear, 24-character limit, next/done, voice toggle round trips, and guards outside roster editing. Verified read-only name inputs and removal of native select reads.
+Passed manual caller boarding, first passenger launch, correct quarantine passenger list, and staging placement of all remaining Marines including captives.
 
-Passed native canvas rendering and draw-order assertions: platform/ramp before Marines/aliens, flying hull afterward, actor/death/engine/hatch/blackout checkpoints.
+Passed zero-hour combinations: 1/2 scientists with/without a passenger; only two scientists plus an eligible passenger reach quarantine. Verified zero hours, unlocked decision controls and failure results otherwise.
 
-Passed 500 last-stand layout/crew combinations and every four/six-player quarantine purge combination. Gunfire and three death timestamps remain unchanged.
+Passed flare use on an undiscovered tile and permanent discovery after removing the burned-out flare.
 
-Passed 100 virtual games: 899 rounds, 7,501 moves and 3,204 reports. All 33 embedded audio payloads compare exactly with v100. Changed JavaScript passes syntax checks.
+Passed CRT keyboard and voice toggle checks, all four/six-player quarantine purge combinations, and 500 last-stand layout/crew cases.
 
-Physical iPad/Safari keyboard layout and rendering still require device testing.
+Updated the virtual playthrough driver to complete quarantine decisions and departure. Passed 100 games through results: 901 rounds, 7,501 moves, 3,204 reports, 738 captures and four boardings.
+
+Verified APC and dropship seat markup contains matching player-colour rings.
+
+Changed JavaScript passes syntax checks. All 33 embedded audio payloads exactly match v101. Physical iPad/Safari testing remains necessary.

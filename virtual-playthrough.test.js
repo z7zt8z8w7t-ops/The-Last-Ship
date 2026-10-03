@@ -13,7 +13,8 @@ for(let game=0;game<100;game++){
    if(t.s.phase==='briefing')t.act('ackMission');
    else if(t.s.phase==='handoff')t.act('startTurn');
    else if(t.ui.private)t.act('closePrivate');
-   else if(t.s.phase==='readyLaunch'){stopped=true;break}
+   else if(t.s.phase==='readyLaunch')t.launch();
+   else if(t.s.phase==='quarantine'){for(const i of t.s.quarantine.eligible)t.grantClearance(i);t.finishLaunch(false)}
    else if(t.s.phase==='over'){stopped=true;break}
    else if(t.s.phase==='play'){
     const p=t.s.players[t.s.turn],tile=t.s.tiles[p.pos];
@@ -32,7 +33,7 @@ for(let game=0;game<100;game++){
   assert.ok(t.s.moves>=0&&t.s.ap>=0,'budgets must remain nonnegative');
   assert.ok(t.s.players.every(p=>p.cargo.length<=2),'inventory limit');
  }
- assert.ok(stopped,'playthrough must reach mission end or launch-ready without a stalled state');rounds+=t.s.round;games++;
+ assert.ok(stopped,'playthrough must reach mission results without a stalled state');rounds+=t.s.round;games++;
 }
 console.log(JSON.stringify({games,rounds,moves,reports,captures,boardings}));
 })().catch(e=>{console.error(e);process.exitCode=1});

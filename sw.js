@@ -1,4 +1,4 @@
-const CACHE='the-last-ship-v101';
+const CACHE='the-last-ship-v102';
 const ROOT=self.registration.scope;
 const ASSETS=['./last-stand.js?v=100','./bioscanner-bodies.png','./','./index.html','./style.css?v=99','./game.js?v=99','./artwork.js?v=99','./wrist-terminal.js?v=99','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png','./alien-planet.webp','./sound-check.html','./board-ground.webp','./board-valley.webp','./terrain.js?v=99','./marine-tokens.png','./alien-overhead.png','./alien-body.webp','./alien-tail.webp','./flare-overhead.webp','./dropship-landing.webp','./sentry-overhead-parts.png','./orbital-ending.png','./quarantine-schematic.png'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));

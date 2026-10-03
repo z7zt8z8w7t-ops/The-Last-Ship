@@ -644,3 +644,8 @@ body{position:fixed;inset:0;height:100dvh}
 @media(max-height:650px){.crt-keyboard{padding:8px 12px;bottom:6px}.keyboard-row{margin-top:4px}.keyboard-row button{min-height:36px}.roster:has(.crt-keyboard){padding-bottom:290px}}
 @media(max-width:600px){.roster .voice-toggle{flex-basis:112px;font-size:.63rem}.keyboard-row{gap:3px}.crt-keyboard{padding:8px}.keyboard-row button{font-size:.8rem}.keyboard-tools button{font-size:.6rem}}
 @media(prefers-reduced-motion:reduce){.keyboard-cursor{animation:none}}
+
+/* Keep keyboard typing steady; its rare distortion follows a persistent clock. */
+.crt-keyboard{animation:keyboardRareGlitch 17.3s steps(1,end) infinite}
+@keyframes keyboardRareGlitch{0%,98%,99.2%,100%{filter:none}98.35%{filter:brightness(1.08);text-shadow:1px 0 #7ed99b}98.7%{filter:brightness(.97)}}
+@media(prefers-reduced-motion:reduce){.crt-keyboard{animation:none}}
