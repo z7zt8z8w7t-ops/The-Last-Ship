@@ -1,5 +1,5 @@
-The Last Ship v133 — overwrite supplied files, retaining other assets.
+The Last Ship v134 — overwrite supplied files, retaining other assets.
 
-New supplied Game background LQ track embedded unchanged after clean decode verification. Uses two-second equal-power crossfade to form a circular PCM loop. Starts once at the first APC deployment typing (approximately 3.9 seconds into APC audio), continues on the board, stops on quarantine opening. Existing capture pause/resume behaviour retained. Board test previews also play music. Title and ending soundtracks retained.
+Departure soundtrack replaced with the supplied Final battle(1).m4a. Starts at the same departure trigger; duration remains 50.271202 seconds. Animation and soundtrack cue timestamps unchanged. Every other embedded audio file unchanged.
 
-Checks: source audio decodes cleanly, embedded bytes match upload, all other audio unchanged, JavaScript syntax, APC typing cue and quarantine stop, music resume/fallback. Physical iPad playback remains to be checked.
+Replacement decodes cleanly; byte comparison and JavaScript syntax checks passed.
