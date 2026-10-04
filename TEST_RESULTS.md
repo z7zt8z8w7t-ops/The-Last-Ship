@@ -1,1 +1,1 @@
-terrain.js syntax passed. Pixel geometry check: every sprite pixel with alpha above 16 clears all 37 playable hexes with a 3-unit margin. Gameplay, embedded audio and artwork are unchanged from v109. No new timers or input locks. Actual iPad testing remains.
+JavaScript syntax passed. Direct-entry test confirms departing phase, one aboard, remaining defenders at staging, all tiles revealed, then orbital at 39 seconds and results at 45 seconds. Rendering order checked. Embedded audio unchanged. Actual iPad playback not tested.

@@ -674,3 +674,6 @@ body{position:fixed;inset:0;height:100dvh}
 .cinema-paused .apc-transmission *{animation-play-state:paused!important}
 @media(prefers-reduced-motion:reduce){.apc-transmission .typing-cursor{animation:none}.apc-transmission-off .apc-transmission-copy{animation-name:apcTextFade}.apc-transmission-off .apc-shutdown-glow{display:none}}
 @keyframes apcTextFade{from{opacity:1}to{opacity:0}}
+
+/* Temporary testing shortcut; normal final-battle canvas stays above scenery. */
+.temporary-battle-preview{position:fixed;left:16px;bottom:145px;z-index:250;font:12px monospace;letter-spacing:1px;color:#c4f0b1;background:#092017;border:1px solid #75b78a;border-radius:4px;padding:12px;box-shadow:0 0 12px #66aa7733}

@@ -1,0 +1,1 @@
+Temporary final-battle preview shortcut. Uses the normal launch sequence and timings. Facility scenery is on terrain canvas z-index 0; departing ship and battle actors render on canvas z-index 45, above buildings.

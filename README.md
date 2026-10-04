@@ -1,1 +1,1 @@
-Apply this changed-files-only update over v109. Keep all other files.
+Apply over v110. Temporary PREVIEW FINAL BATTLE button appears on the initial screen, crew roster and main board outside cinematics. It replaces the current session with a test extraction: first player aboard, remaining players defending the staging area. Button disappears during the battle and ending. Latest proposed two-building artwork is not included; tests current installed facility.
