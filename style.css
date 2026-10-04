@@ -804,3 +804,13 @@ body.has-test-nav #app{padding-top:28px}body.has-test-nav .layout .board{height:
 
 /* Continuous final-battle terrain: grid and tile targeting outlines are hidden. */
 .board.final-battle .hex,.board.final-battle .tile-target-fill{display:none!important}
+
+/* APATE personnel-terminal schematic: static vector with small status effects. */
+.roster-registration{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:24px;min-height:0;flex:none}
+.apate-roster{color:#9edb95;display:flex;flex-direction:column;justify-content:center;padding:8px 20px;font:12px monospace;gap:5px;min-width:0}
+.apate-roster strong{font-size:11px;letter-spacing:1px}.apate-roster svg{width:100%;max-height:190px;min-height:90px;flex:1}.apate-roster small{opacity:.7;margin-top:4px}
+.apate-status{animation:apate-status 2s steps(2,end) infinite}.apate-scan{animation:apate-scan 8s linear infinite}
+@keyframes apate-status{50%{opacity:.25}}@keyframes apate-scan{from{transform:translateY(0)}to{transform:translateY(210px)}}
+@media(max-width:850px){.roster-registration{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:8px}.apate-roster{padding:4px;font-size:9px}.apate-roster strong{font-size:9px}.crew-roster-screen .roster .setup-rank{flex-basis:90px}}
+@media(max-width:600px){.roster-registration{display:block}.apate-roster{display:none}}
+@media(prefers-reduced-motion:reduce){.apate-status,.apate-scan{animation:none}}
