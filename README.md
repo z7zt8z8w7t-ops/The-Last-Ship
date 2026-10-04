@@ -1,1 +1,5 @@
-The Last Ship v117. Apply changed files over v116; retain other existing assets. All currently playable player-tab buttons pulse, including End Turn whenever available. Skip matches Initialise size/style.
+# The Last Ship — v118 update
+
+Apply these changed files over v117 and retain all other existing assets. Upload the contents, not the ZIP itself. This package contains game.js, style.css, index.html and sw.js plus change notes and verification results.
+
+No visible version number or diagnostic button has been restored.

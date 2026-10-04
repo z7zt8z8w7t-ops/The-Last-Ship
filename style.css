@@ -741,3 +741,46 @@ body:has(.crew-roster-screen) .temporary-battle-preview{top:22px;bottom:auto;lef
 
 /* Same physical size and typography for Initialise and both Skip controls. */
 .crt-terminal-button,.sequence-skip{width:160px;min-height:48px;padding:13px 20px;border:1px solid #baf7a8;border-radius:0;background:#020904;color:#baf7a8;font:650 1rem ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;letter-spacing:.09em;text-shadow:0 0 6px #a4ff928c;box-shadow:0 0 8px #a4ff9240,inset 0 0 8px #a4ff9220}
+
+/* Green/red personnel CRT; handover is always green. */
+.crt-player{--crt-ink:#a9ef99;--crt-dark:#041109;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#000!important;isolation:isolate}
+.crt-player.company-tab{--crt-ink:#ff8c8c;--crt-dark:#160505}
+.crt-player .flip-inner,.crt-player .flip-inner.is-back,.crt-player .flip-inner.flip-out,.crt-player .flip-inner.flip-in{transform:none;animation:none;transform-style:flat}
+.crt-player .flip-face{transform:none;backface-visibility:visible;-webkit-backface-visibility:visible}
+.crt-player .flip-front{border:1px solid var(--crt-ink);background:repeating-linear-gradient(0deg,#0002 0 1px,transparent 1px 3px),var(--crt-dark);color:var(--crt-ink);box-shadow:inset 0 0 28px color-mix(in srgb,var(--crt-ink) 9%,transparent);text-shadow:0 0 4px color-mix(in srgb,var(--crt-ink) 35%,transparent)}
+.crt-player .flip-back{--crt-ink:#a9ef99;--crt-dark:#041109;border:1px solid #a9ef99;background:repeating-linear-gradient(0deg,#0002 0 1px,transparent 1px 3px),#041109;color:#a9ef99;box-shadow:inset 0 0 35px #a9ef9912;visibility:hidden}
+.crt-player .is-back>.flip-back{visibility:visible}
+.crt-player .flip-out>.flip-front{visibility:visible;animation:player-crt-off 1.5s linear both}
+.crt-player .flip-in>.flip-front{visibility:visible;animation:player-crt-on .75s ease-out both}
+.crt-player .flip-out>.flip-back,.crt-player .flip-in>.flip-back{visibility:hidden;animation:none}
+.crt-player .personnel-card,.crt-player .personnel-caption,.crt-player .turn-status .status-card,.crt-player .inventory-slot,.crt-player .heart-monitor,.crt-player .infection-status,.crt-player .escort-badge,.crt-player .notice{background:transparent!important;color:var(--crt-ink)!important;border-color:color-mix(in srgb,var(--crt-ink) 55%,transparent)!important;box-shadow:none}
+.crt-player .personnel-caption,.crt-player .rank-chevron,.crt-player .slot-number,.crt-player .slot-name small,.crt-player .inventory-panel h3,.crt-player .status-card b,.crt-player .status-card small,.crt-player .monitor-title,.crt-player .monitor-foot{color:var(--crt-ink)!important}
+.crt-player .personnel-barcode svg{fill:var(--crt-ink)}
+.crt-player .heart-monitor{--pulse:var(--crt-ink);font-family:inherit}
+.crt-player .monitor-screen{background:repeating-linear-gradient(0deg,transparent 0 19px,#a9ef9910 20px),#0008;border-color:var(--crt-ink)}
+.crt-player .flip-front button{background:var(--crt-dark);border:1px solid var(--crt-ink)!important;color:var(--crt-ink)!important;font-family:inherit;text-shadow:0 0 4px var(--crt-ink);box-shadow:none;clip-path:none;border-radius:4px}
+.crt-player .flip-front button:disabled{opacity:.35;text-shadow:none}
+.crt-player .flip-front button.playable-option:not(:disabled){animation:player-launch-pulse 1.5s ease-in-out infinite}
+.handoff-terminal{width:100%;padding:24px 16px;display:flex;flex-direction:column;align-items:center;gap:16px;font-family:inherit}
+.handoff-terminal>small{font-size:10px;letter-spacing:.12em;opacity:.7}
+.handoff-terminal h3,.handoff-terminal p{margin:0;line-height:1.5;font-size:14px}
+.handoff-terminal>strong{font-size:18px;letter-spacing:.08em}
+.handoff-terminal .alien-emblem{font-size:42px;color:#a9ef99}
+.handoff-power-up{animation:player-crt-on .75s ease-out both}
+.fingerprint-button{display:flex;flex-direction:column;align-items:center;width:min(100%,190px);min-height:150px;gap:8px;background:#041109!important;color:#a9ef99!important;border:1px solid #a9ef99;font:700 11px ui-monospace,monospace;letter-spacing:.08em}
+.fingerprint-button svg,.fingerprint-scan svg{width:90px;height:101px;filter:drop-shadow(0 0 4px #a9ef9944)}
+.fingerprint-scan{position:relative}
+.fingerprint-scan::after{content:'';position:absolute;left:0;right:0;top:0;height:2px;background:#c9ffb5;box-shadow:0 0 8px #a9ef99;animation:fingerprint-read .9s linear infinite alternate}
+.authentication-bar{width:100%;height:22px;border:1px solid #a9ef99;padding:3px;text-align:left}
+.authentication-bar span{display:block;width:0;height:100%;background:repeating-linear-gradient(90deg,#a9ef99 0 7px,transparent 7px 10px);animation:authentication-fill 1.8s linear both}
+@keyframes authentication-fill{to{width:100%}}
+@keyframes fingerprint-read{to{top:100%}}
+@keyframes player-launch-pulse{50%{background:color-mix(in srgb,var(--crt-ink) 22%,var(--crt-dark));box-shadow:0 0 16px color-mix(in srgb,var(--crt-ink) 53%,transparent);color:var(--crt-ink);filter:brightness(1.3)}}
+@keyframes player-crt-off{0%{transform:scale(1);opacity:1;filter:brightness(1)}20%{transform:scale(1,.015);opacity:1;filter:brightness(3)}32%{transform:scale(.005,.005);opacity:1}33%,100%{transform:scale(.005,.005);opacity:0}}
+@keyframes player-crt-on{0%{transform:scale(.005,.005);opacity:0}15%{transform:scale(1,.015);opacity:1;filter:brightness(2)}65%{transform:scale(1);filter:brightness(1.2)}100%{transform:scale(1);opacity:1;filter:none}}
+@media(prefers-reduced-motion:reduce){.crt-player .flip-out>.flip-front{animation:none;opacity:0}.crt-player .flip-in>.flip-front,.handoff-power-up{animation:none}.crt-player .flip-front button.playable-option:not(:disabled),.fingerprint-scan::after{animation:none}}
+/* Classified assignment keeps all personnel data black until acknowledgement. */
+.crt-player.company-intro .flip-face{visibility:hidden!important}
+.crt-player.company-intro::after{content:'';position:absolute;inset:0;pointer-events:none;border-radius:16px;background:repeating-linear-gradient(0deg,transparent 0 8px,#b6f5a805 9px 10px),#000;animation:classified-tab-static 3.7s steps(1,end) infinite;z-index:5}
+@keyframes classified-tab-static{0%,31%,35%,73%,77%,100%{filter:none;opacity:1}32%,74%{background:repeating-linear-gradient(0deg,#a9ef9920 0 2px,#000 2px 17px);filter:brightness(1.6)}34%,76%{background:linear-gradient(transparent 42%,#b6f5a82b 43% 44%,#000 45%)}}
+@media(prefers-reduced-motion:reduce){.crt-player.company-intro::after{animation:none}}
