@@ -1,5 +1,7 @@
-The Last Ship v130 — overwrite supplied files, retaining other assets.
+The Last Ship v131 — overwrite supplied files, retaining other assets.
 
-Third wave keeps approaching during the closing gunfire. At most two aliens per defender jump at 33.3–33.4 seconds, landing at 33.85–33.95 seconds immediately before the 34-second fade. Other third-wave aliens continue approaching and never form piles. First and second waves remain entirely killed on soundtrack cues. APATE image and test navigation retained.
+Audio repair: eleven damaged AAC recordings re-encoded from recoverable audio into clean AAC containers; original track durations retained with timeline gaps padded where damaged packets could not decode. All 33 embedded recordings now decode without errors. Terminal ambience impulse cleanup reduces the reported spike; no de-click filtering applied to gunfire.
 
-JavaScript and canvas timeline checks passed; physical device playback unverified.
+Board music now predecoded during gameplay preparation, resumes a paused audio context, clears stale failure notices on successful startup, and falls back to native playback on decoding failure. Board test shortcuts enable music; title and ending previews do not run board music.
+
+Checks: all embedded audio decode cleanly; original durations retained; JavaScript syntax; mocked music resume/fallback/duplicate-start checks. Actual iPad playback remains unverified. Previously damaged samples cannot be perfectly reconstructed from this copy.
