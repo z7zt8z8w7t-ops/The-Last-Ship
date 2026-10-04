@@ -53,6 +53,7 @@ function mountAPCTransmission(){
  const elapsed=session.elapsed+Math.max(0,performance.now()-session.started),state=apcTransmissionState(elapsed);
  host.hidden=!state.show;if(state.closing&&!host.classList.contains('apc-transmission-off'))host.style.setProperty('--apc-off-age',`-${Math.min(1556,state.offAge)}ms`);host.classList.toggle('apc-transmission-off',state.closing);
  host.querySelectorAll('[data-apc-line]').forEach((line,i)=>{const text=line.querySelector('[data-apc-text]');if(text)text.textContent=state.visible[i];const cursor=line.querySelector('.typing-cursor');if(cursor)cursor.hidden=i!==state.active||!state.show||state.closing});
+ if(s&&!s.backgroundStarted&&(state.typing||state.visible.some(text=>text.length))){s.backgroundStarted=true;audioSafely(()=>ShipAudio.gameLoop(true))}
  const typing=state.typing&&soundOn;if(typing!==session.drone){session.drone=typing;audioSafely(()=>typing?ShipAudio.play('wristDrone',.1):ShipAudio.stopEffect('wristDrone'))}
  if(state.closing&&!session.offPlayed){session.offPlayed=true;if(soundOn)audioSafely(()=>ShipAudio.play('muthurOff'))}
  apcTextTimer=setTimeout(mountAPCTransmission,25);
