@@ -1,0 +1,1 @@
+Replaces only finalBattle embedded audio with the user-supplied We are leaving.m4a. Stereo AAC 128 kbps; no gain or fade changes. Keeps 50.271-second playback window with approximately 48 ms silent end padding after AAC decoding. Animation and all gunfire/death cues unchanged.

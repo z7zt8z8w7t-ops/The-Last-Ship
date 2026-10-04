@@ -1,1 +1,1 @@
-JavaScript syntax passed. Direct-entry test confirms departing phase, one aboard, remaining defenders at staging, all tiles revealed, then orbital at 39 seconds and results at 45 seconds. Rendering order checked. Embedded audio unchanged. Actual iPad playback not tested.
+Verified other embedded clips unchanged, gameplay and last-stand cue files byte-identical to v111. New AAC stream decodes successfully. Actual iPad playback not tested.

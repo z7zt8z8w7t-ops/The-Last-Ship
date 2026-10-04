@@ -20,3 +20,6 @@ All source credits remain. 31 clips were re-encoded compactly; one retained its 
 
 ## v100 departure
 User-supplied Final battle.m4a, embedded as stereo AAC at 128 kbps without trimming or intentional gain/fade changes. Wind uses the existing loop; delayed thunder uses the existing procedural thunder generator with overlapping storm tails.
+
+## Final battle soundtrack replacement
+User-supplied We are leaving.m4a replaces Final battle.m4a, stereo AAC 128 kbps. Duration 50.271202 seconds; animation, gunfire and alien-death timings unchanged.
