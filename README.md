@@ -1,7 +1,18 @@
-# The Last Ship — v122 update
+# The Last Ship — v123 testing update
 
-Overwrite matching files in your existing game folder; retain all other assets. Includes all v119–v121 changes.
+Extract and overwrite the matching files in your existing game folder. Retain all other assets. Includes previous v119–v122 updates.
 
-Alien Lunge and Spore Burst now show their event report first. The alien stays still until acknowledgement and completion of the terminal closing animation. The clear board is allowed to paint before the normal alien movement begins. If a Marine is reached, the existing capture animation/audio and capture report follow. Sentry interception remains in the normal movement path.
+Changes:
+- Temporary small TEST buttons across the top: Intro, Crew, Title, Board, Pass iPad, male/female Capture, Countdown, Quarantine, Battle, Failed Battle, Orbit and Failed Result.
+- Each jump replaces the current session with a fresh sample mission. Use these while testing, not during a game you want to continue. Test controls are isolated behind TEST_NAVIGATION in game.js for removal after testing.
+- At the final countdown, an incomplete rescue still plays the final battle and orbital transition. The results popup reports MISSION FAILED when fewer than two scientists were aboard, or no crew escaped.
+- Quarantine buttons for available status choices, purge confirmation and launch pulse like Launch Mission. Disabled and already-selected actions stay steady.
+- Hex and target outlines are hidden during the final battle, making the terrain read as one continuous area. Normal play retains the grid.
 
-Validation: JavaScript syntax passed. Isolated asynchronous checks passed for both events: no movement before acknowledgement, no movement while the terminal closes, movement followed by capture/reports, Spore Burst movement restriction retained, reset during closure cancels the old mission's movement. Full iPad playback has not been tested.
+Verification:
+- JavaScript syntax checks passed.
+- All 13 test-jump branches exercised with isolated state and mocked rendering.
+- Final countdown with 0/1 scientists routes to battle; 2 scientists with crew routes to quarantine.
+- Departure sequences tested for 0/1/2 scientists and zero/two crew: battle, orbit, correct result. Successful crew/company outcomes retained.
+- Final-battle class and grid suppression, quarantine pulse selectors checked.
+- Full iPad playback and visual layout have not been tested.

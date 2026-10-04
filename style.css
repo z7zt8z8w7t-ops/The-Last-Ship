@@ -792,3 +792,15 @@ body:has(.crew-roster-screen) .temporary-battle-preview{top:22px;bottom:auto;lef
 .fingerprint-button:active{animation:none!important;background:#164424!important;box-shadow:0 0 26px #bbffaacc!important}
 @keyframes fingerprint-prompt{0%,100%{background:#041109;color:#a9ef99;border-color:#9bd98c;box-shadow:0 0 9px #a9ef9944,inset 0 0 10px #a9ef9912}50%{background:#163e21;color:#e2ffd7;border-color:#e2ffd7;box-shadow:0 0 29px #a9ef99bb,0 0 55px #a9ef9944,inset 0 0 25px #a9ef9940}}
 @media(prefers-reduced-motion:reduce){.fingerprint-button{animation:none!important;background:#12331b!important;border-color:#d5ffc8!important;box-shadow:0 0 22px #a9ef9988!important}}
+
+/* Quarantine actions use the same pulse as Launch Mission. */
+.quarantine-screen button:not(:disabled):not(.quarantine-sound):not([aria-pressed="true"]){animation:launch-ready-pulse 1.5s ease-in-out infinite}
+.quarantine-screen button:disabled{animation:none;opacity:.35}
+@media(prefers-reduced-motion:reduce){.quarantine-screen button{animation:none!important}}
+/* TEMPORARY TEST NAVIGATION */
+#test-navigation{position:fixed;top:0;left:0;right:0;height:28px;z-index:99999;display:flex;align-items:center;gap:4px;padding:2px 6px;background:#07120ff5;border-bottom:1px solid #6d9b79;overflow-x:auto;white-space:nowrap;font:10px ui-monospace,monospace}
+#test-navigation span{color:#ffd58c;margin-right:3px}#test-navigation button{flex:none;margin:0;padding:3px 7px;min-height:20px;border:1px solid #64946c;border-radius:4px;color:#bcf5ac;background:#10221a;font:10px ui-monospace,monospace}
+body.has-test-nav #app{padding-top:28px}body.has-test-nav .layout .board{height:calc(100dvh - 36px);min-height:0}body.has-test-nav .screen{min-height:calc(100dvh - 28px)}body.has-test-nav .side.player-flip,body.has-test-nav .flip-inner{min-height:0}
+
+/* Continuous final-battle terrain: grid and tile targeting outlines are hidden. */
+.board.final-battle .hex,.board.final-battle .tile-target-fill{display:none!important}
