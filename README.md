@@ -1,7 +1,7 @@
-# The Last Ship — v120 update
+# The Last Ship — v121 update
 
-Overwrite the matching files in your existing game folder. Retain all other assets. Includes the v119 capture animation, gravity-well flare restriction and scientist PDT placement change.
+Overwrite matching files in your existing game folder; retain all other assets. Includes all v119 and v120 changes.
 
-Fingerprint handover button: clearer curved fingerprint ridges and central loop, larger icon, stronger 1.4-second pulsing border/background/glow, brighter prompt. Authentication action and sounds retained. Reduced-motion mode uses a steady bright highlight.
+Motion Echo shows the glowing alien contact token for the rest of the current round after the report closes. It follows alien movement, works on undiscovered tiles and without Marine proximity, and does not reveal terrain. If there are two aliens, both contacts are shown. Normal visibility resumes at the next round.
 
-Validation: JavaScript syntax checks passed; fingerprint SVG rendered and inspected. Full iPad playback and browser pulse have not been tested.
+Validation: JavaScript syntax checks and isolated undiscovered/known tile, moving contact, two-alien rendering and round expiry checks passed. Full iPad playback has not been tested.
