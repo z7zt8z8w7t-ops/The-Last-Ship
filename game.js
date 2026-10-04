@@ -270,6 +270,12 @@ function authenticateTurn(){
 }
 function triggerEvent(k){if(!Array.isArray(s.events)||!s.events.length)s.events=shuffle([...EVENTS]);let event=s.events.shift();if(event!=='Facehugger attack')log(`${me().name} triggered an event: ${event}.`);ui.note='';ui.sequence=true;runEvent(event,k).catch(error=>console.error('Event failed',event,error))}
 async function runEvent(event,k){return trackedSequence(runEventInner,[event,k])}
+// Popup acknowledgement may resolve before the terminal finishes folding away.
+// Wait on its actual closing state, then give the cleared board a paint interval.
+async function waitForEventPopupClose(game){
+ while(s===game&&WristTerminal.isClosing())await pause(32);
+ if(s===game)await pause(32);
+}
 async function runEventInner(event,k){const game=s;try{let description='',target=null;
  if(event==='Alien lunge'){description='The alien lunges one tile towards your position.';target=me().pos}
  if(event==='Seismic Shift'){let choices=Object.keys(s.tiles).filter(x=>canCollapse(x));if(choices.length){let b=take(choices);tile(b).terrain='void';reveal(b);description=`A bridge collapsed at ${b}. Neither Marines nor the alien can cross it.`;log(description)}else description='The ground shakes, but no empty bridge collapses.'}
@@ -278,7 +284,7 @@ async function runEventInner(event,k){const game=s;try{let description='',target
  if(event==='Adrenaline surge'){s.moves++;s.turnMoveBudget=(s.turnMoveBudget||2)+1;if(me().facehuggerInjured)s.moves=Math.min(s.moves,Math.max(0,1-(s.movesTaken||0)));description='You gain one extra move immediately. A Facehugger injury still limits you to one tile per turn.'}
  if(event==='Motion echo')description='The alien’s location will remain visible to everyone for the rest of this round, including on undiscovered tiles.';
  if(event==='Facehugger attack'){me().impregnated=true;me().facehuggerInjured=true;s.moves=Math.min(s.moves,1);description='STATUS: IMPREGNATED. Your movement is limited to one tile per turn until you use Med Evac. Med Evac restores movement but cannot remove the embryo. If you leave aboard the Dropship, the Company wins. Staying behind can let the crew win. You decide whether to tell the others.'}
- save();if(target){ui.deferAlienReports=true;try{await alienStep(target,1)}finally{if(s===game)ui.deferAlienReports=false}if(s!==game)return}await showPopup({kind:'event',title:event,text:description});if(s!==game)return;await drainMessages();if(s!==game)return;
+ save();await showPopup({kind:'event',title:event,text:description});if(s!==game)return;if(target){await waitForEventPopupClose(game);if(s!==game)return;await alienStep(target,1);if(s!==game)return}await drainMessages();if(s!==game)return;
  if(event==='Motion echo')ui.motionEcho={round:s.round};
  }finally{if(s===game){ui.sequence=false;finish()}}}
 async function chooseEvent(decode){return trackedSequence(chooseEventInner,[decode])}
