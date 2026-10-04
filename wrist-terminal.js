@@ -7,14 +7,16 @@ let session=null,enabled=false;
 const safeMedia=new Proxy({},{get:(_,method)=>(...args)=>{try{return window.ShipAudio?.[method]?.(...args)}catch(error){console.warn('Terminal audio unavailable',error)}}});
 const audio=()=>safeMedia;
 const hasTurnAudio=n=>n.classList.contains('handoff-prompt')||n.classList.contains('initial-orders')||n.classList.contains('muthur-mission');
+const typingAllowed=x=>!x.typingOnly||x.content.querySelector('[data-terminal]')?.dataset.typing==='active';
+function typingChanged(active){const x=session;if(!x?.typingOnly)return;if(!active)audio().stopEffect('wristDrone');else if(enabled&&x.ready&&!x.closing&&!document.hidden)audio().play('wristDrone',.1)}
 const selectors=['.mission-overlay .card','.private.executive-order','.event-window','.board-overlay .card','.handoff-prompt','.muthur-mission','.initial-orders','.wrist-dialog','.results-dialog'];
 function stopOpening(x){try{x.cancelEnded?.()}catch(error){console.warn('Terminal audio cleanup failed',error)}x.cancelEnded=null;clearTimeout(x.openTimer);audio().stopEffect('wristOn')}
 function stopAudio(x){stopOpening(x);audio().stopEffect('wristDrone')}
 function cancel(){if(!session)return;const x=session;session=null;clearTimeout(x.closeTimer);stopAudio(x);x.overlay.remove()}
-function ready(x){if(session!==x||x.closing||x.ready)return;x.ready=true;clearTimeout(x.openTimer);try{x.cancelEnded?.()}catch(error){console.warn('Terminal audio cleanup failed',error)}x.cancelEnded=null;if(enabled&&x.turnAudio&&!document.hidden)audio().play('wristDrone',.1);const jobs=x.jobs.splice(0);jobs.forEach(fn=>{try{fn()}catch(error){console.warn("Terminal follow-up failed",error)}})}
+function ready(x){if(session!==x||x.closing||x.ready)return;x.ready=true;clearTimeout(x.openTimer);try{x.cancelEnded?.()}catch(error){console.warn('Terminal audio cleanup failed',error)}x.cancelEnded=null;if(enabled&&x.turnAudio&&typingAllowed(x)&&!document.hidden)audio().play('wristDrone',.1);const jobs=x.jobs.splice(0);jobs.forEach(fn=>{try{fn()}catch(error){console.warn("Terminal follow-up failed",error)}})}
 function startAudio(x){
  if(!x.turnAudio&&!x.startupAudio){if(!x.ready)x.openTimer=setTimeout(()=>ready(x),ON_MS);return}
- if(x.ready){if(x.turnAudio&&!document.hidden)audio().play('wristDrone',.1);return}
+ if(x.ready){if(x.turnAudio&&typingAllowed(x)&&!document.hidden)audio().play('wristDrone',.1);return}
  x.cancelEnded=audio().onEnded('wristOn',()=>ready(x));
  audio().play('wristOn',.15);
  // Visual readiness has a fixed deadline even if audio starts and then stalls.
@@ -57,6 +59,7 @@ function sync(ui,game,soundOn){
  if(!candidate&&!held&&x?.turnAudio)endTurnAudio(x);
  const host=root.querySelector('.board')||root;
  if(candidate){
+  x.typingOnly=candidate.classList.contains('muthur-mission')||candidate.classList.contains('initial-orders');if(x.typingOnly&&!typingAllowed(x))audio().stopEffect('wristDrone');
   const red=candidate.classList.contains('classified-order');x.frame.classList.toggle('wrist-red',red);x.frame.classList.toggle('bioscan-terminal',candidate.classList.contains('bioscan-window'));const heading=x.header?.querySelector('span');if(heading)heading.textContent=candidate.classList.contains('bioscan-window')?'CMC · BIOSCANNER':'CMC · FIELD TERMINAL';
   const wrapper=candidate.parentElement,fresh=wrapper!==x.content;
   x.content.replaceChildren(candidate);x.content.inert=false;x.footer.inert=false;if(fresh){x.ackPlayed=false;x.footer.replaceChildren();x.imagePanel.replaceChildren();
@@ -106,9 +109,9 @@ function paginateRules(x,dialog){
  nav.append(previous,label,next);x.footer.prepend(nav);paint();
 }
 function afterOpen(fn){if(!session||session.ready)fn();else if(!session.closing)session.jobs.push(fn)}
-document.addEventListener('visibilitychange',()=>{if(!session)return;const x=session;if(document.hidden){stopOpening(x);audio().stopEffect('wristDrone')}else if(enabled&&!x.closing){if(!x.ready){x.ready=true;x.jobs.splice(0).forEach(fn=>fn())}if(x.turnAudio)audio().play('wristDrone',.1)}});
+document.addEventListener('visibilitychange',()=>{if(!session)return;const x=session;if(document.hidden){stopOpening(x);audio().stopEffect('wristDrone')}else if(enabled&&!x.closing){if(!x.ready){x.ready=true;x.jobs.splice(0).forEach(fn=>fn())}if(x.turnAudio&&typingAllowed(x))audio().play('wristDrone',.1)}});
 function acknowledge(){if(session?.closing)return;if(session)session.ackPlayed=true;if(enabled&&!document.hidden)audio().play('turnOff',.2)}
 function isClosing(){if(session?.closing&&performance.now()-session.closedAt>=OFF_MS){const x=session;session=null;clearTimeout(x.closeTimer);x.overlay.remove()}return !!session?.closing}
 function releaseOrphan(ui,game){if(!session||ui.sequence||ui.messages?.length||game?.pendingEvent||ui.terminalHold)return;const root=document.getElementById('app');if(!selectors.some(selector=>root.querySelector(selector)))cancel()}
-window.WristTerminal={releaseOrphan,sync,afterOpen,cancel,acknowledge,isClosing};
+window.WristTerminal={typingChanged,releaseOrphan,sync,afterOpen,cancel,acknowledge,isClosing};
 })();

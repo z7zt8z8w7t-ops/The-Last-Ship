@@ -732,3 +732,7 @@ body:has(.crew-roster-screen) .temporary-battle-preview{top:22px;bottom:auto;lef
 .crew-roster-screen.roster-power-up:has(.crt-keyboard){animation:crew-power-up .85s ease-out both!important}
 .roster:has(.crt-keyboard) .roster-interference{animation-duration:var(--glitch-period,23.71s);animation-delay:var(--glitch-offset,0s)}
 @media(prefers-reduced-motion:reduce){.crew-roster-screen.roster-power-up:has(.crt-keyboard){animation:none!important}}
+
+.end-turn-ready{animation:end-turn-pulse 1.4s ease-in-out infinite!important}
+@keyframes end-turn-pulse{50%{background:#39774c;box-shadow:0 0 14px #b3ffac66;color:#edffe9}}
+@media(prefers-reduced-motion:reduce){.end-turn-ready{animation:none!important;border-color:#beefac}}
