@@ -1,5 +1,5 @@
-The Last Ship v128 — overwrite supplied files, retaining other assets.
+The Last Ship v129 — overwrite all supplied files, retaining other assets.
 
-Final battle: all ten first-wave and all fifteen second-wave aliens are killed on existing soundtrack shot cues. Only the fifteen third-wave aliens survive and leap onto defenders at 31.5–33.37 seconds, before the 34-second fade. Running speed, engine/takeoff wave cues, visible muzzle flashes, APATE schematic and Sentry Battle test button retained.
+Replaces the crew-roster vector schematic with the approved CRT image of the actual APATE dropship. Live crew count and status retained. New apate-schematic.webp is included in the offline precache. All v128 battle changes retained.
 
-Syntax and canvas timeline checks passed; device playback remains to be checked.
+JavaScript syntax and asset/precache checks passed.

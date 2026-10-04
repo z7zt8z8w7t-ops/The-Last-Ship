@@ -814,3 +814,5 @@ body.has-test-nav #app{padding-top:28px}body.has-test-nav .layout .board{height:
 @media(max-width:850px){.roster-registration{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:8px}.apate-roster{padding:4px;font-size:9px}.apate-roster strong{font-size:9px}.crew-roster-screen .roster .setup-rank{flex-basis:90px}}
 @media(max-width:600px){.roster-registration{display:block}.apate-roster{display:none}}
 @media(prefers-reduced-motion:reduce){.apate-status,.apate-scan{animation:none}}
+
+.apate-roster .apate-schematic-image{display:block;width:100%;height:auto;max-height:clamp(140px,28vh,330px);object-fit:contain;min-height:0;flex:0 1 auto}
