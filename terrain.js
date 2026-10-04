@@ -38,9 +38,9 @@ function mount(canvas,game,cells,centre,staging,redraw,facing){stop();owner=canv
 }
 document.addEventListener?.('visibilitychange',()=>{if(!document.hidden)owner?.__terrainResume?.()});
 // Decorative array stays outside playable tiles and uses the existing paint clock.
-const facilityBox={x:455,y:228,w:365,h:390};
-// Stand the compound vertically in the exposed valley; preserve sprite scale.
-function facilityTransform(ctx){ctx.translate(777,394);ctx.rotate(-35*Math.PI/180);ctx.translate(-747,-324)}
+const facilityBox={x:590,y:260,w:250,h:375};
+// Two vertical laboratories, service yard and bottom-mounted dish.
+function facilityTransform(ctx){ctx.translate(770,330);ctx.rotate(12*Math.PI/180);ctx.translate(-750,-330)}
 function facilityPulse(now,index,reduced){
  if(reduced)return 1;
  const period=index?6830:5270,cycle=Math.floor(now/period),phase=now%period;
@@ -58,7 +58,7 @@ function drawFacilityLights(ctx,cells,centre,now,reduced,bounds){
  const img=images.get('facility');if(!img?.complete||!img.naturalWidth)return;
  ctx.save();ctx.beginPath();ctx.rect(...bounds);for(const c of cells){const[x,y]=centre(c.k);polygon(ctx,x-20,y-8,56,false)}ctx.clip('evenodd');
  facilityTransform(ctx);const b=facilityBox;
- [[599,378],[827,754]].forEach(([px,py],i)=>{const x=b.x+px/1212*b.w,y=b.y+py/1297*b.h,on=facilityPulse(now,i,reduced);
+ [[542,100],[501,770]].forEach(([px,py],i)=>{const x=b.x+px/1024*b.w,y=b.y+py/1536*b.h,on=facilityPulse(now,i,reduced);
  ctx.fillStyle='#0a1b1d';ctx.beginPath();ctx.arc(x,y,3.5,0,Math.PI*2);ctx.fill();
  if(on>.5){const glow=ctx.createRadialGradient(x,y,0,x,y,9);glow.addColorStop(0,'rgba(90,234,255,.8)');glow.addColorStop(1,'rgba(20,174,240,0)');ctx.fillStyle=glow;ctx.fillRect(x-9,y-9,18,18);ctx.fillStyle='#a5faff';ctx.beginPath();ctx.arc(x,y,1.4,0,Math.PI*2);ctx.fill()}
  });ctx.restore();

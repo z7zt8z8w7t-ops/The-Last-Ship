@@ -1,1 +1,1 @@
-Apply this changed-files-only update over v111. Replaces final-battle soundtrack with We are leaving.m4a. Temporary battle preview button remains available. Latest proposed facility artwork is still preview-only.
+Apply this changed-files-only update over v112. Replaces science-facility.webp with the new two-building, service-yard and bottom-dish layout. Temporary PREVIEW FINAL BATTLE button remains: it runs the live game animation and replaces the current session with a test extraction.

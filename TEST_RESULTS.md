@@ -1,1 +1,1 @@
-Verified other embedded clips unchanged, gameplay and last-stand cue files byte-identical to v111. New AAC stream decodes successfully. Actual iPad playback not tested.
+Terrain syntax check passed. Direct live battle entry test passed, including defenders, reveal and orbital/results transitions. Pixel geometry check for opaque structure pixels (alpha >180) found no overlap with all 37 playable hexes plus a 3-unit margin. Canvas layout visually reviewed. Game, battle cue code and all embedded audio byte-identical to v112. Actual iPad rendering not tested.
