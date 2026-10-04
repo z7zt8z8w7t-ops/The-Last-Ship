@@ -1,5 +1,5 @@
-The Last Ship v129 — overwrite all supplied files, retaining other assets.
+The Last Ship v130 — overwrite supplied files, retaining other assets.
 
-Replaces the crew-roster vector schematic with the approved CRT image of the actual APATE dropship. Live crew count and status retained. New apate-schematic.webp is included in the offline precache. All v128 battle changes retained.
+Third wave keeps approaching during the closing gunfire. At most two aliens per defender jump at 33.3–33.4 seconds, landing at 33.85–33.95 seconds immediately before the 34-second fade. Other third-wave aliens continue approaching and never form piles. First and second waves remain entirely killed on soundtrack cues. APATE image and test navigation retained.
 
-JavaScript syntax and asset/precache checks passed.
+JavaScript and canvas timeline checks passed; physical device playback unverified.
