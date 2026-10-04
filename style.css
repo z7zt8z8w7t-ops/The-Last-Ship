@@ -767,7 +767,7 @@ body:has(.crew-roster-screen) .temporary-battle-preview{top:22px;bottom:auto;lef
 .handoff-terminal>strong{font-size:18px;letter-spacing:.08em}
 .handoff-terminal .alien-emblem{font-size:42px;color:#a9ef99}
 .handoff-power-up{animation:player-crt-on .75s ease-out both}
-.fingerprint-button{display:flex;flex-direction:column;align-items:center;width:min(100%,190px);min-height:150px;gap:8px;background:#041109!important;color:#a9ef99!important;border:1px solid #a9ef99;font:700 11px ui-monospace,monospace;letter-spacing:.08em}
+.fingerprint-button{display:flex;flex-direction:column;align-items:center;width:min(100%,190px);min-height:150px;gap:8px;background:#041109;color:#a9ef99;border:1px solid #a9ef99;font:700 11px ui-monospace,monospace;letter-spacing:.08em}
 .fingerprint-button svg,.fingerprint-scan svg{width:90px;height:101px;filter:drop-shadow(0 0 4px #a9ef9944)}
 .fingerprint-scan{position:relative}
 .fingerprint-scan::after{content:'';position:absolute;left:0;right:0;top:0;height:2px;background:#c9ffb5;box-shadow:0 0 8px #a9ef99;animation:fingerprint-read .9s linear infinite alternate}
@@ -784,3 +784,11 @@ body:has(.crew-roster-screen) .temporary-battle-preview{top:22px;bottom:auto;lef
 .crt-player.company-intro::after{content:'';position:absolute;inset:0;pointer-events:none;border-radius:16px;background:repeating-linear-gradient(0deg,transparent 0 8px,#b6f5a805 9px 10px),#000;animation:classified-tab-static 3.7s steps(1,end) infinite;z-index:5}
 @keyframes classified-tab-static{0%,31%,35%,73%,77%,100%{filter:none;opacity:1}32%,74%{background:repeating-linear-gradient(0deg,#a9ef9920 0 2px,#000 2px 17px);filter:brightness(1.6)}34%,76%{background:linear-gradient(transparent 42%,#b6f5a82b 43% 44%,#000 45%)}}
 @media(prefers-reduced-motion:reduce){.crt-player.company-intro::after{animation:none}}
+
+/* Prominent fingerprint handover prompt. */
+.fingerprint-button{border-width:2px!important;animation:fingerprint-prompt 1.4s ease-in-out infinite!important;box-shadow:0 0 12px #a9ef9955,inset 0 0 14px #a9ef9918}
+.fingerprint-button svg{width:98px;height:110px;filter:drop-shadow(0 0 5px #bbffaa99)}
+.fingerprint-button span{font-size:12px;letter-spacing:.1em;text-shadow:0 0 7px #bbffaa99}
+.fingerprint-button:active{animation:none!important;background:#164424!important;box-shadow:0 0 26px #bbffaacc!important}
+@keyframes fingerprint-prompt{0%,100%{background:#041109;color:#a9ef99;border-color:#9bd98c;box-shadow:0 0 9px #a9ef9944,inset 0 0 10px #a9ef9912}50%{background:#163e21;color:#e2ffd7;border-color:#e2ffd7;box-shadow:0 0 29px #a9ef99bb,0 0 55px #a9ef9944,inset 0 0 25px #a9ef9940}}
+@media(prefers-reduced-motion:reduce){.fingerprint-button{animation:none!important;background:#12331b!important;border-color:#d5ffc8!important;box-shadow:0 0 22px #a9ef9988!important}}
