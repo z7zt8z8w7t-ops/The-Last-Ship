@@ -677,3 +677,30 @@ body{position:fixed;inset:0;height:100dvh}
 
 /* Temporary testing shortcut; normal final-battle canvas stays above scenery. */
 .temporary-battle-preview{position:fixed;left:16px;bottom:145px;z-index:250;font:12px monospace;letter-spacing:1px;color:#c4f0b1;background:#092017;border:1px solid #75b78a;border-radius:4px;padding:12px;box-shadow:0 0 12px #66aa7733}
+
+/* Full-screen crew terminal: keyboard occupies its own space, never overlays names. */
+.crew-roster-screen.screen{padding:10px;width:100%;height:100%;align-items:stretch;justify-content:stretch}
+.crew-roster-screen .roster.card{width:100%;max-width:none;height:100%;max-height:none;padding:18px 24px;animation:none!important;gap:8px}
+.crew-roster-screen .roster-list{flex:1;gap:8px;overflow-y:auto;min-height:0}
+.crew-roster-screen .roster-header{flex:none}
+.crew-roster-screen .roster-ship{margin-bottom:4px}
+.crew-roster-screen .roster-footer{margin:0;flex:none}
+.crew-roster-screen .roster .setup-rank{flex-basis:130px}
+.crew-roster-screen .roster:has(.crt-keyboard){padding-bottom:18px;overflow:hidden}
+.crew-roster-screen .crt-keyboard{position:relative;left:auto;bottom:auto;transform:none;width:100%;flex:none;z-index:2;padding:8px 12px;box-shadow:inset 0 0 25px #2e6a3222;margin-top:4px}
+.crew-roster-screen .keyboard-row{margin-top:4px}
+.crew-roster-screen .keyboard-row button{min-height:38px}
+.crew-roster-screen .keyboard-readout{min-height:30px;margin-bottom:4px;padding:3px 10px}
+.crew-roster-screen .roster:has(.crt-keyboard) .field input{padding:7px 10px}
+.crew-roster-screen .roster:has(.crt-keyboard) .setup-rank{padding:7px 4px}
+.crew-roster-screen .roster:has(.crt-keyboard) .voice-toggle{min-height:38px;padding:7px}
+.crew-roster-screen .roster:has(.crt-keyboard) h1{font-size:1.15rem;margin-bottom:3px}
+.crew-roster-screen .roster:has(.crt-keyboard) .order-classification{margin-bottom:3px}
+body:has(.crew-roster-screen) .temporary-battle-preview{top:22px;bottom:auto;left:auto;right:145px;padding:9px;font-size:10px}
+.roster-interference{position:absolute;inset:0;pointer-events:none;z-index:3;opacity:0;background:linear-gradient(transparent 22%,#c4ffb833 22.3%,transparent 23.5%,transparent 65%,#92ddab22 65.3%,transparent 67%);animation:roster-interference 17s linear infinite}
+/* Interference is independent of typing; exclude the keyboard area. */
+.roster:has(.crt-keyboard) .roster-interference{bottom:330px}
+@keyframes roster-interference{0%,36%,37.8%,82%,83.8%,100%{opacity:0;transform:translateX(0)}36.5%,82.5%{opacity:.65;transform:translateX(2px)}37%,83%{opacity:.3;transform:translateX(-2px)}}
+@media(max-height:700px){.crew-roster-screen .roster.card{padding:10px 16px;gap:5px}.crew-roster-screen .roster-list{gap:5px}.crew-roster-screen .keyboard-row button{min-height:30px;padding:3px}.crew-roster-screen .crt-keyboard header button{min-height:30px;padding:4px 15px}.crew-roster-screen .roster-actions .order-ack{min-height:34px;padding:5px 10px}.crew-roster-screen .roster:has(.crt-keyboard) .field input{padding:4px 8px}.crew-roster-screen .roster:has(.crt-keyboard) .setup-rank{padding:4px}.crew-roster-screen .roster:has(.crt-keyboard) .voice-toggle{min-height:30px;padding:4px}.roster:has(.crt-keyboard) .roster-interference{bottom:270px}}
+@media(max-width:600px){.crew-roster-screen .roster .setup-rank{flex-basis:75px;font-size:.65rem}.crew-roster-screen .roster-header{flex-direction:row}.crew-roster-screen .roster h1{font-size:.9rem}body:has(.crew-roster-screen) .temporary-battle-preview{top:auto;bottom:3px;right:14px;font-size:8px}.crew-roster-screen .roster.card{padding:10px}}
+@media(prefers-reduced-motion:reduce){.roster-interference{animation:none}}

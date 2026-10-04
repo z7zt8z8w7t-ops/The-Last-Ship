@@ -61,7 +61,11 @@ function drawFacilityLights(ctx,cells,centre,now,reduced,bounds){
  [[542,100],[501,770]].forEach(([px,py],i)=>{const x=b.x+px/1024*b.w,y=b.y+py/1536*b.h,on=facilityPulse(now,i,reduced);
  ctx.fillStyle='#0a1b1d';ctx.beginPath();ctx.arc(x,y,3.5,0,Math.PI*2);ctx.fill();
  if(on>.5){const glow=ctx.createRadialGradient(x,y,0,x,y,9);glow.addColorStop(0,'rgba(90,234,255,.8)');glow.addColorStop(1,'rgba(20,174,240,0)');ctx.fillStyle=glow;ctx.fillRect(x-9,y-9,18,18);ctx.fillStyle='#a5faff';ctx.beginPath();ctx.arc(x,y,1.4,0,Math.PI*2);ctx.fill()}
- });ctx.restore();
+ });
+ const x=b.x+296/1024*b.w,y=b.y+860/1536*b.h,on=reduced||now%1800<850;
+ ctx.fillStyle='#151811';ctx.beginPath();ctx.arc(x,y,3.8,0,Math.PI*2);ctx.fill();
+ if(on){const glow=ctx.createRadialGradient(x,y,0,x,y,10);glow.addColorStop(0,'rgba(255,45,35,.85)');glow.addColorStop(1,'rgba(230,10,15,0)');ctx.fillStyle=glow;ctx.fillRect(x-10,y-10,20,20);ctx.fillStyle='#ff5149';ctx.beginPath();ctx.arc(x,y,1.5,0,Math.PI*2);ctx.fill()}
+ ctx.restore();
 }
 // Emissive well cores stay visible above the darkness mask; rims never rotate.
 function drawWellGlow(ctx,game,cells,centre,now,reduced,redraw){

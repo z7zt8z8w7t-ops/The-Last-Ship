@@ -1,0 +1,1 @@
+Full-screen crew roster with integrated keyboard; occasional roster CRT interference independent of key presses; red blinking dish antenna beacon. Apply changed files over v113. Six-player lists scroll within the reserved roster area. Reduced motion keeps the beacon steady and disables interference.

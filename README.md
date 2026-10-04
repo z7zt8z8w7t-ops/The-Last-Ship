@@ -1,1 +1,1 @@
-Apply this changed-files-only update over v112. Replaces science-facility.webp with the new two-building, service-yard and bottom-dish layout. Temporary PREVIEW FINAL BATTLE button remains: it runs the live game animation and replaces the current session with a test extraction.
+The Last Ship v114 update. Upload the files in this ZIP over v113, keeping all other existing assets. Includes full-screen crew roster, integrated CRT keyboard, occasional roster interference and blinking red antenna beacon. Audio unchanged.

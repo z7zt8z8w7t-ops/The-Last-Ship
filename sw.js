@@ -1,6 +1,6 @@
-const CACHE='the-last-ship-v113';
+const CACHE='the-last-ship-v114';
 const ROOT=self.registration.scope;
-const ASSETS=['./science-facility.webp','./field-manual-tiles.webp','./last-stand.js?v=113','./bioscanner-bodies.png','./','./index.html','./style.css?v=113','./game.js?v=113','./artwork.js?v=113','./wrist-terminal.js?v=113','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png','./alien-planet.webp','./sound-check.html','./board-ground.webp','./board-valley.webp','./terrain.js?v=113','./marine-tokens.png','./alien-overhead.png','./alien-body.webp','./alien-tail.webp','./flare-overhead.webp','./dropship-landing.webp','./sentry-overhead-parts.png','./orbital-ending.png','./quarantine-schematic.png'];
+const ASSETS=['./science-facility.webp','./field-manual-tiles.webp','./last-stand.js?v=114','./bioscanner-bodies.png','./','./index.html','./style.css?v=114','./game.js?v=114','./artwork.js?v=114','./wrist-terminal.js?v=114','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png','./alien-planet.webp','./sound-check.html','./board-ground.webp','./board-valley.webp','./terrain.js?v=114','./marine-tokens.png','./alien-overhead.png','./alien-body.webp','./alien-tail.webp','./flare-overhead.webp','./dropship-landing.webp','./sentry-overhead-parts.png','./orbital-ending.png','./quarantine-schematic.png'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('the-last-ship-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{
