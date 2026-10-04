@@ -1,1 +1,1 @@
-The Last Ship v116. Apply changed files over v115, retaining all other existing assets. Includes sentry death/goo and silent replacements, final-battle goo, typing-only briefing drone, player bridge-collapse removal and End Turn prompt.
+The Last Ship v117. Apply changed files over v116; retain other existing assets. All currently playable player-tab buttons pulse, including End Turn whenever available. Skip matches Initialise size/style.
