@@ -704,3 +704,31 @@ body:has(.crew-roster-screen) .temporary-battle-preview{top:22px;bottom:auto;lef
 @media(max-height:700px){.crew-roster-screen .roster.card{padding:10px 16px;gap:5px}.crew-roster-screen .roster-list{gap:5px}.crew-roster-screen .keyboard-row button{min-height:30px;padding:3px}.crew-roster-screen .crt-keyboard header button{min-height:30px;padding:4px 15px}.crew-roster-screen .roster-actions .order-ack{min-height:34px;padding:5px 10px}.crew-roster-screen .roster:has(.crt-keyboard) .field input{padding:4px 8px}.crew-roster-screen .roster:has(.crt-keyboard) .setup-rank{padding:4px}.crew-roster-screen .roster:has(.crt-keyboard) .voice-toggle{min-height:30px;padding:4px}.roster:has(.crt-keyboard) .roster-interference{bottom:270px}}
 @media(max-width:600px){.crew-roster-screen .roster .setup-rank{flex-basis:75px;font-size:.65rem}.crew-roster-screen .roster-header{flex-direction:row}.crew-roster-screen .roster h1{font-size:.9rem}body:has(.crew-roster-screen) .temporary-battle-preview{top:auto;bottom:3px;right:14px;font-size:8px}.crew-roster-screen .roster.card{padding:10px}}
 @media(prefers-reduced-motion:reduce){.roster-interference{animation:none}}
+
+/* Roster always starts ready for direct name entry. */
+.crew-roster-screen .roster-list{flex:0 1 auto;justify-content:flex-start;gap:9px}
+.crew-roster-screen .roster .field{position:relative;flex:none}
+.crew-roster-screen .crt-name-field{font-family:monospace}
+.name-caret{display:none;position:absolute;left:calc(152px + var(--name-length)*1ch);top:50%;transform:translateY(-50%);font:1rem monospace;color:#caffb6;pointer-events:none}
+.name-caret.selected{display:block;animation:name-caret-blink 1s steps(1,end) infinite}
+@keyframes name-caret-blink{50%{opacity:0}}
+.crew-roster-screen .crt-keyboard{flex:1;min-height:230px;display:flex;flex-direction:column;justify-content:stretch;margin-top:6px}
+.crew-roster-screen .keyboard-row{flex:1;min-height:0}
+.crew-roster-screen .keyboard-row button{height:100%;min-height:35px;font-size:1.1rem}
+.crew-roster-screen .roster-actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.crew-roster-screen .roster-actions [data-act="openRules"]{grid-column:1;grid-row:1}
+.crew-roster-screen .roster-actions [data-act="start"]{grid-column:2;grid-row:1}
+.crew-roster-screen .roster-actions [data-act="add"]{grid-column:3;grid-row:1}
+.launch-ready{animation:launch-ready-pulse 1.5s ease-in-out infinite}
+@keyframes launch-ready-pulse{50%{background:#327343;box-shadow:0 0 16px #a9ff8f88;color:#e7ffdd}}
+.remove-player{font:11px monospace;padding:5px;min-height:32px;border-radius:3px;color:#f6baa1;background:#32140e}
+.crew-roster-screen.roster-power-up{animation:crew-power-up .85s ease-out both}
+@keyframes crew-power-up{0%{clip-path:inset(49.8% 42%);filter:brightness(3)}30%{clip-path:inset(49% 0);filter:brightness(2)}65%{clip-path:inset(0);filter:brightness(1.4)}100%{clip-path:inset(0);filter:none}}
+.roster:has(.crt-keyboard) .roster-interference{bottom:50%;animation-duration:23.71s}
+@media(max-height:700px){.crew-roster-screen .roster-list{gap:5px}.crew-roster-screen .crt-keyboard{min-height:190px}.crew-roster-screen .keyboard-row button{min-height:26px}.name-caret{left:calc(149px + var(--name-length)*1ch)}}
+@media(max-width:600px){.name-caret{left:calc(90px + var(--name-length)*1ch)}.crew-roster-screen .roster-actions{gap:4px}}
+@media(prefers-reduced-motion:reduce){.crew-roster-screen.roster-power-up,.name-caret.selected,.launch-ready{animation:none}}
+
+.crew-roster-screen.roster-power-up:has(.crt-keyboard){animation:crew-power-up .85s ease-out both!important}
+.roster:has(.crt-keyboard) .roster-interference{animation-duration:var(--glitch-period,23.71s);animation-delay:var(--glitch-offset,0s)}
+@media(prefers-reduced-motion:reduce){.crew-roster-screen.roster-power-up:has(.crt-keyboard){animation:none!important}}

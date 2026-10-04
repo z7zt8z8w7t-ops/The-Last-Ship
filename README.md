@@ -1,1 +1,1 @@
-The Last Ship v114 update. Upload the files in this ZIP over v113, keeping all other existing assets. Includes full-screen crew roster, integrated CRT keyboard, occasional roster interference and blinking red antenna beacon. Audio unchanged.
+The Last Ship v115. Apply these changed files over v114; retain all other existing assets. Roster opens directly with integrated larger keyboard, blank fields and blinking selected cursor. Optional players can be removed. Five/six-player missions have two aliens. Final battle preview removed.
