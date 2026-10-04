@@ -1,1 +1,1 @@
-game.js syntax check passed. Original final-line typing slot lengths retained (43 and 22 ticks), preserving audio trigger and end timing. Embedded audio verified unchanged.
+terrain.js syntax passed. Pixel geometry check: every sprite pixel with alpha above 16 clears all 37 playable hexes with a 3-unit margin. Gameplay, embedded audio and artwork are unchanged from v109. No new timers or input locks. Actual iPad testing remains.
