@@ -1,5 +1,7 @@
-The Last Ship v137 — overwrite supplied files, retaining other assets.
+The Last Ship v138 — overwrite supplied files, retaining other assets.
 
-Replaces end credits audio with the supplied End credits(1).m4a, embedded without re-encoding. Its start cue remains the orbital transition, 39 seconds after final battle begins. Existing sound toggle, pause/resume and single-play behavior remain unchanged. Includes the v136 tutorial boarding fix.
+Replaces discovery audio with the supplied TLS discovery(1).m4a without re-encoding. Existing trigger points and volume remain unchanged. All other audio is unchanged, including the new end credits clip.
 
-Verified: source clip decodes without errors; embedded clip matches the uploaded file byte for byte; all other embedded audio and game.js remain unchanged; JavaScript syntax checks passed. Physical iPad playback remains unverified.
+Expands the Company Representative tutorial into seven short Continue lessons: secret round-two assignment and red terminal; mission priorities and victory requirements; Private actions controls; examples and limits of scan interference, false PDTs and redirection; egg smuggling, detection, capture and quarantine. These are explanatory lessons after launch, not live sabotage exercises. The full tutorial now has 27 checkpoints. Includes the boarding checkpoint fix.
+
+Verified: new clip decodes without errors and embedded bytes match the upload; all other audio unchanged; all seven Company lessons reach Training complete without overrunning; tracker Continue still works; actual boarding/message/turn function regression checks passed; JavaScript syntax passed. Physical iPad layout and playback remain unverified.
