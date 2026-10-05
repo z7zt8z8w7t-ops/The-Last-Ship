@@ -841,3 +841,16 @@ body.has-test-nav #app{padding-top:28px}body.has-test-nav .layout .board{height:
 
 /* v145: version comes from the running game script, not the README. */
 .release-version{position:fixed;left:6px;bottom:4px;z-index:260;padding:3px 6px;min-height:22px;border:1px solid #73a98655;border-radius:4px;background:#03110fd9;color:#a5c4ae;font:11px monospace;opacity:.85}.release-version.release-update{color:#ffdf7b;border-color:#ffdf7b}
+
+/* v146: scan warning and translucent organism, shared by both body scans. */
+.bioscan-findings h3{color:#b4f1a1}
+.bioscan-status.anomaly{font-size:clamp(22px,2.4vw,34px);line-height:1.15;animation:bioscan-warning-flash 1.2s steps(1,end) infinite}
+@keyframes bioscan-warning-flash{0%,100%{opacity:1;text-shadow:0 0 10px #e5c06c88}50%{opacity:.22;text-shadow:none}}
+@media(prefers-reduced-motion:reduce){.bioscan-status.anomaly{animation:none}}
+/* Absolute schematic uses the spare space above registration without changing keyboard geometry. */
+.crew-roster-screen .apate-roster{position:relative;align-self:stretch;min-height:0}
+.crew-roster-screen .apate-roster>strong{position:absolute;top:-72px;left:20px;font-size:11px}
+.crew-roster-screen .apate-schematic-image{position:absolute;top:-54px;left:20px;width:calc(100% - 40px);height:calc(100% - 12px);max-height:none;object-fit:contain;object-position:center top}
+.crew-roster-screen .apate-readout{position:absolute;left:20px;bottom:0;line-height:1.35}
+@media(max-height:700px){.crew-roster-screen .apate-roster>strong{top:-56px}.crew-roster-screen .apate-schematic-image{top:-40px;height:calc(100% - 16px)}}
+@media(max-height:600px){.crew-roster-screen .apate-roster .apate-readout{display:none}.crew-roster-screen .apate-schematic-image{height:calc(100% + 32px)}}
