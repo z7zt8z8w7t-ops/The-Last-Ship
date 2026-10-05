@@ -1,0 +1,13 @@
+/* Release indicator and safe update check. No reload during an active session. */
+(()=>{'use strict';
+ const pageVersion=window.ShipPageVersion;
+ let runningVersion=null,latest=null,badge=null,checking=false,reloaded=false;
+ function mount(){if(badge)return;badge=document.createElement('button');badge.className='release-version';badge.type='button';badge.setAttribute('aria-label','Game version');badge.addEventListener('click',()=>{if(latest&&latest!==runningVersion){if(!window.ShipSessionStarted||confirm('Reload to update? This will end the current session.'))reload(latest)}else check()});document.body.append(badge);paint()}
+ function paint(){if(!badge)return;badge.textContent=runningVersion?'v'+runningVersion:'Checking version…';if(latest&&latest!==runningVersion&&latest>=pageVersion){badge.textContent+=' · UPDATE';badge.classList.add('release-update');badge.title='Tap to load version '+latest}else{badge.classList.remove('release-update');badge.title='Check for updates'}}
+ function reload(version){if(reloaded)return;const key='tls-release-reload';try{if(sessionStorage.getItem(key)===String(version)){paint();return}sessionStorage.setItem(key,String(version))}catch(e){}reloaded=true;const url=new URL(location.href);url.searchParams.set('release',String(version));location.replace(url.href)}
+ function reconcile(){paint();if(latest&&latest>=pageVersion&&latest!==runningVersion&&!window.ShipSessionStarted)reload(latest)}
+ async function check(){if(checking||!navigator.onLine)return;checking=true;try{const url=new URL('./version.json',location.href);url.searchParams.set('check',String(Date.now()));const response=await fetch(url,{cache:'no-store'});if(!response.ok)return;const data=await response.json();if(Number.isInteger(data.version)&&data.version>=pageVersion){latest=data.version;if(runningVersion!==null)reconcile()}}catch(e){}finally{checking=false}}
+ window.ShipRelease={ready(version){runningVersion=version;try{if(Number(sessionStorage.getItem('tls-release-reload'))<=version)sessionStorage.removeItem('tls-release-reload')}catch(e){}mount();reconcile();check()}};
+ mount();check();document.addEventListener('visibilitychange',()=>{if(!document.hidden)check()});
+ if('serviceWorker' in navigator){const hadController=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',()=>{check();if(hadController&&!window.ShipSessionStarted)reload(latest||pageVersion)});window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).then(r=>r.update()).catch(e=>console.warn('Offline cache unavailable',e)))}
+})();

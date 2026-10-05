@@ -1,7 +1,9 @@
-The Last Ship v142 — overwrite supplied files, retaining other assets.
+The Last Ship v145
 
-Final battle: body and tail sprite pixels with alpha above 16 become fully opaque during the existing one-time sprite preparation. Empty pixels remain empty; very soft edge pixels remain antialiased. Existing dark coloration, movement, waves, jump timing and muzzle flashes are unchanged.
+This release includes the v144 tutorial with 33 screens, a visible version button in the bottom-left corner, and an online version check. The badge reports the version of the running game.js. Tap it to check for updates. An update reloads automatically only before a session starts; during a session, the badge offers UPDATE and asks before ending the session.
 
-Roster: name rows align at the top with compact spacing instead of stretching across the registration area. APATE panel aligns at the top and the schematic height is reduced. The keyboard uses the freed vertical space and taller keys, with shorter-screen adaptations and scrolling for extra name rows. Tutorial button pulses until the first four names are filled; it updates immediately while typing or clearing. Fifth/sixth names do not keep this tutorial prompt flashing. Reduced-motion users see a steady highlighted button.
+index.html remains below 25 MB. GitHub Pages still hosts the game. Connected-phone play is not implemented.
 
-Verified: opacity processing on actual body/tail sprites using canvas confirms body alpha 255 and unchanged empty pixels; tutorial prompt checks for blank, complete, cleared and extra-player names; JS syntax; embedded audio unchanged. Browser layout check could not run because the browser download failed. Physical iPad layout and visuals remain unverified.
+To install changed files, overwrite them at the same repository root as index.html. For a clean deployment, use the files in the clean ZIP at that root; uploading the ZIP itself does not deploy its contents. Existing repository files are not deleted by an overwrite: use the accompanying cleanup report to remove retired assets if desired. Retain the original full ZIP as the archive of old sources and development tests.
+
+On the iPad, fully close and reopen the game after deployment, then check for v145 at the bottom left. A version update cannot affect an already open older build until it is refreshed. Offline use remains supported after the current assets have been cached. No game-in-progress restoration is provided.
