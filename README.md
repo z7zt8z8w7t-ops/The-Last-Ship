@@ -1,7 +1,7 @@
-The Last Ship v138 — overwrite supplied files, retaining other assets.
+The Last Ship v139 — overwrite supplied files, retaining other assets.
 
-Replaces discovery audio with the supplied TLS discovery(1).m4a without re-encoding. Existing trigger points and volume remain unchanged. All other audio is unchanged, including the new end credits clip.
+Discovery audio playback repair: decoded the uploaded discovery recording to stereo PCM WAV, applied 0.7 source gain and a gentle final fade, and preserved its 4.435-second container duration. Removed the 150% discovery gain boost; playback now uses unity gain with the existing limiter retained. Both native fallback and sound-check playback now use the correct WAV MIME type. The repaired clip peaks at 0.692 full scale and ends in silence.
 
-Expands the Company Representative tutorial into seven short Continue lessons: secret round-two assignment and red terminal; mission priorities and victory requirements; Private actions controls; examples and limits of scan interference, false PDTs and redirection; egg smuggling, detection, capture and quarantine. These are explanatory lessons after launch, not live sabotage exercises. The full tutorial now has 27 checkpoints. Includes the boarding checkpoint fix.
+No loud end spike was detected in the source waveform, so the reported iPad glitch is not conclusively reproduced. This change removes AAC decoding from this cue and avoids excessive amplification or an abrupt ending. All trigger points, game.js, tutorial and other audio remain unchanged.
 
-Verified: new clip decodes without errors and embedded bytes match the upload; all other audio unchanged; all seven Company lessons reach Training complete without overrunning; tracker Continue still works; actual boarding/message/turn function regression checks passed; JavaScript syntax passed. Physical iPad layout and playback remain unverified.
+Checks: repaired waveform peak and silent ending; embedded byte comparison; other audio unchanged; gameplay code unchanged; inline JavaScript and game/SW syntax. Physical iPad playback requires retesting.
