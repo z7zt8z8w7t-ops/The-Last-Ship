@@ -1,7 +1,5 @@
-The Last Ship v135 — overwrite supplied files, retaining other assets.
+The Last Ship v136 — overwrite supplied files, retaining other assets.
 
-Adds TUTORIAL to crew registration: 21 guided checkpoints on a fixed practice board. Highlights and gates the real authentication, movement, search, flare targeting/confirmation, end-turn/handover, sentry deployment, scientist escort/delivery, boarding, quarantine clearance and launch controls. Includes tracker/Motion Echo explanation and Company Representative purpose, round-two assignment, secret red terminal and all three sabotage actions.
+Fixes tutorial lesson 16 (Board the dropship) getting stuck on the next player handover. Completed tutorial checkpoints now advance from game state while the CRT closing animation finishes. Pending reports and active sequences still hold advancement. The normal controls retain their CRT closing guard.
 
-Practice positions/turn allowances reset between lessons; a clean second rescue and boarded crew are seeded for quarantine. Alien remains safely at its nest. Skip/finish restores the entered roster. Corporate lesson is an explanation rather than a live sabotage exercise.
-
-Checks passed: all 21 checkpoint transitions, action gates, escort route, clearance prerequisites and roster restoration; previous board-generation, capture, event-order and countdown outcome checks; JavaScript syntax; all embedded audio unchanged. Physical iPad layout and interaction remain unverified.
+Verified with the actual boarding/message/turn functions: reproduced v135 failure; v136 reaches Prepare for launch without handing over to the medic; pending reports require acknowledgement; cancelled boarding cannot advance. JavaScript syntax checks passed. Embedded audio is unchanged. Physical iPad interaction remains unverified.
