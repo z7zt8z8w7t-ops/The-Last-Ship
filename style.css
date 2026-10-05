@@ -835,3 +835,6 @@ body.has-test-nav #app{padding-top:28px}body.has-test-nav .layout .board{height:
 @media(prefers-reduced-motion:reduce){.tutorial-roster-button.tutorial-prompt{animation:none;background:#327343;box-shadow:0 0 12px #a9ff8f88}}
 @media(min-height:701px) and (max-height:850px){.crew-roster-screen .roster-registration,.crew-roster-screen .roster-list{max-height:220px}.crew-roster-screen .apate-schematic-image{max-height:120px}.crew-roster-screen .apate-roster{font-size:11px;gap:2px}.crew-roster-screen .crt-keyboard{min-height:215px}.crew-roster-screen .keyboard-row button{min-height:36px}}
 @media(max-height:600px){.crew-roster-screen .roster-registration,.crew-roster-screen .roster-list{max-height:145px}.crew-roster-screen .apate-schematic-image{max-height:80px}.crew-roster-screen .apate-roster>div,.crew-roster-screen .apate-roster>small{display:none}.crew-roster-screen .crt-keyboard{min-height:170px}.crew-roster-screen .keyboard-row button{min-height:28px}}
+
+/* v143: training panel anchored above the board. */
+.tutorial-guide{top:16px;bottom:auto;max-height:calc(100dvh - 32px);overflow:auto}.board svg .tutorial-highlight{stroke:#ffdf00!important;fill:#ffdf0033!important}@media(max-height:650px){.tutorial-guide{top:8px;bottom:auto}}
