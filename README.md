@@ -1,9 +1,9 @@
-The Last Ship v140 — overwrite supplied files, retaining other assets.
+The Last Ship v141 — overwrite supplied files, retaining other assets.
 
-Removes the discovery recording and its playback trigger entirely. Scientist discovery/boarding and all other recordings remain unchanged.
+Restores the discovery sound using the repaired v139 PCM recording, with reduced gain and a smooth ending. Restores its prior popup triggers.
 
-Keeps normal board hex lines very faint (14% opacity, 0.65 width). Targeting fills and tutorial guidance remain visible. Final battle still hides its grid completely.
+Replaces the existing TLS event (scientistFound) recording with the uploaded TLS event(1).m4a without re-encoding. It still plays after the terminal opens for scientist discoveries and PDT Locator. Scientist boarding sound and other audio remain unchanged.
 
-Final battle sentry base now renders without aim rotation; only the upper gun and its light rotate. The fallback drawing follows the same split. Marine aiming, muzzle-flash timing and alien wave timings are unchanged.
+Retains very faint normal board hex lines, hidden final-battle grid and stationary sentry base with rotating upper gun.
 
-Verified: reproduced v139 whole-sentry rotation; drawing transform checks at four aim angles confirm stationary base and rotating top; discovery data/trigger absent; all other embedded audio identical; game, battle, service-worker and inline audio JavaScript syntax passed. Physical iPad visual/playback testing remains unverified.
+Verified: new event clip decodes cleanly; embedded event bytes exactly match upload; discovery bytes exactly match repaired v139; other audio, grid CSS and final battle code unchanged; inline/game/SW JavaScript syntax passed. Physical iPad playback remains unverified.

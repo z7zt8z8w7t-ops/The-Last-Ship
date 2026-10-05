@@ -226,6 +226,7 @@ async function showPopup(message){
  const game=s;if(message.kind==='capture'){ui.capturePrelude=true;ui.captureScene={hex:message.captureHex,playerIndex:message.playerIndex,alienId:message.alienId||0,voice:message.voice,started:Date.now()};render();clearTimeout(trackerTimer);trackerTimer=null;audioSafely(()=>ShipAudio.stopEffect('tracker'));if(soundOn&&!document.hidden)audioSafely(()=>playCaptureSequence(message));try{await pause(4000)}finally{ui.capturePrelude=false;ui.captureScene=null}if(s!==game)return}const popup={...message,fading:false};ui.popup=popup;const acknowledged=new Promise(resolve=>{popupRun={game,popup,resolve,closing:false}});render();if(message.kind==='event'&&message.title==='Facehugger attack'&&soundOn&&!document.hidden)audioSafely(()=>ShipAudio.play('facehugger'));if(message.kind==='event'&&message.title==='Spore burst'&&soundOn&&!document.hidden)audioSafely(()=>ShipAudio.play('sporeBurst'));if(message.kind==='event'&&message.title==='Alien lunge'&&soundOn&&!document.hidden)audioSafely(()=>ShipAudio.play('noiseRoar'));
  WristTerminal.afterOpen(()=>{
   if(s!==game||ui.popup!==popup||!soundOn)return;
+  if(message.discoverySound||message.kind==='event'&&['Adrenaline surge','Motion echo','Seismic Shift'].includes(message.title))audioSafely(()=>ShipAudio.play('discovery'));
   if(message.scientistDiscovery||message.kind==='event'&&message.title==='PDT Locator')audioSafely(()=>ShipAudio.play('scientistFound'));
   if(message.rescuedSound)audioSafely(()=>ShipAudio.play('rescued'));
  });
