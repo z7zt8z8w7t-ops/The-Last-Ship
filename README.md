@@ -1,7 +1,9 @@
-The Last Ship v139 — overwrite supplied files, retaining other assets.
+The Last Ship v140 — overwrite supplied files, retaining other assets.
 
-Discovery audio playback repair: decoded the uploaded discovery recording to stereo PCM WAV, applied 0.7 source gain and a gentle final fade, and preserved its 4.435-second container duration. Removed the 150% discovery gain boost; playback now uses unity gain with the existing limiter retained. Both native fallback and sound-check playback now use the correct WAV MIME type. The repaired clip peaks at 0.692 full scale and ends in silence.
+Removes the discovery recording and its playback trigger entirely. Scientist discovery/boarding and all other recordings remain unchanged.
 
-No loud end spike was detected in the source waveform, so the reported iPad glitch is not conclusively reproduced. This change removes AAC decoding from this cue and avoids excessive amplification or an abrupt ending. All trigger points, game.js, tutorial and other audio remain unchanged.
+Keeps normal board hex lines very faint (14% opacity, 0.65 width). Targeting fills and tutorial guidance remain visible. Final battle still hides its grid completely.
 
-Checks: repaired waveform peak and silent ending; embedded byte comparison; other audio unchanged; gameplay code unchanged; inline JavaScript and game/SW syntax. Physical iPad playback requires retesting.
+Final battle sentry base now renders without aim rotation; only the upper gun and its light rotate. The fallback drawing follows the same split. Marine aiming, muzzle-flash timing and alien wave timings are unchanged.
+
+Verified: reproduced v139 whole-sentry rotation; drawing transform checks at four aim angles confirm stationary base and rotating top; discovery data/trigger absent; all other embedded audio identical; game, battle, service-worker and inline audio JavaScript syntax passed. Physical iPad visual/playback testing remains unverified.
