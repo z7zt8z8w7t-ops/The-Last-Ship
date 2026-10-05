@@ -1,5 +1,5 @@
-The Last Ship v136 — overwrite supplied files, retaining other assets.
+The Last Ship v137 — overwrite supplied files, retaining other assets.
 
-Fixes tutorial lesson 16 (Board the dropship) getting stuck on the next player handover. Completed tutorial checkpoints now advance from game state while the CRT closing animation finishes. Pending reports and active sequences still hold advancement. The normal controls retain their CRT closing guard.
+Replaces end credits audio with the supplied End credits(1).m4a, embedded without re-encoding. Its start cue remains the orbital transition, 39 seconds after final battle begins. Existing sound toggle, pause/resume and single-play behavior remain unchanged. Includes the v136 tutorial boarding fix.
 
-Verified with the actual boarding/message/turn functions: reproduced v135 failure; v136 reaches Prepare for launch without handing over to the medic; pending reports require acknowledgement; cancelled boarding cannot advance. JavaScript syntax checks passed. Embedded audio is unchanged. Physical iPad interaction remains unverified.
+Verified: source clip decodes without errors; embedded clip matches the uploaded file byte for byte; all other embedded audio and game.js remain unchanged; JavaScript syntax checks passed. Physical iPad playback remains unverified.
