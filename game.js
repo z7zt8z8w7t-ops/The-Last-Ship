@@ -1,5 +1,5 @@
 (()=>{'use strict';
-const BUILD_VERSION=147;window.ShipBuildVersion=BUILD_VERSION;
+const BUILD_VERSION=148;window.ShipBuildVersion=BUILD_VERSION;
 
 const TURN_PHRASES=['Move up!','Go, go, go!','Let’s move, Marines!','Stay sharp!','On your feet!','Keep it tight!','Move out!','Stay frosty!','Watch those corners!','We’re on the clock!','Eyes up, Marine!','Let’s get our people home!'];
 const EVENTS=Object.freeze(['Alien lunge','Seismic Shift','Spore burst','PDT Locator','Adrenaline surge','Motion echo','Facehugger attack']);
@@ -463,9 +463,9 @@ function alienFacing(){
  return Number.isFinite(s.alienFacing)?s.alienFacing:0;
 }
 function marineToken(p,i,x,y){
- const column=i%4,crop=column*499.5,aboard=p.pos===HOME,focus=marineFacing(p,i),phase=(Date.now()%6000)/6000,angle=focus.angle+(focus.guard?-18*Math.cos(phase*Math.PI*2):0);
+ const column=i%4,crop=column*499.25,aboard=p.pos===HOME,focus=marineFacing(p,i),phase=(Date.now()%6000)/6000,angle=focus.angle+(focus.guard?-18*Math.cos(phase*Math.PI*2):0);
  const sweep=focus.guard&&!aboard?`<animateTransform attributeName="transform" type="rotate" values="${focus.angle-18};${focus.angle+18};${focus.angle-18}" keyTimes="0;.5;1" calcMode="spline" keySplines=".42 0 .58 1;.42 0 .58 1" dur="6s" begin="${-phase*6}s" repeatCount="indefinite"/>`:'';
- const art=`<g class="marine-facing" transform="rotate(${angle})">${sweep}<svg x="${aboard?-10:-18.4}" y="${aboard?-15.5:-29}" width="${aboard?20:36.8}" height="${aboard?31:58}" viewBox="${crop} 0 499.5 787"><defs><clipPath id="marine-crop-${i}"><rect x="${crop}" width="499.5" height="787"/></clipPath></defs><image clip-path="url(#marine-crop-${i})" href="marine-realistic.png" width="1998" height="787"/></svg></g>`;
+ const art=`<g class="marine-facing" transform="rotate(${angle})">${sweep}<svg x="${aboard?-10:-18.4}" y="${aboard?-18.2:-34}" width="${aboard?20:36.8}" height="${aboard?31:58}" viewBox="${crop} 0 499.25 787"><defs><clipPath id="marine-crop-${i}"><rect x="${crop}" width="499.25" height="787"/></clipPath></defs><image clip-path="url(#marine-crop-${i})" href="marine-realistic.png" width="1997" height="787"/></svg></g>`;
  return `<g class="crew-token marine-token ${aboard?'aboard-token':''} ${p.captive?'captive':''} ${s.phase==='play'&&i===s.turn?'active-turn':''}" transform="translate(${x} ${y})" style="--piece-color:${COLOURS[i]}" aria-label="${esc(rank(i)+' '+p.name)}${aboard?' aboard vehicle':''}${p.scientist?' escorting a scientist':''}"><circle class="helmet-rim" r="17"/>${art}${p.scientist?'<circle cx="-11" cy="-13" r="6" fill="#f6fff7"/><text class="scientist-tag" x="-11" y="-10">✚</text>':''}</g>`;
 }
 function alienContactVisible(k){return !!tile(k)?.known&&s.players.some(p=>!p.captive&&!p.boarded&&dist(p.pos,k)<=2)}
