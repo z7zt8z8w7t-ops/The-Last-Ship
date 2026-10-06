@@ -854,3 +854,8 @@ body.has-test-nav #app{padding-top:28px}body.has-test-nav .layout .board{height:
 .crew-roster-screen .apate-readout{position:absolute;left:20px;bottom:0;line-height:1.35}
 @media(max-height:700px){.crew-roster-screen .apate-roster>strong{top:-56px}.crew-roster-screen .apate-schematic-image{top:-40px;height:calc(100% - 16px)}}
 @media(max-height:600px){.crew-roster-screen .apate-roster .apate-readout{display:none}.crew-roster-screen .apate-schematic-image{height:calc(100% + 32px)}}
+
+/* v147: player identity is the ring and terminal perimeter; CRT text retains role colours. */
+.marine-token .helmet-rim{fill:#07120bd9;stroke:var(--piece-color)!important;stroke-width:2.6;stroke-opacity:1}
+.marine-token.active-turn .helmet-rim{stroke:var(--piece-color)!important}
+.crt-player .flip-front,.crt-player .flip-back{border:2px solid var(--player-color);box-shadow:0 0 9px color-mix(in srgb,var(--player-color) 25%,transparent),inset 0 0 28px color-mix(in srgb,var(--crt-ink) 9%,transparent)}
